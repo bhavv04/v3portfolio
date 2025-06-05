@@ -1,0 +1,56 @@
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+interface DesktopNavbarProps {
+	className?: string;
+}
+
+export function DesktopNavbar({ className }: DesktopNavbarProps) {
+	return (
+		<nav
+			className={cn(
+				"sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full border bg-background/80 px-8 py-3.5 backdrop-blur-sm",
+				className
+			)}
+		>
+			<NavbarLink href="/" useClientSideRouting>
+				Home
+			</NavbarLink>
+			<NavbarLink href="/#about" useClientSideRouting>
+				About
+			</NavbarLink>
+			<NavbarLink href="/#timeline" useClientSideRouting>
+				Experience/Education
+			</NavbarLink>
+			<NavbarLink href="/#projects" useClientSideRouting>
+				Projects
+			</NavbarLink>
+			<NavbarLink href="/resume.pdf" openInNewTab>
+				Resume
+			</NavbarLink>
+		</nav>
+	);
+}
+
+interface NavbarLinkProps {
+	href: string;
+	openInNewTab?: boolean;
+	useClientSideRouting?: boolean;
+	children: React.ReactNode;
+}
+
+function NavbarLink({ href, openInNewTab = false, useClientSideRouting, children }: NavbarLinkProps) {
+	const Comp = useClientSideRouting ? Link : "a";
+
+	return (
+		<Comp
+			href={href}
+			target={openInNewTab ? "_blank" : "_self"}
+			className={
+				"relative before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2 before:bg-primary before:transition-[width] before:duration-200 before:content-[''] hover:before:w-full"
+			}
+		>
+			{children}
+		</Comp>
+	);
+}
