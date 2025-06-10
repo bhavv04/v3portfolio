@@ -33,7 +33,7 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 				<NavbarLink href="/" setIsOpen={setIsOpen} useClientSideRouting>
 					Home
 				</NavbarLink>
-				<NavbarLink href="/#about" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
 					About
 				</NavbarLink>
 				<NavbarLink href="/#timeline" setIsOpen={setIsOpen} useClientSideRouting>
@@ -43,7 +43,7 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 					Projects
 				</NavbarLink>
 				<NavbarLink href="/resume.pdf" setIsOpen={setIsOpen} openInNewTab>
-					Resumé
+					Resume
 				</NavbarLink>
 			</nav>
 		</div>

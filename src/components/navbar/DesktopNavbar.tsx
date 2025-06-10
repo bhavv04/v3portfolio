@@ -8,23 +8,14 @@ interface DesktopNavbarProps {
 export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
-			className={cn(
-				"sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full border bg-background/80 px-8 py-3.5 backdrop-blur-sm",
-				className
-			)}
+			className={cn("sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full border bg-background/80 px-8 py-3.5", className)}
 		>
-			<NavbarLink href="/" useClientSideRouting>
-				Home
-			</NavbarLink>
-			<NavbarLink href="/#about" useClientSideRouting>
+			<NavbarLink href="/">Home</NavbarLink>
+			<NavbarLink href="/about" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/#timeline" useClientSideRouting>
-				Experience/Education
-			</NavbarLink>
-			<NavbarLink href="/#projects" useClientSideRouting>
-				Projects
-			</NavbarLink>
+			<NavbarLink href="/#timeline">Experience/Education</NavbarLink>
+			<NavbarLink href="/#projects">Projects</NavbarLink>
 			<NavbarLink href="/resume.pdf" openInNewTab>
 				Resume
 			</NavbarLink>
@@ -36,6 +27,7 @@ interface NavbarLinkProps {
 	href: string;
 	openInNewTab?: boolean;
 	useClientSideRouting?: boolean;
+	className?: string; // Add this
 	children: React.ReactNode;
 }
 

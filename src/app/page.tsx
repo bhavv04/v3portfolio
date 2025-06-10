@@ -7,7 +7,7 @@ export default function Home() {
 		<>
 			<HeroSection />
 
-			<div className="my-24" />
+			<div className="my-40" />
 
 			<TimelineView />
 

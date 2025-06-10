@@ -6,18 +6,49 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
 	clsx(
-		"relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors",
-		"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+		"relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm",
+		"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
 		"disabled:pointer-events-none",
-		"[&_svg]:pointer-events-none [&_svg]:shrink-0"
+		"[&_svg]:pointer-events-none [&_svg]:shrink-0",
+		"shadow-sm"
 	),
 	{
 		variants: {
 			variant: {
 				default: clsx(
-					"bg-background text-primary stroke-primary border-2 border-primary",
-					"hover:bg-primary hover:text-background hover:stroke-primary-foreground",
-					"disabled:border-primary-foreground"
+					"bg-black text-white-900 border-2 border-gray-300 ",
+					"hover:bg-gray-100 hover:text-gray-900 hover:border-gray-400",
+					"transition-all duration-300 ease-in-out",
+					" hover:shadow-lg hover:shadow-gray-300/30"
+				),
+				github: clsx(
+					"bg-[#282828] text-white border-2 border-[#181717]",
+					"hover:bg-[#242020] hover:text-white hover:border-[#242020]",
+					"transition-all duration-300 ease-in-out",
+					"hover:scale-105 hover:shadow-lg hover:shadow-gray-800/30"
+				),
+				linkedin: clsx(
+					"bg-[#0077b5] text-white border-2 border-[#0077b5] ",
+					"hover:bg-[#005983] hover:text-white hover:border-[#005983]",
+					"transition-all duration-300 ease-in-out",
+					"hover:scale-105 hover:shadow-lg hover:shadow-blue-400/30"
+				),
+				learn: clsx(
+					"bg-purple-600 text-white border-2 border-purple-600",
+					"hover:bg-purple-700 hover:text-white hover:border-purple-700",
+					"transition-all duration-300 ease-in-out",
+					"hover:scale-105 hover:shadow-lg hover:shadow-purple-400/30"
+				),
+				resume: clsx(
+					"bg-green-600 text-white border-2 border-green-600",
+					"hover:bg-green-700 hover:text-white hover:border-green-700",
+					"transition-all duration-300 ease-in-out",
+					"hover:scale-105 hover:shadow-lg hover:shadow-green-400/30"
+				),
+				outline: clsx(
+					"bg-transparent text-gray-900 border-2 border-gray-400",
+					"hover:bg-gray-100 hover:text-gray-900 hover:border-gray-600",
+					"transition-all duration-300 ease-in-out"
 				)
 			},
 			size: {
@@ -42,10 +73,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
 	const Comp = asChild ? Slot : "button";
 
-	return (
-		<div className="relative inline-flex before:absolute before:left-0 before:top-0 before:h-[calc(100%+0.15rem)] before:w-[calc(100%+0.15rem)] before:rounded-md before:bg-primary before:content-['']">
-			<Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-		</div>
-	);
+	return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
 });
 Button.displayName = "Button";
