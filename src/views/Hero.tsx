@@ -2,7 +2,7 @@ import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import Image from "next/image";
-const ProfilePic = "../../public/images/profile.jpg";
+const ProfilePic = "/images/ProfilePic.jpeg";
 
 export function HeroSection() {
 	return (
