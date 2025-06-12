@@ -9,7 +9,7 @@ import { SiOpengl } from "react-icons/si";
 
 export function HeroBadges() {
 	return (
-		<div className="flex flex-row flex-wrap items-center gap-2 max-w-[60rem]">
+		<div className="flex max-w-[60rem] flex-row flex-wrap items-center gap-2">
 			<HeroBadge
 				text="Simulating: Newton's Playground"
 				href="https://github.com/bhav2134/Newtons-Playground"
@@ -42,9 +42,9 @@ export function HeroBadges() {
 				}
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
-				<HeroBadge
-				text="Reading: Way Of Kings - Brandon Sanderson"
-				href="https://www.goodreads.com/book/show/7235533-the-way-of-kings#CommunityReviews"
+			<HeroBadge
+				text="Reading: Words Of Radiance - Brandon Sanderson"
+				href="https://www.goodreads.com/book/show/17332218-words-of-radiance"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />

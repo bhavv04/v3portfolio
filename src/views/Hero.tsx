@@ -1,27 +1,29 @@
 import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
+import { HeroIcons } from "@/components/hero/HeroIcons";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import Image from "next/image";
 const ProfilePic = "/images/ProfilePic.jpeg";
 
 export function HeroSection() {
 	return (
-		<section id="about" className="mx-auto max-w-[60rem] lg:-mt-10">
+		<section id="about" className="mx-auto max-w-[50rem] lg:-mt-5">
 			<div className="mb-4 flex items-center gap-3">
 				<Image src={ProfilePic} alt="Bhavdeep Arora" width={50} height={50} className="rounded-full object-cover" />
-				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="mb-0 font-sans" />
+				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="" />
 			</div>
+
+			<HeroIcons />
 
 			<div className="mb-2 text-lg">
 				<p className="mb-2">
-					Hey there! I&apos;m a computer science enthusiast currently studying at Toronto Metropolitan University (formerly known as Ryerson
-					University), focused on mastering embedded system security engineering and cybersecurity. I love exploring how emerging technologies can
-					solve real-world problems and continuously challenge myself with new projects.
+					I&apos;m a computer science Student currently studying at <span className="underline">Toronto Metropolitan University</span> (formerly known
+					as Ryerson University).
 				</p>
 				<p>
-					My expertise spans across secure firmware development, IoT vulnerability assessment, cryptographic protocol implementation, and penetration
-					testing of embedded devices. I&apos;m particularly passionate about hardware-software security interfaces, reverse engineering, and
-					developing robust security frameworks for resource-constrained systems.
+					I&apos;ve been programming for over six years, and I&apos;m obssesed with learning. I&apos;m currently focused on embedded systems and IoT
+					security, particularly reverse engineering and vulnerability research, but I&apos;m always deep diving into various aspects of offensive
+					security and cryptography.
 				</p>
 			</div>
 

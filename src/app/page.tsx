@@ -14,6 +14,10 @@ export default function Home() {
 			<div className="my-24" />
 
 			<ProjectsView />
+
+			<div className="my-24" />
+
+			{/* <Contact /> */}
 		</>
 	);
 }

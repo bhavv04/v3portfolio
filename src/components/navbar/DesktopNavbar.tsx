@@ -16,6 +16,7 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			</NavbarLink>
 			<NavbarLink href="/#timeline">Experience/Education</NavbarLink>
 			<NavbarLink href="/#projects">Projects</NavbarLink>
+			<NavbarLink href="/#contact">Contact</NavbarLink>
 			<NavbarLink href="/resume.pdf" openInNewTab>
 				Resume
 			</NavbarLink>

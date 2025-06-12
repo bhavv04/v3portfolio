@@ -21,29 +21,10 @@ const buttonVariants = cva(
 					"transition-all duration-300 ease-in-out",
 					" hover:shadow-lg hover:shadow-gray-300/30"
 				),
-				github: clsx(
-					"bg-[#282828] text-white border-2 border-[#181717]",
-					"hover:bg-[#242020] hover:text-white hover:border-[#242020]",
-					"transition-all duration-300 ease-in-out",
-					"hover:scale-105 hover:shadow-lg hover:shadow-gray-800/30"
-				),
-				linkedin: clsx(
-					"bg-[#0077b5] text-white border-2 border-[#0077b5] ",
-					"hover:bg-[#005983] hover:text-white hover:border-[#005983]",
-					"transition-all duration-300 ease-in-out",
-					"hover:scale-105 hover:shadow-lg hover:shadow-blue-400/30"
-				),
-				learn: clsx(
-					"bg-purple-600 text-white border-2 border-purple-600",
-					"hover:bg-purple-700 hover:text-white hover:border-purple-700",
-					"transition-all duration-300 ease-in-out",
-					"hover:scale-105 hover:shadow-lg hover:shadow-purple-400/30"
-				),
-				resume: clsx(
-					"bg-green-600 text-white border-2 border-green-600",
-					"hover:bg-green-700 hover:text-white hover:border-green-700",
-					"transition-all duration-300 ease-in-out",
-					"hover:scale-105 hover:shadow-lg hover:shadow-green-400/30"
+				destructive: clsx(
+					"bg-red-500 text-white border-2 border-red-600",
+					"hover:bg-red-600 hover:text-white hover:border-red-700",
+					"transition-all duration-300 ease-in-out"
 				),
 				outline: clsx(
 					"bg-transparent text-gray-900 border-2 border-gray-400",
