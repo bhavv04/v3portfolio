@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 
 const CURSOR_SIZE = 16; // w-4 h-4 = 16px
@@ -21,10 +20,17 @@ const CustomCursor = () => {
 			setPosition({ x: e.clientX, y: e.clientY });
 		};
 
-		const handleMouseEnter = () => setIsHovering(true);
-		const handleMouseLeave = () => setIsHovering(false);
+		const handleMouseEnter = (e: Event) => {
+			setIsHovering(true);
+			(e.target as HTMLElement).style.cursor = "none";
+		};
 
-		document.body.style.cursor = "default";
+		const handleMouseLeave = (e: Event) => {
+			setIsHovering(false);
+			(e.target as HTMLElement).style.cursor = "none";
+		};
+
+		document.body.style.cursor = "none";
 		window.addEventListener("mousemove", updatePosition);
 
 		const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
@@ -34,11 +40,14 @@ const CustomCursor = () => {
 		});
 
 		return () => {
-			document.body.style.cursor = "auto";
+			document.body.style.cursor = "auto"; // Reset to default on cleanup
+
 			window.removeEventListener("mousemove", updatePosition);
 			interactiveElements.forEach((el) => {
 				el.removeEventListener("mouseenter", handleMouseEnter);
 				el.removeEventListener("mouseleave", handleMouseLeave);
+				// Reset cursor style on cleanup
+				(el as HTMLElement).style.cursor = "";
 			});
 		};
 	}, [isClient]);
