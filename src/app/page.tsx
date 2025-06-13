@@ -4,7 +4,7 @@ import { ProjectsView } from "@/views/Projects";
 
 export default function Home() {
 	return (
-		<>
+		<div className="animate-slide-in-left">
 			<HeroSection />
 
 			<div className="my-40" />
@@ -16,8 +16,6 @@ export default function Home() {
 			<ProjectsView />
 
 			<div className="my-24" />
-
-			{/* <Contact /> */}
-		</>
+		</div>
 	);
 }

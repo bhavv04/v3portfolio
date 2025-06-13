@@ -5,6 +5,7 @@ import { Navbar } from "@/views/Navbar";
 import localFont from "next/font/local";
 import { GridBackground } from "@/components/graphics/GridBackground";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const clashDisplay = localFont({
 	src: "./fonts/ClashDisplay-Variable.woff2",
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 						{children}
 					</main>
 				</ResponsiveContainer>
+				<CustomCursor />
 			</body>
 		</html>
 	);

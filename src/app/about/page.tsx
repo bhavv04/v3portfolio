@@ -3,12 +3,12 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export default function About() {
 	return (
-		<div className="-mt-40 min-h-screen">
+		<div className="-mt-40 min-h-screen md:-mt-40">
 			{/* Header Section */}
 			<div className="relative overflow-hidden">
-				<div className="relative px-6 py-16 sm:py-24 lg:px-8">
+				<div className="relative px-6 py-36 sm:py-24 lg:px-8">
 					<div className="mx-auto max-w-2xl text-left">
-						<SectionTitle text="Hey There 👋" className="" />
+						<SectionTitle text="Hey There 👋🏻 " className="" />
 
 						{/* Subtitle */}
 						<p className="mt-4 max-w-4xl text-lg font-semibold leading-8 text-slate-300">
@@ -27,7 +27,7 @@ export default function About() {
 			</div>
 
 			{/* Terminal Section */}
-			<div className="relative px-6 pb-16 lg:px-8">
+			<div className="relative -mt-28 px-6 pb-16 md:-mt-10 lg:px-8">
 				<div className="mx-auto max-w-full">
 					<TerminalAbout />
 				</div>
