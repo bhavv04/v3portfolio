@@ -85,10 +85,14 @@ const config: Config = {
 			},
 			fontFamily: {
 				"clash-display": "var(--font-clash-display)",
-				satoshi: "var(--font-satoshi)"
+				satoshi: "var(--font-satoshi)",
+				mono: ['"JetBrains Mono"', "monospace"]
 			},
 			screens: {
 				xs: "440px"
+			},
+			boxShadow: {
+				"yellow-highlight": "0 0 0 0.5rem #fde047"
 			}
 		}
 	},

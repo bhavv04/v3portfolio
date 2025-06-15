@@ -2,22 +2,9 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Navbar } from "@/views/Navbar";
-import localFont from "next/font/local";
 import { GridBackground } from "@/components/graphics/GridBackground";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import CustomCursor from "@/components/ui/CustomCursor";
-
-const clashDisplay = localFont({
-	src: "./fonts/ClashDisplay-Variable.woff2",
-	variable: "--font-clash-display",
-	weight: "200 700"
-});
-
-const satoshi = localFont({
-	src: "./fonts/Satoshi-Variable.woff2",
-	variable: "--font-satoshi",
-	weight: "300 900"
-});
 
 export const metadata: Metadata = {
 	title: "Bhavdeep Arora",
@@ -49,11 +36,14 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 	return (
 		<html lang="en">
-			<body className={`${clashDisplay.variable} ${satoshi.variable} relative antialiased`}>
+			<head>
+				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+			</head>
+			<body className="relative font-mono antialiased">
 				<GridBackground className="absolute inset-0 h-full min-h-screen w-full" />
 
 				<ResponsiveContainer>
-					<main className="p-8 font-satoshi">
+					<main className="p-8 font-mono">
 						<Navbar />
 
 						<div className="my-8 sm:my-24" />
@@ -61,7 +51,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 						{children}
 					</main>
 				</ResponsiveContainer>
-				<CustomCursor />
+				<CustomCursor className="hidden sm:block" />
 			</body>
 		</html>
 	);

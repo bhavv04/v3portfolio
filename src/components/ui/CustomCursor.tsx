@@ -4,7 +4,11 @@ import React, { useEffect, useState } from "react";
 const CURSOR_SIZE = 16; // w-4 h-4 = 16px
 const OUTLINE_SIZE = 32; // w-8 h-8 = 32px
 
-const CustomCursor = () => {
+interface CustomCursorProps {
+	className?: string;
+}
+
+const CustomCursor: React.FC<CustomCursorProps> = ({ className = "" }) => {
 	const [isClient, setIsClient] = useState(false);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const [isHovering, setIsHovering] = useState(false);
@@ -55,7 +59,7 @@ const CustomCursor = () => {
 	if (!isClient) return null;
 
 	return (
-		<>
+		<div className={className}>
 			<div
 				className={`pointer-events-none fixed left-0 top-0 z-50 h-4 w-4 rounded-full bg-white mix-blend-difference transition-transform duration-100 ease-out ${
 					isHovering ? "scale-150" : "scale-100"
@@ -71,7 +75,7 @@ const CustomCursor = () => {
 					opacity: isHovering ? 0.8 : 0.3
 				}}
 			/>
-		</>
+		</div>
 	);
 };
 

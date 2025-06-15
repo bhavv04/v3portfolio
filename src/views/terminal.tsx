@@ -513,7 +513,7 @@ const TerminalAbout: React.FC = () => {
 
 					{/* Input Line */}
 					<div className="mt-4 flex items-center space-x-2">
-						<span className="text-sm text-gray-500">visitor@portfolio</span>
+						<span className="text-sm text-gray-500">about</span>
 						<span className="text-green-400">:</span>
 						<span className="text-blue-400">~</span>
 						<span className="text-gray-300">$</span>
