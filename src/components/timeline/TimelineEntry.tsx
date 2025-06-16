@@ -32,7 +32,7 @@ export function TimelineEntry({ className, entry }: TimelineEntryProps) {
 
 			{/* RHS: Header, Subheader, and Bullets/Content */}
 			<div className="sm:grow sm:basis-0">
-				<h2 className="font-clash-display text-3xl font-medium xs:text-4xl">{header}</h2>
+				<h2 className="text-2xl font-medium xs:text-3xl">{header}</h2>
 				<h3 className="mb-2 text-xl text-muted-foreground xs:text-2xl">{subheader}</h3>
 
 				{rest.type === "content" ? (
@@ -47,7 +47,7 @@ export function TimelineEntry({ className, entry }: TimelineEntryProps) {
 					</ul>
 				)}
 
-				<div className="mt-2 flex flex-row flex-wrap items-center gap-2">
+				<div className="mb-10 mt-2 flex flex-row flex-wrap items-center gap-2">
 					{badges.map((badge) =>
 						Object.values(Technology).includes(badge as Technology) ? (
 							<TechnologyBadge key={badge} technology={badge as Technology} />

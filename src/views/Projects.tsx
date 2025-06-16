@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
-import { MdOutlineFolderCopy } from "react-icons/md";
+import { SiTheodinproject } from "react-icons/si";
 
 export function ProjectsView() {
 	return (
@@ -11,7 +11,7 @@ export function ProjectsView() {
 			<SectionTitle
 				text={
 					<>
-						<MdOutlineFolderCopy className="mr-2 inline-block text-yellow-400" />
+						<SiTheodinproject className="mr-2 inline-block text-yellow-400" />
 						Projects
 					</>
 				}

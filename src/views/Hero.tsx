@@ -5,12 +5,17 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 import Image from "next/image";
 const ProfilePic = "/images/ProfilePic.jpeg";
 
+// Optional: Extract to a reusable component
+function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
+	return <Image src={src} alt={alt} width={50} height={56} className="rounded-full border-2 object-cover shadow-md" priority sizes="50px" />;
+}
+
 export function HeroSection() {
 	return (
 		<section id="about" className="mx-auto max-w-[50rem] lg:-mt-10">
 			<div className="mb-4 flex items-center gap-3">
-				<Image src={ProfilePic} alt="Bhavdeep Arora" width={50} height={50} className="rounded-full object-cover" />
-				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="" />
+				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
+				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="mt-2" />
 			</div>
 
 			<HeroIcons />
@@ -24,14 +29,16 @@ export function HeroSection() {
 
 			<div className="mb-2">
 				<p>
-					I&apos;ve been programming for over six years, and I&apos;m obssesed with learning. I&apos;m currently focused on embedded systems and IoT
-					security, particularly reverse engineering and vulnerability research, but I&apos;m always deep diving into various aspects of offensive
-					security and cryptography.
+					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on{" "}
+					<span className="font-bold">embedded systems</span> and <span className="font-bold">IoT security</span>, particularly{" "}
+					<span className="font-bold">reverse engineering</span> and <span className="font-bold">vulnerability research</span>, but I&apos;m always
+					deep diving into various aspects of <span className="font-bold">offensive security</span> and{" "}
+					<span className="font-bold">cryptography</span>.
 				</p>
 			</div>
 
 			<div className="mb-4">
-				<p>Outside of programming, I love learning new things, Reading, and Exploring Outside!</p>
+				<p>Outside of programming, I love learning new things, Reading Fantasy Books, and Exploring Outside!</p>
 				<p className="mb-2">This is what I&apos;m currently up to:</p>
 
 				<HeroBadges />
