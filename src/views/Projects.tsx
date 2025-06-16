@@ -3,11 +3,19 @@ import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
+import { MdOutlineFolderCopy } from "react-icons/md";
 
 export function ProjectsView() {
 	return (
 		<section id="projects">
-			<SectionTitle text="Projects" />
+			<SectionTitle
+				text={
+					<>
+						<MdOutlineFolderCopy className="mr-2 inline-block text-yellow-400" />
+						Projects
+					</>
+				}
+			/>
 
 			<Card>
 				<CardContent className="flex flex-col gap-8 p-6">

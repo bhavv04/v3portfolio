@@ -1,4 +1,4 @@
-import TerminalAbout from "@/views/terminal";
+import TerminalAbout from "@/views/Terminal";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export default function About() {

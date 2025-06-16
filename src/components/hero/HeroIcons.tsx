@@ -43,7 +43,7 @@ export function HeroIcons() {
 			<HeroIcon text="📍 Toronto, ON" className="bg-white/20 text-white backdrop-blur-md" />
 
 			<HeroIcon text={`📅 ${currentDate}`} className="bg-white/20 text-white backdrop-blur-md" />
-			<HeroIcon text={`🕔${currentTime}`} className="bg-white/20 text-white backdrop-blur-3xl" />
+			<HeroIcon text={`⏳ ${currentTime}`} className="bg-white/20 text-white backdrop-blur-3xl" />
 		</div>
 	);
 }

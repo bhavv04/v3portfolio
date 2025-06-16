@@ -15,5 +15,11 @@ export enum Technology {
 	SpringBoot = "Spring Boot",
 	AWS = "AWS",
 	GCP = "GCP",
-	Nginx = "Nginx"
+	Nginx = "Nginx",
+	HTML = "HTML5",
+	CSS = "CSS3",
+	Javascript = "JavaScript",
+	Docker = "Docker",
+	Git = "Git",
+	Linux = "Linux"
 }

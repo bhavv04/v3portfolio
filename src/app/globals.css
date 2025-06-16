@@ -257,3 +257,85 @@ body,
 body * {
 	cursor: none !important;
 }
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+	width: 5px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #fde047; /* yellow-300 */
+	border-radius: 8px;
+	border: 2px solid #18181b; /* background color */
+}
+
+::-webkit-scrollbar-track {
+	background: black; /* background color */
+	border-radius: 8px;
+}
+
+/* For Firefox */
+html {
+	scrollbar-width: thin;
+	scrollbar-color: #fde047 #18181b;
+}
+
+/* Hide horizontal scrollbar but allow horizontal scroll */
+.hide-horizontal-scrollbar {
+	overflow-x: auto;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+}
+.hide-horizontal-scrollbar::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+}
+
+@keyframes skills-carousel {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+@keyframes skills-carousel-reverse {
+	0% {
+		transform: translateX(-50%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+@keyframes skills-carousel-fast {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+.skills-carousel-outer {
+	overflow: hidden;
+	width: 100%;
+	mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+	-webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+.skills-carousel-track {
+	display: flex;
+	gap: 0.75rem;
+	width: max-content;
+	will-change: transform;
+}
+.animate-skills-carousel {
+	animation: skills-carousel 30s linear infinite;
+}
+.animate-skills-carousel-reverse {
+	animation: skills-carousel-reverse 40s linear infinite;
+}
+.animate-skills-carousel-fast {
+	animation: skills-carousel 18s linear infinite;
+}
+.pause-on-hover:hover {
+	animation-play-state: paused;
+}
