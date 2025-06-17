@@ -15,7 +15,7 @@ export default function Home() {
 
 			<TimelineView />
 
-			<div className="my-24" />
+			<div className="my-16" />
 
 			<ProjectsView />
 

@@ -41,8 +41,7 @@ export function HeroSection() {
 			</div>
 
 			<div className="">
-				<p>Outside of programming, I love learning new things, Reading Fantasy Books, and Exploring Outside!</p>
-				<p className="mb-2">This is what I&apos;m currently up to:</p>
+				<p>Outside of programming, I love learning new things, Reading Fantasy Books, and Exploring Outside! This is what I&apos;m currently up to:</p>
 			</div>
 
 			<div className="">

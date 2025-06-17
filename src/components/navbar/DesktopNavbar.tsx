@@ -53,7 +53,6 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 				"rounded-full transition-all duration-300 ease-out",
 				"hover:bg-white/10 hover:text-white",
 				"active:scale-95 active:bg-white/20",
-				"focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-2 focus:ring-offset-transparent",
 				className
 			)}
 		>
@@ -61,7 +60,7 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 			{/* Animated underline */}
-			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-8 group-hover:-translate-x-1/2" />
+			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-5/12 group-hover:-translate-x-1/2" />
 
 			{/* Content */}
 			<span className="relative z-10 flex items-center gap-2">{children}</span>
