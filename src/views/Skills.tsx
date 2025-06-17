@@ -87,16 +87,19 @@ export function Skills() {
 				</div>
 				{/* Row 3: left to right (faster) */}
 				<div className="skills-carousel-outer">
-					<div className="skills-carousel-track animate-skills-carousel-fast pause-on-hover">
-						{carouselSkills.map((skill, idx) => (
-							<span
-								key={skill.name + "row3" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 font-mono text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
-							>
-								{skill.icon}
-								{skill.name}
-							</span>
-						))}
+					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">
+						{carouselSkills
+							.slice()
+							.reverse()
+							.map((skill, idx) => (
+								<span
+									key={skill.name + "row3" + idx}
+									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 font-mono text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								>
+									{skill.icon}
+									{skill.name}
+								</span>
+							))}
 					</div>
 				</div>
 			</div>

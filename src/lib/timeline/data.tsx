@@ -9,7 +9,7 @@ export const experienceEntries: TimelineEntryInformation[] = [
 		location: "",
 		type: "bullets",
 		bullets: [
-			"Collaborating with a team of 100+ developers to create a three-act DLC mod for Baldur’s Gate 3",
+			"Collaborating with a team of 100+ developers to create a three-act DLC mod for Baldur's Gate 3",
 			"Implementing custom dialogue trees and quest logic using Larian’s Osiris scripting system",
 			"Working with game asset PAK files to integrate custom content while maintaining compatibility with the base game"
 		],

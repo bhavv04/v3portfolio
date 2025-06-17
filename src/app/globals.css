@@ -271,7 +271,7 @@ body * {
 }
 
 ::-webkit-scrollbar-track {
-	background: black; /* background color */
+	background: black;
 	border-radius: 8px;
 }
 
@@ -281,7 +281,6 @@ html {
 	scrollbar-color: #fde047 #18181b;
 }
 
-/* Hide horizontal scrollbar but allow horizontal scroll */
 .hide-horizontal-scrollbar {
 	overflow-x: auto;
 	scrollbar-width: none; /* Firefox */
@@ -338,4 +337,9 @@ html {
 }
 .pause-on-hover:hover {
 	animation-play-state: paused;
+}
+
+::selection {
+	background: rgba(238, 255, 0, 0.7); /* Modern syntax */
+	color: #1e293b;
 }

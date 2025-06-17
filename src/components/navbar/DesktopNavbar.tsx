@@ -8,7 +8,16 @@ interface DesktopNavbarProps {
 export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
-			className={cn("sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full border bg-background/80 px-8 py-3.5", className)}
+			className={cn(
+				"sticky top-4 z-50 mx-auto flex w-fit items-center justify-center gap-1",
+				"rounded-full border border-white/10 bg-black/40 backdrop-blur-xl",
+				"px-2 py-2 shadow-2xl shadow-black/25",
+				"before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r",
+				"before:from-blue-500/10 before:via-purple-500/10 before:to-pink-500/10",
+				"before:-z-10 before:p-[1px] before:content-['']",
+				"transition-all duration-300 hover:shadow-lg hover:shadow-slate-900",
+				className
+			)}
 		>
 			<NavbarLink href="/">Home</NavbarLink>
 			<NavbarLink href="/about" useClientSideRouting>
@@ -28,22 +37,34 @@ interface NavbarLinkProps {
 	href: string;
 	openInNewTab?: boolean;
 	useClientSideRouting?: boolean;
-	className?: string; // Add this
+	className?: string;
 	children: React.ReactNode;
 }
 
-function NavbarLink({ href, openInNewTab = false, useClientSideRouting, children }: NavbarLinkProps) {
+function NavbarLink({ href, openInNewTab = false, useClientSideRouting, className, children }: NavbarLinkProps) {
 	const Comp = useClientSideRouting ? Link : "a";
 
 	return (
 		<Comp
 			href={href}
 			target={openInNewTab ? "_blank" : "_self"}
-			className={
-				"relative before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2 before:bg-primary before:transition-[width] before:duration-200 before:content-[''] hover:before:w-full"
-			}
+			className={cn(
+				"group relative px-4 py-2.5 text-sm font-medium text-white/80",
+				"rounded-full transition-all duration-300 ease-out",
+				"hover:bg-white/10 hover:text-white",
+				"active:scale-95 active:bg-white/20",
+				"focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-2 focus:ring-offset-transparent",
+				className
+			)}
 		>
-			{children}
+			{/* Animated background on hover */}
+			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+			{/* Animated underline */}
+			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-8 group-hover:-translate-x-1/2" />
+
+			{/* Content */}
+			<span className="relative z-10 flex items-center gap-2">{children}</span>
 		</Comp>
 	);
 }

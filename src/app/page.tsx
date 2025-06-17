@@ -6,7 +6,7 @@ import { Skills } from "@/views/Skills";
 
 export default function Home() {
 	return (
-		<div className="animate-slide-in-left">
+		<div className="">
 			<HeroSection />
 
 			<div className="-my-10" />
@@ -15,7 +15,7 @@ export default function Home() {
 
 			<TimelineView />
 
-			<div className="my-10" />
+			<div className="my-24" />
 
 			<ProjectsView />
 

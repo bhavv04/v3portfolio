@@ -8,7 +8,13 @@ export default function About() {
 			<div className="relative overflow-hidden">
 				<div className="relative px-6 py-36 sm:py-24 lg:px-8">
 					<div className="mx-auto max-w-2xl text-left">
-						<SectionTitle text="Hey There 👋🏻 " className="" />
+						<SectionTitle
+							text={
+								<>
+									Hey There <span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
+								</>
+							}
+						/>
 
 						{/* Subtitle */}
 						<p className="mt-4 max-w-4xl text-lg font-semibold leading-8 text-slate-300">
