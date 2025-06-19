@@ -40,6 +40,14 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 			</head>
 			<body className="relative font-mono antialiased">
+				<div
+					className="bg-main fixed inset-0 -z-10"
+					style={{
+						backgroundSize: "cover",
+						backgroundPosition: "center",
+						backgroundRepeat: "no-repeat"
+					}}
+				/>
 				<GridBackground className="absolute inset-0 h-full min-h-screen w-full" />
 
 				<Oneko />

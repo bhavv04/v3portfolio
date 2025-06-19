@@ -16,10 +16,10 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 			<button
 				className={cn(
 					"relative mx-auto flex w-full flex-col items-center justify-center",
-					"border border-white/10 bg-black/40 backdrop-blur-xl",
+					"border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl",
 					"py-3.5 text-lg font-medium text-white/90 shadow-none shadow-black/25",
 					"before:absolute before:inset-0 before:bg-gradient-to-r",
-					"before:from-blue-500/10 before:via-purple-500/10 before:to-pink-500/10",
+					"before:from-white/5 before:via-white/0 before:to-white/5", // glass gradient
 					"before:-z-10 before:p-[1px] before:content-['']",
 					"transition-all duration-300 hover:text-white hover:shadow-none hover:shadow-slate-900",
 					{ "rounded-sm": !isOpen },
@@ -41,11 +41,10 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 
 			<nav
 				className={cn(
-					"absolute flex w-full flex-col items-center gap-1",
-					"rounded-b-2xl border border-t-0 border-white/10 bg-black/40 backdrop-blur-xl",
-					"py-4 shadow-2xl shadow-black/25",
-					"before:absolute before:inset-0 before:rounded-b-2xl before:bg-gradient-to-r",
-					"before:from-blue-500/10 before:via-purple-500/10 before:to-pink-500/10",
+					"absolute flex w-full flex-col items-center gap-1 border border-2",
+					"rounded-b-sm border border-t-0 border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl", // glass tint
+					"before:absolute before:inset-0 before:rounded-b-sm before:bg-gradient-to-r",
+					"before:from-white/5 before:via-white/0 before:to-white/5", // glass gradient
 					"before:-z-10 before:p-[1px] before:content-['']",
 					"duration-300 animate-in slide-in-from-top-2",
 					{ hidden: !isOpen }
@@ -101,7 +100,7 @@ function NavbarLink({ setIsOpen, href, openInNewTab = false, useClientSideRoutin
 			onClick={() => setIsOpen && setIsOpen(false)}
 		>
 			{/* Animated background on hover */}
-			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			<span className="absolute inset-0 rounded-none bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 			{/* Animated underline */}
 			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-8 group-hover:-translate-x-1/2" />

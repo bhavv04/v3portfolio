@@ -1,79 +1,76 @@
-// commands.tsx - All terminal commands
 import { portfolioData } from "./data";
 
+const wrap = (content: string) => `<pre class="text-sm leading-relaxed">${content}</pre>`;
+
 export const commands = {
-	help: (): string => `
-<pre>
-Available commands:
-  help        Show this help
-  about       Personal info
-  projects    Project portfolio
-  experience  Work history
-  skills      Technical skills
-  contact     Contact info
-  education   Academic records
-  whoami      Current user
-  clear       Clear terminal
-</pre>
-  `,
+	help: (): string =>
+		wrap(`
+✨ Available Commands:
+  🛈 help         → Show this help
+  👤 about        → Personal info
+  💼 projects     → Project portfolio
+  🧠 experience   → Work history
+  ⚙️ skills       → Technical skills
+  ✉️ contact      → Contact info
+  🎓 education    → Academic records
+  🧾 whoami       → Current user
+  🧹 clear        → Clear terminal
+	`),
 
-	about: (): string => `
-<pre>
-${portfolioData.personal.name}
-${portfolioData.personal.occupation} — ${portfolioData.personal.specialization}
+	about: (): string =>
+		wrap(`
+👤 ${portfolioData.personal.name}
+💼 ${portfolioData.personal.occupation} — ${portfolioData.personal.specialization}
 
-${portfolioData.personal.bio}
-</pre>
-  `,
+📝 ${portfolioData.personal.bio}
+	`),
 
-	projects: (): string => `
-<pre>
-Projects:
-${portfolioData.projects.map((p) => `• ${p.name}: ${p.description}`).join("\n")}
-</pre>
-  `,
+	projects: (): string =>
+		wrap(`
+💼 Projects:
+${portfolioData.projects.map((p) => `  • ${p.name}\n    → ${p.description}`).join("\n")}
+	`),
 
-	experience: (): string => `
-<pre>
-Experience:
-${portfolioData.experience.map((job) => `• ${job.title} @ ${job.company} (${job.period})\n  ${job.description}`).join("\n")}
-</pre>
-  `,
+	experience: (): string =>
+		wrap(`
+🧠 Work Experience:
+${portfolioData.experience.map((job) => `  • ${job.title} @ ${job.company} (${job.period})\n    ${job.description}`).join("\n")}
+	`),
 
-	skills: (): string => `
-<pre>
-Languages:  ${portfolioData.skills.programmingLanguages.join(", ")}
-Frameworks: ${portfolioData.skills.frameworks.join(", ")}
-Databases:  ${portfolioData.skills.databases.join(", ")}
-</pre>
-  `,
+	skills: (): string =>
+		wrap(`
+⚙️ Skills:
+  • Languages:  ${portfolioData.skills.programmingLanguages.join(", ")}
+  • Frameworks: ${portfolioData.skills.frameworks.join(", ")}
+  • Databases:  ${portfolioData.skills.databases.join(", ")}
+	`),
 
-	contact: (): string => `
-<pre>
-Email:    ${portfolioData.contact.email}
-GitHub:   ${portfolioData.contact.github}
-LinkedIn: ${portfolioData.contact.linkedin}
-Site:     ${portfolioData.contact.portfolio}
-</pre>
-  `,
+	contact: (): string =>
+		wrap(`
+📞 Contact Info:
+  • Email:    ${portfolioData.contact.email}
+  • GitHub:   ${portfolioData.contact.github}
+  • LinkedIn: ${portfolioData.contact.linkedin}
+  • Website:  ${portfolioData.contact.portfolio}
+	`),
 
-	education: (): string => `
-<pre>
-${portfolioData.education.degree}
-${portfolioData.education.school} (${portfolioData.education.period})
-${portfolioData.education.details}
+	education: (): string =>
+		wrap(`
+🎓 Education:
+  ${portfolioData.education.degree}
+  ${portfolioData.education.school} (${portfolioData.education.period})
+  ${portfolioData.education.details}
 
-Certifications:
-${portfolioData.education.certifications.map((c) => `- ${c}`).join("\n")}
-</pre>
-  `,
+📜 Certifications:
+${portfolioData.education.certifications.map((c) => `  • ${c}`).join("\n")}
+	`),
 
-	whoami: (): string => `
-<pre>
-visitor
-${new Date().toISOString()}
-</pre>
-  `
+	whoami: (): string =>
+		wrap(`
+🙋 You are:
+  • visitor
+  • ${new Date().toLocaleString()}
+	`)
 };
 
 export const executeCommand = (cmd: string): string => {
@@ -88,17 +85,17 @@ export const executeCommand = (cmd: string): string => {
 	} else if (command === "") {
 		return "";
 	} else {
-		return `
-<pre>
-Command not found: ${cmd}
-Type 'help' for a list of commands.
-</pre>
-    `;
+		return wrap(`
+❌ Command not found: '${cmd}'
+💡 Type 'help' for a list of valid commands.
+		`);
 	}
 };
 
-export const getBootSequence = (): string => `
-<pre>
-Welcome.
-Type 'help' for commands.
-`;
+export const getBootSequence = (): string =>
+	wrap(`
+🖥️ Booting up...
+
+Welcome to the Portfolio Terminal 💫
+Type 'help' to get started.
+`);

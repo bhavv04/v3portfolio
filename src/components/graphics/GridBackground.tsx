@@ -5,5 +5,5 @@ interface GridBackgroundProps {
 }
 
 export function GridBackground({ className }: GridBackgroundProps) {
-	return <div className={cn("bg-gridlines -z-10 [--line-color:var(--muted)/15] [--line-size:20px]", className)} />;
+	return <div className={cn("bg-gridlines [--line-color:var(--muted)/0] [--line-size:20px]", className)} />;
 }

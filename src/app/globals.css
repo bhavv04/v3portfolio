@@ -269,20 +269,44 @@
 	background: black;
 	border-radius: 8px;
 }
-
-/* For Firefox */
-html {
-	scrollbar-width: thin;
-	scrollbar-color: #fde047 #18181b;
+body::-webkit-scrollbar {
+	width: var(--scrollbar-width, 0.8em);
+	height: var(--scrollbar-height, 1em);
 }
 
-.hide-horizontal-scrollbar {
-	overflow-x: auto;
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE and Edge */
+body::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb-color, #000000);
+	border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
 }
-.hide-horizontal-scrollbar::-webkit-scrollbar {
-	display: none; /* Chrome, Safari, Opera */
+
+body::-webkit-scrollbar-track {
+	background: var(--scrollbar-track-color, #3f3f46);
+}
+
+body::-webkit-scrollbar-button {
+	background: var(--scrollbar-button-color, #3f3f46);
+	border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
+}
+
+body::-webkit-scrollbar-corner {
+	background: var(--scrollbar-corner-color, #ffffff);
+	border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
+}
+
+body::-webkit-scrollbar-button:vertical:start:increment,
+#preview::-webkit-scrollbar-button:vertical:end:decrement,
+#preview::-webkit-scrollbar-button:horizontal:start:increment,
+#preview::-webkit-scrollbar-button:horizontal:end:decrement {
+	display: var(--show-double-buttons, none);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-thumb-color, #2c6d47);
+	border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
 }
 
 @keyframes skills-carousel {
@@ -1243,3 +1267,13 @@ USAGE EXAMPLES:
 8. Custom duration:
    <div class="pulse duration-1000">Slow pulse</div>
 */
+
+.bg-main {
+	background-image: url("/bg.jpg");
+}
+
+@media (max-width: 640px) {
+	.bg-main {
+		background-image: url("/bg-mobile.jpg");
+	}
+}

@@ -2,7 +2,7 @@ import { HeroButtons } from "@/components/hero/HeroButtons";
 
 export default function Footer() {
 	return (
-		<footer className="w-full rounded-xl bg-zinc-900 px-0 py-4 text-[#cbd5e1]">
+		<footer className="w-full rounded-xl border border-2 bg-[rgba(13,13,13,0.6)] px-0 py-4 text-[#cbd5e1]">
 			<div className="flex flex-col items-center gap-4 px-4 sm:px-8 md:flex-row md:justify-between">
 				{/* Left: Copyright & Status */}
 				<div className="flex flex-col items-center gap-2 font-mono text-sm sm:flex-row sm:gap-3">
