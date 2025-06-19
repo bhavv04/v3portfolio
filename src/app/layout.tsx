@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/views/Navbar";
 import { GridBackground } from "@/components/graphics/GridBackground";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
-import CustomCursor from "@/components/ui/CustomCursor";
+import Oneko from "@/components/ui/oneko";
 
 export const metadata: Metadata = {
 	title: "Bhavdeep Arora",
@@ -42,6 +42,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 			<body className="relative font-mono antialiased">
 				<GridBackground className="absolute inset-0 h-full min-h-screen w-full" />
 
+				<Oneko />
+
 				<ResponsiveContainer>
 					<main className="p-8 font-mono">
 						<Navbar />
@@ -51,7 +53,6 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 						{children}
 					</main>
 				</ResponsiveContainer>
-				<CustomCursor className="hidden sm:block" />
 			</body>
 		</html>
 	);

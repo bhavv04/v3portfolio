@@ -9,18 +9,19 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
 			className={cn(
-				"sticky top-4 z-50 mx-auto flex w-fit items-center justify-center gap-1",
-				"rounded-full border border-white/10 bg-black/40 backdrop-blur-xl",
+				"sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-1",
+				"rounded-full border border-white/10",
+				"bg-[rgb(13,13,13,0)] backdrop-blur-xl backdrop-saturate-150",
 				"px-2 py-2 shadow-2xl shadow-black/25",
 				"before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r",
-				"before:from-blue-500/10 before:via-purple-500/10 before:to-pink-500/10",
+				"before:from-white/5 before:via-white/0 before:to-white/5",
 				"before:-z-10 before:p-[1px] before:content-['']",
 				"transition-all duration-300 hover:shadow-lg hover:shadow-slate-900",
 				className
 			)}
 		>
-			<NavbarLink href="/">Home</NavbarLink>
-			<NavbarLink href="/about" useClientSideRouting>
+			<NavbarLink href="/#about">Home</NavbarLink>
+			<NavbarLink href="/#about" useClientSideRouting>
 				About
 			</NavbarLink>
 			<NavbarLink href="/#timeline">Experience/Education</NavbarLink>
@@ -57,7 +58,7 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 			)}
 		>
 			{/* Animated background on hover */}
-			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/10 via-white/0 to-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 			{/* Animated underline */}
 			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-5/12 group-hover:-translate-x-1/2" />

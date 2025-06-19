@@ -1,4 +1,3 @@
-
 import { Month, monthByNumber, MonthNumber, TimelineEntryDate } from "./model";
 
 export function formatTimelineEntryDate(date: TimelineEntryDate | null): string {

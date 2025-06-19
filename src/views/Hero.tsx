@@ -8,7 +8,15 @@ const ProfilePic = "/images/ProfilePic.jpeg";
 
 // Optional: Extract to a reusable component
 function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
-	return <Image src={src} alt={alt} width={50} height={56} className="rounded-full border-2 object-cover shadow-md" />;
+	return (
+		<Image
+			src={src}
+			alt={alt}
+			width={50}
+			height={56}
+			className="cursor-pointer rounded-full border-2 object-cover shadow-md transition-all duration-300 ease-in-out hover:scale-125 hover:shadow-xl"
+		/>
+	);
 }
 
 export function HeroSection() {
