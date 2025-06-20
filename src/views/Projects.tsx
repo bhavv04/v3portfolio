@@ -11,7 +11,7 @@ export function ProjectsView() {
 			<SectionTitle
 				text={
 					<>
-						<SiTheodinproject className="mr-2 inline-block text-yellow-400" />
+						<SiTheodinproject className="mr-2 inline-block" />
 						Projects
 					</>
 				}

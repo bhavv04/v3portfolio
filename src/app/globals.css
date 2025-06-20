@@ -100,6 +100,11 @@
 	}
 }
 
+.bg-card {
+	background-color: rgba(13, 13, 13, 0.8);
+	border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
 .pl-c {
 	color: var(--color-prettylights-syntax-comment);
 }

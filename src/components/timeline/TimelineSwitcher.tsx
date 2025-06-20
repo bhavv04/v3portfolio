@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { HiBriefcase } from "react-icons/hi";
+import { HiOutlineBriefcase } from "react-icons/hi2";
 import { LuGraduationCap } from "react-icons/lu";
 
 type TimelineView = "experience" | "education";
@@ -20,14 +20,14 @@ export function TimelineSwitcher({ experienceContent, educationContent }: Timeli
 		if (selectedView === "experience") {
 			return (
 				<span className="flex items-center gap-2">
-					<HiBriefcase className="mb-1 inline-block text-yellow-400" />
+					<HiOutlineBriefcase className="mb-1 inline-block" />
 					Experience
 				</span>
 			);
 		}
 		return (
 			<span className="flex items-center gap-2">
-				<LuGraduationCap className="mb-1 inline-block text-yellow-400" />
+				<LuGraduationCap className="mb-1 inline-block" />
 				Education
 			</span>
 		);
