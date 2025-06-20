@@ -6,7 +6,6 @@ import Image from "next/image";
 
 const ProfilePic = "/images/ProfilePic.jpeg";
 
-// Optional: Extract to a reusable component
 function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
 	return (
 		<Image

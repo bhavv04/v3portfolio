@@ -9,7 +9,7 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
 			className={cn(
-				"sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-1",
+				"sticky top-4 z-[100] mx-auto flex w-fit items-center justify-center gap-1",
 				"rounded-full border border-white/10",
 				"bg-[rgb(13,13,13,0)] backdrop-blur-xl backdrop-saturate-150",
 				"px-2 py-2 shadow-2xl shadow-black/25",

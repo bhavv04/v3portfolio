@@ -34,17 +34,15 @@ export function TimelineSwitcher({ experienceContent, educationContent }: Timeli
 	};
 
 	return (
-		<section className="w-full" id="timeline">
+		<section className="relative z-10 w-full" id="timeline">
 			<SectionTitle text={getSectionTitle()} />
-
-			<Tabs id="education" value={selectedView} onValueChange={(view) => setSelectedView(view as TimelineView)}>
+			<Tabs id="education" value={selectedView} onValueChange={(view) => setSelectedView(view as TimelineView)} className="relative">
 				<TabsList className="grid w-full grid-cols-2">
 					<TabsTrigger value="experience">Experience</TabsTrigger>
 					<TabsTrigger value="education">Education</TabsTrigger>
 				</TabsList>
 
 				<TabsContent value="experience">{experienceContent}</TabsContent>
-
 				<TabsContent value="education">{educationContent}</TabsContent>
 			</Tabs>
 		</section>

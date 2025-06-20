@@ -15,21 +15,21 @@ npm install -g yarn
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/v3portfolio.git
    cd v3portfolio
    ```
-
 2. **Install dependencies**
+
    ```bash
    yarn install
    ```
-
 3. **Start the development server**
+
    ```bash
    yarn dev
    ```
-
 4. **Open your browser**
    Navigate to `http://localhost:3000` to view the portfolio
 
@@ -72,3 +72,8 @@ v3portfolio/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🌿 Acknowledgements
+
+Background photo by [JUNHØ](https://unsplash.com/@junhochak?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/green-pine-tree-leaves-in-close-up-photography-K55AXFodyH4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
+Oneko Cat gif by [icantcodefyi](https://github.com/icantcodefyi) on [Github](https://github.com/icantcodefyi/neko-extension)

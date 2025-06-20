@@ -40,10 +40,10 @@ export function HeroIcons() {
 
 	return (
 		<div className="mb-2 flex flex-row flex-wrap items-center gap-1.5">
-			<HeroIcon text="📍 Toronto, ON" className="bg-white/20 text-white backdrop-blur-md" />
+			<HeroIcon text="📍 Toronto, ON" className="border-none bg-[rgba(255,255,255,0.2)] text-white backdrop-blur-3xl" />
 
-			<HeroIcon text={`📅 ${currentDate}`} className="bg-white/20 text-white backdrop-blur-md" />
-			<HeroIcon text={`⏳ ${currentTime}`} className="bg-white/20 text-white backdrop-blur-3xl" />
+			<HeroIcon text={`📅 ${currentDate}`} className="border-none bg-[rgba(255,255,255,0.2)] text-white backdrop-blur-3xl" />
+			<HeroIcon text={`⏳ ${currentTime}`} className="border-none bg-[rgba(255,255,255,0.2)] text-white backdrop-blur-3xl" />
 		</div>
 	);
 }

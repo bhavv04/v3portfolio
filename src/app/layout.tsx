@@ -2,9 +2,9 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Navbar } from "@/views/Navbar";
-import { GridBackground } from "@/components/graphics/GridBackground";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
+import { ScrollBackground } from "@/components/graphics/ScrollBackground";
 
 export const metadata: Metadata = {
 	title: "Bhavdeep Arora",
@@ -40,15 +40,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 			</head>
 			<body className="relative font-mono antialiased">
-				<div
-					className="bg-main fixed inset-0 -z-10"
-					style={{
-						backgroundSize: "cover",
-						backgroundPosition: "center",
-						backgroundRepeat: "no-repeat"
-					}}
-				/>
-				<GridBackground className="absolute inset-0 h-full min-h-screen w-full" />
+				<ScrollBackground />
 
 				<Oneko />
 

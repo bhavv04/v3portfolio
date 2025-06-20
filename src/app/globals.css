@@ -253,16 +253,15 @@
 	z-index: -1;
 }
 
-/* For Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
 	width: 5px;
 	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #fde047; /* yellow-300 */
+	background: #fde047;
 	border-radius: 8px;
-	border: 2px solid #18181b; /* background color */
+	border: 2px solid #18181b;
 }
 
 ::-webkit-scrollbar-track {
@@ -271,7 +270,7 @@
 }
 body::-webkit-scrollbar {
 	width: var(--scrollbar-width, 0.8em);
-	height: var(--scrollbar-height, 1em);
+	height: var(--scrollbar-height, 2px);
 }
 
 body::-webkit-scrollbar-thumb {
@@ -281,11 +280,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-track {
-	background: var(--scrollbar-track-color, #3f3f46);
+	background: var(--scrollbar-track-color, black);
 }
 
 body::-webkit-scrollbar-button {
-	background: var(--scrollbar-button-color, #3f3f46);
+	background: var(--scrollbar-button-color, black);
 	border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
 	border-radius: var(--scrollbar-border-radius, 4px);
 }
@@ -363,9 +362,9 @@ body::-webkit-scrollbar-thumb:hover {
 	color: #1e293b;
 }
 
-/* ===============================
+/* 
    GLOBALS.CSS - ANIMATION LIBRARY
-   =============================== */
+*/
 
 /* Reset and base styles */
 * {
@@ -397,9 +396,9 @@ body::-webkit-scrollbar-thumb:hover {
 	--gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
-/* ===============================
+/* 
    ENTRANCE ANIMATIONS
-   =============================== */
+*/
 
 /* Fade animations */
 @keyframes fadeIn {
@@ -555,9 +554,9 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-/* ===============================
+/* 
    CONTINUOUS ANIMATIONS
-   =============================== */
+*/
 
 /* Float animation */
 @keyframes float {
@@ -698,9 +697,9 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-/* ===============================
+/* 
    GRADIENT ANIMATIONS
-   =============================== */
+*/
 
 @keyframes gradientShift {
 	0% {
@@ -723,9 +722,9 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-/* ===============================
+/* 
    LOADING ANIMATIONS
-   =============================== */
+*/
 
 @keyframes shimmer {
 	0% {
@@ -773,18 +772,28 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @keyframes blink {
-	from,
-	to {
-		border-color: transparent;
+	0%,
+	100% {
+		opacity: 1;
 	}
 	50% {
-		border-color: currentColor;
+		opacity: 0;
 	}
 }
 
-/* ===============================
+.terminal-cursor {
+	display: inline-block;
+	width: 8px;
+	height: 1.2em;
+	background-color: #6ee7b7;
+	margin-left: 2px;
+	animation: blink 1s step-end infinite;
+	transform-origin: center;
+}
+
+/*
    UTILITY CLASSES
-   =============================== */
+*/
 
 /* Animation controls */
 .animate-paused {
@@ -926,9 +935,9 @@ body::-webkit-scrollbar-thumb:hover {
 		blink 0.75s step-end infinite;
 }
 
-/* ===============================
+/* 
    HOVER EFFECTS
-   =============================== */
+*/
 
 .hover-float:hover {
 	transform: translateY(-5px);
@@ -975,9 +984,9 @@ body::-webkit-scrollbar-thumb:hover {
 	transition: filter var(--duration-normal) var(--ease-out);
 }
 
-/* ===============================
+/* 
    BUTTON ANIMATIONS
-   =============================== */
+*/
 
 .btn-bounce {
 	position: relative;
@@ -1038,9 +1047,9 @@ body::-webkit-scrollbar-thumb:hover {
 	left: 100%;
 }
 
-/* ===============================
+/* 
    TEXT ANIMATIONS
-   =============================== */
+*/
 
 .text-reveal {
 	overflow: hidden;
@@ -1270,10 +1279,4 @@ USAGE EXAMPLES:
 
 .bg-main {
 	background-image: url("/bg.jpg");
-}
-
-@media (max-width: 640px) {
-	.bg-main {
-		background-image: url("/bg-mobile.jpg");
-	}
 }
