@@ -29,7 +29,7 @@ export function HeroBadges() {
 						<FaSteam />
 					</IconContext.Provider>
 				}
-				className="bg-[#05173b] hover:bg-[#27395a]"
+				className="bg-[#27395a] hover:bg-[#3e5a8f]"
 			/>
 
 			<HeroBadge
@@ -50,7 +50,7 @@ export function HeroBadges() {
 						<FaGoodreads />
 					</IconContext.Provider>
 				}
-				className="bg-[#aba78e] hover:bg-[#d4d0b8]"
+				className="bg-[#8e8a76] hover:bg-[#aeab97]"
 			/>
 		</div>
 	);

@@ -102,9 +102,6 @@ function NavbarLink({ setIsOpen, href, openInNewTab = false, useClientSideRoutin
 			{/* Animated background on hover */}
 			<span className="absolute inset-0 rounded-none bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-			{/* Animated underline */}
-			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-8 group-hover:-translate-x-1/2" />
-
 			{/* Content */}
 			<span className="relative z-10 flex items-center justify-center gap-2">
 				{children}

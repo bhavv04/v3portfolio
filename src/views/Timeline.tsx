@@ -31,7 +31,7 @@ interface TimelineSectionProps {
 function TimelineSection({ children }: TimelineSectionProps) {
 	return (
 		<Card>
-			<CardContent className="relative flex flex-col p-6">{children}</CardContent>
+			<CardContent className="relative flex flex-col p-6 fade-in">{children}</CardContent>
 		</Card>
 	);
 }

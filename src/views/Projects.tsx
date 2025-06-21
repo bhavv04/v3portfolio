@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import { projects } from "@/lib/projects/data";
 import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
@@ -6,8 +8,28 @@ import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
 import { SiTheodinproject } from "react-icons/si";
 
 export function ProjectsView() {
+	const ProjectRef = useRef<HTMLElement>(null); // Add this ref
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("visible");
+					observer.unobserve(entry.target);
+				}
+			},
+			{ threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+		);
+
+		if (ProjectRef.current) {
+			observer.observe(ProjectRef.current);
+		}
+
+		return () => observer.disconnect();
+	}, []);
+
 	return (
-		<section id="projects">
+		<section id="projects" ref={ProjectRef} className="fade-in-on-scroll">
 			<SectionTitle
 				text={
 					<>

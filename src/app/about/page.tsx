@@ -7,7 +7,7 @@ export default function About() {
 			{/* Header Section */}
 			<div className="relative overflow-hidden">
 				<div className="relative px-6 py-36 sm:py-24 lg:px-8">
-					<div className="mx-auto max-w-2xl text-left">
+					<div className="slide-in-left mx-auto max-w-2xl text-left">
 						<SectionTitle
 							text={
 								<>

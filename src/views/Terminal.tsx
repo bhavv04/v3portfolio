@@ -9,26 +9,64 @@ const TerminalAbout: React.FC = () => {
 	const [output, setOutput] = useState<OutputLine[]>([]);
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
 	const [historyIndex, setHistoryIndex] = useState(-1);
-	const [isTyping] = useState(false);
+	const [isTyping, setIsTyping] = useState(false);
 	const [, setHasInteracted] = useState(false);
+	const [welcomeText, setWelcomeText] = useState("");
+	const [showCursor, setShowCursor] = useState(true);
 
 	const inputRef = useRef<HTMLTextAreaElement>(null);
 	const outputRef = useRef<HTMLDivElement>(null);
+	const typewriterRef = useRef<HTMLDivElement>(null);
+
+	const typeWriter = useCallback(
+		(text: string, speed: number = 15) => {
+			// Only set typing state and reset welcome text if it's the initial load
+			if (welcomeText === "") {
+				setIsTyping(true);
+				setWelcomeText("");
+				setShowCursor(true);
+
+				let i = 0;
+				const type = () => {
+					if (i < text.length) {
+						setWelcomeText(text.substring(0, i + 1));
+						i++;
+						setTimeout(type, speed);
+					} else {
+						setIsTyping(false);
+						setTimeout(() => {
+							setShowCursor(false);
+						}, 1);
+					}
+				};
+
+				// Start typing after a short delay
+				setTimeout(type, 500);
+			}
+		},
+		[welcomeText]
+	);
 
 	const handleSubmit = useCallback(
 		(e: React.KeyboardEvent | React.FormEvent) => {
 			e.preventDefault();
-			if (input.trim() === "") return;
+			if (input.trim() === "" || isTyping) return;
 
 			const command = input.toLowerCase().trim();
 			setHasInteracted(true);
 
 			// If clear, reset everything and return early
 			if (command === "clear") {
-				setOutput([getIntroMessage()]);
+				setOutput([]);
 				setCommandHistory([]);
 				setHistoryIndex(-1);
 				setInput("");
+
+				if (welcomeText === "") {
+					const welcomeMessage =
+						"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
+					typeWriter(welcomeMessage);
+				}
 				return;
 			}
 
@@ -43,10 +81,15 @@ const TerminalAbout: React.FC = () => {
 
 			const result = executeCommand(input);
 			if (result === "CLEAR_COMMAND") {
-				setOutput([getIntroMessage()]);
+				setOutput([]);
 				setCommandHistory([]);
 				setHistoryIndex(-1);
 				setInput("");
+
+				// Restart typewriter effect
+				const welcomeMessage =
+					"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
+				typeWriter(welcomeMessage);
 				return;
 			}
 			if (result) {
@@ -62,11 +105,13 @@ const TerminalAbout: React.FC = () => {
 			setHistoryIndex(-1);
 			setInput("");
 		},
-		[input, output]
+		[input, output, isTyping, typeWriter]
 	);
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
+			if (isTyping) return; // Prevent input during typing animation
+
 			if (e.key === "ArrowUp") {
 				e.preventDefault();
 				if (historyIndex < commandHistory.length - 1) {
@@ -86,40 +131,33 @@ const TerminalAbout: React.FC = () => {
 				}
 			}
 		},
-		[commandHistory, historyIndex]
+		[commandHistory, historyIndex, isTyping]
 	);
 
 	const handleTerminalClick = useCallback(() => {
-		inputRef.current?.focus();
-	}, []);
+		if (!isTyping) {
+			inputRef.current?.focus();
+		}
+	}, [isTyping]);
 
-	const getIntroMessage = (): OutputLine => {
-		return {
-			id: "welcome",
-			content: `
-				<div class="space-y-4 mb-6">
-					<div>Welcome to my site fellow humans and bots.</div>
-						</div>
-					</div>
-				</div>
-			`,
-			type: "output"
-		};
-	};
-
+	// Initialize typewriter effect on component mount
 	useEffect(() => {
-		setOutput([getIntroMessage()]);
-	}, []);
+		const welcomeMessage =
+			"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
+		typeWriter(welcomeMessage);
+	}, [typeWriter]);
 
 	useEffect(() => {
 		if (outputRef.current) {
 			outputRef.current.scrollTop = outputRef.current.scrollHeight;
 		}
-	}, [output]);
+	}, [output, welcomeText]);
 
 	useEffect(() => {
-		inputRef.current?.focus();
-	}, []);
+		if (!isTyping) {
+			inputRef.current?.focus();
+		}
+	}, [isTyping]);
 
 	return (
 		<div className="flex min-h-screen w-full items-center justify-center">
@@ -149,7 +187,15 @@ const TerminalAbout: React.FC = () => {
 							msOverflowStyle: "none"
 						}}
 					>
-						{/* Output */}
+						{/* Welcome Message with Typewriter Effect */}
+						<div className="mb-6">
+							<div ref={typewriterRef} className="space-y-4 text-emerald-100/90" style={{ minHeight: "1.5rem" }}>
+								{welcomeText}
+								{showCursor && <span className="animate-pulse text-emerald-400">|</span>}
+							</div>
+						</div>
+
+						{/* Command Output */}
 						{output.map((line) => (
 							<div
 								key={line.id}
@@ -163,8 +209,14 @@ const TerminalAbout: React.FC = () => {
 						{/* Input Line */}
 						<div className="mt-4 flex items-start space-x-2">
 							<div className="flex flex-shrink-0 items-center">
-								<span className="text-sm text-emerald-500/70">~/portfolio</span>
-								<span className="ml-2 text-emerald-400">❯</span>
+								{isTyping ? (
+									<span className="animate-pulse text-sm text-emerald-500/50"></span>
+								) : (
+									<>
+										<span className="text-sm text-emerald-500/70">~/portfolio</span>
+										<span className="ml-2 text-emerald-400">❯</span>
+									</>
+								)}
 							</div>
 							<div className="relative flex-1">
 								<textarea
@@ -180,7 +232,7 @@ const TerminalAbout: React.FC = () => {
 										}
 									}}
 									className="max-h-32 min-h-[1.5rem] w-full resize-none overflow-hidden break-words bg-transparent py-0 text-sm leading-normal text-emerald-100/90 placeholder-emerald-500/50 outline-none"
-									placeholder=""
+									placeholder={isTyping ? "" : "Type a command..."}
 									autoComplete="off"
 									disabled={isTyping}
 									rows={1}
@@ -198,7 +250,7 @@ const TerminalAbout: React.FC = () => {
 					<div className="border-t border-emerald-900/20 bg-[rgba(13,13,13,0.9)] px-6 py-2">
 						<div className="flex items-center justify-between text-xs text-emerald-500/50">
 							<div className="flex items-center space-x-3">
-								<span>Press ↑↓ to see history</span>
+								<span>{isTyping ? "Typing..." : "Press ↑↓ to see history"}</span>
 							</div>
 						</div>
 					</div>

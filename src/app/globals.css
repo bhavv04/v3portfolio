@@ -229,7 +229,7 @@
 .underline-dotted-highlight {
 	position: relative;
 	cursor: pointer;
-	color: #fde047; /* Tailwind yellow-300 */
+	color: #70df44; /* Tailwind yellow-300 */
 	text-decoration: none;
 	transition: color 0.3s;
 }
@@ -240,7 +240,7 @@
 	bottom: 0;
 	width: 100%;
 	height: 3px;
-	border-bottom: 2px dotted #fde047;
+	border-bottom: 2px dotted #479528;
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	z-index: 0;
 }
@@ -252,7 +252,7 @@
 .underline-dotted-highlight:focus::after {
 	height: 100%;
 	border-bottom: none;
-	background: #fde047;
+	background: #479528;
 	border-radius: 0.25rem;
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	z-index: -1;
@@ -776,6 +776,15 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
+@keyframes typing-multiline {
+	from {
+		max-width: 0;
+	}
+	to {
+		max-width: 100%;
+	}
+}
+
 @keyframes blink {
 	0%,
 	100% {
@@ -810,60 +819,73 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* Entrance animations */
+.fade-in-on-scroll {
+	opacity: 0;
+	transform: translateY(30px);
+	transition:
+		opacity 0.8s ease-out,
+		transform 0.8s ease-out;
+}
+
+.fade-in-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
 .fade-in {
-	animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+	animation: fadeIn var(--duration-slower) var(--ease-out) forwards;
 }
 
 .fade-in-up {
-	animation: fadeInUp var(--duration-normal) var(--ease-out) forwards;
+	animation: fadeInUp var(--duration-slower) var(--ease-out) forwards;
 }
 
 .fade-in-down {
-	animation: fadeInDown var(--duration-normal) var(--ease-out) forwards;
+	animation: fadeInDown var(--duration-slower) var(--ease-out) forwards;
 }
 
 .fade-in-left {
-	animation: fadeInLeft var(--duration-normal) var(--ease-out) forwards;
+	animation: fadeInLeft var(--duration-slower) var(--ease-out) forwards;
 }
 
 .fade-in-right {
-	animation: fadeInRight var(--duration-normal) var(--ease-out) forwards;
+	animation: fadeInRight var(--duration-slower) var(--ease-out) forwards;
 }
 
 .scale-in {
-	animation: scaleIn var(--duration-normal) var(--ease-out) forwards;
+	animation: scaleIn var(--duration-slower) var(--ease-out) forwards;
 }
 
 .scale-in-bounce {
-	animation: scaleInBounce var(--duration-slow) var(--ease-bounce) forwards;
+	animation: scaleInBounce var(--duration-slower) var(--ease-bounce) forwards;
 }
 
 .slide-in-up {
-	animation: slideInUp var(--duration-normal) var(--ease-out) forwards;
+	animation: slideInUp var(--duration-slower) var(--ease-out) forwards;
 }
 
 .slide-in-down {
-	animation: slideInDown var(--duration-normal) var(--ease-out) forwards;
+	animation: slideInDown var(--duration-slower) var(--ease-out) forwards;
 }
 
 .slide-in-left {
-	animation: slideInLeft var(--duration-normal) var(--ease-out) forwards;
+	animation: slideInLeft var(--duration-slower) var(--ease-out) forwards;
 }
 
 .slide-in-right {
-	animation: slideInRight var(--duration-normal) var(--ease-out) forwards;
+	animation: slideInRight var(--duration-slower) var(--ease-out) forwards;
 }
 
 .rotate-in {
-	animation: rotateIn var(--duration-slow) var(--ease-out) forwards;
+	animation: rotateIn var(--duration-slower) var(--ease-out) forwards;
 }
 
 .flip-in-x {
-	animation: flipInX var(--duration-slow) var(--ease-out) forwards;
+	animation: flipInX var(--duration-slower) var(--ease-out) forwards;
 }
 
 .flip-in-y {
-	animation: flipInY var(--duration-slow) var(--ease-out) forwards;
+	animation: flipInY var(--duration-slower) var(--ease-out) forwards;
 }
 
 /* Continuous animations */
@@ -921,8 +943,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* Loading states */
 .shimmer {
-	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-	background-size: 200px 100%;
+	background: linear-gradient(90deg, #f0f0f000 25%, #29dada97 50%, #f0f0f0b7 75%);
+	background-size: 200px 10%;
 	animation: shimmer 1.5s infinite;
 }
 
@@ -933,11 +955,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .typewriter {
 	overflow: hidden;
-	border-right: 2px solid;
-	white-space: nowrap;
-	animation:
-		typing 3.5s steps(40, end),
-		blink 0.75s step-end infinite;
+	text-wrap: nowrap;
+	animation: typing 3.5s steps(40, end) forwards;
 }
 
 /* 
