@@ -74,7 +74,7 @@ const TerminalAbout: React.FC = () => {
 				...output,
 				{
 					id: Date.now().toString(),
-					content: `<span class="text-emerald-400/70">visitor@portfolio</span><span class="text-green-300">:</span><span class="text-cyan-400/80">~</span><span class="text-gray-400">$</span> <span class="text-gray-100 break-all">${input}</span>`,
+					content: `<span class="text-emerald-400/70">~/about</span><span class="text-green-300">:</span><span class="text-cyan-400/80">~</span><span class="text-gray-400">$</span> <span class="text-gray-100 break-all">${input}</span>`,
 					type: "command"
 				}
 			];
@@ -213,7 +213,7 @@ const TerminalAbout: React.FC = () => {
 									<span className="animate-pulse text-sm text-emerald-500/50"></span>
 								) : (
 									<>
-										<span className="text-sm text-emerald-500/70">~/portfolio</span>
+										<span className="text-sm text-emerald-500/70">~/about</span>
 										<span className="ml-2 text-emerald-400">❯</span>
 									</>
 								)}
@@ -256,30 +256,6 @@ const TerminalAbout: React.FC = () => {
 					</div>
 				</div>
 			</div>
-
-			<style jsx>{`
-				.custom-scrollbar {
-					scrollbar-width: thin;
-					scrollbar-color: #10b981 transparent;
-				}
-
-				.custom-scrollbar::-webkit-scrollbar {
-					width: 6px;
-				}
-
-				.custom-scrollbar::-webkit-scrollbar-track {
-					background: transparent;
-				}
-
-				.custom-scrollbar::-webkit-scrollbar-thumb {
-					background: linear-gradient(180deg, #10b981, #059669);
-					border-radius: 3px;
-				}
-
-				.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-					background: linear-gradient(180deg, #059669, #047857);
-				}
-			`}</style>
 		</div>
 	);
 };

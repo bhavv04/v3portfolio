@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useCat } from "@/context/CatContext";
 
 interface SpriteSet {
 	[key: string]: number[][];
@@ -11,6 +12,7 @@ interface NekoProps {
 }
 
 const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => {
+	const { showCat } = useCat();
 	const nekoRef = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(true);
 
@@ -233,8 +235,7 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 		};
 	}, [speed]);
 
-	if (!isVisible) return null;
-
+	// Change the return condition to still render the div but with visibility:hidden
 	return (
 		<div
 			ref={nekoRef}
@@ -247,7 +248,10 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 				pointerEvents: "none",
 				backgroundImage: `url(${catImage})`,
 				imageRendering: "pixelated",
-				zIndex: 2147483647
+				zIndex: 2147483647,
+				visibility: !isVisible || !showCat ? "hidden" : "visible",
+				opacity: !isVisible || !showCat ? 0 : 1,
+				transition: "opacity 0.2s ease-in-out"
 			}}
 		/>
 	);

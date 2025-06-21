@@ -1,3 +1,4 @@
+"use client";
 import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
@@ -20,7 +21,7 @@ function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
 
 export function HeroSection() {
 	return (
-		<section id="about" className="mx-auto max-w-[50rem] space-y-4 lg:-mt-10">
+		<section id="home" className="mx-auto max-w-[50rem] space-y-4 lg:-mt-10">
 			<div className="flex items-center gap-3">
 				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
 				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="fade-in-down mt-2" />
@@ -48,10 +49,9 @@ export function HeroSection() {
 			<div className="fade-in-down">
 				<p>
 					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on{" "}
-					<span className="font-bold">embedded systems</span> and <span className="font-bold">IoT security</span>, particularly{" "}
-					<span className="font-bold">reverse engineering</span> and <span className="font-bold">vulnerability research</span>, but I&apos;m always
-					deep diving into various aspects of <span className="font-bold">offensive security</span> and{" "}
-					<span className="font-bold">cryptography</span>.
+					<span className="font-bold">embedded systems</span> and <span className="font-bold">DevOps</span>, particularly{" "}
+					<span className="font-bold">cloud infastructure</span> and <span className="font-bold">vulnerability research</span>, but I&apos;m always
+					deep diving into various aspects of <span className="font-bold">computer Science</span> .
 				</p>
 			</div>
 

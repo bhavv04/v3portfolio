@@ -5,7 +5,7 @@ const wrapStructured = (content: string) => `<div class="text-sm leading-relaxed
 export const commands = {
 	help: (): string =>
 		wrapStructured(`
-			<div class="text-emerald-400 font-semibold mb-3">✨ Available Commands:</div>
+			<div class="text-emerald-400 font-semibold mb-3">Available Commands:</div>
 			<div class="grid grid-cols-1 gap-2 text-gray-300">
 				<div class="flex items-start space-x-3">
 					<span class="text-cyan-400 font-mono min-w-[80px]">help</span>

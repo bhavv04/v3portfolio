@@ -1,33 +1,11 @@
+"use client";
 import "./globals.css";
 
-import type { Metadata } from "next";
 import { Navbar } from "@/views/Navbar";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
 import { ScrollBackground } from "@/components/graphics/ScrollBackground";
-
-export const metadata: Metadata = {
-	title: "Bhavdeep Arora",
-	description: "I'm Bhavdeep Arora. I'm a Computer Science student at Toronto Metropolitan University",
-	authors: { name: "Bhavdeep Arora" },
-	keywords: [
-		"Bhavdeep Arora",
-		"Software engineer",
-		"SWE",
-		"Developer",
-		"Full stack",
-		"Embedded System Security",
-		"Toronto Metropolitan University",
-		"Student"
-	],
-	metadataBase: new URL("https://bhavdeep.vercel.app"),
-	openGraph: {
-		title: "Bhavdeep Arora",
-		description: "I'm Bhavdeep Arora. I'm a Computer Science student at Toronto Metropolitan University",
-		url: "https://bhavdeep.vercel.app",
-		images: "/opengraph-image.png"
-	}
-};
+import { CatProvider } from "@/context/CatContext";
 
 interface RootLayoutProps {
 	children: React.ReactNode;
@@ -40,19 +18,21 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 			</head>
 			<body className="relative font-mono antialiased">
-				<ScrollBackground />
+				<CatProvider>
+					<ScrollBackground />
 
-				<Oneko />
+					<Oneko />
 
-				<ResponsiveContainer>
-					<main className="p-8 font-mono">
-						<Navbar />
+					<ResponsiveContainer>
+						<main className="p-8 font-mono">
+							<Navbar />
 
-						<div className="my-8 sm:my-24" />
+							<div className="my-8 sm:my-24" />
 
-						{children}
-					</main>
-				</ResponsiveContainer>
+							{children}
+						</main>
+					</ResponsiveContainer>
+				</CatProvider>
 			</body>
 		</html>
 	);
