@@ -54,7 +54,7 @@ const skills = [
 
 export function Skills() {
 	const carouselSkills = [...skills, ...skills];
-	const skillsRef = useRef<HTMLElement>(null); // Add this ref
+	const skillRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -67,16 +67,16 @@ export function Skills() {
 			{ threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
 		);
 
-		if (skillsRef.current) {
-			observer.observe(skillsRef.current);
+		if (skillRef.current) {
+			observer.observe(skillRef.current);
 		}
 
 		return () => observer.disconnect();
 	}, []);
 
 	return (
-		<section id="skills" ref={skillsRef} className="fade-in-on-scroll mx-auto max-w-[50rem] py-12">
-			<div className="mt-8 space-y-4">
+		<section id="skills" className="mx-auto max-w-[50rem] py-12">
+			<div ref={skillRef} className="fade-in-on-scroll mt-8 space-y-4">
 				{/* Row 1 */}
 				<div className="skills-carousel-outer">
 					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">
@@ -91,7 +91,7 @@ export function Skills() {
 						))}
 					</div>
 				</div>
-				{/* Row 2: right to left (reverse direction, slower) */}
+				{/* Row 2: right to left */}
 				<div className="skills-carousel-outer">
 					<div className="skills-carousel-track animate-skills-carousel-reverse pause-on-hover">
 						{carouselSkills.map((skill, idx) => (
@@ -105,7 +105,8 @@ export function Skills() {
 						))}
 					</div>
 				</div>
-				{/* Row 3: left to right (faster) */}
+
+				{/* Row 3: left to right */}
 				<div className="skills-carousel-outer">
 					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">
 						{carouselSkills

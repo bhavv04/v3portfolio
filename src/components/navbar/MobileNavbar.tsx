@@ -50,7 +50,7 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 					{ hidden: !isOpen }
 				)}
 			>
-				<NavbarLink href="/" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/#home" setIsOpen={setIsOpen} useClientSideRouting>
 					Home
 				</NavbarLink>
 				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
