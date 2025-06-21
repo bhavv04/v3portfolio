@@ -75,5 +75,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🌿 Acknowledgements
 
 Background photo by [JUNHØ](https://unsplash.com/@junhochak?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/green-pine-tree-leaves-in-close-up-photography-K55AXFodyH4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
-
-Oneko Cat gif by [icantcodefyi](https://github.com/icantcodefyi) on [Github](https://github.com/icantcodefyi/neko-extension)
