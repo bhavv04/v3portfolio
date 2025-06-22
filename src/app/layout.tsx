@@ -1,6 +1,7 @@
 "use client";
 import "./globals.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/views/Navbar";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 							{children}
 						</main>
 					</ResponsiveContainer>
+					<Analytics />
 				</CatProvider>
 			</body>
 		</html>
