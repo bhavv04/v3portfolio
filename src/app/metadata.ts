@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 		"Toronto Metropolitan University",
 		"Student"
 	],
-	metadataBase: new URL("https://bhavdeep.vercel.app"),
+	metadataBase: new URL("https://bhavdeep.dev"),
 	openGraph: {
 		title: "Bhavdeep Arora",
 		description: "I'm Bhavdeep Arora. I'm a Computer Science student at Toronto Metropolitan University",
-		url: "https://bhavdeep.vercel.app",
+		url: "https://bhavdeep.dev",
 		images: "/opengraph-image.png"
 	}
 };

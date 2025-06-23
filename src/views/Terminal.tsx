@@ -181,7 +181,7 @@ const TerminalAbout: React.FC = () => {
 					{/* Terminal Content */}
 					<div
 						ref={outputRef}
-						className="scrollbar-none flex-1 overflow-y-auto p-4 text-sm leading-relaxed text-emerald-100/90 sm:p-6"
+						className="scrollbar-none flex-1 overflow-y-auto p-4 text-sm leading-relaxed sm:p-6"
 						style={{
 							scrollbarWidth: "none",
 							msOverflowStyle: "none"
@@ -189,9 +189,9 @@ const TerminalAbout: React.FC = () => {
 					>
 						{/* Welcome Message with Typewriter Effect */}
 						<div className="mb-6">
-							<div ref={typewriterRef} className="space-y-4 text-emerald-100/90" style={{ minHeight: "1.5rem" }}>
+							<div ref={typewriterRef} className="space-y-4" style={{ minHeight: "1.5rem" }}>
 								{welcomeText}
-								{showCursor && <span className="animate-pulse text-emerald-400">|</span>}
+								{showCursor && <span className="animate-pulse">|</span>}
 							</div>
 						</div>
 
@@ -250,7 +250,7 @@ const TerminalAbout: React.FC = () => {
 					<div className="border-t border-emerald-900/20 bg-[rgba(13,13,13,0.9)] px-6 py-2">
 						<div className="flex items-center justify-between text-xs text-emerald-500/50">
 							<div className="flex items-center space-x-3">
-								<span>{isTyping ? "Typing..." : "Press ↑↓ to see history"}</span>
+								<span>Press ↑↓ to see history</span>
 							</div>
 						</div>
 					</div>

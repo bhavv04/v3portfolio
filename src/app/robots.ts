@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: "*",
 			allow: "/"
 		},
-		sitemap: "https://www.bhavdeeparora.com/sitemap.xml"
+		sitemap: "https://www.bhavdeep.dev/sitemap.xml"
 	};
 }

@@ -72,7 +72,7 @@ export function HeroButtons({ size = "md" }: HeroButtonsProps) {
 				</a>
 			</Button>
 
-			<IconContext.Provider value={{ size: isSmall ? "0.95em" : "1.5rem" }}>
+			<IconContext.Provider value={{ size: isSmall ? "1.25em" : "1.5rem" }}>
 				<Button size="icon" asChild variant="default" className={isSmall ? "h-7 min-h-0 w-7" : ""}>
 					<a href="https://github.com/bhav2134" target="_blank" aria-label="GitHub link" onClick={handleGithubClick}>
 						<LuGithub />

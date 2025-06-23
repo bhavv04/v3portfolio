@@ -3,8 +3,8 @@ import { HeroButtons } from "@/components/hero/HeroButtons";
 
 export default function Footer() {
 	return (
-		<footer className="w-full rounded-xl bg-zinc-900 py-4 text-[#cbd5e1] md:w-[120%] md:-translate-x-[7.5%]">
-			<div className="flex flex-col items-center gap-4 px-4 sm:px-8 md:flex-row md:justify-between">
+		<footer className="w-full rounded-xl bg-zinc-900 py-4 text-[#cbd5e1] xl:w-[120%] xl:-translate-x-[7.5%]">
+			<div className="flex flex-col items-center gap-4 px-4 sm:px-8 md:justify-between xl:flex-row">
 				{/* Left: Copyright & Status */}
 				<div className="flex flex-col items-center gap-2 font-mono text-sm sm:flex-row sm:gap-3">
 					<span>&copy; {new Date().getFullYear()} Bhavdeep Arora</span>

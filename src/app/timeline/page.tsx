@@ -14,13 +14,13 @@ export default function TimelinePage() {
 		<div className="-mt-32 min-h-screen px-4 text-white">
 			<div className="mx-auto max-w-6xl py-20">
 				{/* Section Header */}
-				<div className="mb-16 text-center">
+				<div className="slide-in-up mb-16 mt-10 text-center md:-mt-0">
 					<SectionTitle text={<span className="text-white">My Journey</span>} />
-					<p className="mt-4 text-lg text-gray-400">Professional experience and educational background</p>
+					<p className="mt-4 text-lg font-semibold leading-8 text-slate-300">Professional experience and educational background</p>
 				</div>
 
 				{/* Tabs */}
-				<div className="mb-16 flex justify-center">
+				<div className="scale-in mb-16 flex justify-center">
 					<div className="inline-flex rounded-full border border-gray-800 bg-gray-950/60 p-1 backdrop-blur">
 						{[
 							{ label: "Experience", icon: HiOutlineBriefcase, value: "experience" },
@@ -45,7 +45,7 @@ export default function TimelinePage() {
 				{/* Timeline */}
 				<div className="relative">
 					{/* Central Vertical Line */}
-					<div className="absolute bottom-0 left-4 top-0 w-px bg-gradient-to-b from-gray-600 via-gray-700 to-transparent md:left-1/2 md:-translate-x-1/2" />
+					<div className="absolute -top-10 bottom-0 w-px bg-gradient-to-b from-gray-600 via-gray-700 to-transparent fade-in md:left-1/2 md:-translate-x-1/2" />
 
 					<div className="space-y-20 md:space-y-28">
 						{currentEntries.map((entry, index) => {
@@ -59,7 +59,7 @@ export default function TimelinePage() {
 									</div>
 
 									{/* Entry Card */}
-									<div className={`relative ml-10 md:w-[45%] ${isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"}`}>
+									<div className={`scale-in relative ml-10 md:w-[45%] ${isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"}`}>
 										<div className="p-6">
 											{/* Header */}
 											<div className="mb-6">

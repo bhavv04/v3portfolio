@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/views/Navbar";
+import Footer from "@/views/Footer";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
 import { ScrollBackground } from "@/components/graphics/ScrollBackground";
@@ -18,19 +19,23 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 			<head>
 				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 			</head>
-			<body className="neon-scrollbar relative font-mono antialiased">
+			<body className="relative font-mono antialiased">
 				<CatProvider>
 					<ScrollBackground />
 
 					<Oneko />
 
 					<ResponsiveContainer>
-						<main className="p-8 font-mono">
+						<main className="p-8">
 							<Navbar />
 
-							<div className="my-8 sm:my-24" />
+							<div className="my-4 sm:my-24" />
 
 							{children}
+
+							<div className="my-4 sm:my-24" />
+
+							<Footer />
 						</main>
 					</ResponsiveContainer>
 					<Analytics />

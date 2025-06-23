@@ -84,8 +84,6 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				"clash-display": "var(--font-clash-display)",
-				satoshi: "var(--font-satoshi)",
 				mono: ['"JetBrains Mono"', "monospace"]
 			},
 			screens: {
