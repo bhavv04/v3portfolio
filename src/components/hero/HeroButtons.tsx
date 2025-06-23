@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { IconContext } from "react-icons";
 import { Button } from "@/components/ui/Button";
-import { LuGithub, LuLinkedin } from "react-icons/lu";
+import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
 
 interface HeroButtonsProps {
 	size?: "sm" | "md";
@@ -45,6 +45,11 @@ export function HeroButtons({ size = "md" }: HeroButtonsProps) {
 		console.log("Target element:", e.currentTarget);
 	};
 
+	const handleMailClick = (e: React.MouseEvent) => {
+		console.log("Mail clicked - event:", e);
+		console.log("Target element:", e.currentTarget);
+	};
+
 	console.log("HeroButtons rendering with size:", size, "isSmall:", isSmall);
 
 	return (
@@ -77,6 +82,12 @@ export function HeroButtons({ size = "md" }: HeroButtonsProps) {
 				<Button size="icon" asChild variant="default" className={isSmall ? "h-7 min-h-0 w-7" : ""}>
 					<a href="https://www.linkedin.com/in/bhavdeeparora/" target="_blank" aria-label="Linkedin link" onClick={handleLinkedinClick}>
 						<LuLinkedin />
+					</a>
+				</Button>
+
+				<Button size="icon" asChild variant="default" className={isSmall ? "h-7 min-h-0 w-7" : ""}>
+					<a href="mailto:bhavdeepsa@gmail.com?subject=Hello%20Bhavdeep" aria-label="Email link" onClick={handleMailClick}>
+						<LuMail />
 					</a>
 				</Button>
 			</IconContext.Provider>

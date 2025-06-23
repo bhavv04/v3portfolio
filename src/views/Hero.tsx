@@ -51,7 +51,7 @@ export function HeroSection() {
 					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on{" "}
 					<span className="font-bold">embedded systems</span> and <span className="font-bold">DevOps</span>, particularly{" "}
 					<span className="font-bold">cloud infastructure</span> and <span className="font-bold">vulnerability research</span>, but I&apos;m always
-					deep diving into various aspects of <span className="font-bold">computer Science</span> .
+					deep diving into various aspects of <span className="font-bold">Computer Science</span>.
 				</p>
 			</div>
 

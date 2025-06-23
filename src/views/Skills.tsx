@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { FaReact, FaJsSquare, FaFigma, FaDocker, FaLinux, FaJava, FaPython, FaAws, FaGitAlt } from "react-icons/fa";
 import {
 	SiSupabase,
@@ -54,29 +53,10 @@ const skills = [
 
 export function Skills() {
 	const carouselSkills = [...skills, ...skills];
-	const skillRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add("visible");
-					observer.unobserve(entry.target);
-				}
-			},
-			{ threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-		);
-
-		if (skillRef.current) {
-			observer.observe(skillRef.current);
-		}
-
-		return () => observer.disconnect();
-	}, []);
 
 	return (
 		<section id="skills" className="mx-auto max-w-[50rem] py-12">
-			<div ref={skillRef} className="fade-in-on-scroll mt-8 space-y-4">
+			<div className="slide-in-up mt-8 space-y-4">
 				{/* Row 1 */}
 				<div className="skills-carousel-outer">
 					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">

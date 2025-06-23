@@ -26,7 +26,7 @@ export const projects: Project[] = [
 				}
 			},
 			{
-				name: "Personle! daily play page",
+				name: "Bug Report Dashboard",
 				mobile: {
 					src: "/images/bug_report/bug_report_dashboard.jpg",
 					width: 460,
@@ -39,7 +39,7 @@ export const projects: Project[] = [
 				}
 			},
 			{
-				name: "Personle! daily play correct guess",
+				name: "Bug Report Submit Page",
 				mobile: {
 					src: "/images/bug_report/bug_report_submit.jpg",
 					width: 460,

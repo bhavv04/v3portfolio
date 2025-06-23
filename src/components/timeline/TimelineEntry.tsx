@@ -16,7 +16,7 @@ export function TimelineEntry({ className, entry }: TimelineEntryProps) {
 	return (
 		<div className={cn("flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8", className)}>
 			{/* LHS: Date and Location */}
-			<div className="sm:grow sm:basis-0">
+			<div className="mt-10 sm:grow sm:basis-0 md:-mt-10">
 				<p className="text-2xl font-medium">
 					{dateRange[1] ? (
 						<span>
@@ -32,7 +32,7 @@ export function TimelineEntry({ className, entry }: TimelineEntryProps) {
 
 			{/* RHS: Header, Subheader, and Bullets/Content */}
 			<div className="sm:grow sm:basis-0">
-				<h2 className="text-2xl font-medium xs:text-3xl">{header}</h2>
+				<h2 className="mt-10 text-2xl font-medium xs:text-3xl">{header}</h2>
 				<h3 className="mb-2 text-xl text-muted-foreground xs:text-2xl">{subheader}</h3>
 
 				{rest.type === "content" ? (

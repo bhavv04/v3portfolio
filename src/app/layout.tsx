@@ -18,7 +18,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 			<head>
 				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 			</head>
-			<body className="relative font-mono antialiased">
+			<body className="neon-scrollbar relative font-mono antialiased">
 				<CatProvider>
 					<ScrollBackground />
 

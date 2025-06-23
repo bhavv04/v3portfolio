@@ -1,31 +1,10 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 
 export default function Footer() {
-	const animationRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add("visible");
-					observer.unobserve(entry.target);
-				}
-			},
-			{ threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-		);
-
-		if (animationRef.current) {
-			observer.observe(animationRef.current);
-		}
-
-		return () => observer.disconnect();
-	}, []);
-
 	return (
-		<footer className="w-full rounded-xl border-2 bg-card px-0 py-4 text-[#cbd5e1]">
-			<div ref={animationRef} className="fade-in-on-scroll flex flex-col items-center gap-4 px-4 sm:px-8 md:flex-row md:justify-between">
+		<footer className="w-full rounded-xl bg-zinc-900 py-4 text-[#cbd5e1] md:w-[120%] md:-translate-x-[7.5%]">
+			<div className="flex flex-col items-center gap-4 px-4 sm:px-8 md:flex-row md:justify-between">
 				{/* Left: Copyright & Status */}
 				<div className="flex flex-col items-center gap-2 font-mono text-sm sm:flex-row sm:gap-3">
 					<span>&copy; {new Date().getFullYear()} Bhavdeep Arora</span>
