@@ -1,68 +1,19 @@
-import { portfolioData } from "./data";
-
-const wrapStructured = (content: string) => `<div class="text-sm font-mono whitespace-pre-wrap">${content}</div>`;
+const wrapStructured = (content: string) => `<div class="text-sm font-mono whitespace-pre-wrap leading-relaxed">${content}</div>`;
 
 export const commands = {
-	help: (): string =>
-		wrapStructured(`Available commands:
+	help: (): string => wrapStructured(`Available commands: help, about, hobbies, education, experience, skills, contact, whoami, clear`),
 
-help         - show this help
-about        - personal info
-projects     - list projects  
-experience   - work history
-skills       - technical skills
-contact      - contact information
-education    - education & certs
-whoami       - current session
-clear        - clear screen`),
+	about: (): string => wrapStructured(``),
 
-	about: (): string =>
-		wrapStructured(`${portfolioData.personal.name}
-${portfolioData.personal.occupation} | ${portfolioData.personal.specialization}
+	hobbies: (): string => wrapStructured(``),
 
-${portfolioData.personal.bio}`),
+	skills: (): string => wrapStructured(``),
 
-	projects: (): string =>
-		wrapStructured(`Projects:
+	contact: (): string => wrapStructured(``),
 
-${portfolioData.projects.map((p, i) => `${i + 1}. ${p.name}\n   ${p.description}`).join("\n\n")}`),
+	education: (): string => wrapStructured(``),
 
-	experience: (): string =>
-		wrapStructured(`Work Experience:
-
-Coming soon - check back later`),
-
-	skills: (): string =>
-		wrapStructured(`Technical Skills:
-
-Languages:   ${portfolioData.skills.programmingLanguages.join(", ")}
-Frameworks:  ${portfolioData.skills.frameworks.join(", ")}
-Databases:   ${portfolioData.skills.databases.join(", ")}`),
-
-	contact: (): string =>
-		wrapStructured(`Contact Info:
-
-Email:    ${portfolioData.contact.email}
-GitHub:   ${portfolioData.contact.github}
-LinkedIn: ${portfolioData.contact.linkedin}
-Website:  ${portfolioData.contact.portfolio}`),
-
-	education: (): string =>
-		wrapStructured(`Education:
-
-${portfolioData.education.degree}
-${portfolioData.education.school} (${portfolioData.education.period})
-${portfolioData.education.details}
-
-Certifications:
-${portfolioData.education.certifications.map((c) => `• ${c}`).join("\n")}`),
-
-	whoami: (): string =>
-		wrapStructured(`Current session:
-
-User: visitor
-Time: ${new Date().toLocaleString()}
-Host: portfolio-terminal`)
+	whoami: (): string => wrapStructured(``)
 };
 
 export const executeCommand = (cmd: string): string => {
@@ -77,7 +28,8 @@ export const executeCommand = (cmd: string): string => {
 	} else if (command === "") {
 		return "";
 	} else {
-		return wrapStructured(`command not found: ${cmd}
-type 'help' for available commands`);
+		return wrapStructured(
+			`<span class="text-red-400">command not found:</span> <span class="text-white">${cmd}</span>, try 'help' to see available commands.`
+		);
 	}
 };

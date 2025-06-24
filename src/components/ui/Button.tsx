@@ -16,8 +16,8 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: clsx(
-					"bg-black text-white-900 border-2 border-gray-300 ",
-					"hover:bg-gray-100 hover:text-gray-900 hover:border-gray-400",
+					"bg-black text-white-900 border-2 border-white ",
+					"hover:bg-white hover:text-black",
 					"transition-all duration-300 ease-in-out",
 					" hover:shadow-lg hover:shadow-gray-300/30"
 				),

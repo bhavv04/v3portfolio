@@ -74,7 +74,7 @@ const TerminalAbout: React.FC = () => {
 				...output,
 				{
 					id: Date.now().toString(),
-					content: `<span class="text-emerald-400/70">~/about</span><span class="text-green-300">:</span><span class="text-cyan-400/80">~</span><span class="text-gray-400">$</span> <span class="text-gray-100 break-all">${input}</span>`,
+					content: `<span class="">~/about</span><span class="">:</span><span class="text-cyan-400/80">~</span><span class="text-gray-400">$</span> <span class="text-gray-100 break-all">${input}</span>`,
 					type: "command"
 				}
 			];
@@ -199,9 +199,7 @@ const TerminalAbout: React.FC = () => {
 						{output.map((line) => (
 							<div
 								key={line.id}
-								className={`mb-4 break-words ${
-									line.type === "command" ? "text-emerald-300/90" : line.type === "error" ? "text-red-400" : "text-emerald-100/90"
-								}`}
+								className={`mb-4 break-words ${line.type === "command" ? "" : line.type === "error" ? "text-red-400" : ""}`}
 								dangerouslySetInnerHTML={{ __html: line.content }}
 							/>
 						))}
@@ -210,11 +208,11 @@ const TerminalAbout: React.FC = () => {
 						<div className="mt-4 flex items-start space-x-2">
 							<div className="flex flex-shrink-0 items-center">
 								{isTyping ? (
-									<span className="animate-pulse text-sm text-emerald-500/50"></span>
+									<span className="animate-pulse text-sm"></span>
 								) : (
 									<>
-										<span className="text-sm text-emerald-500/70">~/about</span>
-										<span className="ml-2 text-emerald-400">❯</span>
+										<span className="text-sm">~/about</span>
+										<span className="ml-2">❯</span>
 									</>
 								)}
 							</div>
@@ -231,7 +229,7 @@ const TerminalAbout: React.FC = () => {
 											handleKeyDown(e);
 										}
 									}}
-									className="max-h-32 min-h-[1.5rem] w-full resize-none overflow-hidden break-words bg-transparent py-0 text-sm leading-normal text-emerald-100/90 placeholder-emerald-500/50 outline-none"
+									className="max-h-32 min-h-[1.5rem] w-full resize-none overflow-hidden break-words bg-transparent py-0 text-sm leading-normal outline-none"
 									placeholder={isTyping ? "" : "Type a command..."}
 									autoComplete="off"
 									disabled={isTyping}
@@ -248,7 +246,7 @@ const TerminalAbout: React.FC = () => {
 
 					{/* Terminal Footer */}
 					<div className="border-t border-emerald-900/20 bg-[rgba(13,13,13,0.9)] px-6 py-2">
-						<div className="flex items-center justify-between text-xs text-emerald-500/50">
+						<div className="flex items-center justify-between text-sm">
 							<div className="flex items-center space-x-3">
 								<span>Press ↑↓ to see history</span>
 							</div>

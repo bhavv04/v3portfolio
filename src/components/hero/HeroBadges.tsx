@@ -22,7 +22,7 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Witcher 3: Wild Hunt"
+				text="Playing: God Of War Ragnarok"
 				href="https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
@@ -33,7 +33,7 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Listening to: White Winter Hymnal - Fleet Foxes"
+				text="Listening to: Darkerside - David Kushner"
 				href="https://open.spotify.com/track/0GegHVxeozw3rdjte45Bfx?si=c9871c7e70fc431c"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
