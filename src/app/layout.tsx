@@ -29,11 +29,11 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 						<main className="p-8">
 							<Navbar />
 
-							<div className="my-2 sm:my-20" />
+							<div className="my-12 sm:my-24" />
 
 							{children}
 
-							<div className="my-4 sm:my-24" />
+							<div className="my-12 sm:my-24" />
 
 							<Footer />
 						</main>

@@ -45,7 +45,7 @@ export default function TimelinePage() {
 				{/* Timeline */}
 				<div className="relative">
 					{/* Central Vertical Line */}
-					<div className="absolute -top-10 bottom-0 w-px bg-gradient-to-b from-gray-600 via-gray-700 to-transparent fade-in md:left-1/2 md:-translate-x-1/2" />
+					<div className="absolute -top-10 bottom-0 w-px bg-gradient-to-b from-gray-600 via-gray-700 to-transparent md:left-1/2 md:-translate-x-1/2" />
 
 					<div className="space-y-20 md:space-y-28">
 						{currentEntries.map((entry, index) => {
@@ -54,7 +54,7 @@ export default function TimelinePage() {
 							return (
 								<div key={`${entry.header}-${entry.subheader}-${index}`} className="relative">
 									{/* Dot */}
-									<div className="absolute left-2.5 top-8 z-10 md:left-1/2 md:-translate-x-1/2">
+									<div className="absolute -left-2 top-8 z-10 md:left-1/2 md:-translate-x-1/2">
 										<div className="h-4 w-4 rounded-full border-4 border-black bg-white shadow-lg" />
 									</div>
 

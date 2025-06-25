@@ -3,7 +3,7 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export default function About() {
 	return (
-		<div className="-mt-40 min-h-screen md:-mt-40">
+		<div className="-mt-40">
 			{/* Header Section */}
 			<div className="relative overflow-hidden">
 				<div className="relative px-6 py-36 sm:py-24 lg:px-8">
@@ -11,7 +11,7 @@ export default function About() {
 						<SectionTitle
 							text={
 								<>
-									Hey There <span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
+									Hey There<span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
 								</>
 							}
 						/>
@@ -33,7 +33,7 @@ export default function About() {
 			</div>
 
 			{/* Terminal Section */}
-			<div className="relative -mb-24 -mt-44 px-6 pb-16 md:-mt-32 lg:px-8">
+			<div className="md:-mt-38 relative -mb-24 -mt-44 px-6 pb-16">
 				<div className="mx-auto max-w-full">
 					<TerminalAbout />
 				</div>
