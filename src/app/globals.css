@@ -850,19 +850,16 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-.terminal-cursor {
-	display: inline-block;
-	width: 8px;
-	height: 1.2em;
-	background-color: #6ee7b7;
-	margin-left: 2px;
-	animation: blink 1s step-end infinite;
-	transform-origin: center;
+@keyframes fadeInSlow {
+	from {
+		opacity: 0;
+		transform: translateY(10px); /* optional subtle upward motion */
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
-
-/*
-   UTILITY CLASSES
-*/
 
 /* Animation controls */
 .animate-paused {
@@ -877,12 +874,17 @@ body::-webkit-scrollbar-thumb:hover {
 	animation: fadeIn var(--duration-slower) var(--ease-out) forwards;
 }
 
+.fade-in-slow {
+	opacity: 0;
+	animation: fadeInSlow 3s ease-out forwards;
+}
+
 .fade-in-up {
 	animation: fadeInUp var(--duration-slower) var(--ease-out) forwards;
 }
 
 .fade-in-down {
-	animation: fadeInDown var(--duration-slower) var(--ease-out) forwards;
+	animation: fadeInDown var(--duration-slowest) var(--ease-out) forwards;
 }
 
 .fade-in-left {
@@ -1310,38 +1312,227 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-/* ===============================
-   EXAMPLE USAGE COMMENTS
-   =============================== */
-
-/*
-USAGE EXAMPLES:
-
-1. Basic entrance animation:
-   <div class="fade-in-up">Content</div>
-
-2. Delayed animation:
-   <div class="scale-in delay-300">Content</div>
-
-3. Continuous animation:
-   <div class="float">Floating element</div>
-
-4. Hover effect:
-   <button class="hover-scale btn-shine">Button</button>
-
-5. Text animation:
-   <h1 class="rainbow-text">Colorful text</h1>
-
-6. Loading state:
-   <div class="shimmer">Loading...</div>
-
-7. Combined animations:
-   <div class="fade-in-up delay-200 hover-glow">Element</div>
-
-8. Custom duration:
-   <div class="pulse duration-1000">Slow pulse</div>
-*/
-
 .bg-main {
 	background-image: url("/bg.jpg");
+}
+
+.staggered-text {
+	display: inline-block;
+}
+
+.staggered-letter {
+	display: inline-block;
+	opacity: 0;
+	transform: translateY(-20px);
+	animation: letterSlideDown 0.6s ease-out forwards;
+}
+
+.staggered-space {
+	display: inline-block;
+	width: 0.25em;
+}
+
+@keyframes letterSlideDown {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.staggered-letter:nth-child(1) {
+	animation-delay: 0.1s;
+}
+.staggered-letter:nth-child(2) {
+	animation-delay: 0.2s;
+}
+.staggered-letter:nth-child(3) {
+	animation-delay: 0.3s;
+}
+.staggered-letter:nth-child(4) {
+	animation-delay: 0.4s;
+}
+.staggered-letter:nth-child(5) {
+	animation-delay: 0.5s;
+}
+.staggered-letter:nth-child(6) {
+	animation-delay: 0.6s;
+}
+.staggered-letter:nth-child(7) {
+	animation-delay: 0.7s;
+}
+.staggered-letter:nth-child(8) {
+	animation-delay: 0.8s;
+}
+.staggered-letter:nth-child(9) {
+	animation-delay: 0.9s;
+}
+.staggered-letter:nth-child(10) {
+	animation-delay: 1s;
+}
+.staggered-letter:nth-child(11) {
+	animation-delay: 1.1s;
+}
+.staggered-letter:nth-child(12) {
+	animation-delay: 1.2s;
+}
+.staggered-letter:nth-child(13) {
+	animation-delay: 1.3s;
+}
+.staggered-letter:nth-child(14) {
+	animation-delay: 1.4s;
+}
+.staggered-letter:nth-child(15) {
+	animation-delay: 1.5s;
+}
+.staggered-letter:nth-child(16) {
+	animation-delay: 1.6s;
+}
+.staggered-letter:nth-child(17) {
+	animation-delay: 1.7s;
+}
+.staggered-letter:nth-child(18) {
+	animation-delay: 1.8s;
+}
+.staggered-letter:nth-child(19) {
+	animation-delay: 1.9s;
+}
+.staggered-letter:nth-child(20) {
+	animation-delay: 2s;
+}
+.staggered-letter:nth-child(21) {
+	animation-delay: 2.1s;
+}
+.staggered-letter:nth-child(22) {
+	animation-delay: 2.2s;
+}
+.staggered-letter:nth-child(23) {
+	animation-delay: 2.3s;
+}
+.staggered-letter:nth-child(24) {
+	animation-delay: 2.4s;
+}
+.staggered-letter:nth-child(25) {
+	animation-delay: 2.5s;
+}
+.staggered-letter:nth-child(26) {
+	animation-delay: 2.6s;
+}
+.staggered-letter:nth-child(27) {
+	animation-delay: 2.7s;
+}
+.staggered-letter:nth-child(28) {
+	animation-delay: 2.8s;
+}
+.staggered-letter:nth-child(29) {
+	animation-delay: 2.9s;
+}
+.staggered-letter:nth-child(30) {
+	animation-delay: 3s;
+}
+
+.staggered-letter-fast {
+	display: inline-block;
+	opacity: 0;
+	transform: translateY(-20px);
+	animation: letterSlideDown 0.4s ease-out forwards;
+}
+
+.staggered-letter-fast:nth-child(1) {
+	animation-delay: 0.05s;
+}
+.staggered-letter-fast:nth-child(2) {
+	animation-delay: 0.1s;
+}
+.staggered-letter-fast:nth-child(3) {
+	animation-delay: 0.15s;
+}
+.staggered-letter-fast:nth-child(4) {
+	animation-delay: 0.2s;
+}
+.staggered-letter-fast:nth-child(5) {
+	animation-delay: 0.25s;
+}
+.staggered-letter-fast:nth-child(6) {
+	animation-delay: 0.3s;
+}
+.staggered-letter-fast:nth-child(7) {
+	animation-delay: 0.35s;
+}
+.staggered-letter-fast:nth-child(8) {
+	animation-delay: 0.4s;
+}
+.staggered-letter-fast:nth-child(9) {
+	animation-delay: 0.45s;
+}
+.staggered-letter-fast:nth-child(10) {
+	animation-delay: 0.5s;
+}
+.staggered-letter-fast:nth-child(11) {
+	animation-delay: 0.55s;
+}
+.staggered-letter-fast:nth-child(12) {
+	animation-delay: 0.6s;
+}
+.staggered-letter-fast:nth-child(13) {
+	animation-delay: 0.65s;
+}
+.staggered-letter-fast:nth-child(14) {
+	animation-delay: 0.7s;
+}
+.staggered-letter-fast:nth-child(15) {
+	animation-delay: 0.75s;
+}
+.staggered-letter-fast:nth-child(16) {
+	animation-delay: 0.8s;
+}
+.staggered-letter-fast:nth-child(17) {
+	animation-delay: 0.85s;
+}
+.staggered-letter-fast:nth-child(18) {
+	animation-delay: 0.9s;
+}
+.staggered-letter-fast:nth-child(19) {
+	animation-delay: 0.95s;
+}
+.staggered-letter-fast:nth-child(20) {
+	animation-delay: 1s;
+}
+.staggered-letter-fast:nth-child(21) {
+	animation-delay: 1.05s;
+}
+.staggered-letter-fast:nth-child(22) {
+	animation-delay: 1.1s;
+}
+.staggered-letter-fast:nth-child(23) {
+	animation-delay: 1.15s;
+}
+.staggered-letter-fast:nth-child(24) {
+	animation-delay: 1.2s;
+}
+.staggered-letter-fast:nth-child(25) {
+	animation-delay: 1.25s;
+}
+.staggered-letter-fast:nth-child(26) {
+	animation-delay: 1.3s;
+}
+.staggered-letter-fast:nth-child(27) {
+	animation-delay: 1.35s;
+}
+.staggered-letter-fast:nth-child(28) {
+	animation-delay: 1.4s;
+}
+.staggered-letter-fast:nth-child(29) {
+	animation-delay: 1.45s;
+}
+.staggered-letter-fast:nth-child(30) {
+	animation-delay: 1.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.staggered-letter,
+	.staggered-letter-fast {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
 }

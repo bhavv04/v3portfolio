@@ -4,7 +4,7 @@ import { LuGithub, LuLinkedin, LuMail, LuExternalLink } from "react-icons/lu";
 
 export default function Footer() {
 	return (
-		<footer className="w-full rounded-xl border-white bg-transparent py-6 text-[#cbd5e1]">
+		<footer className="w-full rounded-xl border border-zinc-800 bg-zinc-900/50 py-6 text-[#cbd5e1] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6),inset_0_-1px_2px_rgba(255,255,255,0.03)]">
 			<div className="flex flex-col items-center gap-6 px-4 sm:px-8 lg:flex-row lg:justify-between">
 				{/* Left: Copyright & Status */}
 				<div className="flex flex-col items-center gap-3 font-mono text-sm lg:items-start">

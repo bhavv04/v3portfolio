@@ -3,6 +3,7 @@ import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
 import { SectionTitle } from "@/components/typography/SectionTitle";
+import { TextEncrypted } from "@/components/hooks/TextEncrypted";
 import Image from "next/image";
 
 const ProfilePic = "/images/ProfilePic.jpeg";
@@ -24,7 +25,7 @@ export function HeroSection() {
 		<section id="home" className="mx-auto max-w-[50rem] space-y-4 lg:-mt-10">
 			<div className="flex items-center gap-3">
 				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
-				<SectionTitle text="Hi, I'm Bhavdeep Arora 🐰" className="fade-in-down mt-2" />
+				<SectionTitle className="fade-in-down mt-2" text={<TextEncrypted text="Hi, I'm Bhavdeep Arora 🐰" interval={40} />} />
 			</div>
 
 			<div className="fade-in-down">
@@ -33,37 +34,59 @@ export function HeroSection() {
 
 			<div className="fade-in-down">
 				<p className="mb-2">
-					I&apos;m a computer science Student currently studying at{" "}
+					<TextEncrypted text="I'm a computer science Student currently studying at " interval={30} />
 					<a
 						href="https://www.torontomu.ca/programs/undergraduate/computer-science/"
 						className="underline-dotted-highlight inline-block"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Toronto Metropolitan University
-					</a>{" "}
-					(formerly known as Ryerson University).
+						<TextEncrypted text="Toronto Metropolitan University" interval={30} />
+					</a>
+					<TextEncrypted text=" (formerly known as Ryerson University)." interval={30} />
 				</p>
 			</div>
 
 			<div className="fade-in-down">
 				<p>
-					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on{" "}
-					<span className="font-bold">embedded systems</span> and <span className="font-bold">DevOps</span>, particularly{" "}
-					<span className="font-bold">cloud infastructure</span> and <span className="font-bold">vulnerability research</span>, but I&apos;m always
-					deep diving into various aspects of <span className="font-bold">Computer Science</span>.
+					<TextEncrypted text="I've been programming for over six years, and I'm obsessed with learning. I'm currently focused on " interval={30} />
+					<span className="font-bold">
+						<TextEncrypted text="embedded systems" interval={30} />
+					</span>
+					<TextEncrypted text=" and " interval={30} />
+					<span className="font-bold">
+						<TextEncrypted text="DevOps" interval={30} />
+					</span>
+					<TextEncrypted text=", particularly " interval={30} />
+					<span className="font-bold">
+						<TextEncrypted text="cloud infrastructure" interval={30} />
+					</span>
+					<TextEncrypted text=" and " interval={30} />
+					<span className="font-bold">
+						<TextEncrypted text="vulnerability research" interval={30} />
+					</span>
+					<TextEncrypted text=", but I'm always deep diving into various aspects of " interval={30} />
+					<span className="font-bold">
+						<TextEncrypted text="Computer Science" interval={30} />
+					</span>
+					<TextEncrypted text="." interval={30} />
 				</p>
 			</div>
 
 			<div className="fade-in-down">
-				<p>Outside of programming, I love learning new things, Reading Fantasy Books, and Exploring Outside! This is what I&apos;m currently up to:</p>
+				<p>
+					<TextEncrypted
+						text="Outside of programming, I love learning new things, reading fantasy books, and exploring outside! This is what I'm currently up to:"
+						interval={30}
+					/>
+				</p>
 			</div>
 
-			<div className="fade-in-down">
+			<div className="fade-in-slow">
 				<HeroBadges />
 			</div>
 
-			<div className="fade-in-down">
+			<div className="fade-in-slow">
 				<HeroButtons />
 			</div>
 		</section>

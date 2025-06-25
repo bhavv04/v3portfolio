@@ -9,7 +9,7 @@ import { SiOpengl } from "react-icons/si";
 
 export function HeroBadges() {
 	return (
-		<div className="flex max-w-[60rem] flex-row flex-wrap items-center gap-2">
+		<div className="flex max-w-full flex-row flex-wrap gap-2">
 			<HeroBadge
 				text="Simulating: Newton's Playground"
 				href="https://github.com/bhav2134/Newtons-Playground"
@@ -22,7 +22,7 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: God Of War Ragnarok"
+				text="Playing: Witcher 3: The Wild Hunt"
 				href="https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
@@ -33,7 +33,7 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Listening to: Darkerside - David Kushner"
+				text="Listening to: White Winter Hymnal - Fleet Foxes"
 				href="https://open.spotify.com/track/0GegHVxeozw3rdjte45Bfx?si=c9871c7e70fc431c"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Words Of Radiance - Brandon Sanderson"
-				href="https://www.goodreads.com/book/show/17332218-words-of-radiance"
+				text="Reading: Gardens of the Moon - Steven Erikson"
+				href="https://www.goodreads.com/book/show/55399.Gardens_of_the_Moon"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
@@ -68,18 +68,13 @@ export function HeroBadge({ icon, text, href, className }: HeroBadgeProps) {
 		<a
 			href={href}
 			target="_blank"
-			className={cn(
-				"inline-flex items-center gap-2 rounded-full border bg-background px-3.5 py-1 text-sm font-semibold text-foreground transition-colors",
-				className
-			)}
+			className={cn("inline-flex items-center gap-2 rounded-full border bg-background px-4 py-1 text-sm text-foreground transition-colors", className)}
 		>
 			{icon}
 
 			{text}
 
-			<IconContext.Provider value={{ size: "1rem" }}>
-				<LuArrowUpRight />
-			</IconContext.Provider>
+			<LuArrowUpRight />
 		</a>
 	);
 }

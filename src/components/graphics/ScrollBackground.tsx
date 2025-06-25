@@ -10,8 +10,7 @@ export function ScrollBackground() {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	// Simple parallax - image moves up as you scroll down
-	const parallaxOffset = -scrollY * 0.5; // Negative for opposite direction
+	const parallaxOffset = -scrollY * 0.5;
 
 	return (
 		<>
