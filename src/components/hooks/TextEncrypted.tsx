@@ -1,15 +1,15 @@
-// components/hooks/TextEncrypted.tsx
 "use client";
 import React, { useState, useEffect } from "react";
 
 interface TextEncryptedProps {
 	text: string;
 	interval?: number;
+	className?: string; // Allow custom styles
 }
 
 const chars = "-_~`!@#$%^&*()+=[]{}|;:,.<>?";
 
-export const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50 }) => {
+export const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50, className = "" }) => {
 	const [outputText, setOutputText] = useState("");
 	const [isMounted, setIsMounted] = useState(false);
 
@@ -47,7 +47,7 @@ export const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 5
 	}
 
 	return (
-		<span className="text-white">
+		<span className={`transition-all duration-300 ease-in-out ${className}`}>
 			{outputText}
 			{remainder}
 		</span>

@@ -37,11 +37,11 @@ export function HeroSection() {
 					<TextEncrypted text="I'm a computer science Student currently studying at " interval={30} />
 					<a
 						href="https://www.torontomu.ca/programs/undergraduate/computer-science/"
-						className="underline-dotted-highlight fade-in-slow inline-flex"
+						className="underline-dotted-highlight inline-flex"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Toronto Metropolitan University
+						<TextEncrypted text="Toronto Metropolitan University " interval={30} />{" "}
 					</a>
 					<TextEncrypted text=" (formerly known as Ryerson University)." interval={30} />
 				</p>
@@ -50,26 +50,10 @@ export function HeroSection() {
 			<div className="">
 				<p>
 					<TextEncrypted text="I've been programming for over six years, and I'm obsessed with learning. I'm currently focused on " interval={10} />
-					<span className="font-bold text-[#00aaff]">
-						<TextEncrypted text="embedded systems" interval={10} />
-					</span>
-					<TextEncrypted text=" and " interval={10} />
-					<span className="font-bold">
-						<TextEncrypted text="DevOps" interval={10} />
-					</span>
-					<TextEncrypted text=", particularly " interval={10} />
-					<span className="font-bold">
-						<TextEncrypted text="cloud infrastructure" interval={10} />
-					</span>
-					<TextEncrypted text=" and " interval={10} />
-					<span className="font-bold">
-						<TextEncrypted text="vulnerability research" interval={10} />
-					</span>
-					<TextEncrypted text=", but I'm always deep diving into various aspects of " interval={30} />
-					<span className="font-bold">
-						<TextEncrypted text="Computer Science" interval={10} />
-					</span>
-					<TextEncrypted text="." interval={10} />
+					<TextEncrypted
+						text="embedded systems and DevOps, particularly cloud infrastructure and vulnerability research, but I'm always deep diving into various aspects of Computer Science."
+						interval={10}
+					/>
 				</p>
 			</div>
 
