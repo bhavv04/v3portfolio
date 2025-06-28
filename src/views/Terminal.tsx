@@ -158,7 +158,7 @@ const TerminalAbout: React.FC = () => {
 
 	return (
 		<div className="relative mt-10 flex min-h-screen w-full items-center justify-center">
-			<div className="relative w-[80rem] font-mono sm:w-full">
+			<div className="relative font-mono">
 				<div
 					className="relative mx-auto flex h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-transparent backdrop-blur-xl transition-all duration-300 ease-in-out"
 					onClick={handleTerminalClick}

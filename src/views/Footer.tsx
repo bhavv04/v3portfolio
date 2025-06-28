@@ -1,10 +1,22 @@
 "use client";
 import { IconContext } from "react-icons";
 import { LuGithub, LuLinkedin, LuMail, LuExternalLink } from "react-icons/lu";
+import { GitCommitVertical } from "lucide-react";
 
 export default function Footer() {
+	// You can replace this with actual commit hash from your build process
+	const commitHash = "3a62d37";
+
 	return (
-		<footer className="w-full rounded-xl border border-zinc-800 bg-zinc-900/50 py-6 text-[#cbd5e1] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6),inset_0_-1px_2px_rgba(255,255,255,0.03)]">
+		<footer className="relative mt-20 w-full rounded-xl border border-zinc-800 bg-zinc-900/50 py-6 text-[#cbd5e1]">
+			<div className="absolute -top-11 right-5">
+				<div className="flex items-center gap-2 rounded-xl bg-zinc-900/50 px-3 py-1.5 font-mono text-xs text-zinc-400 backdrop-blur-sm">
+					<GitCommitVertical />
+					<span>{commitHash}</span>
+					<span className="text-xs text-zinc-500">v3.0</span>
+				</div>
+			</div>
+
 			<div className="flex flex-col items-center gap-6 px-4 sm:px-8 lg:flex-row lg:justify-between">
 				{/* Left: Copyright & Status */}
 				<div className="flex flex-col items-center gap-3 font-mono text-sm lg:items-start">

@@ -6,7 +6,7 @@ export default function About() {
 		<div className="-mt-40">
 			{/* Header Section */}
 			<div className="relative overflow-hidden">
-				<div className="relative px-6 py-36 sm:py-24 lg:px-8">
+				<div className="relative py-36 sm:py-24 lg:px-8">
 					<div className="slide-in-left mx-auto max-w-2xl text-left">
 						<SectionTitle
 							text={
@@ -24,8 +24,8 @@ export default function About() {
 						{/* Quick tip */}
 						<div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-700/50 bg-slate-800/50 px-4 py-2">
 							<div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-							<span className="text-sm font-medium text-slate-400">
-								Try typing <code className="rounded bg-slate-700 px-2 py-1 font-mono font-bold text-emerald-400">help</code> to get started
+							<span className="text-sm text-slate-400">
+								Try typing <span className="text-emerald-400">help</span> to get started
 							</span>
 						</div>
 					</div>
@@ -33,7 +33,7 @@ export default function About() {
 			</div>
 
 			{/* Terminal Section */}
-			<div className="md:-mt-38 relative -mb-24 -mt-44 px-6 pb-16">
+			<div className="md:-mt-38 relative -mb-32 -mt-44 pb-16">
 				<div className="mx-auto max-w-full">
 					<TerminalAbout />
 				</div>
