@@ -10,19 +10,15 @@ const TerminalAbout: React.FC = () => {
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
 	const [historyIndex, setHistoryIndex] = useState(-1);
 	const [isTyping, setIsTyping] = useState(false);
-	const [, setHasInteracted] = useState(false);
 	const [welcomeText, setWelcomeText] = useState("");
-	const [showCursor, setShowCursor] = useState(true);
 	const inputRef = useRef<HTMLTextAreaElement>(null);
 	const outputRef = useRef<HTMLDivElement>(null);
-	const typewriterRef = useRef<HTMLDivElement>(null);
 
 	const typeWriter = useCallback(
 		(text: string, speed: number = 20) => {
 			if (welcomeText === "") {
 				setIsTyping(true);
 				setWelcomeText("");
-				setShowCursor(true);
 
 				let i = 0;
 				const type = () => {
@@ -32,9 +28,6 @@ const TerminalAbout: React.FC = () => {
 						setTimeout(type, speed);
 					} else {
 						setIsTyping(false);
-						setTimeout(() => {
-							setShowCursor(false);
-						}, 1000);
 					}
 				};
 
@@ -50,14 +43,12 @@ const TerminalAbout: React.FC = () => {
 			if (input.trim() === "" || isTyping) return;
 
 			const command = input.toLowerCase().trim();
-			setHasInteracted(true);
 
 			if (command === "clear") {
 				setOutput([]);
 				setCommandHistory([]);
 				setHistoryIndex(-1);
 				setInput("");
-
 				return;
 			}
 
@@ -65,7 +56,7 @@ const TerminalAbout: React.FC = () => {
 				...output,
 				{
 					id: Date.now().toString(),
-					content: `<div class="flex items-center space-x-2 mb-2 group">
+					content: `<div class="flex items-center space-x-2 mb-2">
 						<span class="text-emerald-400 font-medium">~/about</span>
 						<span class="text-gray-500">:</span>
 						<span class="text-cyan-400/80">~</span>
@@ -83,7 +74,6 @@ const TerminalAbout: React.FC = () => {
 				setHistoryIndex(-1);
 				setInput("");
 
-				// Restart typewriter effect
 				const welcomeMessage =
 					"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
 				typeWriter(welcomeMessage);
@@ -102,12 +92,12 @@ const TerminalAbout: React.FC = () => {
 			setHistoryIndex(-1);
 			setInput("");
 		},
-		[input, output, isTyping, typeWriter, welcomeText]
+		[input, output, isTyping, typeWriter]
 	);
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
-			if (isTyping) return; // Prevent input during typing animation
+			if (isTyping) return;
 
 			if (e.key === "ArrowUp") {
 				e.preventDefault();
@@ -137,7 +127,6 @@ const TerminalAbout: React.FC = () => {
 		}
 	}, [isTyping]);
 
-	// Initialize typewriter effect on component mount
 	useEffect(() => {
 		const welcomeMessage =
 			"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
@@ -157,62 +146,45 @@ const TerminalAbout: React.FC = () => {
 	}, [isTyping]);
 
 	return (
-		<div className="relative mt-10 flex min-h-screen w-full items-center justify-center">
-			<div className="relative font-mono">
-				<div
-					className="relative mx-auto flex h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-transparent backdrop-blur-xl transition-all duration-300 ease-in-out"
-					onClick={handleTerminalClick}
-				>
-					{/* Enhanced Terminal Header */}
+		<div className="relative mt-10 flex min-h-screen items-center justify-center">
+			<div className="relative max-w-3xl font-mono sm:w-full">
+				<div className="mx-auto flex h-[80vh] flex-col rounded-xl bg-transparent backdrop-blur-xl" onClick={handleTerminalClick}>
+					{/* Terminal Header */}
 					<div className="flex items-center justify-between border-b border-emerald-500/30 bg-[rgba(13,13,13,0.98)] px-4 py-3 sm:px-6 sm:py-4">
 						<div className="flex items-center space-x-3 sm:space-x-4">
 							<div className="flex space-x-2">
-								<div className="group relative">
-									<div className="h-3 w-3 rounded-full bg-[#FF5F57]"></div>
-								</div>
-								<div className="group relative">
-									<div className="h-3 w-3 rounded-full bg-[#FFBD2E]"></div>
-								</div>
-								<div className="group relative">
-									<div className="h-3 w-3 rounded-full bg-[#28C840]"></div>
-								</div>
+								<div className="h-3 w-3 rounded-full bg-[#FF5F57]"></div>
+								<div className="h-3 w-3 rounded-full bg-[#FFBD2E]"></div>
+								<div className="h-3 w-3 rounded-full bg-[#28C840]"></div>
 							</div>
-							<div className="flex items-center space-x-3">
-								<div className="text-xs font-medium text-emerald-400 sm:text-sm">terminal@portfolio</div>
-							</div>
+							<div className="text-xs font-medium text-emerald-400 sm:text-sm">terminal@portfolio</div>
 						</div>
 					</div>
 
-					{/* Enhanced Terminal Content */}
-					<div ref={outputRef} className="flex-1 overflow-y-auto p-4 text-sm leading-relaxed sm:p-6">
-						{/* Enhanced Welcome Message with Typewriter Effect */}
+					{/* Terminal Content */}
+					<div ref={outputRef} className="hide-scrollbar flex-1 overflow-y-auto p-4 text-sm leading-relaxed sm:p-6">
+						{/* Welcome Message */}
 						<div className="mb-8">
-							<div ref={typewriterRef} className="space-y-2" style={{ minHeight: "2rem" }}>
-								<div className="font-medium text-emerald-400">
-									{welcomeText}
-									{showCursor && <span className="ml-1 animate-pulse text-emerald-400">█</span>}
-								</div>
+							<div className="font-medium text-emerald-400">
+								{welcomeText}
+								{isTyping && <span className="ml-1 animate-pulse text-emerald-400">█</span>}
 							</div>
 						</div>
 
-						{/* Enhanced Command Output */}
+						{/* Command Output */}
 						<div className="space-y-3">
-							{output.map((line, index) => (
+							{output.map((line) => (
 								<div
 									key={line.id}
-									className={`break-words transition-all duration-300 ease-out ${
+									className={`break-words ${
 										line.type === "command" ? "text-white" : line.type === "error" ? "text-red-400" : "text-gray-300"
 									}`}
 									dangerouslySetInnerHTML={{ __html: line.content }}
-									style={{
-										animation: `fadeInUp 0.4s ease-out ${index * 0.1}s both`,
-										transform: "translateY(0)"
-									}}
 								/>
 							))}
 						</div>
 
-						{/* Enhanced Input Line */}
+						{/* Input Line */}
 						<div className="mt-6 flex items-start space-x-2">
 							<div className="flex flex-shrink-0 items-center space-x-2">
 								{isTyping ? (
@@ -240,7 +212,7 @@ const TerminalAbout: React.FC = () => {
 											handleKeyDown(e);
 										}
 									}}
-									className="max-h-32 min-h-[1.5rem] w-full resize-none overflow-hidden break-words bg-transparent py-0 text-sm leading-normal text-white placeholder-gray-500 outline-none transition-all duration-200"
+									className="max-h-32 min-h-[1.5rem] w-full resize-none overflow-hidden break-words bg-transparent py-0 text-sm leading-normal text-white placeholder-gray-500 outline-none"
 									autoComplete="off"
 									disabled={isTyping}
 									rows={1}
@@ -254,14 +226,10 @@ const TerminalAbout: React.FC = () => {
 						</div>
 					</div>
 
-					{/* Enhanced Terminal Footer */}
+					{/* Terminal Footer */}
 					<div className="border-t border-emerald-500/30 bg-[rgba(13,13,13,0.98)] px-4 py-2 sm:px-6">
-						<div className="flex items-center justify-between text-xs">
-							<div className="flex items-center space-x-4 text-gray-500">
-								<span className="flex items-center space-x-1">
-									<span>↑↓ History </span>
-								</span>
-							</div>
+						<div className="text-xs text-gray-500">
+							<span>↑↓ History</span>
 						</div>
 					</div>
 				</div>

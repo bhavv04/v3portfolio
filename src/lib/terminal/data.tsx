@@ -17,17 +17,17 @@ export const portfolioData = {
 	experience: [],
 
 	skills: {
-		programmingLanguages: ["Java", "Python", "C", "HTML", "CSS", "JavaScript", "TypeScript", "Lisp", "Smalltalk", "Elixir", "Haskell", "Go", "Rust"],
+		programmingLanguages: ["Java", "Python", "C", "JavaScript", "TypeScript", "Lisp", "Smalltalk", "Elixir", "Haskell", "Go", "Rust"],
 		frameworks: ["React", "Angular", "Vue", "Flask", "Django", "Express"],
 		databases: ["MySQL", "NoSQL", "SQLite", "Firebase", "MongoDB", "AWS", "Azure"],
 		others: ["Node.js", "Git", "GitHub"]
 	},
 
 	contact: {
-		email: "📧 bhavdeepsa@gmail.com",
-		github: "🐙 github.com/bhav2134",
-		linkedin: "💼 linkedin.com/in/bhavdeeparora",
-		portfolio: "🌐 bhavdeeparora.vercel.app"
+		email: "bhavdeepsa@gmail.com",
+		github: "github.com/bhav2134",
+		linkedin: "linkedin.com/in/bhavdeeparora",
+		portfolio: "bhavdeep.dev"
 	},
 
 	education: {

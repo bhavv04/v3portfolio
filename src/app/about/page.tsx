@@ -33,8 +33,8 @@ export default function About() {
 			</div>
 
 			{/* Terminal Section */}
-			<div className="md:-mt-38 relative -mb-32 -mt-44 pb-16">
-				<div className="mx-auto max-w-full">
+			<div className="md:-mt-38 -mb-32 -mt-44 pb-16">
+				<div className="mx-auto">
 					<TerminalAbout />
 				</div>
 			</div>
