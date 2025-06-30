@@ -59,7 +59,7 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-black/10 via-white/0 to-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 			{/* Animated underline */}
-			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-300 ease-out group-hover:w-5/12 group-hover:-translate-x-1/2" />
+			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-white transition-all duration-300 ease-out group-hover:w-5/12 group-hover:-translate-x-1/2" />
 
 			{/* Content */}
 			<span className="relative z-10 flex items-center gap-2">{children}</span>

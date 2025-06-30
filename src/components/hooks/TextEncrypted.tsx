@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 interface TextEncryptedProps {
 	text: string;
 	interval?: number;
-	className?: string; // Allow custom styles
+	className?: string;
 }
 
 const chars = "-_~`!@#$%^&*()+=[]{}|;:,.<>?";

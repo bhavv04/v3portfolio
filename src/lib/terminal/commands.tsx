@@ -24,7 +24,7 @@ export const commands = {
 			// String values
 			.replace(/: "([^"]+)"/g, `: <span class="text-yellow-300">"$1"</span>`)
 			// Arrays
-			.replace(/[{}[\]]/g, (match) => `<span class="text-gray-500">${match}</span>`);
+			.replace(/[{}[\]]/g, (match) => `<span class="text-gray-300">${match}</span>`);
 
 		return wrapStructured(colorized);
 	},
@@ -55,19 +55,35 @@ export const commands = {
 
 	skills: (): string => {
 		const { skills } = portfolioData;
-		const output = `<span class="text-blue-400">Languages:</span> ${skills.languages.join(", ")}
-
-<span class="text-blue-400">Frontend:</span>
-${skills.frontend.join(", ")}
-
-<span class="text-blue-400">Backend:</span>
-${skills.backend.join(", ")}
-
-<span class="text-blue-400">Tools & Other:</span>
-${skills.tools.join(", ")}
-
-<span class="text-blue-400">Currently learning:</span>
-${skills.currentlyLearning.join(", ")}`;
+		const output = `Skills Tree
+├── <span class="text-blue-400">Languages</span>
+│   ├── ${skills.languages[0]}
+│   ├── ${skills.languages[1]}
+│   ├── ${skills.languages[2]}
+│   └── ${skills.languages[3]}
+├── <span class="text-blue-400">Frontend</span>
+│   ├── ${skills.frontend[0]}
+│   ├── ${skills.frontend[1]}
+│   ├── ${skills.frontend[2]}
+│   ├── ${skills.frontend[3]}
+│   └── ${skills.frontend[4]}
+├── <span class="text-blue-400">Backend</span>
+│   ├── ${skills.backend[0]}
+│   ├── ${skills.backend[1]}
+│   ├── ${skills.backend[2]}
+│   ├── ${skills.backend[3]}
+│   └── ${skills.backend[4]}
+├── <span class="text-blue-400">Tools & Other</span>
+│   ├── ${skills.tools[0]}
+│   ├── ${skills.tools[1]}
+│   ├── ${skills.tools[2]}
+│   ├── ${skills.tools[3]}
+│   └── ${skills.tools[4]}
+└── <span class="text-blue-400">Currently Learning</span> 
+    ├── ${skills.currentlyLearning[0]}
+    ├── ${skills.currentlyLearning[1]}
+    └── ${skills.currentlyLearning[2]}
+`;
 		return wrapStructured(output);
 	},
 
@@ -111,23 +127,17 @@ ${job.period}
 
 	contact: (): string => {
 		const { personal, contact } = portfolioData;
-		let output = `Let's connect! 🚀
+		const output = `Let's connect! 
 
-<span class="text-blue-400">Email:</span>     ${personal.email}
-<span class="text-blue-400">LinkedIn:</span>  ${personal.linkedin}
-<span class="text-blue-400">GitHub:</span>    ${personal.github}
-<span class="text-blue-400">Portfolio:</span> ${personal.portfolio}
+<span class="text-blue-400">Email:</span>     <a href="mailto:${personal.email}" class="text-white hover:text-blue-300 underline">${personal.email}</a>
+<span class="text-blue-400">inkedIn:</span>  <a href="https://${personal.linkedin}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.linkedin}</a>
+<span class="text-blue-400">GitHub:</span>    <a href="https://${personal.github}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.github}</a>
+<span class="text-blue-400">Portfolio:</span> <a href="https://${personal.portfolio}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.portfolio}</a>
 
-<span class="text-green-400">Open to:</span>
-`;
-		contact.openTo.forEach((item) => {
-			output += `• ${item}\n`;
-		});
+${contact.message} 💬`;
 
-		output += `\n${contact.message}`;
 		return wrapStructured(output);
 	},
-
 	whoami: (): string => {
 		const { personal } = portfolioData;
 		const output = `<span class="text-green-400">$ whoami</span>
@@ -135,7 +145,6 @@ ${job.period}
 <span class="text-blue-400">Name:</span>          ${personal.name}
 <span class="text-blue-400">Role:</span>          ${personal.role}
 <span class="text-blue-400">Location:</span>      ${personal.location}
-<span class="text-blue-400">Status:</span>        <span class="text-green-400">${personal.status}</span>
 <span class="text-blue-400">Favorite Lang:</span> ${personal.favoriteLanguage}
 <span class="text-blue-400">Current Focus:</span> ${personal.currentFocus}
 

@@ -73,7 +73,7 @@ const TerminalAbout: React.FC = () => {
 				setInput("");
 
 				const welcomeMessage =
-					"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page...";
+					"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page 🐰";
 				typeWriter(welcomeMessage);
 				return;
 			}
@@ -127,7 +127,7 @@ const TerminalAbout: React.FC = () => {
 
 	useEffect(() => {
 		const welcomeMessage =
-			"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page... 🐰";
+			"Welcome to my site fellow humans and bots. I'm glad you're exploring my about section. Let me share some additional information about myself that isn't on the home page 🐰";
 		typeWriter(welcomeMessage);
 	}, [typeWriter]);
 
@@ -148,7 +148,7 @@ const TerminalAbout: React.FC = () => {
 			<div className="relative max-w-3xl font-mono sm:w-full">
 				<div className="mx-auto flex h-[80vh] flex-col" onClick={handleTerminalClick}>
 					{/* Terminal Header */}
-					<div className="bg-transprent mb-2 flex items-center justify-between rounded-xl border border-white px-4 py-3 backdrop-blur-xl sm:px-6 sm:py-4">
+					<div className="bg-transprent mb-2 flex items-center justify-between rounded-xl border border-white px-4 py-3 backdrop-blur-sm sm:px-6 sm:py-4">
 						<div className="flex items-center space-x-3 sm:space-x-4">
 							<div className="flex space-x-2">
 								<div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -162,7 +162,7 @@ const TerminalAbout: React.FC = () => {
 					{/* Terminal Content */}
 					<div
 						ref={outputRef}
-						className="hide-scrollbar flex-1 overflow-y-auto rounded-xl border border-white p-4 text-sm leading-relaxed backdrop-blur-xl sm:p-6"
+						className="hide-scrollbar flex-1 overflow-y-auto rounded-xl border border-white p-4 text-sm leading-relaxed backdrop-blur-sm sm:p-6"
 					>
 						{/* Welcome Message */}
 						<div className="mb-8">
@@ -185,7 +185,7 @@ const TerminalAbout: React.FC = () => {
 								{isTyping ? (
 									<div className="flex items-center space-x-2">
 										<span className="animate-pulse text-blue-400">⏳</span>
-										<span className="text-xs text-gray-400">Processing...</span>
+										<span className="text-xs text-gray-400">Processing</span>
 									</div>
 								) : (
 									<>
