@@ -692,7 +692,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .fade-in-slow {
 	opacity: 0;
-	animation: fadeInSlow 4s ease-out forwards;
+	animation: fadeInSlow 2s ease-out forwards;
 }
 
 .fade-in-up {

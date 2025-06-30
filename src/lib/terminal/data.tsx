@@ -1,40 +1,99 @@
-// data.tsx - All portfolio data
 export const portfolioData = {
 	personal: {
-		name: "Bhavdeep Arora",
-		occupation: "👨‍💻 Student Developer",
-		specialization: "🔧 Embedded System Architecture, 🔒 Cybersecurity",
-		bio: "Passionate computer science student with a love for low-level systems and security. When I'm not diving deep into embedded architectures or exploring cybersecurity challenges, you'll find me on the rugby field, lost in a fantasy novel, or experimenting with new programming languages. I believe in continuous learning and enjoy the creative process of building solutions - whether that's crafting clean code, cooking up something new in the kitchen, or jamming on my guitar. My curiosity drives me to explore everything from functional programming languages like Haskell to modern web frameworks, always seeking to understand how things work at their core."
+		name: "Your Name",
+		role: "Software Developer",
+		location: "Your City, Country",
+		email: "hello@example.com",
+		linkedin: "linkedin.com/in/yourname",
+		github: "github.com/yourusername",
+		portfolio: "yourportfolio.dev",
+		status: "Available for opportunities",
+		favoriteLanguage: "JavaScript/TypeScript",
+		currentFocus: "Building awesome web experiences"
 	},
 
-	projects: [
+	about: `Hi there! 👋
+
+I'm a passionate developer who loves building things that matter.
+I enjoy solving complex problems and learning new technologies.
+
+Currently focused on creating meaningful digital experiences
+and contributing to open source projects.
+
+Always excited to collaborate on interesting projects!`,
+
+	skills: {
+		languages: ["JavaScript/TypeScript", "Python", "Java", "Go"],
+		frontend: ["React", "Vue.js", "HTML5", "CSS3", "Tailwind"],
+		backend: ["Node.js", "Express", "Django", "PostgreSQL", "MongoDB"],
+		tools: ["Git", "Docker", "AWS", "Linux", "CI/CD"],
+		currentlyLearning: ["Rust", "Machine Learning", "System Design"]
+	},
+
+	experience: [
 		{
-			name: "🐛 Bug Report System",
-			description: "🐍 Python, 🌶️ Flask, 📊 NoSQL"
+			title: "Software Developer",
+			company: "TechCorp Inc.",
+			period: "Jan 2024 - Present",
+			responsibilities: [
+				"Built responsive web applications using React and TypeScript",
+				"Improved API performance by 40% through optimization",
+				"Collaborated with cross-functional teams on product features"
+			]
+		},
+		{
+			title: "Frontend Developer Intern",
+			company: "StartupXYZ",
+			period: "Jun 2023 - Dec 2023",
+			responsibilities: [
+				"Developed user interfaces for mobile-first applications",
+				"Implemented automated testing reducing bugs by 25%",
+				"Participated in code reviews and agile development"
+			]
+		},
+		{
+			title: "Open Source Contributor",
+			company: "",
+			period: "2022 - Present",
+			responsibilities: ["Active contributor to several popular JavaScript libraries", "Maintained documentation and helped with community support"]
 		}
 	],
 
-	experience: [],
-
-	skills: {
-		programmingLanguages: ["Java", "Python", "C", "JavaScript", "TypeScript", "Lisp", "Smalltalk", "Elixir", "Haskell", "Go", "Rust"],
-		frameworks: ["React", "Angular", "Vue", "Flask", "Django", "Express"],
-		databases: ["MySQL", "NoSQL", "SQLite", "Firebase", "MongoDB", "AWS", "Azure"],
-		others: ["Node.js", "Git", "GitHub"]
+	education: {
+		degree: "Bachelor of Computer Science",
+		institution: "University of Technology",
+		period: "2020 - 2024",
+		coursework: ["Data Structures & Algorithms", "Software Engineering", "Database Systems", "Computer Networks", "Machine Learning Fundamentals"],
+		certifications: ["AWS Cloud Practitioner", "MongoDB Developer Associate"]
 	},
+
+	hobbies: [
+		"Reading sci-fi novels and tech blogs",
+		"Exploring new programming languages",
+		"Contributing to open source projects",
+		"Playing chess and strategy games",
+		"Hiking and photography",
+		"Experimenting with new recipes"
+	],
 
 	contact: {
-		email: "bhavdeepsa@gmail.com",
-		github: "github.com/bhav2134",
-		linkedin: "linkedin.com/in/bhavdeeparora",
-		portfolio: "bhavdeep.dev"
+		openTo: ["Full-time opportunities", "Freelance projects", "Open source collaboration", "Tech discussions over coffee ☕"],
+		message: "Feel free to reach out anytime!"
 	},
 
-	education: {
-		degree: "🎓 BACHELOR OF COMPUTER SCIENCE (Honours)",
-		school: "🏫 Toronto Metropolitan University (formerly Known as Ryerson University)",
-		period: "📅 2022 - 2026",
-		details: "📚 Relevant Coursework: Data Structures, Algorithms, Web Development, Database Systems",
-		certifications: ["☁️ AWS Certified Developer", "🌤️ Google Cloud Professional", "🍃 MongoDB Certified Developer"]
+	commands: {
+		help: {
+			description: "Available commands:",
+			list: [
+				{ command: "about", description: "Learn about me" },
+				{ command: "skills", description: "Technical skills" },
+				{ command: "experience", description: "Work experience" },
+				{ command: "education", description: "Educational background" },
+				{ command: "hobbies", description: "Personal interests" },
+				{ command: "contact", description: "Get in touch" },
+				{ command: "whoami", description: "Current status" },
+				{ command: "clear", description: "Clear terminal" }
+			]
+		}
 	}
 };
