@@ -20,11 +20,11 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			)}
 		>
 			<NavbarLink href="/#home">Home</NavbarLink>
-			<NavbarLink href="/about" useClientSideRouting>
+			<NavbarLink href="/#about" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/timeline">Experience/Education</NavbarLink>
-			<NavbarLink href="/projects">Projects</NavbarLink>
+			<NavbarLink href="/#timeline">Experience/Education</NavbarLink>
+			<NavbarLink href="/#projects">Projects</NavbarLink>
 			<NavbarLink href="/resume.pdf" openInNewTab>
 				Resume
 			</NavbarLink>
