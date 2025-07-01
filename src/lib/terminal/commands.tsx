@@ -107,24 +107,6 @@ ${education.period}
 		return wrapStructured(output.trim());
 	},
 
-	experience: (): string => {
-		let output = "";
-		portfolioData.experience.forEach((job, index) => {
-			const companyText = job.company ? ` @ ${job.company}` : "";
-			output += `<span class="text-green-400">${job.title}</span>${companyText}
-${job.period}
-`;
-			job.responsibilities.forEach((responsibility) => {
-				output += `• ${responsibility}\n`;
-			});
-
-			if (index < portfolioData.experience.length - 1) {
-				output += "\n";
-			}
-		});
-		return wrapStructured(output.trim());
-	},
-
 	contact: (): string => {
 		const { personal, contact } = portfolioData;
 		const output = `Let's connect! 

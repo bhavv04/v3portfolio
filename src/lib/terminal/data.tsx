@@ -23,34 +23,7 @@ I'm a passionate developer who loves building things that matter. I enjoy solvin
 		currentlyLearning: ["Rust", "Machine Learning", "System Design"]
 	},
 
-	experience: [
-		{
-			title: "Software Developer",
-			company: "Path to Menzeborrenza",
-			period: "March 2024 - Present",
-			responsibilities: [
-				"Built responsive web applications using React and TypeScript",
-				"Improved API performance by 40% through optimization",
-				"Collaborated with cross-functional teams on product features"
-			]
-		},
-		{
-			title: "Frontend Developer Intern",
-			company: "StartupXYZ",
-			period: "Jun 2023 - Dec 2023",
-			responsibilities: [
-				"Developed user interfaces for mobile-first applications",
-				"Implemented automated testing reducing bugs by 25%",
-				"Participated in code reviews and agile development"
-			]
-		},
-		{
-			title: "Open Source Contributor",
-			company: "",
-			period: "2022 - Present",
-			responsibilities: ["Active contributor to several popular JavaScript libraries", "Maintained documentation and helped with community support"]
-		}
-	],
+	experience: [],
 
 	education: {
 		degree: "Bachelor of Computer Science",
