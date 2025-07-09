@@ -35,7 +35,7 @@ I'm a passionate developer who loves building things that matter. I enjoy solvin
 
 	hobbies: [
 		"Reading Fantasy novels",
-		"Rugby/Basketball/Badminton",
+		"I play Rugby and Basketball and sometimnes badminton",
 		"Contributing to open source projects",
 		"Playing chess and strategy games",
 		"Hiking and Mountain biking",
@@ -45,20 +45,5 @@ I'm a passionate developer who loves building things that matter. I enjoy solvin
 	contact: {
 		openTo: ["Job Opportunities", "Freelance Projects", "Open Source Collaborations"],
 		message: "Feel free to reach out anytime!"
-	},
-
-	commands: {
-		help: {
-			description: "Available commands:",
-			list: [
-				{ command: "about", description: "Learn about me" },
-				{ command: "skills", description: "Technical skills" },
-				{ command: "education", description: "Educational background" },
-				{ command: "hobbies", description: "Personal interests" },
-				{ command: "contact", description: "Get in touch" },
-				{ command: "whoami", description: "Current status" },
-				{ command: "clear", description: "Clear terminal" }
-			]
-		}
 	}
 };

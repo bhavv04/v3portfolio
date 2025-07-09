@@ -20,11 +20,10 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			)}
 		>
 			<NavbarLink href="/#home">Home</NavbarLink>
-			<NavbarLink href="/#about" useClientSideRouting>
+			<NavbarLink href="/about" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/#timeline">Experience/Education</NavbarLink>
-			<NavbarLink href="/#projects">Projects</NavbarLink>
+			<NavbarLink href="/projects">Projects</NavbarLink>
 			<NavbarLink href="/resume.pdf" openInNewTab>
 				Resume
 			</NavbarLink>
@@ -48,21 +47,16 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 			href={href}
 			target={openInNewTab ? "_blank" : "_self"}
 			className={cn(
-				"group relative px-4 py-2.5 text-sm font-medium text-white/80",
-				"rounded-full transition-all duration-300 ease-out",
-				"hover:bg-white/10 hover:text-white",
-				"active:scale-95 active:bg-white/20",
+				"group relative px-4 py-2.5 text-sm font-medium text-white/70",
+				"rounded-full transition-colors duration-300 ease-out",
+				"hover:text-white",
 				className
 			)}
 		>
-			{/* Animated background on hover */}
-			<span className="absolute inset-0 rounded-full bg-gradient-to-r from-black/10 via-white/0 to-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-			{/* Animated underline */}
-			<span className="absolute bottom-1 left-1/2 h-[2px] w-0 bg-white transition-all duration-300 ease-out group-hover:w-5/12 group-hover:-translate-x-1/2" />
-
 			{/* Content */}
-			<span className="relative z-10 flex items-center gap-2">{children}</span>
+			<span className="relative z-10 flex items-center gap-2 before:absolute before:-bottom-1.5 before:left-0 before:right-0 before:h-px before:origin-right before:scale-x-0 before:bg-white/90 before:transition-transform before:duration-700 before:ease-in-out group-hover:before:origin-left group-hover:before:scale-x-100">
+				{children}
+			</span>
 		</Comp>
 	);
 }

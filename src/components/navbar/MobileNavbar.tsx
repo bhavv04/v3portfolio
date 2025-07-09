@@ -53,13 +53,10 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 				<NavbarLink href="/#home" setIsOpen={setIsOpen} useClientSideRouting>
 					Home
 				</NavbarLink>
-				<NavbarLink href="/#about" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
 					About
 				</NavbarLink>
-				<NavbarLink href="/#timeline" setIsOpen={setIsOpen} useClientSideRouting>
-					Experience/Education
-				</NavbarLink>
-				<NavbarLink href="/#projects" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/projects" setIsOpen={setIsOpen} useClientSideRouting>
 					Projects
 				</NavbarLink>
 				<NavbarLink href="/resume.pdf" setIsOpen={setIsOpen} openInNewTab>
@@ -96,9 +93,6 @@ function NavbarLink({ setIsOpen, href, openInNewTab = false, useClientSideRoutin
 			)}
 			onClick={() => setIsOpen && setIsOpen(false)}
 		>
-			{/* Animated background on hover */}
-			<span className="absolute inset-0 rounded-none bg-gradient-to-r from-zinc-500/20 via-stone-500/20 to-gray-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
 			{/* Content */}
 			<span className="relative z-10 flex items-center justify-center gap-2">
 				{children}

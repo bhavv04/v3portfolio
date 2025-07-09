@@ -4,134 +4,84 @@ const wrapStructured = (content: string) => `<div class="text-sm font-mono white
 
 export const commands = {
 	help: (): string => {
-		const { commands: helpData } = portfolioData;
-
-		// Build a flat array of just the command strings
-		const commandList = helpData.help.list.map((cmd) => cmd.command);
-
-		// Build JSON string
-		const formattedJSON = JSON.stringify(
-			{
-				commands: commandList
-			},
-			null,
-			2
-		);
-
-		const colorized = formattedJSON
-			// Keys
-			.replace(/"([^"]+)":/g, `<span class="text-blue-400">"$1"</span>:`)
-			// String values
-			.replace(/: "([^"]+)"/g, `: <span class="text-yellow-300">"$1"</span>`)
-			// Arrays
-			.replace(/[{}[\]]/g, (match) => `<span class="text-gray-300">${match}</span>`);
-
-		return wrapStructured(colorized);
+		return wrapStructured("Available commands: help, about, hobbies, skills, education, contact, whoami");
 	},
 
-	about: (): string => wrapStructured(portfolioData.about),
+	about: (): string => {
+		return wrapStructured(portfolioData.about);
+	},
 
 	hobbies: (): string => {
-		const hobbyList = portfolioData.hobbies;
+		const hobbiesText = `Personal Interests & Hobbies:
 
-		const formattedJSON = JSON.stringify(
-			{
-				hobbies: hobbyList
-			},
-			null,
-			2
-		);
-
-		const colorized = formattedJSON
-			// Keys
-			.replace(/"([^"]+)":/g, `<span class="text-blue-400">"$1"</span>:`)
-			// String values
-			.replace(/: "([^"]+)"/g, `: <span class="text-yellow-300">"$1"</span>`)
-			// Brackets
-			.replace(/[{}[\]]/g, (match) => `<span class="text-gray-500">${match}</span>`);
-
-		return wrapStructured(colorized);
+${portfolioData.hobbies.map((hobby) => `• ${hobby}`).join("\n")}`;
+		return wrapStructured(hobbiesText);
 	},
 
 	skills: (): string => {
-		const { skills } = portfolioData;
-		const output = `Skills Tree
-├── <span class="text-blue-400">Languages</span>
-│   ├── ${skills.languages[0]}
-│   ├── ${skills.languages[1]}
-│   ├── ${skills.languages[2]}
-│   └── ${skills.languages[3]}
-├── <span class="text-blue-400">Frontend</span>
-│   ├── ${skills.frontend[0]}
-│   ├── ${skills.frontend[1]}
-│   ├── ${skills.frontend[2]}
-│   ├── ${skills.frontend[3]}
-│   └── ${skills.frontend[4]}
-├── <span class="text-blue-400">Backend</span>
-│   ├── ${skills.backend[0]}
-│   ├── ${skills.backend[1]}
-│   ├── ${skills.backend[2]}
-│   ├── ${skills.backend[3]}
-│   └── ${skills.backend[4]}
-├── <span class="text-blue-400">Tools & Other</span>
-│   ├── ${skills.tools[0]}
-│   ├── ${skills.tools[1]}
-│   ├── ${skills.tools[2]}
-│   ├── ${skills.tools[3]}
-│   └── ${skills.tools[4]}
-└── <span class="text-blue-400">Currently Learning</span> 
-    ├── ${skills.currentlyLearning[0]}
-    ├── ${skills.currentlyLearning[1]}
-    └── ${skills.currentlyLearning[2]}
-`;
-		return wrapStructured(output);
+		const skillsText = `Technical Skills:
+
+Languages:
+${portfolioData.skills.languages.map((lang) => `• ${lang}`).join("\n")}
+
+Frontend:
+${portfolioData.skills.frontend.map((tech) => `• ${tech}`).join("\n")}
+
+Backend:
+${portfolioData.skills.backend.map((tech) => `• ${tech}`).join("\n")}
+
+Tools & Technologies:
+${portfolioData.skills.tools.map((tool) => `• ${tool}`).join("\n")}
+
+Currently Learning:
+${portfolioData.skills.currentlyLearning.map((tech) => `• ${tech}`).join("\n")}
+
+Favorite Language: ${portfolioData.personal.favoriteLanguage}
+Current Focus: ${portfolioData.personal.currentFocus}`;
+		return wrapStructured(skillsText);
 	},
 
 	education: (): string => {
-		const { education } = portfolioData;
-		let output = `<span class="text-yellow-400">${education.institution}</span>
-${education.degree}
-${education.period}
+		const educationText = `Education:
 
-<span class="text-blue-400">Relevant Coursework:</span>
-`;
-		education.coursework.forEach((course) => {
-			output += `• ${course}\n`;
-		});
+${portfolioData.education.degree}
+${portfolioData.education.institution}
+${portfolioData.education.period}
 
-		output += `\n<span class="text-blue-400">Certifications:</span>\n`;
-		education.certifications.forEach((cert) => {
-			output += `• ${cert}\n`;
-		});
+Relevant Coursework:
+${portfolioData.education.coursework.map((course) => `• ${course}`).join("\n")}
 
-		return wrapStructured(output.trim());
+Certifications:
+${portfolioData.education.certifications.map((cert) => `• ${cert}`).join("\n")}`;
+		return wrapStructured(educationText);
 	},
 
 	contact: (): string => {
-		const { personal, contact } = portfolioData;
-		const output = `Let's connect! 
+		const contactText = `Contact Information:
 
-<span class="text-blue-400">Email:</span>     <a href="mailto:${personal.email}" class="text-white hover:text-blue-300 underline">${personal.email}</a>
-<span class="text-blue-400">inkedIn:</span>  <a href="https://${personal.linkedin}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.linkedin}</a>
-<span class="text-blue-400">GitHub:</span>    <a href="https://${personal.github}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.github}</a>
-<span class="text-blue-400">Portfolio:</span> <a href="https://${personal.portfolio}" target="_blank" class="text-white hover:text-blue-300 underline">${personal.portfolio}</a>
+Email: ${portfolioData.personal.email}
+LinkedIn: ${portfolioData.personal.linkedin}
+GitHub: ${portfolioData.personal.github}
+Portfolio: ${portfolioData.personal.portfolio}
+Location: ${portfolioData.personal.location}
 
-${contact.message} 💬`;
+Open to:
+${portfolioData.contact.openTo.map((item) => `• ${item}`).join("\n")}
 
-		return wrapStructured(output);
+${portfolioData.contact.message}`;
+		return wrapStructured(contactText);
 	},
+
 	whoami: (): string => {
-		const { personal } = portfolioData;
-		const output = `<span class="text-green-400">$ whoami</span>
+		const whoamiText = `${portfolioData.personal.name}
+${portfolioData.personal.role}
+${portfolioData.personal.location}
 
-<span class="text-blue-400">Name:</span>          ${personal.name}
-<span class="text-blue-400">Role:</span>          ${personal.role}
-<span class="text-blue-400">Location:</span>      ${personal.location}
-<span class="text-blue-400">Favorite Lang:</span> ${personal.favoriteLanguage}
-<span class="text-blue-400">Current Focus:</span> ${personal.currentFocus}
+Current Focus: ${portfolioData.personal.currentFocus}
+Favorite Language: ${portfolioData.personal.favoriteLanguage}
 
-<span class="text-gray-400"># Always learning, always building</span>`;
-		return wrapStructured(output);
+${portfolioData.about}`;
+		return wrapStructured(whoamiText);
 	}
 };
 
@@ -159,8 +109,6 @@ export const executeCommand = (cmd: string): string => {
 	} else if (command === "") {
 		return "";
 	} else {
-		return wrapStructured(
-			`Command not found: <span class="text-red-400">${cmd}</span>, Type <span class="text-red-400">help</span> to see available commands.`
-		);
+		return wrapStructured(`Command '${command}' not found. Type 'help' for available commands.`);
 	}
 };
