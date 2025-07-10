@@ -17,7 +17,7 @@ export default function About() {
 						/>
 
 						{/* Subtitle */}
-						<p className="mt-4 max-w-4xl text-lg font-semibold leading-8 text-slate-300">
+						<p className="mt-4 max-w-6xl text-lg font-semibold leading-8 text-slate-300">
 							I&apos;ve kept this About section just the way I like things — interactive. You won&apos;t find the usual repeated bio here.
 						</p>
 
@@ -33,8 +33,8 @@ export default function About() {
 			</div>
 
 			{/* Terminal Section */}
-			<div className="md:-mt-38 -mb-32 -mt-44 pb-16">
-				<div className="mx-auto">
+			<div className="-mb-10 -mt-48 md:-mt-36">
+				<div className="">
 					<TerminalAbout />
 				</div>
 			</div>

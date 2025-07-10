@@ -20,6 +20,11 @@ export default function ProjectsPage() {
 							</>
 						}
 					/>
+
+					<p className="mt-4 text-lg font-semibold text-slate-300">
+						Some stuff I&apos;ve built recently. I love to create things that solve problems, whether it&apos;s a small utility or a full-fledged
+						application.
+					</p>
 				</div>
 
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">

@@ -56,10 +56,9 @@ const TerminalAbout: React.FC = () => {
 				...output,
 				{
 					id: Date.now().toString(),
-					content: `<div class="flex items-center space-x-2 mb-2">
-						<span class="font-medium text-green-400">~/about</span>
-						<span class="text-blue-400">❯</span>
-						<span class="break-all font-medium text-gray-100">${input}</span>
+					content: `<div class="flex items-center space-x-2">
+						<span class="text-green-400">~/about/</span>
+						<span class="break-all text-gray-100">${input}</span>
 					</div>`,
 					type: "command"
 				}
@@ -180,17 +179,16 @@ const TerminalAbout: React.FC = () => {
 						</div>
 
 						{/* Input Line */}
-						<div className="mt-6 flex items-start space-x-2">
+						<div className="mt-4 flex items-start space-x-2">
 							<div className="flex flex-shrink-0 items-center space-x-2">
 								{isTyping ? (
 									<div className="flex items-center space-x-2">
-										<span className="animate-pulse text-blue-400">⏳</span>
+										<span className="">⏳</span>
 										<span className="text-xs text-gray-400">Processing</span>
 									</div>
 								) : (
 									<>
-										<span className="text-sm font-medium text-green-400">~/about</span>
-										<span className="ml-1 animate-pulse text-blue-400">❯</span>
+										<span className="text-sm font-medium text-green-400">~/about/</span>
 									</>
 								)}
 							</div>
