@@ -9,22 +9,26 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
 			className={cn(
-				"sticky top-4 z-[100] mx-auto flex w-fit items-center justify-center gap-1",
-				"rounded-full border border-white/10",
-				"bg-[rgb(13,13,13,0)] backdrop-blur-xl backdrop-saturate-150",
-				"px-2 py-2 shadow-2xl shadow-black/25",
-				"before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r",
-				"before:from-white/5 before:via-white/0 before:to-white/5",
-				"before:-z-10 before:p-[1px] before:content-['']",
+				"before:to-white/5before:-z-10 expand-sideways-container sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-8 py-3.5 backdrop-blur-xl backdrop-saturate-150 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-['']",
 				className
 			)}
 		>
-			<NavbarLink href="/#home">Home</NavbarLink>
-			<NavbarLink href="/about" useClientSideRouting>
+			<NavbarLink href="/" className="staggered-letter" useClientSideRouting>
+				Home
+			</NavbarLink>
+			<NavbarLink href="/about" className="staggered-letter" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/projects">Projects</NavbarLink>
-			<NavbarLink href="/resume.pdf" openInNewTab>
+			<NavbarLink href="/timeline" className="staggered-letter" useClientSideRouting>
+				Experience/Education
+			</NavbarLink>
+			<NavbarLink href="/projects" className="staggered-letter" useClientSideRouting>
+				Projects
+			</NavbarLink>
+			<NavbarLink href="/explorations" className="staggered-letter" useClientSideRouting>
+				Explorations
+			</NavbarLink>
+			<NavbarLink href="/resume.pdf" openInNewTab className="staggered-letter">
 				Resume
 			</NavbarLink>
 		</nav>
@@ -47,16 +51,11 @@ function NavbarLink({ href, openInNewTab = false, useClientSideRouting, classNam
 			href={href}
 			target={openInNewTab ? "_blank" : "_self"}
 			className={cn(
-				"group relative px-4 py-2.5 text-sm font-medium text-white/70",
-				"rounded-full transition-colors duration-300 ease-out",
-				"hover:text-white",
+				"relative before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2 before:bg-primary before:transition-[width] before:duration-200 before:content-[''] hover:before:w-full",
 				className
 			)}
 		>
-			{/* Content */}
-			<span className="relative z-10 flex items-center gap-2 before:absolute before:-bottom-1.5 before:left-0 before:right-0 before:h-px before:origin-right before:scale-x-0 before:bg-white/90 before:transition-transform before:duration-700 before:ease-in-out group-hover:before:origin-left group-hover:before:scale-x-100">
-				{children}
-			</span>
+			{children}
 		</Comp>
 	);
 }

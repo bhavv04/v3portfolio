@@ -19,15 +19,16 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 					"border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl",
 					"py-3.5 text-lg font-medium text-white/90 shadow-none shadow-black/25",
 					"before:absolute before:inset-0 before:bg-gradient-to-r",
-					"before:from-white/5 before:via-white/0 before:to-white/5", // glass gradient
+					"before:from-white/5 before:via-white/0 before:to-white/5",
 					"before:-z-10 before:p-[1px] before:content-['']",
 					"transition-all duration-300 hover:text-white hover:shadow-none hover:shadow-slate-900",
 					{ "rounded-sm": !isOpen },
-					{ "rounded-none rounded-b-none": isOpen }
+					{ "rounded-sm rounded-b-none": isOpen }
 				)}
 				onClick={() => setIsOpen(!isOpen)}
 			>
 				<span className="relative z-10">Bhavdeep Arora</span>
+
 				{/* Animated chevron */}
 				<svg
 					className={cn("absolute right-4 h-4 w-4 transition-transform duration-300", { "rotate-180": isOpen })}
@@ -41,10 +42,10 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 
 			<nav
 				className={cn(
-					"absolute flex w-full flex-col items-center gap-1 border border-2",
-					"rounded-b-sm border border-t-0 border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl", // glass tint
+					"absolute flex w-full flex-col items-center gap-1",
+					"rounded-b-sm border border-t-0 border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl",
 					"before:absolute before:inset-0 before:rounded-b-sm before:bg-gradient-to-r",
-					"before:from-white/5 before:via-white/0 before:to-white/5", // glass gradient
+					"before:from-white/5 before:via-white/0 before:to-white/5",
 					"before:-z-10 before:p-[1px] before:content-['']",
 					"duration-300 animate-in slide-in-from-top-2",
 					{ hidden: !isOpen }
@@ -56,8 +57,14 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
 					About
 				</NavbarLink>
+				<NavbarLink href="/timeline" setIsOpen={setIsOpen} useClientSideRouting>
+					Experience/Education
+				</NavbarLink>
 				<NavbarLink href="/projects" setIsOpen={setIsOpen} useClientSideRouting>
 					Projects
+				</NavbarLink>
+				<NavbarLink href="/explorations" setIsOpen={setIsOpen} useClientSideRouting>
+					Explorations
 				</NavbarLink>
 				<NavbarLink href="/resume.pdf" setIsOpen={setIsOpen} openInNewTab>
 					Resume
