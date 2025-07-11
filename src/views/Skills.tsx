@@ -55,7 +55,7 @@ export function Skills() {
 	const carouselSkills = [...skills, ...skills];
 
 	return (
-		<section id="skills" className="mx-auto max-w-[50rem] py-12">
+		<section id="skills" className="mx-auto max-w-[55rem] py-12">
 			<div className="slide-in-up mt-8 space-y-4">
 				{/* Row 1 */}
 				<div className="skills-carousel-outer">

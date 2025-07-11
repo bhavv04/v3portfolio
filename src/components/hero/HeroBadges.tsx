@@ -68,7 +68,7 @@ export function HeroBadge({ icon, text, href, className }: HeroBadgeProps) {
 		<a
 			href={href}
 			target="_blank"
-			className={cn("inline-flex items-center gap-2 rounded-full border bg-background px-4 py-1 text-sm text-foreground transition-colors", className)}
+			className={cn("inline-flex items-center gap-2 rounded-full bg-background px-4 py-1 text-sm text-foreground transition-colors", className)}
 		>
 			{icon}
 

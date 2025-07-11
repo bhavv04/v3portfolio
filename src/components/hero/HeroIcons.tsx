@@ -45,7 +45,6 @@ export function HeroIcons() {
 			<HeroIcon text="📍 Toronto, ON" className="" />
 			<HeroIcon text={`📅 ${currentDate}`} className="" />
 			<HeroIcon text={`⏳ ${currentTime}`} className="" />
-
 			<button
 				onClick={toggleCat}
 				className="inline-flex items-center rounded-full bg-[rgba(255,255,255,0.2)] px-2 py-1 text-xs font-bold text-white/80 backdrop-blur-3xl transition-colors duration-200 hover:bg-[rgba(255,255,255,0.2)]"

@@ -9,26 +9,26 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
 		<nav
 			className={cn(
-				"before:to-white/5before:-z-10 expand-sideways-container sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-8 py-3.5 backdrop-blur-xl backdrop-saturate-150 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-['']",
+				"before:to-white/5before:-z-10 sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-8 py-3.5 backdrop-blur-xl backdrop-saturate-150 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-['']",
 				className
 			)}
 		>
-			<NavbarLink href="/" className="staggered-letter" useClientSideRouting>
+			<NavbarLink href="/" className="" useClientSideRouting>
 				Home
 			</NavbarLink>
-			<NavbarLink href="/about" className="staggered-letter" useClientSideRouting>
+			<NavbarLink href="/about" className="" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/timeline" className="staggered-letter" useClientSideRouting>
+			<NavbarLink href="/timeline" className="" useClientSideRouting>
 				Experience/Education
 			</NavbarLink>
-			<NavbarLink href="/projects" className="staggered-letter" useClientSideRouting>
+			<NavbarLink href="/projects" className="" useClientSideRouting>
 				Projects
 			</NavbarLink>
-			<NavbarLink href="/explorations" className="staggered-letter" useClientSideRouting>
-				Explorations
+			<NavbarLink href="/research" className="" useClientSideRouting>
+				Research
 			</NavbarLink>
-			<NavbarLink href="/resume.pdf" openInNewTab className="staggered-letter">
+			<NavbarLink href="/resume.pdf" openInNewTab className="">
 				Resume
 			</NavbarLink>
 		</nav>

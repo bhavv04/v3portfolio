@@ -144,7 +144,7 @@ const TerminalAbout: React.FC = () => {
 
 	return (
 		<div className="relative mt-10 flex min-h-screen items-center justify-center">
-			<div className="relative max-w-3xl font-mono sm:w-full">
+			<div className="relative w-full font-mono lg:max-w-2xl">
 				<div className="mx-auto flex h-[80vh] flex-col" onClick={handleTerminalClick}>
 					{/* Terminal Header */}
 					<div className="bg-transprent mb-2 flex items-center justify-between rounded-xl border border-white px-4 py-3 backdrop-blur-sm sm:px-6 sm:py-4">

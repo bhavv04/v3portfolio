@@ -7,7 +7,7 @@ interface TextEncryptedProps {
 	className?: string;
 }
 
-const chars = "-_~`!@#$%^&*()+=[]{}|;:,.<>?";
+const chars = "";
 
 export const TextEncrypted: React.FC<TextEncryptedProps> = ({ text, interval = 50, className = "" }) => {
 	const [outputText, setOutputText] = useState("");

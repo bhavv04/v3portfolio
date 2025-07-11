@@ -1,5 +1,16 @@
 "use client";
 
+export default function Explorations() {
+	return (
+		<div className="flex min-h-screen items-center justify-center text-xl text-white">
+			<p>🚧 This page is under construction. Check back soon!</p>
+		</div>
+	);
+}
+
+/* 
+"use client";
+
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { mockProjects } from "@/lib/projects/allData";
@@ -37,7 +48,7 @@ export default function ProjectsPage() {
 								animationFillMode: "both"
 							}}
 						>
-							{/* Project Image */}
+							// Project Image 
 							<div className="relative h-48 overflow-hidden bg-gray-100">
 								{project.image ? (
 									<Image
@@ -53,11 +64,10 @@ export default function ProjectsPage() {
 									</div>
 								)}
 
-								{/* Overlay gradient */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
 							</div>
 
-							{/* Project Content */}
+							// Project Content
 							<div className="p-4">
 								<h3 className="hover-brighten mb-2 text-lg transition-colors duration-300">{project.title}</h3>
 
@@ -105,3 +115,5 @@ export default function ProjectsPage() {
 		</div>
 	);
 }
+
+*/

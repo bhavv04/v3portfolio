@@ -8,11 +8,11 @@ import { SiTheodinproject } from "react-icons/si";
 
 export function ProjectsView() {
 	return (
-		<section id="projects" className="">
+		<section id="projects" className="mx-auto max-w-[55rem]">
 			<SectionTitle
 				text={
 					<>
-						<SiTheodinproject className="mb-2 mr-2 inline-block" />
+						<SiTheodinproject className="mx-auto mb-2 mr-2 inline-block" />
 						Projects
 					</>
 				}
