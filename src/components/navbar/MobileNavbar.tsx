@@ -51,19 +51,19 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 					{ hidden: !isOpen }
 				)}
 			>
-				<NavbarLink href="/#home" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/" setIsOpen={setIsOpen} useClientSideRouting>
 					Home
 				</NavbarLink>
-				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/#about" setIsOpen={setIsOpen} useClientSideRouting>
 					About
 				</NavbarLink>
-				<NavbarLink href="/timeline" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/#timeline" setIsOpen={setIsOpen} useClientSideRouting>
 					Experience/Education
 				</NavbarLink>
-				<NavbarLink href="/projects" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/#projects" setIsOpen={setIsOpen} useClientSideRouting>
 					Projects
 				</NavbarLink>
-				<NavbarLink href="/research" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/#research" setIsOpen={setIsOpen} useClientSideRouting>
 					Research
 				</NavbarLink>
 				<NavbarLink href="/resume.pdf" setIsOpen={setIsOpen} openInNewTab>

@@ -25,14 +25,14 @@ export function HeroSection() {
 
 			<div className="">
 				<p className="mb-2">
-					I&apos;m a computer science Student currently studying at
+					I&apos;m a computer science Student currently studying at{" "}
 					<a
 						href="https://www.torontomu.ca/programs/undergraduate/computer-science/"
 						className="underline-dotted-highlight inline-flex"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Toronto Metropolitan University{" "}
+						Toronto Metropolitan University
 					</a>{" "}
 					(formerly known as Ryerson University).
 				</p>

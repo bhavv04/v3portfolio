@@ -16,16 +16,16 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			<NavbarLink href="/" className="" useClientSideRouting>
 				Home
 			</NavbarLink>
-			<NavbarLink href="/about" className="" useClientSideRouting>
+			<NavbarLink href="/#about" className="" useClientSideRouting>
 				About
 			</NavbarLink>
-			<NavbarLink href="/timeline" className="" useClientSideRouting>
+			<NavbarLink href="/#timeline" className="" useClientSideRouting>
 				Experience/Education
 			</NavbarLink>
-			<NavbarLink href="/projects" className="" useClientSideRouting>
+			<NavbarLink href="/#projects" className="" useClientSideRouting>
 				Projects
 			</NavbarLink>
-			<NavbarLink href="/research" className="" useClientSideRouting>
+			<NavbarLink href="/#research" className="" useClientSideRouting>
 				Research
 			</NavbarLink>
 			<NavbarLink href="/resume.pdf" openInNewTab className="">

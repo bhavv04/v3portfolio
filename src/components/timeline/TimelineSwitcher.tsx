@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { HiOutlineBriefcase } from "react-icons/hi2";
-import { LuGraduationCap } from "react-icons/lu";
 
 type TimelineView = "experience" | "education";
 
@@ -18,23 +16,13 @@ export function TimelineSwitcher({ experienceContent, educationContent }: Timeli
 
 	const getSectionTitle = () => {
 		if (selectedView === "experience") {
-			return (
-				<span className="flex items-center gap-2">
-					<HiOutlineBriefcase className="mb-1 inline-block" />
-					Experience
-				</span>
-			);
+			return <span className="mb-4 flex items-center gap-2">Experience</span>;
 		}
-		return (
-			<span className="flex items-center gap-2">
-				<LuGraduationCap className="mb-1 inline-block" />
-				Education
-			</span>
-		);
+		return <span className="mb-4 flex items-center gap-2">Education</span>;
 	};
 
 	return (
-		<section className="relative z-10 w-full" id="timeline">
+		<section className="relative w-full" id="timeline">
 			<SectionTitle text={getSectionTitle()} />
 			<Tabs id="education" value={selectedView} onValueChange={(view) => setSelectedView(view as TimelineView)} className="relative">
 				<TabsList className="grid w-full grid-cols-2">
