@@ -12,7 +12,7 @@ export function ProjectsView() {
 			<SectionTitle
 				text={
 					<span className="flex items-center gap-2">
-						<SiTheodinproject className="h-12 w-12" />
+						<SiTheodinproject className="" />
 						<span>Projects</span>
 					</span>
 				}
