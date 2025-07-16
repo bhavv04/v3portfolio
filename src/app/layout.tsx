@@ -17,9 +17,12 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 	return (
 		<html lang="en">
 			<head>
-				<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+				<link
+					href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+					rel="stylesheet"
+				/>
 			</head>
-			<body className="relative font-mono">
+			<body className="relative font-satoshi">
 				<CatProvider>
 					<ScrollBackground />
 

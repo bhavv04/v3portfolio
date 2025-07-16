@@ -1,18 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
 
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
-	}
-
-	.bg-gridlines {
-		background:
-			linear-gradient(to right, hsl(var(--line-color)) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size),
-			linear-gradient(to bottom, hsl(var(--line-color)) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size);
-		mask: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0.3) 100vh);
 	}
 }
 
@@ -96,9 +88,22 @@
 		@apply border-border;
 	}
 
+	/* margin left to difference thew width of scrollbar*/
 	body {
 		@apply bg-background text-foreground;
+		@apply lg:ml-4;
 	}
+}
+
+@font-face {
+	font-family: "Satoshi";
+	src:
+		url("/public/fonts/Satoshi-Variable.woff2") format("woff2"),
+		url("/public/fonts/Satoshi-Variable.woff") format("woff"),
+		url("/public/fonts/Satoshi-Variable.ttf") format("truetype");
+	font-weight: 300 900;
+	font-display: swap;
+	font-style: normal;
 }
 
 .bg-card {
@@ -271,13 +276,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-button {
-	background: var(--scrollbar-button-color, black);
+	background: var(--scrollbar-button-color, transparent);
 	border: var(--scrollbar-border-thickness, 2px) solid var(--scrollbar-border-color, rgb(244, 244, 244));
 	border-radius: var(--scrollbar-border-radius, 8px);
 }
 
 body::-webkit-scrollbar-thumb:hover {
-	background: var(--scrollbar-thumb-color, green);
+	background: var(--scrollbar-thumb-color, rgb(32, 32, 32));
 }
 
 /* for hiding scrollbars in terminal */
@@ -346,7 +351,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 ::selection {
-	background: rgba(49, 144, 49, 0.7);
+	background: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -405,4 +410,23 @@ body::-webkit-scrollbar-thumb:hover {
 	transform-origin: left;
 	animation: expandSideways 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 	animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Base class with custom delay control */
+.fade-in-up {
+	animation: fadeInUp 0.8s ease-out forwards;
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
+	opacity: 0; /* Start hidden */
+	transform: translateY(30px);
 }

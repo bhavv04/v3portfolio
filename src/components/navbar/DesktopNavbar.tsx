@@ -7,9 +7,10 @@ interface DesktopNavbarProps {
 
 export function DesktopNavbar({ className }: DesktopNavbarProps) {
 	return (
+		//ml-28 to align with the hero section
 		<nav
 			className={cn(
-				"before:to-white/5before:-z-10 sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-8 py-3.5 backdrop-blur-xl backdrop-saturate-150 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-['']",
+				"before:to-white/5before:-z-10 sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-6 py-4 backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-[''] lg:ml-36",
 				className
 			)}
 		>

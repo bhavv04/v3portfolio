@@ -4,11 +4,19 @@ import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
+import { SiTheodinproject } from "react-icons/si";
 
 export function ProjectsView() {
 	return (
 		<section id="projects" className="mx-auto">
-			<SectionTitle text={<>Projects</>} />
+			<SectionTitle
+				text={
+					<span className="flex items-center gap-2">
+						<SiTheodinproject className="h-12 w-12" />
+						<span>Projects</span>
+					</span>
+				}
+			/>
 
 			<Card>
 				<CardContent className="flex flex-col gap-8 p-6">

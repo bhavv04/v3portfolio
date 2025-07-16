@@ -18,7 +18,7 @@ import {
 } from "react-icons/si";
 
 const skills = [
-	{ name: "React.js", icon: <FaReact className="font-sans text-2xl text-cyan-400" /> },
+	{ name: "React.js", icon: <FaReact className="text-2xl text-cyan-400" /> },
 	{
 		name: "Javascript",
 		icon: <FaJsSquare className="text-2xl text-yellow-300" />,
@@ -35,7 +35,7 @@ const skills = [
 		icon: <SiRedis className="text-2xl text-red-500" />,
 		badgeClass: "bg-zinc-800 text-red-400"
 	},
-	{ name: "Linux", icon: <FaLinux className="font-sans text-2xl text-zinc-100" /> },
+	{ name: "Linux", icon: <FaLinux className="text-2xl text-zinc-100" /> },
 	{ name: "Appwrite", icon: <SiAppwrite className="text-2xl text-pink-400" /> },
 	{ name: "Firebase", icon: <SiFirebase className="text-2xl text-yellow-400" /> },
 	{ name: "PostgreSQL", icon: <SiPostgresql className="text-2xl text-blue-300" /> },
@@ -55,15 +55,15 @@ export function Skills() {
 	const carouselSkills = [...skills, ...skills];
 
 	return (
-		<section id="skills" className="mx-auto max-w-[45rem] py-12">
+		<section id="skills" className="mx-auto max-w-[40rem] py-12">
 			<div className="slide-in-up mt-8 space-y-4">
 				{/* Row 1 */}
-				<div className="skills-carousel-outer">
+				<div className="skills-carousel-outer fade-in-up" style={{ "--delay-index": 8 } as React.CSSProperties}>
 					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row1" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 font-mono text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -71,13 +71,14 @@ export function Skills() {
 						))}
 					</div>
 				</div>
+
 				{/* Row 2: right to left */}
-				<div className="skills-carousel-outer">
+				<div className="skills-carousel-outer fade-in-up" style={{ "--delay-index": 9 } as React.CSSProperties}>
 					<div className="skills-carousel-track animate-skills-carousel-reverse pause-on-hover">
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row2" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 font-mono text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -87,7 +88,7 @@ export function Skills() {
 				</div>
 
 				{/* Row 3: left to right */}
-				<div className="skills-carousel-outer">
+				<div className="skills-carousel-outer fade-in-up" style={{ "--delay-index": 10 } as React.CSSProperties}>
 					<div className="skills-carousel-track animate-skills-carousel pause-on-hover">
 						{carouselSkills
 							.slice()
@@ -95,7 +96,7 @@ export function Skills() {
 							.map((skill, idx) => (
 								<span
 									key={skill.name + "row3" + idx}
-									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 font-mono text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 								>
 									{skill.icon}
 									{skill.name}
