@@ -3,8 +3,8 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export default function Footer() {
 	return (
-		<footer className="w-full bg-transparent py-12 text-white sm:px-6">
-			<div className="mx-auto max-w-xl space-y-8">
+		<footer className="mx-auto flex max-w-2xl items-center bg-transparent py-12 text-white sm:px-6">
+			<div className="space-y-8">
 				{/* Heading */}
 				<SectionTitle
 					className="text-3xl font-bold tracking-tight sm:text-4xl"

@@ -22,7 +22,7 @@ export function HeroButtons() {
 			</div>
 
 			{/* Social media buttons */}
-			<IconContext.Provider value={{ size: "1.5rem" }}>
+			<IconContext.Provider value={{ size: "1.2rem" }}>
 				<div className="flex flex-row gap-2">
 					<Button size="icon" asChild variant="default" className="">
 						<a href="https://github.com/bhav2134" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
