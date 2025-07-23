@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { IconContext } from "react-icons";
 import { LuArrowUpRight } from "react-icons/lu";
 import { FaSpotify, FaSteam, FaGoodreads } from "react-icons/fa6";
-import { SiOpengl } from "react-icons/si";
+import { SiCplusplus } from "react-icons/si";
 
 export function HeroBadges() {
 	return (
@@ -15,7 +15,7 @@ export function HeroBadges() {
 				href="https://github.com/bhavv04/redis"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
-						<SiOpengl />
+						<SiCplusplus />
 					</IconContext.Provider>
 				}
 				className="bg-[#5a493d] hover:bg-[#6b5b4e]"
@@ -68,7 +68,7 @@ export function HeroBadge({ icon, text, href, className }: HeroBadgeProps) {
 		<a
 			href={href}
 			target="_blank"
-			className={cn("inline-flex items-center gap-2 rounded-full bg-background px-4 py-1 text-sm text-foreground transition-colors", className)}
+			className={cn("inline-flex items-center gap-2 rounded-full bg-background px-3 py-1 text-sm text-foreground transition-colors", className)}
 		>
 			{icon}
 

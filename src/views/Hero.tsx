@@ -25,16 +25,7 @@ export function HeroSection() {
 
 			<div className="fade-in-up" style={{ "--delay-index": 3 } as React.CSSProperties}>
 				<p className="mb-2">
-					I&apos;m a computer science Student currently studying at{" "}
-					<a
-						href="https://www.torontomu.ca/programs/undergraduate/computer-science/"
-						className="underline-dotted-highlight inline-flex"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Toronto Metropolitan University
-					</a>{" "}
-					(formerly known as Ryerson University).
+					I&apos;m a computer science Student currently studying at Toronto Metropolitan University (formerly known as Ryerson University).
 				</p>
 			</div>
 
