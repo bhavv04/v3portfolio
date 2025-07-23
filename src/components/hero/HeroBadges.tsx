@@ -11,8 +11,8 @@ export function HeroBadges() {
 	return (
 		<div className="flex max-w-full flex-row flex-wrap gap-2">
 			<HeroBadge
-				text="Simulating: Newton's Playground"
-				href="https://github.com/bhav2134/Newtons-Playground"
+				text="Building: Redis Client"
+				href="https://github.com/bhavv04/redis"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<SiOpengl />
@@ -22,8 +22,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Witcher 3: The Wild Hunt"
-				href="https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
+				text="Playing: Ghost Of Tsushima"
+				href="https://store.steampowered.com/agecheck/app/2215430/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSteam />
@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Gardens of the Moon - Steven Erikson"
-				href="https://www.goodreads.com/book/show/55399.Gardens_of_the_Moon"
+				text="Reading: The Way Of Kings - Brandon Sanderson"
+				href="https://www.goodreads.com/book/show/7235533-the-way-of-kings"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
