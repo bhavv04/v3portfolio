@@ -5,9 +5,9 @@ import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
 
 export function HeroButtons() {
 	return (
-		<div className="flex flex-col gap-2 sm:flex-row sm:gap-2">
+		<div className="flex flex-col gap-2 sm:flex-row sm:gap-1.5">
 			{/* Primary action buttons */}
-			<div className="flex flex-row gap-2">
+			<div className="flex flex-row gap-1.5">
 				<Button asChild variant="default">
 					<a href="#timeline" aria-label="Learn more about me" className="">
 						Learn More
@@ -23,7 +23,7 @@ export function HeroButtons() {
 
 			{/* Social media buttons */}
 			<IconContext.Provider value={{ size: "1.2rem" }}>
-				<div className="flex flex-row gap-2">
+				<div className="flex flex-row gap-1.5">
 					<Button size="icon" asChild variant="default" className="">
 						<a href="https://github.com/bhav2134" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
 							<LuGithub />

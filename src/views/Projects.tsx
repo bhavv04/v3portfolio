@@ -11,8 +11,8 @@ export function ProjectsView() {
 		<section id="projects" className="mx-auto">
 			<SectionTitle
 				text={
-					<span className="flex items-center gap-2">
-						<SiTheodinproject className="" />
+					<span className="flex items-center gap-1">
+						<SiTheodinproject className="mb-1" />
 						<span>Projects</span>
 					</span>
 				}
