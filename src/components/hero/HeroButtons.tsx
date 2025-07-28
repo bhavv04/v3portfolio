@@ -25,7 +25,7 @@ export function HeroButtons() {
 			<IconContext.Provider value={{ size: "1.2rem" }}>
 				<div className="flex flex-row gap-1.5">
 					<Button size="icon" asChild variant="default" className="">
-						<a href="https://github.com/bhav2134" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
+						<a href="https://github.com/bhavv04" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
 							<LuGithub />
 						</a>
 					</Button>

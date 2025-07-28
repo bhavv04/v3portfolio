@@ -8,7 +8,7 @@ export const projects: Project[] = [
 			"Streamline bug tracking and resolution with our intuitive bug-report website. Effortlessly report and manage software issues for smoother development cycles.",
 		technologies: [Technology.React, Technology.Python, Technology.Figma, Technology.SQLite],
 		links: {
-			github: "https://github.com/bhav2134/bug-report?tab=readme-ov-file",
+			github: "https://github.com/bhavv04/bug-report?tab=readme-ov-file",
 			live: ""
 		},
 		screenshots: [
