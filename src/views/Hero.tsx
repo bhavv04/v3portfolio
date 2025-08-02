@@ -13,7 +13,7 @@ function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
 
 export function HeroSection() {
 	return (
-		<section id="home" className="mx-auto -mt-10 max-w-[40rem] space-y-4">
+		<section id="home" className="mx-auto -mt-8 max-w-[40rem] space-y-4 md:-mt-14">
 			<div className="fade-in-up flex items-center gap-4" style={{ "--delay-index": 0 } as React.CSSProperties}>
 				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
 				<SectionTitle className="mt-2" text="Hi, I'm Bhavdeep Arora 🐰" />
