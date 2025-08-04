@@ -22,8 +22,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Ghost Of Tsushima"
-				href="https://store.steampowered.com/agecheck/app/2215430/"
+				text="Playing: Red Dead Redemption 2"
+				href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSteam />

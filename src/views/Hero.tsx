@@ -38,7 +38,10 @@ export function HeroSection() {
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p>Outside of programming, I love learning new things, reading fantasy books, and exploring outside! This is what I&apos;m currently up to:</p>
+				<p>
+					Outside of programming, I love learning new things, reading fantasy and classic books, and exploring outside! This is what I&apos;m
+					currently up to:
+				</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 6 } as React.CSSProperties}>
