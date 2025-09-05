@@ -22,8 +22,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Red Dead Redemption 2"
-				href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
+				text="Playing: Clair Obscur: Expedition 33"
+				href="https://store.steampowered.com/app/1903340/Clair_Obscur_Expedition_33/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSteam />
@@ -33,8 +33,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Listening to: San Luis - Gregory Alan Isakov"
-				href="https://open.spotify.com/track/0mnWNvwXRNu82bpfi2rsuz?si=fcaa79dae4a64597"
+				text="Listening to: Mykonos - Fleet Foxes"
+				href="https://open.spotify.com/track/3Ck96jIZdVzpWbbZ6mojsE"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSpotify />
@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: The Way Of Kings - Brandon Sanderson"
-				href="https://www.goodreads.com/book/show/7235533-the-way-of-kings"
+				text="Reading: Gardens of the Moon - Steven Erikson"
+				href="https://www.goodreads.com/book/show/55399.Gardens_of_the_Moon"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />

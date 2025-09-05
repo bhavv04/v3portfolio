@@ -33,7 +33,7 @@ export default function Footer() {
 					>
 						Email
 					</a>{" "}
-					if you want to reach out to me.
+					me at <a className="font-bold text-zinc-300">bhavdeepsa@gmail.com</a> if you want to reach out to me.
 				</p>
 
 				{/* Copyright */}
