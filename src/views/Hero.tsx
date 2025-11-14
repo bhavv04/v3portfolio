@@ -16,7 +16,7 @@ export function HeroSection() {
 		<section id="home" className="mx-auto -mt-8 max-w-[40rem] space-y-4 md:-mt-14">
 			<div className="fade-in-up flex items-center gap-4" style={{ "--delay-index": 0 } as React.CSSProperties}>
 				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
-				<SectionTitle className="mt-2" text="Hi, I'm Bhavdeep Arora" />
+				<SectionTitle className="mt-2" text="Hi, I'm Bhavdeep Arora 🐻" />
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 2 } as React.CSSProperties}>
