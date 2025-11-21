@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Gardens of the Moon - Steven Erikson"
-				href="https://www.goodreads.com/book/show/55399.Gardens_of_the_Moon"
+				text="Reading: Oliver Twist - Charles Dickens"
+				href="https://www.goodreads.com/book/show/18254.Oliver_Twist"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
