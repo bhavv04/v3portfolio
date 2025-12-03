@@ -22,8 +22,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Clair Obscur: Expedition 33"
-				href="https://store.steampowered.com/app/1903340/Clair_Obscur_Expedition_33/"
+				text="Playing: Balatro"
+				href="https://store.steampowered.com/app/2379780/Balatro/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSteam />
@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Oliver Twist - Charles Dickens"
-				href="https://www.goodreads.com/book/show/18254.Oliver_Twist"
+				text="Reading: The Brothers Karamazov - Fyodor Doestoevsky"
+				href="https://www.goodreads.com/book/show/4935.The_Brothers_Karamazov"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
