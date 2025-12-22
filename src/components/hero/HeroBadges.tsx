@@ -5,17 +5,17 @@ import { cn } from "@/lib/utils";
 import { IconContext } from "react-icons";
 import { LuArrowUpRight } from "react-icons/lu";
 import { FaSpotify, FaSteam, FaGoodreads } from "react-icons/fa6";
-import { SiCplusplus } from "react-icons/si";
+import { RiFirebaseFill } from "react-icons/ri";
 
 export function HeroBadges() {
 	return (
 		<div className="flex max-w-full flex-row flex-wrap gap-2">
 			<HeroBadge
-				text="Building: Redis Client"
-				href="https://github.com/bhavv04/redis"
+				text="Building: Ember Portal"
+				href="https://github.com/bhavv04/ember"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
-						<SiCplusplus />
+						<RiFirebaseFill />
 					</IconContext.Provider>
 				}
 				className="bg-[#5a493d] hover:bg-[#6b5b4e]"
@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: The Brothers Karamazov - Fyodor Doestoevsky"
-				href="https://www.goodreads.com/book/show/4935.The_Brothers_Karamazov"
+				text="Reading: The Strength of the Few - James Islington"
+				href="https://www.goodreads.com/book/show/169485073-the-strength-of-the-few?from_search=true&from_srp=true&qid=dJmBv5m2pm&rank=1"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
