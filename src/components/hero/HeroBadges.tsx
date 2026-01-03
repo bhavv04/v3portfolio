@@ -43,8 +43,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: The Strength of the Few - James Islington"
-				href="https://www.goodreads.com/book/show/169485073-the-strength-of-the-few?from_search=true&from_srp=true&qid=dJmBv5m2pm&rank=1"
+				text="Reading: Crime and Punishment - Fydor Dostoevsky"
+				href="https://www.goodreads.com/book/show/7144.Crime_and_Punishment"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
