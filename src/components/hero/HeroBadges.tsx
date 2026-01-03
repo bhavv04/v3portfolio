@@ -43,7 +43,7 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Crime and Punishment - Fydor Dostoevsky"
+				text="Reading: Crime and Punishment - Fyodor Dostoevsky"
 				href="https://www.goodreads.com/book/show/7144.Crime_and_Punishment"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
