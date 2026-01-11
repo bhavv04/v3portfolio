@@ -59,7 +59,7 @@ export default function Footer() {
 						Email
 					</a>{" "}
 					or send a message to <span className="font-semibold text-gray-300">bhavdeepsa@gmail.com </span>
-					me if you want to reach out to me directly.
+					if you want to reach out to me directly.
 				</p>
 
 				<form ref={formRef} onSubmit={sendEmail} className="space-y-4">
