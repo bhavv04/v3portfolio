@@ -3,19 +3,12 @@ import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
 import { SectionTitle } from "@/components/typography/SectionTitle";
-import Image from "next/image";
-
-const ProfilePic = "/images/ProfilePic.jpeg";
-
-function ProfileAvatar({ src, alt }: { src: string; alt: string }) {
-	return <Image src={src} alt={alt} width={50} height={50} className="rounded-full object-cover shadow-md" />;
-}
+//import Image from "next/image";
 
 export function HeroSection() {
 	return (
 		<section id="home" className="mx-auto -mt-8 max-w-[40rem] space-y-4 md:-mt-14">
 			<div className="fade-in-up flex items-center gap-4" style={{ "--delay-index": 0 } as React.CSSProperties}>
-				<ProfileAvatar src={ProfilePic} alt="Bhavdeep Arora profile picture" />
 				<SectionTitle className="mt-2" text="Hi, I'm Bhavdeep Arora" />
 			</div>
 
