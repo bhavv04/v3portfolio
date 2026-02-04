@@ -22,8 +22,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Playing: Balatro"
-				href="https://store.steampowered.com/app/2379780/Balatro/"
+				text="Playing: Stardew Valley"
+				href="https://store.steampowered.com/app/413150/Stardew_Valley/"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSteam />

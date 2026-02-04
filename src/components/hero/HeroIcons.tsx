@@ -43,12 +43,9 @@ export function HeroIcons() {
 	return (
 		<div className="flex flex-wrap items-center gap-1">
 			<HeroIcon text="📍 Toronto, ON" className="" />
-			<HeroIcon text={`📅 ${currentDate}`} className="" />
-			<HeroIcon text={`⏳ ${currentTime}`} className="" />
-			<button
-				onClick={toggleCat}
-				className="inline-flex items-center rounded-full bg-[rgba(255,255,255,0.2)] px-2 py-1 text-xs font-medium backdrop-blur-3xl backdrop-saturate-200"
-			>
+			<HeroIcon text={`🌅 ${currentDate}`} className="" />
+			<HeroIcon text={`🕐 ${currentTime}`} className="" />
+			<button onClick={toggleCat} className="inline-flex items-center rounded-full border-none bg-[rgba(255,255,255,0.2)] px-2 py-1 text-xs font-medium">
 				{showCat ? "🙀 Hide Cat" : "🐱 Show Cat"}
 			</button>
 		</div>
@@ -62,7 +59,7 @@ interface HeroIconProps {
 
 export function HeroIcon({ text, className }: HeroIconProps) {
 	return (
-		<div className={cn("inline-flex items-center rounded-full border-none bg-[rgba(255,255,255,0.2)] px-2.5 py-1 text-xs font-medium", className)}>
+		<div className={cn("inline-flex items-center rounded-full border-none bg-[rgba(255,255,255,0.2)] px-2 py-1 text-xs font-medium", className)}>
 			{text}
 		</div>
 	);

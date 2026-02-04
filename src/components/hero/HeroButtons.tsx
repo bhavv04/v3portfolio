@@ -2,6 +2,7 @@
 import { IconContext } from "react-icons";
 import { Button } from "@/components/ui/Button";
 import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
+import { TbBrandLeetcode } from "react-icons/tb";
 
 export function HeroButtons() {
 	return (
@@ -39,6 +40,12 @@ export function HeroButtons() {
 					<Button size="icon" asChild variant="default" className="">
 						<a href="mailto:bhavdeepsa@gmail.com?subject=Hello%20Bhavdeep" aria-label="Send me an email">
 							<LuMail />
+						</a>
+					</Button>
+
+					<Button size="icon" asChild variant="default" className="">
+						<a href="https://leetcode.com/u/bhavv04/" aria-label="My LeetCode profile">
+							<TbBrandLeetcode />
 						</a>
 					</Button>
 				</div>
