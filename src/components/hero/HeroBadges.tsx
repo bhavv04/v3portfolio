@@ -33,8 +33,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Listening to: Mykonos - Fleet Foxes"
-				href="https://open.spotify.com/track/3Ck96jIZdVzpWbbZ6mojsE"
+				text="Listening to: Movement - Hozier"
+				href="https://open.spotify.com/track/1djzKW3eYLyzjjHXazEWWh?si=fddc2e368b14456b"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSpotify />
