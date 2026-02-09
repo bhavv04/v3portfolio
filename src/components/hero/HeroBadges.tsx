@@ -5,17 +5,18 @@ import { cn } from "@/lib/utils";
 import { IconContext } from "react-icons";
 import { LuArrowUpRight } from "react-icons/lu";
 import { FaSpotify, FaSteam, FaGoodreads } from "react-icons/fa6";
-import { RiFirebaseFill } from "react-icons/ri";
+import { FaPython } from "react-icons/fa";
+import { HiBookOpen } from "react-icons/hi2";
 
 export function HeroBadges() {
 	return (
 		<div className="flex max-w-full flex-row flex-wrap gap-2">
 			<HeroBadge
-				text="Building: Ember Portal"
-				href="https://github.com/bhavv04/ember"
+				text="Building: Wattwise"
+				href="https://github.com/bhavv04/wattwise"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
-						<RiFirebaseFill />
+						<FaPython />
 					</IconContext.Provider>
 				}
 				className="bg-[#5a493d] hover:bg-[#6b5b4e]"
@@ -43,14 +44,24 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: The Count of Monte Cristo - Alexandre Dumas"
-				href="https://www.goodreads.com/book/show/7126.The_Count_of_Monte_Cristo"
+				text="Reading: Piranesi - Susanna Clarke"
+				href="https://www.goodreads.com/book/show/50202953-piranesi"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
 					</IconContext.Provider>
 				}
 				className="bg-[#8e8a76] hover:bg-[#aeab97]"
+			/>
+			<HeroBadge
+				text="Studying: TCP/IP Illustrated - Stevens"
+				href="https://www.goodreads.com/book/show/505560.TCP_IP_Illustrated_Volume_1"
+				icon={
+					<IconContext.Provider value={{ size: "1rem" }}>
+						<HiBookOpen />
+					</IconContext.Provider>
+				}
+				className="bg-[#5a3a4a] hover:bg-[#6f4a5d]"
 			/>
 		</div>
 	);
