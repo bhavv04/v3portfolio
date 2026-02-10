@@ -1,4 +1,3 @@
-// EncryptedTitle.tsx
 import { cn } from "@/lib/utils";
 import React, { ReactNode, useEffect, useState } from "react";
 
