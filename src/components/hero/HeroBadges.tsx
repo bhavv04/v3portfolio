@@ -44,8 +44,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Piranesi - Susanna Clarke"
-				href="https://www.goodreads.com/book/show/50202953-piranesi"
+				text="Reading: War And Peace - Leo Tolstoy"
+				href="https://www.goodreads.com/book/show/18243.War_and_Peace"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
