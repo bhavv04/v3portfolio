@@ -10,7 +10,13 @@ export function HeroButtons() {
 			{/* Primary action buttons */}
 			<div className="flex flex-row gap-1.5">
 				<Button asChild variant="default">
-					<a href="#timeline" aria-label="Learn more about me" className="">
+					<a
+						href="https://bhav-terminal-portfolio.vercel.app/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Learn more about me"
+						className=""
+					>
 						Learn More
 					</a>
 				</Button>
