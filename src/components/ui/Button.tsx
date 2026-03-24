@@ -9,7 +9,7 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-gray-900 cursor-pointer")
+				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-gray-900")
 			},
 			size: {
 				default: "h-10 px-4 py-2",
