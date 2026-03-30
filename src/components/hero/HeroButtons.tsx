@@ -50,7 +50,7 @@ export function HeroButtons() {
 					</Button>
 
 					<Button size="icon" asChild variant="default" className="">
-						<a href="https://leetcode.com/u/bhavv04/" aria-label="My LeetCode profile">
+						<a href="https://leetcode.com/u/bhavv04/" target="_blank" rel="noopener noreferrer" aria-label="My LeetCode profile">
 							<TbBrandLeetcode />
 						</a>
 					</Button>
