@@ -3,7 +3,6 @@ import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/views/Navbar";
-import Footer from "@/views/Footer";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
 import { ScrollBackground } from "@/components/graphics/ScrollBackground";
@@ -35,10 +34,6 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 							<div className="my-12 sm:my-24" />
 
 							{children}
-
-							<div className="my-12 sm:my-24" />
-
-							<Footer />
 						</main>
 					</ResponsiveContainer>
 					<Analytics />

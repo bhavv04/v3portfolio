@@ -17,7 +17,7 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			<NavbarLink href="/" className="" useClientSideRouting>
 				Home
 			</NavbarLink>
-			<NavbarLink href="/#about" className="" useClientSideRouting>
+			<NavbarLink href="/about" className="" useClientSideRouting>
 				About
 			</NavbarLink>
 			<NavbarLink href="/#timeline" className="" useClientSideRouting>

@@ -2,6 +2,7 @@ import { HeroSection } from "@/views/Hero";
 //import { TimelineView } from "@/views/Timeline";
 import { ProjectsView } from "@/views/Projects";
 import { Skills } from "@/views/Skills";
+import Footer from "@/views/Footer";
 
 export default function Home() {
 	return (
@@ -17,6 +18,8 @@ export default function Home() {
 			<ProjectsView />
 
 			<div className="my-24" />
+
+			<Footer />
 		</div>
 	);
 }
