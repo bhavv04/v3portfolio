@@ -18,7 +18,7 @@ const Terminal: React.FC = () => {
 	const inputDivRef = useRef<HTMLDivElement>(null);
 
 	const typeWriter = useCallback(
-		(text: string, speed = 20) => {
+		(text: string, speed = 25) => {
 			if (welcomeText !== "") return;
 			setIsTyping(true);
 			let i = 0;
@@ -160,7 +160,7 @@ const Terminal: React.FC = () => {
 				</p>
 
 				{!isTyping && (
-					<div className="mb-4 flex flex-wrap gap-2">
+					<div className="fade-in-up mb-4 flex flex-wrap gap-2">
 						{["help", "about", "hobbies", "projects", "contact", "pwd", "status"].map((cmd) => (
 							<button
 								key={cmd}
@@ -174,7 +174,7 @@ const Terminal: React.FC = () => {
 					</div>
 				)}
 
-				<div className="space-y-2">
+				<div className="fade-in-up space-y-2">
 					{output.map((line) => (
 						<div
 							key={line.id}
@@ -187,7 +187,7 @@ const Terminal: React.FC = () => {
 
 				<div className="mt-4 flex items-center gap-2">
 					{!isTyping && (
-						<span className="shrink-0 select-none" style={{ color: "#097d39" }}>
+						<span className="fade-in-up shrink-0 select-none" style={{ color: "#097d39" }}>
 							❯
 						</span>
 					)}
@@ -218,7 +218,7 @@ const Terminal: React.FC = () => {
 						/>
 						{!isTyping && (
 							<span
-								className="inline-block shrink-0 animate-pulse"
+								className="fade-in-up inline-block shrink-0 animate-pulse"
 								style={{ width: "8px", height: "16px", background: "#4a4642", verticalAlign: "text-bottom" }}
 							/>
 						)}

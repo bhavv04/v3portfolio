@@ -29,7 +29,7 @@ export const portfolioData = {
 	education: {
 		degree: "Computer Science",
 		school: "Toronto Metropolitan University",
-		period: "2022 — present",
+		period: "2022 — 2027",
 		details: "Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems.",
 		certifications: ["AWS Certified Developer", "Google Cloud Professional", "MongoDB Certified Developer"]
 	},

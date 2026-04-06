@@ -8,7 +8,7 @@ const hl = (text: string) => `<span style="color:#d4cfc9">${text}</span>`;
 
 const dim = (text: string) => `<span style="color:#4a4642">${text}</span>`;
 
-const list = (items: string[]) => items.map(hl).join(dim(" · "));
+const list = (items: string[]) => items.map(hl).join(hl(" · "));
 
 const line = (content: string) => `<div style="margin-top:4px">${content}</div>`;
 
