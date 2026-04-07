@@ -13,6 +13,12 @@ export default function Home() {
 
 			<Skills />
 
+			{/* <div className="my-16" /> 
+			
+			<TimelineView />
+
+			*/}
+
 			<div className="my-16" />
 
 			<ProjectsView />
