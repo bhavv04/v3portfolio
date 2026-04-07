@@ -4,7 +4,6 @@ import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
-import { SiTheodinproject } from "react-icons/si";
 
 export function ProjectsView() {
 	return (
@@ -12,8 +11,7 @@ export function ProjectsView() {
 			<SectionTitle
 				text={
 					<span className="flex items-center gap-1">
-						<SiTheodinproject className="mb-1" />
-						<span>Projects</span>
+						<span>some stuff i&apos;e built</span>
 					</span>
 				}
 			/>

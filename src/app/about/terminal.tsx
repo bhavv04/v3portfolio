@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { OutputLine } from "@/lib/terminal/types";
-import { executeCommand } from "@/lib/terminal/commands";
+import { OutputLine } from "@/app/about/terminal/types";
+import { executeCommand } from "@/app/about/terminal/commands";
 
 const WELCOME = "Welcome to my site. I'm glad you're exploring my about section, let me share some things that aren't on the home page.";
 

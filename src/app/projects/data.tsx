@@ -1,21 +1,6 @@
 export type ProjectStatus = "completed" | "in-progress" | "archived";
 
-export type ProjectTag =
-	| "TypeScript"
-	| "Python"
-	| "React"
-	| "Next.js"
-	| "Node.js"
-	| "MongoDB"
-	| "PostgreSQL"
-	| "Docker"
-	| "Machine Learning"
-	| "Data Engineering"
-	| "REST API"
-	| "DevOps"
-	| "CLI"
-	| "Full Stack"
-	| "Research";
+export type ProjectTag = "machine learning" | "data engineering" | "algorithms" | "web dev" | "research" | "systems" | "productivity";
 
 export interface Project {
 	id: string;
@@ -40,8 +25,8 @@ export const projects: Project[] = [
 		description: "Interactive visualization of stopping-time landscapes for the Collatz Conjecture, with original research angles on sequence behavior.",
 		longDescription:
 			"A research-driven tool that maps stopping times across number ranges, revealing structural patterns in the Collatz sequence. Built to support original mathematical research, featuring zoom, density plots, and export capabilities.",
-		tags: ["TypeScript", "React", "Research"],
-		tech: ["TypeScript", "React", "Research"],
+		tags: ["research", "web dev", "algorithms"],
+		tech: ["TypeScript", "React"],
 		status: "in-progress",
 		year: 2026,
 		github: "https://github.com",
@@ -55,8 +40,8 @@ export const projects: Project[] = [
 		description: "A Python implementation of the MapReduce programming model from scratch, applied to large-scale document processing.",
 		longDescription:
 			"Built entirely without Hadoop or Spark, this engine implements the core MapReduce paradigm in Python — including shuffle, sort, and reduce phases — and benchmarks it against MongoDB aggregation pipelines on real datasets.",
-		tags: ["Python", "MongoDB", "Data Engineering"],
-		tech: ["Python", "MongoDB", "Data Engineering"],
+		tags: ["data engineering", "systems"],
+		tech: ["Python", "MongoDB"],
 		status: "completed",
 		year: 2025,
 		github: "https://github.com",
@@ -70,8 +55,8 @@ export const projects: Project[] = [
 		description: "A formula-driven Notion dashboard with color-coded indicators, percentage scoring, and streak tracking across daily habits.",
 		longDescription:
 			"Engineered entirely with Notion's formula language — no external tools. Features dynamic color states (🔴/🟡/🟢), weighted scoring, and a weekly momentum graph. Designed around consistent fitness and productivity goals.",
-		tags: ["Research"],
-		tech: ["Notion Formulas", "Productivity"],
+		tags: ["productivity"],
+		tech: ["Notion Formulas"],
 		status: "completed",
 		year: 2025,
 		github: "https://github.com",
@@ -85,8 +70,8 @@ export const projects: Project[] = [
 		description: "Research paper and reference architecture for processing real-time patient sensor streams at scale using modern big data tooling.",
 		longDescription:
 			"A term paper and accompanying system design for ingesting wearable and hospital IoT sensor data using Kafka, Spark Streaming, and cloud storage. Covers latency tradeoffs, HIPAA-adjacent considerations, and ML anomaly detection hooks.",
-		tags: ["Python", "Data Engineering", "Machine Learning", "Research"],
-		tech: ["Python", "Kafka", "Spark", "Machine Learning"],
+		tags: ["data engineering", "machine learning", "research"],
+		tech: ["Python", "Kafka", "Spark"],
 		status: "in-progress",
 		year: 2026,
 		github: "https://github.com",
@@ -100,8 +85,8 @@ export const projects: Project[] = [
 		description: "Implementations and analysis of QuickSelect and Karger's Min-Cut algorithm with empirical runtime comparisons.",
 		longDescription:
 			"A study of expected-case randomized algorithms. QuickSelect achieves O(n) expected time for order statistics; Karger's algorithm finds minimum cuts in O(n² log n) expected time. Includes Monte Carlo repetition analysis and probability of failure bounds.",
-		tags: ["Python", "Research"],
-		tech: ["Python", "Algorithms", "Research"],
+		tags: ["algorithms", "research"],
+		tech: ["Python"],
 		status: "completed",
 		year: 2025,
 		github: "https://github.com",
@@ -115,7 +100,7 @@ export const projects: Project[] = [
 		description: "Personal portfolio built with Next.js and TypeScript. You're looking at it.",
 		longDescription:
 			"A minimal, performance-focused portfolio site. Built with Next.js App Router, TypeScript, and Tailwind CSS. Deployed on Vercel. No template — designed and built from scratch.",
-		tags: ["Next.js", "TypeScript", "React"],
+		tags: ["web dev"],
 		tech: ["Next.js", "TypeScript", "Tailwind CSS"],
 		status: "in-progress",
 		year: 2026,

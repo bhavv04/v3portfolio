@@ -2,15 +2,15 @@
 import { HeroBadges } from "@/components/hero/HeroBadges";
 import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
-//import { EncryptedTitle } from "@/components/typography/EncryptedTitle";
+import { CatToggleButton } from "@/components/hero/CatToggle";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 //import Image from "next/image";
 
 export function HeroSection() {
 	return (
-		<section id="home" className="mx-auto -mt-8 max-w-[40rem] space-y-4 md:-mt-14">
+		<section id="home" className="mx-auto -mt-6 max-w-[40rem] space-y-4 md:-mt-14">
 			<div className="fade-in-up flex items-center gap-4" style={{ "--delay-index": 0 } as React.CSSProperties}>
-				<SectionTitle className="mt-2" text="Hi, I'm Bhavdeep Arora" />
+				<SectionTitle className="" text="Hi, I'm Bhavdeep Arora" />
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 2 } as React.CSSProperties}>
@@ -27,17 +27,18 @@ export function HeroSection() {
 				<p>
 					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on embedded systems and
 					DevOps, particularly cloud infrastructure and vulnerability research, but I&apos;m always deep diving into various aspects of Computer
-					Science.
+					Science. <CatToggleButton />
 				</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p>Outside of programming, I love learning new things, reading fantasy and classic books, and exploring outside!</p>
+				<p>
+					Outside of programming, I love learning new things, reading fantasy and classic books, and exploring outside! This is what I&apos;m
+					currently up to:
+				</p>
 			</div>
 
-			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p>This is what I&apos;m currently up to:</p>
-			</div>
+			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}></div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 6 } as React.CSSProperties}>
 				<HeroBadges />

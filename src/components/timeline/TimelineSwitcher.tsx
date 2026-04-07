@@ -16,9 +16,9 @@ export function TimelineSwitcher({ experienceContent, educationContent }: Timeli
 
 	const getSectionTitle = () => {
 		if (selectedView === "experience") {
-			return <span className="mb-4 flex items-center gap-2">Experience</span>;
+			return <span className="mb-4 flex items-center gap-2">a snapshot of my experience</span>;
 		}
-		return <span className="mb-4 flex items-center gap-2">Education</span>;
+		return <span className="mb-4 flex items-center gap-2">my academic background</span>;
 	};
 
 	return (
