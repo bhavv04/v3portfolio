@@ -20,6 +20,36 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		id: "terraseed",
+		title: "Terraseed",
+		description: "Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate data and a composite scoring model.",
+		longDescription:
+			"Terraseed processes three decades of satellite and reanalysis climate data — temperature, precipitation, soil moisture, and frost risk — into a single planting score across the global grid. Features an interactive Plotly Dash dashboard where users can enter coordinates and get a month-by-month planting calendar with the optimal window highlighted automatically.",
+		tags: ["machine learning", "data engineering", "research"],
+		tech: ["Python", "Plotly Dash", "scikit-learn", "xarray"],
+		status: "completed",
+		year: 2025,
+		github: "https://github.com/bhavv04/terraseed",
+		demo: "https://github.com/bhavv04/terraseed",
+		image: "https://picsum.photos/600/400?random=1",
+		featured: true
+	},
+	{
+		id: "deadzone",
+		title: "Dead Zones on a Clock",
+		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
+		longDescription:
+			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
+		tags: ["data engineering", "machine learning", "research"],
+		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
+		status: "completed",
+		year: 2025,
+		github: "https://github.com/bhavv04/deadzone",
+		demo: "https://github.com/bhavv04/deadzone",
+		image: "https://picsum.photos/600/400?random=2",
+		featured: true
+	},
+	{
 		id: "collatz-viz",
 		title: "Collatz Conjecture Explorer",
 		description: "Interactive visualization of stopping-time landscapes for the Collatz Conjecture, with original research angles on sequence behavior.",
@@ -29,9 +59,9 @@ export const projects: Project[] = [
 		tech: ["TypeScript", "React"],
 		status: "in-progress",
 		year: 2026,
-		github: "https://github.com",
-		demo: "https://demo.com",
-		image: "https://picsum.photos/600/400?random=10",
+		github: "https://github.com/bhavv04/collatz-viz",
+		demo: "https://github.com/bhavv04/collatz-viz",
+		image: "https://picsum.photos/600/400?random=3",
 		featured: true
 	},
 	{
@@ -44,40 +74,40 @@ export const projects: Project[] = [
 		tech: ["Python", "MongoDB"],
 		status: "completed",
 		year: 2025,
-		github: "https://github.com",
-		demo: "https://demo.com",
-		image: "https://picsum.photos/600/400?random=11",
+		github: "https://github.com/bhavv04/mapreduce-engine",
+		demo: "https://github.com/bhavv04/mapreduce-engine",
+		image: "https://picsum.photos/600/400?random=4",
 		featured: true
 	},
 	{
-		id: "notion-habit-tracker",
-		title: "Notion Habit Tracker",
-		description: "A formula-driven Notion dashboard with color-coded indicators, percentage scoring, and streak tracking across daily habits.",
+		id: "healthcare-patient-management",
+		title: "Healthcare Patient Management",
+		description: "Full-stack patient monitoring system with dual admin and patient portals, real-time vitals tracking, and configurable alarm thresholds.",
 		longDescription:
-			"Engineered entirely with Notion's formula language — no external tools. Features dynamic color states (🔴/🟡/🟢), weighted scoring, and a weekly momentum graph. Designed around consistent fitness and productivity goals.",
-		tags: ["productivity"],
-		tech: ["Notion Formulas"],
+			"Built with React and Supabase, the system provides separate interfaces for administrators and patients. Administrators manage records and configure per-patient vital sign thresholds; patients view their health data and alerts. Tracks heart rate, temperature, blood oxygen, and blood pressure with full CRUD operations and alarm history logging.",
+		tags: ["web dev", "systems"],
+		tech: ["React", "Supabase", "PostgreSQL"],
 		status: "completed",
 		year: 2025,
-		github: "https://github.com",
-		demo: "https://demo.com",
-		image: "https://picsum.photos/600/400?random=12",
+		github: "https://github.com/bhavv04/Healthcare-Patient-Management",
+		demo: "https://github.com/bhavv04/Healthcare-Patient-Management",
+		image: "https://picsum.photos/600/400?random=5",
 		featured: false
 	},
 	{
-		id: "iot-healthcare-pipeline",
-		title: "Big Data & IoT in Healthcare",
-		description: "Research paper and reference architecture for processing real-time patient sensor streams at scale using modern big data tooling.",
+		id: "library-management-system",
+		title: "Library Management System",
+		description: "A responsive digital library catalog with search, filtering, and detailed views across books, audiobooks, and e-books.",
 		longDescription:
-			"A term paper and accompanying system design for ingesting wearable and hospital IoT sensor data using Kafka, Spark Streaming, and cloud storage. Covers latency tradeoffs, HIPAA-adjacent considerations, and ML anomaly detection hooks.",
-		tags: ["data engineering", "machine learning", "research"],
-		tech: ["Python", "Kafka", "Spark"],
-		status: "in-progress",
-		year: 2026,
-		github: "https://github.com",
-		demo: "https://demo.com",
-		image: "https://picsum.photos/600/400?random=13",
-		featured: true
+			"Built with React, TypeScript, and Tailwind CSS. Features a full-text search bar, filter sidebar by genre and format, individual book detail modals, and a clean catalog grid. Powered by mock data with a structure ready for a real backend integration.",
+		tags: ["web dev"],
+		tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+		status: "completed",
+		year: 2024,
+		github: "https://github.com/bhavv04/Library-Management-System",
+		demo: "https://github.com/bhavv04/Library-Management-System",
+		image: "https://picsum.photos/600/400?random=6",
+		featured: false
 	},
 	{
 		id: "quickselect-karger",
@@ -89,9 +119,39 @@ export const projects: Project[] = [
 		tech: ["Python"],
 		status: "completed",
 		year: 2025,
-		github: "https://github.com",
-		demo: "https://demo.com",
-		image: "https://picsum.photos/600/400?random=14",
+		github: "https://github.com/bhavv04/randomized-algorithms",
+		demo: "https://github.com/bhavv04/randomized-algorithms",
+		image: "https://picsum.photos/600/400?random=7",
+		featured: false
+	},
+	{
+		id: "calvin-hobbes-api",
+		title: "Calvin & Hobbes Quote API",
+		description: "A Flask API serving random Calvin and Hobbes quotes as JSON, built for easy integration into projects that need a touch of whimsy.",
+		longDescription:
+			"A lightweight REST API built with Flask that returns random quotes from Bill Watterson's Calvin and Hobbes. Quotes are stored in a structured JSON file and served via a single endpoint. Designed for easy embedding into portfolios, bots, or any project that could use some philosophical wisdom from a six-year-old and his tiger.",
+		tags: ["web dev", "systems"],
+		tech: ["Python", "Flask"],
+		status: "completed",
+		year: 2024,
+		github: "https://github.com/bhavv04/calvin-hobbes-api",
+		demo: "https://github.com/bhavv04/calvin-hobbes-api",
+		image: "https://picsum.photos/600/400?random=8",
+		featured: false
+	},
+	{
+		id: "notion-habit-tracker",
+		title: "Notion Habit Tracker",
+		description: "A formula-driven Notion dashboard with color-coded indicators, percentage scoring, and streak tracking across daily habits.",
+		longDescription:
+			"Engineered entirely with Notion's formula language — no external tools. Features dynamic color states, weighted scoring, and a weekly momentum graph. Designed around consistent fitness and productivity goals.",
+		tags: ["productivity"],
+		tech: ["Notion Formulas"],
+		status: "completed",
+		year: 2025,
+		github: "https://github.com/bhavv04/notion-habit-tracker",
+		demo: "https://github.com/bhavv04/notion-habit-tracker",
+		image: "https://picsum.photos/600/400?random=9",
 		featured: false
 	},
 	{
@@ -104,10 +164,10 @@ export const projects: Project[] = [
 		tech: ["Next.js", "TypeScript", "Tailwind CSS"],
 		status: "in-progress",
 		year: 2026,
-		github: "https://github.com",
+		github: "https://github.com/bhavv04/portfolio",
 		demo: "/",
 		live: "/",
-		image: "https://picsum.photos/600/400?random=15",
+		image: "https://picsum.photos/600/400?random=10",
 		featured: false
 	}
 ];

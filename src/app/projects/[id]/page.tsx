@@ -14,7 +14,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
 	if (!project) notFound();
 
 	return (
-		<div className="mx-auto max-w-5xl">
+		<div className="mx-auto max-w-5xl sm:-mt-12">
 			{/* back */}
 			<Link href="/projects" className="group mb-4 inline-flex items-center gap-2 transition-colors">
 				<ArrowLeft size={14} />
