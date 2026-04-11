@@ -11,7 +11,7 @@ export function ProjectsView() {
 			<SectionTitle
 				text={
 					<span className="flex items-center gap-1">
-						<span>some stuff i&apos;ve built</span>
+						<span>Some stuff I&apos;ve built</span>
 					</span>
 				}
 			/>

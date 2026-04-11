@@ -41,7 +41,7 @@ export default function Footer() {
 						className="text-3xl font-bold tracking-tight sm:text-4xl"
 						text={
 							<>
-								let&apos;s connect <span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
+								Let&apos;s connect <span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
 							</>
 						}
 					/>
