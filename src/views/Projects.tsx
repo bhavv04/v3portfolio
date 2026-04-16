@@ -4,14 +4,16 @@ import { Separator } from "@/components/ui/Separator";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
+import { IoBuild } from "react-icons/io5";
 
 export function ProjectsView() {
 	return (
 		<section id="projects" className="mx-auto">
 			<SectionTitle
 				text={
-					<span className="flex items-center gap-1">
-						<span>Some stuff I&apos;ve built</span>
+					<span className="flex items-center gap-2 text-3xl">
+						<IoBuild />
+						<span>Selected Works</span>
 					</span>
 				}
 			/>

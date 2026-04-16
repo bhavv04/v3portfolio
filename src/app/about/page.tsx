@@ -1,5 +1,6 @@
-import Terminal from "@/app/about/terminal";
+import Terminal from "@/app/about/terminal/terminal";
 import { SectionTitle } from "@/components/typography/SectionTitle";
+import { GiWillowTree } from "react-icons/gi";
 
 export default function About() {
 	return (
@@ -7,7 +8,15 @@ export default function About() {
 			<div className="mx-auto max-w-2xl">
 				{/* Header */}
 				<div className="fade-in-up my-4 sm:my-4">
-					<SectionTitle text="hey there" />
+					<SectionTitle
+						text={
+							<span className="flex items-center gap-2">
+								<GiWillowTree />
+								<span>Whoami</span>
+							</span>
+						}
+					/>
+
 					<p className="mt-3 italic leading-relaxed text-slate-400">
 						I&apos;ve kept this section interactive, no repeated bio here. Type <span className="text-white/60">help</span> to get started.
 					</p>

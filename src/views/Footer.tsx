@@ -3,6 +3,7 @@ import { useRef, FormEvent, useState } from "react";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
+import { GiCoffeeMug } from "react-icons/gi";
 
 export default function Footer() {
 	const formRef = useRef<HTMLFormElement>(null);
@@ -38,11 +39,11 @@ export default function Footer() {
 			<div className="space-y-12">
 				<div className="space-y-4">
 					<SectionTitle
-						className="text-3xl font-bold tracking-tight sm:text-4xl"
 						text={
-							<>
-								Let&apos;s connect <span className="inline-block origin-bottom-right animate-waving-hand">👋🏻</span>
-							</>
+							<span className="flex items-center gap-2 text-3xl">
+								<GiCoffeeMug />
+								<span>Let&apos;s Connect</span>
+							</span>
 						}
 					/>
 
@@ -51,6 +52,7 @@ export default function Footer() {
 							I&apos;m always open to collaborating on exciting ideas or exploring new opportunities. Feel free to message me directly or connect
 							with me on
 						</p>
+
 						<div className="flex flex-wrap gap-6 text-sm">
 							<a
 								href="https://www.linkedin.com/in/bhavdeeparora/"
