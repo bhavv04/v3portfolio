@@ -23,7 +23,7 @@ export function DesktopNavbar({ className }: DesktopNavbarProps) {
 			<NavbarLink href="/#timeline" className="" useClientSideRouting>
 				Experience/Education
 			</NavbarLink>
-			<NavbarLink href="/#projects" className="" useClientSideRouting>
+			<NavbarLink href="/projects" className="" useClientSideRouting>
 				Projects
 			</NavbarLink>
 			<NavbarLink href="/#research" className="" useClientSideRouting>

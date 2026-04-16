@@ -60,7 +60,7 @@ export function MobileNavbar({ className }: MobileNavbarProps) {
 				<NavbarLink href="/#timeline" setIsOpen={setIsOpen} useClientSideRouting>
 					Experience/Education
 				</NavbarLink>
-				<NavbarLink href="/#projects" setIsOpen={setIsOpen} useClientSideRouting>
+				<NavbarLink href="/projects" setIsOpen={setIsOpen} useClientSideRouting>
 					Projects
 				</NavbarLink>
 				<NavbarLink href="/#research" setIsOpen={setIsOpen} useClientSideRouting>
