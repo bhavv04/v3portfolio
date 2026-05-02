@@ -18,21 +18,21 @@ export function HeroSection() {
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 3 } as React.CSSProperties}>
-				<p className="mb-2">
-					I&apos;m a computer science Student currently studying at Toronto Metropolitan University (formerly known as Ryerson University).
+				<p>
+					I&apos;m a systems focused software engineer based in Toronto. I&apos;ve been programming for over six years, always chasing whatever
+					problem catches my interest.
 				</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 4 } as React.CSSProperties}>
 				<p>
-					I&apos;ve been programming for over six years, and I&apos;m obsessed with learning. I&apos;m currently focused on embedded systems and
-					DevOps, particularly cloud infrastructure and vulnerability research, but I&apos;m always deep diving into various aspects of Computer
-					Science. <CatToggleButton />
+					My interests span low-level systems, security tooling, applied ML, and distributed systems, with a quiet passion for environmental
+					engineering. Distributed systems and machine learning is where most of my curiosity lives. <CatToggleButton />
 				</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p>Outside of programming, I love learning new things, reading books, and exploring outside! This is what I&apos;m currently up to:</p>
+				<p>Outside of programming, I love learning new things, reading books, and exploring outside! Here&apos;s what I&apos;m currently up to:</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}></div>
