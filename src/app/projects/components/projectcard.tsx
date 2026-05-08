@@ -3,29 +3,30 @@ import Image from "next/image";
 import { Github, ExternalLink } from "lucide-react";
 import { Project } from "@/app/projects/data";
 import { ProjectStatusBadge } from "./projectstatus";
+import { Pin } from "lucide-react";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
-		<div className="group flex flex-col rounded-xl bg-stone-900/90 transition-all duration-300 hover:scale-[1.01] hover:bg-stone-800/90">
+		<div className="group flex flex-col rounded-xl bg-stone-900 transition-all duration-300 hover:scale-[1.01] hover:bg-stone-800">
 			<Link href={`/projects/${project.id}`} className="relative block h-40 overflow-hidden">
 				{project.image && (
 					<Image
 						src={project.image}
 						alt={project.title}
 						fill
-						className="rounded-t-xl object-cover transition-transform duration-500 group-hover:scale-105"
+						className="rounded-t-xl object-none transition-transform duration-500 group-hover:scale-105"
 						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 					/>
 				)}
-				<span className="absolute right-2 top-2 rounded-full border border-dashed border-white text-xs">
-					<ProjectStatusBadge status={project.status} />
-				</span>
 			</Link>
 
 			<div className="flex flex-1 flex-col p-4">
-				<Link href={`/projects/${project.id}`}>
-					<h3 className="mb-1 leading-snug transition-opacity group-hover:opacity-70">{project.title}</h3>
-				</Link>
+				<div className="mb-1 flex items-center justify-between gap-2">
+					<Link href={`/projects/${project.id}`}>
+						<h3 className="leading-snug transition-opacity group-hover:opacity-70">{project.title}</h3>
+					</Link>
+					<ProjectStatusBadge status={project.status} />
+				</div>
 
 				<p className="mb-4 line-clamp-2 text-sm leading-relaxed opacity-60">{project.description}</p>
 
@@ -66,7 +67,7 @@ export function ProjectCard({ project }: { project: Project }) {
 							<ExternalLink size={12} /> live
 						</a>
 					)}
-					{project.featured && <span className="ml-auto">starred</span>}
+					{project.featured && <Pin size={14} className="ml-auto" />}
 				</div>
 			</div>
 		</div>

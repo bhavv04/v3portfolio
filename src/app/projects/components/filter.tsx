@@ -18,36 +18,30 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 	};
 
 	return (
-		<div className="mb-4 space-y-3">
-			<div className="flex flex-wrap gap-2">
-				{tags.map((tag) => (
+		<div className="mb-4 flex flex-wrap gap-2">
+			{tags.map((tag, i) => {
+				const active = selected.has(tag);
+				return (
 					<button
 						key={tag}
 						onClick={() => toggle(tag)}
-						className="rounded-full border border-white px-4 py-1 text-sm duration-200 hover:bg-white hover:text-black"
+						className={`fade-in-up duration-800 relative inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm transition-colors ease-in-out ${
+							active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
+						}`}
+						style={{ "--delay-index": i } as React.CSSProperties}
 					>
 						{tag}
 					</button>
-				))}
-			</div>
-
+				);
+			})}
 			{selected.size > 0 && (
-				<div className="flex flex-wrap items-center gap-2 border-t border-white/10 pt-3">
-					<span className="mr-1 text-xs">active</span>
-					{[...selected].map((tag) => (
-						<button
-							key={tag}
-							onClick={() => toggle(tag)}
-							className="inline-flex items-center gap-1.5 rounded-full border border-white px-3 py-0.5 text-xs transition-opacity hover:opacity-60"
-						>
-							{tag}
-							<span className="-mt-px text-base leading-none">×</span>
-						</button>
-					))}
-					<button onClick={() => onChange(new Set())} className="ml-1 text-xs transition-opacity hover:opacity-60">
-						clear all
-					</button>
-				</div>
+				<button
+					onClick={() => onChange(new Set())}
+					className="duration-800 relative inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-4 py-2 text-sm text-white/70 transition-colors ease-in-out hover:text-white"
+				>
+					<span>×</span>
+					<span>clear</span>
+				</button>
 			)}
 		</div>
 	);

@@ -20,14 +20,16 @@ export default function ProjectsPage() {
 				<div className="mb-4">
 					<SectionTitle
 						text={
-							<span className="flex items-center gap-2">
+							<span className="fade-in-up flex items-center gap-2" style={{ "--delay-index": 0 } as React.CSSProperties}>
 								<BsTools />
 								<span>Workshop</span>
 							</span>
 						}
 					/>
 
-					<p className="mt-2">Here are some of my featured projects and repositories I&apos;ve been currently working on.</p>
+					<p className="fade-in-up mt-2" style={{ "--delay-index": 1 } as React.CSSProperties}>
+						Here are some of my featured projects and repositories I&apos;ve been currently working on.
+					</p>
 				</div>
 
 				<Filter tags={allTags} selected={selected} onChange={setSelected} />

@@ -12,8 +12,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
 
 	return (
 		<div className="grid grid-cols-1 gap-8 overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
-			{projects.map((project) => (
-				<ProjectCard key={project.id} project={project} />
+			{projects.map((project, i) => (
+				<div key={project.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}>
+					<ProjectCard project={project} />
+				</div>
 			))}
 		</div>
 	);
