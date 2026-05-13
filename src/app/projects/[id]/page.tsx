@@ -1,8 +1,8 @@
-import { projects } from "@/app/projects/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { projects } from "@/app/projects/data";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ProjectStatusBadge } from "@/app/projects/components/projectstatus";
 
 export function generateStaticParams() {
 	return projects.map((p) => ({ id: p.id }));
@@ -10,71 +10,83 @@ export function generateStaticParams() {
 
 export default function ProjectPage({ params }: { params: { id: string } }) {
 	const project = projects.find((p) => p.id === params.id);
-
 	if (!project) notFound();
 
+	const { pageContent } = project;
+
 	return (
-		<main className="mx-auto -mt-16 max-w-2xl">
-			<Link href="/projects" className="mb-4 flex items-center gap-2 text-sm text-white/40 hover:text-white">
-				<ArrowLeft size={14} />
-				projects
-			</Link>
+		<main className="p-4 sm:-mt-16">
+			<div className="mx-auto max-w-2xl">
+				<Link href="/projects" className="mb-4 inline-flex items-center gap-2">
+					<ArrowLeft size={14} />
+					all projects
+				</Link>
 
-			<section className="mb-4">
-				<p className="mb-2 text-sm text-white/40">{project.year}</p>
-
-				<h1 className="mb-4 text-3xl">{project.title}</h1>
-
-				<p className="text-white/60">{project.tagline}</p>
-			</section>
-
-			{project.image && (
-				<div className="mb-12 overflow-hidden rounded-lg">
-					<Image src={project.image} alt={project.title} width={0} height={0} sizes="100vw" className="h-auto w-full" priority />
-				</div>
-			)}
-
-			<section className="mb-12">
-				<p className="leading-7 text-white/70">{project.longDescription}</p>
-			</section>
-
-			<section className="mb-12 space-y-6 text-sm">
-				<div>
-					<p className="mb-1 text-white/40">stack</p>
-					<p>{project.tech.join(", ")}</p>
+				<div className="mb-12">
+					<div className="mb-3 flex items-center gap-3">
+						<ProjectStatusBadge status={project.status} />
+						<span>{project.year}</span>
+					</div>
+					<h1 className="mb-2 font-bold">{project.title}</h1>
+					<p>{project.tagline}</p>
 				</div>
 
-				<div>
-					<p className="mb-1 text-white/40">tags</p>
-					<p>{project.tags.join(", ")}</p>
+				{pageContent?.hook && <p className="mb-12">{pageContent.hook}</p>}
+
+				<div className="mb-12 flex flex-col gap-3">
+					<div className="flex flex-wrap gap-2">
+						{project.tags.map((tag) => (
+							<span key={tag}>{tag}</span>
+						))}
+					</div>
+					<div className="flex flex-wrap gap-2">
+						{project.tech.map((t) => (
+							<span className="rounded-full border" key={t}>
+								{t}
+							</span>
+						))}
+					</div>
 				</div>
 
-				<div>
-					<p className="mb-1 text-white/40">status</p>
-					<p>{project.status}</p>
-				</div>
-			</section>
-
-			<div className="flex gap-6 text-sm">
-				<a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
-					<Github size={14} />
-					source
-				</a>
-
-				{project.demo && (
-					<a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
-						<ExternalLink size={14} />
-						demo
-					</a>
+				{pageContent && (
+					<div className="flex flex-col gap-10">
+						<Section title="what it does" body={project.longDescription} />
+						<Section title="how it works" body={pageContent.howItWorks} />
+						<Section title="tech choices" body={pageContent.techChoices} />
+						<Section title="what broke" body={pageContent.lessonsLearned} />
+					</div>
 				)}
 
-				{project.live && (
-					<a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
-						<ExternalLink size={14} />
-						live
-					</a>
-				)}
+				<div className="mt-14 flex gap-6">
+					{project.github && (
+						<a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+							<Github size={14} />
+							github
+						</a>
+					)}
+					{project.live && (
+						<a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+							<ExternalLink size={14} />
+							live
+						</a>
+					)}
+					{project.demo && project.demo !== project.live && (
+						<a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+							<ExternalLink size={14} />
+							demo
+						</a>
+					)}
+				</div>
 			</div>
 		</main>
+	);
+}
+
+function Section({ title, body }: { title: string; body: string }) {
+	return (
+		<div>
+			<h2 className="mb-3">{title}</h2>
+			<p>{body}</p>
+		</div>
 	);
 }

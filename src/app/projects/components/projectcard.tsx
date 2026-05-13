@@ -1,48 +1,64 @@
 import Link from "next/link";
-import { Github, ExternalLink, Pin } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { Project } from "@/app/projects/data";
 import { ProjectStatusBadge } from "./projectstatus";
-import { HoverUnderline } from "@/components/ui/Underline";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
-		<div className="flex flex-col rounded-xl bg-stone-900 px-8 py-12">
+		<div className="group/card flex flex-col rounded-xl border border-white/10 bg-stone-900 p-6 transition-all duration-200 hover:-translate-y-1">
 			{/* Header */}
-			<div className="group mb-2 flex items-start justify-between gap-2">
-				{/* <Link href={`/projects/${project.id}`}> */}
-				<Link href={project.github} target="_blank" className="flex-1">
-					<h3 className="relative w-fit text-base">
-						<HoverUnderline>{project.title}</HoverUnderline>
-					</h3>
+			<div className="flex flex-col">
+				{/*<Link href={`/projects/${project.id}`}> */}
+				<Link href={project.github} target="_blank" rel="noopener reference">
+					<h3 className="text-lg">{project.title}</h3>
 				</Link>
 
-				<div className="flex shrink-0 items-center gap-2">
+				<div className="mb-2 flex items-center gap-1">
 					<ProjectStatusBadge status={project.status} />
-					{project.featured && <Pin size={14} className="" />}
+					{project.featured && <span className="rounded-full bg-violet-500/10 px-2 py-0.5 text-xs font-medium text-violet-300">featured</span>}
 				</div>
 			</div>
 
 			{/* Description */}
-			<p className="mb-4 text-sm leading-relaxed opacity-60">{project.description}</p>
+			<p className="mb-4 text-sm leading-relaxed text-stone-100/60">{project.description}</p>
 
-			{/* Tech tags */}
-			<div className="mb-4 mt-auto flex flex-wrap gap-1">
-				<p className="text-xs text-white/80">{project.tech.join(" / ")}</p>
+			{/* Tech Stack */}
+			<div className="mb-4 flex flex-wrap gap-2">
+				{project.tech.map((t) => (
+					<span key={t} className="rounded-md bg-stone-300/10 px-2 py-1 text-xs">
+						{t}
+					</span>
+				))}
 			</div>
 
 			{/* Links */}
-			<div className="flex items-center gap-4 pt-3 text-sm">
-				<a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-opacity hover:opacity-70">
-					<Github size={12} /> source
+			<div className="flex items-center gap-4 text-sm">
+				<a
+					href={project.github}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="flex items-center gap-1.5 text-stone-100/45 transition-colors hover:text-stone-100/85"
+				>
+					<Github size={13} /> source
 				</a>
 				{project.demo && (
-					<a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-opacity hover:opacity-70">
-						<ExternalLink size={12} /> demo
+					<a
+						href={project.demo}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="flex items-center gap-1.5 text-stone-100/45 transition-colors hover:text-stone-100/85"
+					>
+						<ExternalLink size={13} /> demo
 					</a>
 				)}
 				{project.live && (
-					<a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-opacity hover:opacity-70">
-						<ExternalLink size={12} /> live
+					<a
+						href={project.live}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="flex items-center gap-1.5 text-stone-100/45 transition-colors hover:text-stone-100/85"
+					>
+						<ExternalLink size={13} /> live
 					</a>
 				)}
 			</div>

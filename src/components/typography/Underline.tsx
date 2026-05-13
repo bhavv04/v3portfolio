@@ -4,9 +4,14 @@ import { cn } from "@/lib/utils";
 
 export function HoverUnderline({ children, className }: { children: React.ReactNode; className?: string }) {
 	return (
-		<span className={cn("relative inline-block", className)}>
+		<span
+			className={cn(
+				"bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-bottom bg-no-repeat",
+				"transition-[background-size] duration-300 group-hover:bg-[length:100%_1px]",
+				className
+			)}
+		>
 			{children}
-			<span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-white transition-all duration-300 group-hover:w-full" />
 		</span>
 	);
 }

@@ -11,7 +11,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
 	}
 
 	return (
-		<div className="mx-auto grid grid-cols-1 gap-8 overflow-hidden sm:grid-cols-3">
+		<div className="mx-auto grid grid-cols-1 gap-6 overflow-hidden px-2 py-1 sm:grid-cols-3">
 			{projects.map((project, i) => (
 				<div key={project.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}>
 					<ProjectCard project={project} />

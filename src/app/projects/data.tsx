@@ -17,6 +17,12 @@ export interface Project {
 	image?: string;
 	live?: string;
 	featured: boolean;
+	pageContent?: {
+		hook: string;
+		howItWorks: string;
+		techChoices: string;
+		lessonsLearned: string;
+	};
 }
 
 export const projects: Project[] = [
@@ -34,8 +40,17 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/terraseed",
 		demo: "",
 		live: "https://terraseed.onrender.com/",
-		image: "/images/projects/terraseed_dashboard.png",
-		featured: true
+		image: "",
+		featured: true,
+		pageContent: {
+			hook: "Every patch of land has a window each year where conditions align for vegetation to take hold. Terraseed finds that window — backed by three decades of satellite and reanalysis climate data.",
+			howItWorks:
+				"The pipeline runs in four stages. First, ERA5 temperature and precipitation data is pulled from the Copernicus CDS, and SMAP soil moisture from NASA Earthdata — 30 years of monthly NetCDF files. xarray handles these natively; loading that volume of gridded climate data into pandas would be the wrong tool entirely. The data is downsampled and cleaned into a feature table, then a weighted composite scoring function runs across the full global grid — temperature and rainfall at 30% each, soil moisture and frost risk at 20% each. The Plotly Dash dashboard sits on top, letting you enter any coordinates and see a month-by-month planting calendar with the optimal window highlighted.",
+			techChoices:
+				"xarray was the only real option for multidimensional NetCDF climate arrays — it understands the lat/lon/time dimensions natively. rioxarray handles the geospatial reprojection on top of that. scikit-learn for the scoring model because the composite function didn't need anything heavier. Plotly Dash over a React frontend because the dashboard needed to stay in Python — keeping the data pipeline and the UI in the same language meant no API layer to maintain.",
+			lessonsLearned:
+				"The ERA5 reprojection was silently wrong for longer than I'd like to admit — the scores looked plausible for temperate regions but were off at high latitudes because the grid wasn't being handled correctly during downsampling. Plausible-looking output is the hardest bug to catch. The roadmap item for a 1990–2005 vs 2006–2020 score shift map started as a curiosity and turned into the most interesting thing in the project — climate signal is visible in the scores if you split the dataset in half."
+		}
 	},
 	{
 		id: "deadzone",
@@ -65,7 +80,7 @@ export const projects: Project[] = [
 		tech: ["TypeScript", "React"],
 		status: "active",
 		year: 2026,
-		github: "https://github.com/bhavv04/collatz-viz",
+		github: "https://github.com/bhavv04/collatz-explorer",
 		demo: "",
 		image: "",
 		featured: false
@@ -81,7 +96,7 @@ export const projects: Project[] = [
 		tech: ["Python", "MongoDB"],
 		status: "completed",
 		year: 2025,
-		github: "https://github.com/bhavv04/mapreduce-engine",
+		github: "https://github.com/bhavv04/creduce",
 		demo: "",
 		image: "",
 		featured: false
@@ -135,23 +150,6 @@ export const projects: Project[] = [
 		featured: false
 	},
 	{
-		id: "portfolio",
-		title: "This Portfolio",
-		tagline: "no template. designed and built from nothing",
-		description: "Personal portfolio built with Next.js and TypeScript. You're looking at it.",
-		longDescription:
-			"A minimal, performance-focused portfolio site. Built with Next.js App Router, TypeScript, and Tailwind CSS. Deployed on Vercel. No template — designed and built from scratch.",
-		tags: ["web dev"],
-		tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-		status: "completed",
-		year: 2026,
-		github: "https://github.com/bhavv04/portfolio",
-		demo: "/",
-		live: "/",
-		image: "",
-		featured: false
-	},
-	{
 		id: "thunderhead",
 		title: "Thunderhead",
 		tagline: "silent observation. no captchas. no cloudflare.",
@@ -159,7 +157,7 @@ export const projects: Project[] = [
 		longDescription:
 			"Thunderhead sits in front of your server and scores every request 0–100 using behavioral signals — robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs — just silent observation and graduated responses. All decisions log as structured JSON.",
 		tags: ["systems"],
-		tech: ["Go"],
+		tech: ["Go", "net/http", "Redis", "Docker"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/thunderhead",
