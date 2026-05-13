@@ -8,73 +8,127 @@ const hl = (text: string) => `<span style="color:#d4cfc9">${text}</span>`;
 
 const dim = (text: string) => `<span style="color:#4a4642">${text}</span>`;
 
-const list = (items: string[]) => items.map(hl).join(hl(" · "));
+const list = (items: string[]) => items.map(hl).join(dim(" · "));
 
 const line = (content: string) => `<div style="margin-top:4px">${content}</div>`;
+
+const section = (label: string, content: string) => `${line(dim("── " + label + " ──"))}${line(content)}`;
 
 // ── command definitions ───────────────────────────────────────────────────────
 
 const commandHandlers = {
 	help: () =>
 		w(
-			`${line(`Here's everything you can ask me:`)}` +
-				`${line(list(["about", "projects", "skills", "education", "contact", "hobbies", "status", "whoami", "pwd", "clear"]))}` +
-				`${line(dim("just type any of these and hit enter."))}`
+			`${line(`available commands:`)}` +
+				`${line(dim("──────────────────"))}` +
+				`${line(`${hl("about")}       ${dim("→")} who i am and what i do`)}` +
+				`${line(`${hl("projects")}    ${dim("→")} things i've built`)}` +
+				`${line(`${hl("skills")}      ${dim("→")} languages, frameworks, tools`)}` +
+				`${line(`${hl("education")}   ${dim("→")} where i studied and certifications`)}` +
+				`${line(`${hl("contact")}     ${dim("→")} how to reach me`)}` +
+				`${line(`${hl("hobbies")}     ${dim("→")} what i do outside of code`)}` +
+				`${line(`${hl("status")}      ${dim("→")} what i'm up to right now`)}` +
+				`${line(`${hl("whoami")}      ${dim("→")} you`)}` +
+				`${line(`${hl("pwd")}         ${dim("→")} where you are`)}` +
+				`${line(`${hl("clear")}       ${dim("→")} wipe the terminal`)}` +
+				`${line(dim("──────────────────"))}`
 		),
 
 	about: () => {
 		const { name, occupation, specialization, bio } = portfolioData.personal;
-		return w(`${line(`hey, i'm ${hl(name)}.`)}` + `${line(`i'm a ${occupation}, focused on ${hl(specialization)}.`)}` + `${bio ? line(bio) : ""}`);
+		return w(
+			`${line(`${hl(name)}`)}` +
+				`${line(dim("──────────────────"))}` +
+				`${line(`${dim("role")}           ${occupation}`)}` +
+				`${line(`${dim("focus")}          ${hl(specialization)}`)}` +
+				`${bio ? line(`${dim("bio")}            ${bio}`) : ""}` +
+				`${line(dim("──────────────────"))}` +
+				`${line(`type ${hl("projects")} to see what i've built or ${hl("contact")} to reach me.`)}`
+		);
 	},
 
 	projects: () => {
 		const { projects } = portfolioData;
 		if (!projects.length) return w(line("nothing shipped publicly yet — soon though."));
-		return w(`${line("here's what i've been building:")}` + projects.map((p) => line(`${hl(p.name)} ${dim("—")} ${p.description}`)).join(""));
+		return w(
+			`${line(`${projects.length} projects`)}` +
+				`${line(dim("──────────────────"))}` +
+				projects.map((p, i) => `${line(`${dim(String(i + 1).padStart(2, "0"))}  ${hl(p.name)}`)}` + `${line(`    ${p.description}`)}`).join("") +
+				`${line(dim("──────────────────"))}` +
+				`${line(`see full write-ups at ${hl(portfolioData.contact.portfolio + "/projects")}`)}`
+		);
 	},
 
 	skills: () => {
-		const { programmingLanguages, frameworks, databases } = portfolioData.skills;
+		const { programmingLanguages, frameworks, tools } = portfolioData.skills;
 		return w(
-			`${line("languages i write in:")} ${line(list(programmingLanguages))}` +
-				`${line("frameworks i reach for:")} ${line(list(frameworks))}` +
-				`${line("tools & databases:")} ${line(list(databases))}`
+			`${section("languages", list(programmingLanguages))}` +
+				`${section("frameworks & libraries", list(frameworks))}` +
+				`${section("tools & infrastructure", list(tools))}`
 		);
 	},
 
 	education: () => {
 		const { degree, school, period, details, certifications } = portfolioData.education;
 		return w(
-			`${line(`studying ${hl(degree)} at ${hl(school)} ${dim(`(${period})`)}.`)}` +
+			`${line(`${hl(degree)} ${dim("@")} ${hl(school)}`)}` +
+				`${line(dim(period))}` +
+				`${line(dim("──────────────────"))}` +
 				`${line(details)}` +
-				`${certifications.length ? line(`also certified in ${list(certifications)}.`) : ""}`
+				`${
+					certifications.length
+						? `${line(dim("──────────────────"))}` + `${line("certifications:")}` + certifications.map((c) => line(`${dim("✓")} ${hl(c)}`)).join("")
+						: ""
+				}`
 		);
 	},
 
 	contact: () => {
-		const { email, github, linkedin } = portfolioData.contact;
+		const { email, github, linkedin, portfolio } = portfolioData.contact;
 		return w(
-			`${line("best ways to reach me:")}` +
-				`${line(`email ${dim("→")} ${hl(email)}`)}` +
-				`${line(`github ${dim("→")} ${hl(github)}`)}` +
-				`${line(`linkedin ${dim("→")} ${hl(linkedin)}`)}`
+			`${line("get in touch:")}` +
+				`${line(dim("──────────────────"))}` +
+				`${line(`${dim("email")}      ${hl(email)}`)}` +
+				`${line(`${dim("github")}     ${hl(github)}`)}` +
+				`${line(`${dim("linkedin")}   ${hl(linkedin)}`)}` +
+				`${line(`${dim("portfolio")}  ${hl(portfolio)}`)}` +
+				`${line(dim("──────────────────"))}` +
+				`${line("i'm always open to interesting projects and conversations.")}`
 		);
 	},
 
-	whoami: () => w(`${line(`you're ${hl("visitor")} — welcome.`)}` + `${line(dim(new Date().toLocaleString()))}`),
+	whoami: () =>
+		w(
+			`${line(`you're ${hl("visitor")} — welcome.`)}` +
+				`${line(dim(new Date().toLocaleString()))}` +
+				`${line(`type ${hl("about")} to learn who's on the other side.`)}`
+		),
 
 	pwd: () => {
 		const slug = portfolioData.personal.name.toLowerCase().replace(" ", "-");
-		return w(line(hl(`/home/${slug}/portfolio/about`)));
+		return w(`${line(hl(`/home/${slug}/portfolio/about`))}` + `${line(dim("you're in the about section of the portfolio."))}`);
 	},
 
 	hobbies: () => {
 		const { hobbies } = portfolioData;
 		if (!hobbies.length) return w(line("haven't filled this in yet — check back soon."));
-		return w(`${line("when i'm not coding:")}` + `${line(list(hobbies))}`);
+		return w(
+			`${line("outside of code:")}` +
+				`${line(dim("──────────────────"))}` +
+				`${line(list(hobbies))}` +
+				`${line(dim("──────────────────"))}` +
+				`${line("always down to talk about any of these.")}`
+		);
 	},
 
-	status: () => w(`${line(`${hl("now playing")} ${dim("—")} spotify integration coming soon.`)}` + `${line(dim("check back once it's wired up."))}`),
+	status: () =>
+		w(
+			`${line(dim("──────────────────"))}` +
+				`${line(`${dim("studying")}     final year @ TMU`)}` +
+				`${line(`${dim("building")}     Solace, Lacunae, Thunderhead`)}` +
+				`${line(`${dim("open to")}      internships, research, interesting problems`)}` +
+				`${line(dim("──────────────────"))}`
+		),
 
 	clear: () => "CLEAR_COMMAND"
 } as const;
@@ -88,5 +142,5 @@ export const executeCommand = (cmd: string): string => {
 	if (trimmed === "") return "";
 	const c = trimmed as Command;
 	if (c in commandHandlers) return commandHandlers[c]();
-	return w(`${line(`hmm, i don't know ${hl(cmd)}.`)}` + `${line(`type ${hl("help")} to see what i can do.`)}`);
+	return w(`${line(`command not found: ${hl(cmd)}`)}` + `${line(`type ${hl("help")} to see what's available.`)}`);
 };

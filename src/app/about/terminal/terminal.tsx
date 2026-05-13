@@ -63,9 +63,6 @@ const Terminal: React.FC = () => {
 
 	useEffect(() => {
 		if (!isTyping) inputDivRef.current?.focus({ preventScroll: true });
-		{
-			/* prevent scroll so it doesnt scroll down when you press enter */
-		}
 	}, [isTyping]);
 
 	const handleSubmit = useCallback(
@@ -185,7 +182,7 @@ const Terminal: React.FC = () => {
 					))}
 				</div>
 
-				<div className="mt-4 flex items-center gap-2">
+				<form onSubmit={handleSubmit} className="mt-4 flex items-center gap-2">
 					{!isTyping && (
 						<span className="fade-in-up shrink-0 select-none" style={{ color: "#097d39" }}>
 							❯
@@ -197,6 +194,7 @@ const Terminal: React.FC = () => {
 							contentEditable={!isTyping}
 							suppressContentEditableWarning
 							spellCheck={false}
+							inputMode="text"
 							onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
 							onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
 							onKeyDown={(e) => {
@@ -223,7 +221,9 @@ const Terminal: React.FC = () => {
 							/>
 						)}
 					</div>
-				</div>
+					{/* Hidden submit button — tells mobile keyboard to show "go/return" instead of newline */}
+					<button type="submit" className="hidden" aria-hidden />
+				</form>
 			</div>
 
 			{/* Footer */}
