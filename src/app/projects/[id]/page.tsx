@@ -10,92 +10,71 @@ export function generateStaticParams() {
 
 export default function ProjectPage({ params }: { params: { id: string } }) {
 	const project = projects.find((p) => p.id === params.id);
+
 	if (!project) notFound();
 
 	return (
-		<div className="mx-auto sm:-mt-12">
-			{/* back */}
-			<Link href="/projects" className="mb-4 inline-flex items-center gap-1 hover:opacity-60">
+		<main className="mx-auto -mt-16 max-w-2xl">
+			<Link href="/projects" className="mb-4 flex items-center gap-2 text-sm text-white/40 hover:text-white">
 				<ArrowLeft size={14} />
-				<span className="text-sm">back to projects</span>
+				projects
 			</Link>
 
-			{/* hero */}
-			<div className="mb-12">
-				<h1 className="mb-2 text-4xl">{project.title}</h1>
+			<section className="mb-4">
+				<p className="mb-2 text-sm text-white/40">{project.year}</p>
 
-				<p className="mb-6 max-w-lg text-sm italic">{project.description}</p>
+				<h1 className="mb-4 text-3xl">{project.title}</h1>
 
-				<div className="flex flex-wrap gap-2">
-					{project.tags.map((tag) => (
-						<span key={tag} className="rounded-full border border-white px-3 py-1 text-xs">
-							{tag}
-						</span>
-					))}
-				</div>
-			</div>
+				<p className="text-white/60">{project.tagline}</p>
+			</section>
 
-			{/* hero image */}
 			{project.image && (
-				<div className="relative mb-12 h-64 w-full overflow-hidden rounded-xl border border-white/10 sm:h-72">
-					<Image src={project.image} alt={project.title} fill className="object-cover" sizes="896px" priority />
+				<div className="mb-12 overflow-hidden rounded-lg">
+					<Image src={project.image} alt={project.title} width={0} height={0} sizes="100vw" className="h-auto w-full" priority />
 				</div>
 			)}
 
-			{/* content grid */}
-			<div className="grid items-start gap-8 lg:grid-cols-[1fr_280px]">
-				{/* left */}
-				<div className="space-y-10">
-					<section>
-						<p className="mb-4 uppercase">Overview</p>
-						<p className="text-sm leading-7">{project.longDescription}</p>
-					</section>
+			<section className="mb-12">
+				<p className="leading-7 text-white/70">{project.longDescription}</p>
+			</section>
+
+			<section className="mb-12 space-y-6 text-sm">
+				<div>
+					<p className="mb-1 text-white/40">stack</p>
+					<p>{project.tech.join(", ")}</p>
 				</div>
 
-				{/* right */}
-				<aside className="space-y-6">
-					<section>
-						<p className="mb-3 text-xs uppercase">Built With</p>
-						<div className="flex flex-wrap gap-2">
-							{project.tech.map((tech) => (
-								<span key={tech} className="rounded-full border border-white px-3 py-1 text-xs">
-									{tech}
-								</span>
-							))}
-						</div>
-					</section>
+				<div>
+					<p className="mb-1 text-white/40">tags</p>
+					<p>{project.tags.join(", ")}</p>
+				</div>
 
-					<div className="flex flex-col gap-2">
-						<Link
-							href={project.github}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="flex items-center justify-between rounded-lg border bg-neutral-800 px-4 py-2.5 text-sm transition-all hover:bg-white hover:text-black"
-						>
-							<span className="flex items-center gap-2">
-								<Github size={14} />
-								Source Code
-							</span>
-							<ExternalLink size={12} />
-						</Link>
+				<div>
+					<p className="mb-1 text-white/40">status</p>
+					<p>{project.status}</p>
+				</div>
+			</section>
 
-						{(project.live || project.demo) && (
-							<Link
-								href={project.live ?? project.demo}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="flex items-center justify-between rounded-lg border bg-neutral-800 px-4 py-2.5 text-sm transition-all hover:bg-white hover:text-black"
-							>
-								<span className="flex items-center gap-2">
-									<ExternalLink size={14} />
-									{project.live ? "Live Site" : "Demo"}
-								</span>
-								<ExternalLink size={12} />
-							</Link>
-						)}
-					</div>
-				</aside>
+			<div className="flex gap-6 text-sm">
+				<a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
+					<Github size={14} />
+					source
+				</a>
+
+				{project.demo && (
+					<a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
+						<ExternalLink size={14} />
+						demo
+					</a>
+				)}
+
+				{project.live && (
+					<a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white">
+						<ExternalLink size={14} />
+						live
+					</a>
+				)}
 			</div>
-		</div>
+		</main>
 	);
 }

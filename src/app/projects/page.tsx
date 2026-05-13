@@ -12,10 +12,12 @@ const allTags = [...new Set(projects.flatMap((p) => p.tags))] as ProjectTag[];
 export default function ProjectsPage() {
 	const [selected, setSelected] = useState<Set<ProjectTag>>(new Set());
 
-	const filtered = selected.size > 0 ? projects.filter((p) => p.tags.some((tag) => selected.has(tag))) : projects;
+	const filtered = (selected.size > 0 ? projects.filter((p) => p.tags.some((tag) => selected.has(tag))) : projects).sort(
+		(a, b) => Number(b.featured) - Number(a.featured)
+	);
 
 	return (
-		<div className="sm:-mx-8 sm:-mt-10 md:-mx-16">
+		<div className="mb-12 sm:-mx-8 sm:-mt-10 md:-mx-16">
 			<div className="">
 				<div className="mb-4">
 					<SectionTitle

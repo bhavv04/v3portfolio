@@ -29,11 +29,12 @@ export const projects: Project[] = [
 			"Terraseed processes three decades of satellite and reanalysis climate data — temperature, precipitation, soil moisture, and frost risk — into a single planting score across the global grid. Features an interactive Plotly Dash dashboard where users can enter coordinates and get a month-by-month planting calendar with the optimal window highlighted automatically.",
 		tags: ["machine learning", "data engineering", "research"],
 		tech: ["Python", "Plotly Dash", "scikit-learn", "xarray"],
-		status: "completed",
+		status: "active",
 		year: 2025,
 		github: "https://github.com/bhavv04/terraseed",
 		demo: "",
-		image: "/images/projects/terraseed.png",
+		live: "https://terraseed.onrender.com/",
+		image: "/images/projects/terraseed_dashboard.png",
 		featured: true
 	},
 	{
@@ -49,6 +50,7 @@ export const projects: Project[] = [
 		year: 2025,
 		github: "https://github.com/bhavv04/deadzone",
 		demo: "https://deadzone-b3eq.onrender.com/",
+		live: "https://deadzone-b3eq.onrender.com/",
 		image: "",
 		featured: true
 	},
@@ -66,7 +68,7 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/collatz-viz",
 		demo: "",
 		image: "",
-		featured: true
+		featured: false
 	},
 	{
 		id: "mapreduce-engine",
@@ -82,7 +84,7 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/mapreduce-engine",
 		demo: "",
 		image: "",
-		featured: true
+		featured: false
 	},
 	{
 		id: "healthcare-patient-management",
@@ -141,12 +143,62 @@ export const projects: Project[] = [
 			"A minimal, performance-focused portfolio site. Built with Next.js App Router, TypeScript, and Tailwind CSS. Deployed on Vercel. No template — designed and built from scratch.",
 		tags: ["web dev"],
 		tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-		status: "active",
+		status: "completed",
 		year: 2026,
 		github: "https://github.com/bhavv04/portfolio",
 		demo: "/",
 		live: "/",
 		image: "",
 		featured: false
+	},
+	{
+		id: "thunderhead",
+		title: "Thunderhead",
+		tagline: "silent observation. no captchas. no cloudflare.",
+		description: "A lightweight reverse proxy that scores incoming HTTP requests to detect and mitigate bot traffic without third-party services.",
+		longDescription:
+			"Thunderhead sits in front of your server and scores every request 0–100 using behavioral signals — robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs — just silent observation and graduated responses. All decisions log as structured JSON.",
+		tags: ["systems"],
+		tech: ["Go"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/thunderhead",
+		demo: "",
+		image: "",
+		featured: true
+	},
+	{
+		id: "solace",
+		title: "Solace",
+		tagline: "mapping where toronto burns, and what it takes to cool it",
+		description:
+			"Urban heat island analysis pipeline built on a decade of NASA satellite data, modeling the tree canopy needed to cool Toronto neighbourhoods by 2°C.",
+		longDescription:
+			"Solace downloads a decade of NASA MODIS daily land surface temperature tiles, converts and reprojects them to Toronto's boundary, then computes mean summer LST across all 158 neighbourhoods via zonal statistics. An OLS regression extracts a cooling coefficient — degrees per 1% canopy increase — and the interactive Plotly Dash dashboard lets you simulate city-wide tree cover increases and their projected cooling effect per neighbourhood.",
+		tags: ["data engineering", "research"],
+		tech: ["Python", "Plotly Dash", "GDAL", "scikit-learn"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/solace",
+		demo: "",
+		image: "",
+		featured: true
+	},
+	{
+		id: "lacunae",
+		title: "Lacunae",
+		tagline: "reconstructing what the scanner never collected",
+		description:
+			"A U-Net model that reconstructs diagnostically useful MRI images from undersampled k-space data, reducing scan time without sacrificing image quality.",
+		longDescription:
+			"MRI machines collect data in k-space — the frequency domain representation of an image. Full sampling is slow and expensive. Lacunae takes fully sampled scans from the fastMRI dataset, artificially masks out portions of k-space to simulate accelerated acquisition, and trains a U-Net to reconstruct the complete image from the undersampled input. Reconstruction quality is evaluated against ground truth using SSIM and PSNR.",
+		tags: ["machine learning", "research"],
+		tech: ["Python", "PyTorch"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/lacunae",
+		demo: "",
+		image: "",
+		featured: true
 	}
 ];
