@@ -17,7 +17,7 @@ export default function ProjectsPage() {
 	);
 
 	return (
-		<div className="mb-12 sm:-mx-8 sm:-mt-10 md:-mx-16">
+		<div className="mb-12 sm:-mx-8 sm:-mt-10 md:-mx-32">
 			<div className="">
 				<div className="mb-4">
 					<SectionTitle

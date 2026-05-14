@@ -37,10 +37,18 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 			{selected.size > 0 && (
 				<button
 					onClick={() => onChange(new Set())}
-					className="duration-800 relative inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-4 py-2 text-sm text-white/70 transition-colors ease-in-out hover:text-white"
+					className="group relative inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-white"
 				>
-					<span>×</span>
-					<span>clear</span>
+					<span>Clear all</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="h-3.5 w-3.5 transition-transform group-hover:rotate-90"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+					</svg>
 				</button>
 			)}
 		</div>
