@@ -34,8 +34,8 @@ export function HeroBadges() {
 			/>
 
 			<HeroBadge
-				text="Listening to: Movement - Hozier"
-				href="https://open.spotify.com/track/1djzKW3eYLyzjjHXazEWWh?si=fddc2e368b14456b"
+				text="Listening to: NFWMB - Hozier"
+				href="https://open.spotify.com/track/2iQYqdalv245vrCEM4W9N9?si=0e5e009386564e6b"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaSpotify />
@@ -44,8 +44,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: War And Peace - Leo Tolstoy"
-				href="https://www.goodreads.com/book/show/18243.War_and_Peace"
+				text="Reading: East of Eden - John Steinbeck"
+				href="https://www.goodreads.com/book/show/4406.East_of_Eden"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />

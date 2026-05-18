@@ -1,77 +1,32 @@
-# V3 Portfolio
+# v3portfolio 
 
-## 📋 Prerequisites
+![portfolio](portfolio.png)
 
-Before running this project, make sure you have the following installed:
+a little corner of the internet, hand crafted with next.js and too much chocolate.
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [Yarn](https://yarnpkg.com/) package manager
+## getting started
 
 ```bash
-# Install Yarn globally if you haven't already
-npm install -g yarn
+git clone https://github.com/yourusername/v3portfolio.git
+cd v3portfolio
+yarn install
+yarn dev
 ```
 
-## 🚀 Getting Started
+then visit `http://localhost:3000` and see what's there ✿
 
-1. **Clone the repository**
+## scripts
 
-   ```bash
-   git clone https://github.com/yourusername/v3portfolio.git
-   cd v3portfolio
-   ```
-2. **Install dependencies**
+| command | does what |
+|---|---|
+| `yarn dev` | spin up the dev server |
+| `yarn build` | bundle everything up nicely |
+| `yarn start` | serve the built site |
+| `yarn lint` | complain about your code |
+| `yarn format` | make it pretty again |
 
-   ```bash
-   yarn install
-   ```
-3. **Start the development server**
+## the usual bits
 
-   ```bash
-   yarn dev
-   ```
-4. **Open your browser**
-   Navigate to `http://localhost:3000` to view the portfolio
+**License** — MIT, do whatever, see [LICENSE](LICENSE)
 
-## 📦 Available Scripts
-
-- `yarn dev` - Start development server
-- `yarn build` - Build for production
-- `yarn start` - Start production server
-- `yarn lint` - Run ESLint
-- `yarn format` - Format code with Prettier
-
-## 📁 Project Structure
-
-```
-v3portfolio/
-├── public/
-│   ├── images/
-│   ├── icons/
-│   └── favicon.ico
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── styles/
-│   └── scripts/
-├── index.html
-├── package.json
-├── yarn.lock
-└── README.md
-```
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🌿 Acknowledgements
-
-Background photo by [JUNHØ](https://unsplash.com/@junhochak?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/green-pine-tree-leaves-in-close-up-photography-K55AXFodyH4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+**Background photo** by [JUNHØ](https://unsplash.com/@junhochak?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/green-pine-tree-leaves-in-close-up-photography-K55AXFodyH4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 

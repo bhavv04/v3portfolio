@@ -82,7 +82,7 @@ export const projects: Project[] = [
 		year: 2026,
 		github: "https://github.com/bhavv04/collatz-explorer",
 		demo: "",
-		image: "/images/projects/collatzexplorer.png",
+		image: "",
 		featured: false
 	},
 	{
@@ -118,22 +118,6 @@ export const projects: Project[] = [
 		featured: false
 	},
 	{
-		id: "library-management-system",
-		title: "Library Management System",
-		tagline: "Search, filter, browse — the catalog, done right",
-		description: "A responsive digital library catalog with search, filtering, and detailed views across books, audiobooks, and e-books.",
-		longDescription:
-			"Built with React, TypeScript, and Tailwind CSS. Features a full-text search bar, filter sidebar by genre and format, individual book detail modals, and a clean catalog grid. Powered by mock data with a structure ready for a real backend integration.",
-		tags: ["web dev"],
-		tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-		status: "completed",
-		year: 2024,
-		github: "https://github.com/bhavv04/Library-Management-System",
-		demo: "",
-		image: "",
-		featured: false
-	},
-	{
 		id: "calvin-hobbes-api",
 		title: "Calvin & Hobbes Quote API",
 		tagline: "Philosophy from a six-year-old, on demand",
@@ -162,7 +146,8 @@ export const projects: Project[] = [
 		year: 2026,
 		github: "https://github.com/bhavv04/thunderhead",
 		demo: "",
-		image: "",
+		live: "https://getthunderhead.vercel.app/",
+		image: "/images/projects/thunderhead.png",
 		featured: true
 	},
 	{
@@ -198,5 +183,37 @@ export const projects: Project[] = [
 		demo: "",
 		image: "/images/projects/lacunae.jpeg",
 		featured: true
+	},
+	{
+		id: "bug-reporting-system",
+		title: "Bug Tracker",
+		tagline: "Structured issue reporting. no noise. no bloat.",
+		description: "A lightweight bug reporting and tracking system for small teams and solo developers.",
+		longDescription:
+			"A self-hosted bug reporting system that captures structured issue reports — severity, stack traces, environment metadata, and reproduction steps — and surfaces them in a minimal dashboard. No third-party integrations, no seat-based pricing. Just a clean intake form, a prioritized queue, and JSON exports.",
+		tags: ["systems", "productivity"],
+		tech: ["Python", "SQLite", "React", "Docker"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/bug-report",
+		demo: "",
+		image: "",
+		featured: false
+	},
+	{
+		id: "redis-c",
+		title: "Custom Redis",
+		tagline: "Redis, from scratch, in C.",
+		description: "A ground-up implementation of a Redis-compatible in-memory key-value store written in C.",
+		longDescription:
+			"Redic implements the core Redis wire protocol (RESP) and a subset of commands — GET, SET, DEL, EXPIRE, TTL, LPUSH, LPOP — in plain C. Built to understand how Redis actually works: event loops, hash table internals, memory layout, and socket I/O without libuv or any async framework. Connects with any standard Redis client.",
+		tags: ["systems", "research"],
+		tech: ["C", "POSIX sockets", "RESP protocol", "Make"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/redis",
+		demo: "",
+		image: "",
+		featured: false
 	}
 ];
