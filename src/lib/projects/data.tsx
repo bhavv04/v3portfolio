@@ -6,20 +6,10 @@ export const projects: Project[] = [
 		name: "Thunderhead",
 		summary:
 			"A lightweight reverse proxy that scores the intent of incoming HTTP requests to detect and mitigate bot traffic — without relying on Cloudflare or third-party services.",
-		technologies: [
-			Technology.NextJS,
-			Technology.TypeScript,
-			Technology.Go,
-			Technology.Docker,
-			Technology.Nginx,
-			Technology.Redis,
-			Technology.AWS,
-			Technology.Linux,
-			Technology.Git
-		],
+		technologies: [Technology.Go, Technology.NextJS, Technology.TypeScript, Technology.Redis, Technology.Javascript, Technology.Nginx],
 		links: {
 			github: "https://github.com/bhavv04/thunderhead",
-			live: ""
+			live: "https://getthunderhead.vercel.app/"
 		},
 		screenshots: [
 			{

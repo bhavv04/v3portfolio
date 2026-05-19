@@ -9,7 +9,7 @@ export default function Home() {
 		<div className="">
 			<HeroSection />
 
-			<div className="-my-10" />
+			<div className="-my-8" />
 
 			<Skills />
 
@@ -23,7 +23,7 @@ export default function Home() {
 
 			<ProjectsView />
 
-			<div className="my-24" />
+			<div className="my-16" />
 
 			<Footer />
 		</div>

@@ -156,7 +156,7 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 	const { scrollPrev, canScrollPrev } = useCarousel();
 
 	return (
-		<IconContext.Provider value={{ size: "1rem" }}>
+		<IconContext.Provider value={{ size: "1.5rem" }}>
 			<Button ref={ref} size={size} disabled={!canScrollPrev} onClick={scrollPrev} {...props}>
 				<LuArrowLeft />
 			</Button>
@@ -169,7 +169,7 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 	const { scrollNext, canScrollNext } = useCarousel();
 
 	return (
-		<IconContext.Provider value={{ size: "1rem" }}>
+		<IconContext.Provider value={{ size: "1.5rem" }}>
 			<Button ref={ref} size={size} disabled={!canScrollNext} onClick={scrollNext} {...props}>
 				<LuArrowRight />
 			</Button>

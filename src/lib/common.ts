@@ -25,5 +25,12 @@ export enum Technology {
 	Go = "Go",
 	Redis = "Redis",
 	Prisma = "Prisma",
-	Supabase = "Supabase"
+	Supabase = "Supabase",
+	Node = "Node.js",
+	MongoDB = "MongoDB",
+	Express = "Express",
+	NPM = "npm",
+	Yarn = "Yarn",
+	GraphQL = "GraphQL",
+	Kubernetes = "Kubernetes"
 }

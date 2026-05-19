@@ -21,7 +21,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 	const hasMultiple = screenshots.length > 1;
 
 	return (
-		<article className={cn("flex flex-col gap-8 lg:items-start lg:gap-6", direction === "row-reverse" ? "lg:flex-row-reverse" : "lg:flex-row")}>
+		<article className={cn("flex flex-col gap-6", direction === "row-reverse" ? "lg:flex-row-reverse" : "lg:flex-row")}>
 			{/* Screenshots */}
 			<div className="w-full lg:w-[55%]">
 				<div className="-mx-4 p-4">
@@ -103,7 +103,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 			{/* Info */}
 			<div className="flex w-full flex-col gap-5 lg:w-1/2 lg:pt-4">
 				<div className="space-y-2">
-					<h3 className="text-balance text-3xl sm:text-4xl">{name}</h3>
+					<h3 className="text-4xl">{name}</h3>
 					<p className="max-w-xl text-sm leading-7 text-white/70 sm:text-base">{summary}</p>
 				</div>
 
@@ -114,19 +114,19 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 				</div>
 
 				{project.type === "bullets" && project.bullets.length > 0 && (
-					<ul className="space-y-3 rounded-xl p-5 text-sm leading-6 text-white sm:p-6">
+					<ul className="space-y-3 rounded-xl p-2 text-sm text-white">
 						{project.bullets.map((bullet) => (
-							<li key={bullet} className="flex gap-3">
-								<span className="mt-2 size-1.5 shrink-0 rounded-full bg-white" />
+							<li key={bullet} className="flex items-start gap-3">
+								<span className="mt-2 size-2 shrink-0 rounded-full bg-white/90" />
 								<span>{bullet}</span>
 							</li>
 						))}
 					</ul>
 				)}
 
-				<div className="flex flex-wrap gap-3 pt-1">
+				<div className="flex flex-wrap gap-3">
 					{links?.github && (
-						<Button asChild className="rounded-full bg-white text-black hover:bg-white/80">
+						<Button asChild variant="default" className="rounded-full">
 							<Link href={links.github} target="_blank" rel="noopener noreferrer">
 								<Github size={16} />
 								Source
@@ -134,10 +134,10 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 						</Button>
 					)}
 					{links?.live && (
-						<Button asChild className="rounded-full border border-white/10 bg-transparent text-white hover:bg-white hover:text-black">
+						<Button asChild variant="default" className="rounded-full">
 							<Link href={links.live} target="_blank" rel="noopener noreferrer">
 								<ExternalLink size={16} />
-								Live site
+								Live
 							</Link>
 						</Button>
 					)}

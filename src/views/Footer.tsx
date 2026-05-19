@@ -35,7 +35,7 @@ export default function Footer() {
 	};
 
 	return (
-		<footer className="mx-auto max-w-2xl bg-transparent py-12 text-white sm:px-6">
+		<footer className="mx-auto max-w-2xl text-white sm:px-6">
 			<div className="space-y-12">
 				<div className="space-y-4">
 					<SectionTitle

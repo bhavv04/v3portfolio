@@ -16,7 +16,19 @@ import {
 	SiTailwindcss,
 	SiTypescript,
 	SiVercel,
-	SiVite
+	SiVite,
+	SiHtml5,
+	SiCss3,
+	SiJavascript,
+	SiNodedotjs,
+	SiMongodb,
+	SiExpress,
+	SiNpm,
+	SiYarn,
+	SiGraphql,
+	SiKubernetes,
+	SiGit,
+	SiLinux
 } from "react-icons/si";
 import { FaAws, FaFigma, FaJava, FaPython, FaRust } from "react-icons/fa6";
 
@@ -72,6 +84,42 @@ export function CPPBadge() {
 }
 export function VercelBadge() {
 	return <StaticBadge name={Technology.Vercel} icon={<SiVercel />} className="bg-zinc-950" />;
+}
+export function JavaScriptBadge() {
+	return <StaticBadge name={Technology.Javascript} icon={<SiJavascript />} className="bg-[#f0db4f] text-black" />;
+}
+export function HTMLBadge() {
+	return <StaticBadge name={Technology.HTML} icon={<SiHtml5 />} className="bg-[#e34f26]" />;
+}
+export function CSSBadge() {
+	return <StaticBadge name={Technology.CSS} icon={<SiCss3 />} className="bg-[#2965f1]" />;
+}
+export function NodeBadge() {
+	return <StaticBadge name={Technology.Node} icon={<SiNodedotjs />} className="bg-[#3c873a]" />;
+}
+export function MongoDBBadge() {
+	return <StaticBadge name={Technology.MongoDB} icon={<SiMongodb />} className="bg-[#0aa869]" />;
+}
+export function ExpressBadge() {
+	return <StaticBadge name={Technology.Express} icon={<SiExpress />} className="bg-[#000000]" />;
+}
+export function NPMBadge() {
+	return <StaticBadge name={Technology.NPM} icon={<SiNpm />} className="bg-[#cb3837]" />;
+}
+export function YarnBadge() {
+	return <StaticBadge name={Technology.Yarn} icon={<SiYarn />} className="bg-[#2c8ebb]" />;
+}
+export function GraphQLBadge() {
+	return <StaticBadge name={Technology.GraphQL} icon={<SiGraphql />} className="bg-[#e535ab] text-white" />;
+}
+export function KubernetesBadge() {
+	return <StaticBadge name={Technology.Kubernetes} icon={<SiKubernetes />} className="bg-[#326ce5]" />;
+}
+export function GitBadge() {
+	return <StaticBadge name={Technology.Git} icon={<SiGit />} className="bg-[#f34f29]" />;
+}
+export function LinuxBadge() {
+	return <StaticBadge name={Technology.Linux} icon={<SiLinux />} className="bg-[#000000] text-white" />;
 }
 export function FigmaBadge() {
 	return <StaticBadge name={Technology.Figma} icon={<FaFigma />} className="bg-[#5e0202]" />;
@@ -157,5 +205,29 @@ export function TechnologyBadge({ technology }: TechnologyBadgeProps) {
 			return <PrismaBadge />;
 		case Technology.Supabase:
 			return <SupabaseBadge />;
+		case Technology.Javascript:
+			return <JavaScriptBadge />;
+		case Technology.HTML:
+			return <HTMLBadge />;
+		case Technology.CSS:
+			return <CSSBadge />;
+		case Technology.Node:
+			return <NodeBadge />;
+		case Technology.MongoDB:
+			return <MongoDBBadge />;
+		case Technology.Express:
+			return <ExpressBadge />;
+		case Technology.NPM:
+			return <NPMBadge />;
+		case Technology.Yarn:
+			return <YarnBadge />;
+		case Technology.GraphQL:
+			return <GraphQLBadge />;
+		case Technology.Kubernetes:
+			return <KubernetesBadge />;
+		case Technology.Git:
+			return <GitBadge />;
+		case Technology.Linux:
+			return <LinuxBadge />;
 	}
 }
