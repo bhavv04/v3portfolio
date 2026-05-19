@@ -21,5 +21,9 @@ export enum Technology {
 	Javascript = "JavaScript",
 	Docker = "Docker",
 	Git = "Git",
-	Linux = "Linux"
+	Linux = "Linux",
+	Go = "Go",
+	Redis = "Redis",
+	Prisma = "Prisma",
+	Supabase = "Supabase"
 }

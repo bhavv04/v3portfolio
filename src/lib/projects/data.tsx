@@ -3,56 +3,86 @@ import { Technology } from "@/lib/common";
 
 export const projects: Project[] = [
 	{
-		name: "Bug Report App",
+		name: "Thunderhead",
 		summary:
-			"Streamline bug tracking and resolution with our intuitive bug-report website. Effortlessly report and manage software issues for smoother development cycles.",
-		technologies: [Technology.React, Technology.Python, Technology.Figma, Technology.SQLite],
+			"A lightweight reverse proxy that scores the intent of incoming HTTP requests to detect and mitigate bot traffic — without relying on Cloudflare or third-party services.",
+		technologies: [
+			Technology.NextJS,
+			Technology.TypeScript,
+			Technology.Go,
+			Technology.Docker,
+			Technology.Nginx,
+			Technology.Redis,
+			Technology.AWS,
+			Technology.Linux,
+			Technology.Git
+		],
 		links: {
-			github: "https://github.com/bhavv04/bug-report?tab=readme-ov-file",
+			github: "https://github.com/bhavv04/thunderhead",
 			live: ""
 		},
 		screenshots: [
 			{
-				name: "Bug Report Home Page",
+				name: "Thunderhead Overview",
 				mobile: {
-					src: "/images/bug_report/bug_report_home.jpg",
-					width: 460,
-					height: 367
+					src: "/images/thunderhead/thunderhead1.png",
+					width: 800,
+					height: 640
 				},
 				desktop: {
-					src: "/images/bug_report/bug_report_home.jpg",
-					width: 350,
-					height: 279
+					src: "/images/thunderhead/thunderhead1.png",
+					width: 800,
+					height: 640
 				}
 			},
 			{
-				name: "Bug Report Dashboard",
+				name: "Thunderhead Scoring",
 				mobile: {
-					src: "/images/bug_report/bug_report_dashboard.jpg",
-					width: 460,
-					height: 367
+					src: "/images/thunderhead/thunderhead2.png",
+					width: 800,
+					height: 640
 				},
 				desktop: {
-					src: "/images/bug_report/bug_report_dashboard.jpg",
-					width: 350,
-					height: 279
+					src: "/images/thunderhead/thunderhead2.png",
+					width: 800,
+					height: 640
 				}
 			},
 			{
-				name: "Bug Report Submit Page",
+				name: "Thunderhead Config",
 				mobile: {
-					src: "/images/bug_report/bug_report_submit.jpg",
-					width: 460,
-					height: 367
+					src: "/images/thunderhead/thunderhead3.png",
+					width: 800,
+					height: 640
 				},
 				desktop: {
-					src: "/images/bug_report/bug_report_submit.jpg",
-					width: 350,
-					height: 279
+					src: "/images/thunderhead/thunderhead3.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Thunderhead Features",
+				mobile: {
+					src: "/images/thunderhead/thunderhead4.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/thunderhead/thunderhead4.png",
+					width: 800,
+					height: 640
 				}
 			}
 		],
 		type: "bullets",
-		bullets: []
+		bullets: [
+			"Passive behavioral scoring engine — no JS challenges or CAPTCHAs",
+			"Scores requests 0–100 across signals: robots.txt violations, path crawling, request rate, suspicious headers, and content patterns",
+			"Graduated responses: allow (< 40), tarpit with configurable delay (≥ 40), or block 403 (≥ 75)",
+			"Structured JSON logging for all proxy decisions",
+			"IP, CIDR, and user-agent allowlist support",
+			"Config-driven: listen address, upstream URL, thresholds, and tarpit delay all configurable"
+		]
 	}
 ];
