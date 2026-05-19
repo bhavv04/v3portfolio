@@ -23,8 +23,8 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 	return (
 		<article className={cn("flex flex-col gap-6", direction === "row-reverse" ? "lg:flex-row-reverse" : "lg:flex-row")}>
 			{/* Screenshots */}
-			<div className="w-full lg:w-[55%]">
-				<div className="-mx-4 p-4">
+			<div className="w-full sm:mr-4 lg:w-[55%]">
+				<div className="-mx-4 sm:p-4">
 					{/* Header */}
 					<div className="mb-4 flex items-center justify-between px-1 text-xs text-white/45">
 						<span>{name} screenshots</span>
@@ -101,10 +101,10 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 			</div>
 
 			{/* Info */}
-			<div className="flex w-full flex-col gap-5 lg:w-1/2 lg:pt-4">
+			<div className="flex w-full flex-col gap-4 lg:w-1/2 lg:pt-2">
 				<div className="space-y-2">
 					<h3 className="text-4xl">{name}</h3>
-					<p className="max-w-xl text-sm leading-7 text-white/70 sm:text-base">{summary}</p>
+					<p className="max-w-xl text-sm text-white/70 sm:text-base">{summary}</p>
 				</div>
 
 				<div className="flex flex-wrap gap-2">
@@ -114,10 +114,10 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 				</div>
 
 				{project.type === "bullets" && project.bullets.length > 0 && (
-					<ul className="space-y-3 rounded-xl p-2 text-sm text-white">
+					<ul className="space-y-3 rounded-xl text-sm text-white sm:p-2">
 						{project.bullets.map((bullet) => (
-							<li key={bullet} className="flex items-start gap-3">
-								<span className="mt-2 size-2 shrink-0 rounded-full bg-white/90" />
+							<li key={bullet} className="flex items-start gap-2">
+								<span className="mt-2 size-2 shrink-0 rounded-full bg-white" />
 								<span>{bullet}</span>
 							</li>
 						))}

@@ -1,5 +1,5 @@
 "use client";
-import { useRef, FormEvent, useState } from "react";
+import { useRef, FormEvent, useState, useEffect } from "react";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,6 +8,14 @@ import { GiCoffeeMug } from "react-icons/gi";
 export default function Footer() {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [isSending, setIsSending] = useState(false);
+	const [quote, setQuote] = useState<{ quoteText: string; quoteAuthor: string } | null>(null);
+
+	useEffect(() => {
+		fetch("https://calandhobbes-quoter-production.up.railway.app/api/quotes/random")
+			.then((res) => res.json())
+			.then((data) => setQuote(data))
+			.catch(console.error);
+	}, []);
 
 	const sendEmail = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -132,6 +140,14 @@ export default function Footer() {
 				</form>
 
 				<div className="text-right text-sm text-zinc-500">&copy; {new Date().getFullYear()} Bhavdeep Arora.</div>
+
+				{/* Calvin & Hobbes quote */}
+				{quote && (
+					<div className="mt-6 text-left">
+						<p className="text-xs italic text-gray-600">&ldquo;{quote.quoteText}&rdquo;</p>
+						<p className="mt-1 text-xs text-gray-600">— {quote.quoteAuthor}</p>
+					</div>
+				)}
 			</div>
 
 			<Toaster position="bottom-right" reverseOrder={true} />

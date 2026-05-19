@@ -67,8 +67,8 @@ export const projects: Project[] = [
 		],
 		type: "bullets",
 		bullets: [
-			"Passive behavioral scoring engine — no JS challenges or CAPTCHAs",
-			"Scores requests 0–100 across signals: robots.txt violations, path crawling, request rate, suspicious headers, and content patterns",
+			"Passive behavioral scoring engine, no JS challenges or CAPTCHAs",
+			"Scores requests 0-100 across signals: robots.txt violations, path crawling, request rate, suspicious headers, and content patterns",
 			"Graduated responses: allow (< 40), tarpit with configurable delay (≥ 40), or block 403 (≥ 75)",
 			"Structured JSON logging for all proxy decisions",
 			"IP, CIDR, and user-agent allowlist support",

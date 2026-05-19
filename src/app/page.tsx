@@ -9,21 +9,19 @@ export default function Home() {
 		<div className="">
 			<HeroSection />
 
-			<div className="-my-8" />
+			<div className="-my-12" />
 
 			<Skills />
 
-			{/* <div className="my-16" /> 
-			
-			<TimelineView />
+			<div className="my-12" />
 
-			*/}
+			{/* <TimelineView /> */}
 
-			<div className="my-16" />
+			{/* <div className="my-24" /> */}
 
 			<ProjectsView />
 
-			<div className="my-16" />
+			<div className="my-24" />
 
 			<Footer />
 		</div>
