@@ -31,12 +31,12 @@ export const portfolioData = {
 
 	books: [
 		// Sci-Fi, Fantasy & Speculative Epic Series
-		{ title: "The Stormlight Archive, especially words of radiance", author: "Brandon Sanderson", category: "fantasy / epic" },
+		{ title: "The Stormlight Archive series, especially Words Of Radiance", author: "Brandon Sanderson", category: "fantasy / epic" },
 		{ title: "The Witcher Series", author: "Andrzej Sapkowski", category: "fantasy / epic" },
+		{ title: "Piranesi", author: "Susanna Clarke", category: "fantasy / speculative" },
 
 		// Modern Sci-Fi Thrillers
-		{ title: "Recursion", author: "Blake Crouch", category: "sci-fi / thriller" },
-		{ title: "Dark Matter", author: "Blake Crouch", category: "sci-fi / thriller" },
+		{ title: "Recursion and Dark Matter", author: "Blake Crouch", category: "sci-fi / thriller" },
 
 		// Literary Classics & Philosophical Fiction
 		{ title: "The Brothers Karamazov", author: "Fyodor Dostoevsky", category: "classics / philosophy" },

@@ -63,7 +63,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row1" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -78,7 +78,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row2" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -96,7 +96,7 @@ export function Skills() {
 							.map((skill, idx) => (
 								<span
 									key={skill.name + "row3" + idx}
-									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-4 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 								>
 									{skill.icon}
 									{skill.name}

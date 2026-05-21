@@ -144,7 +144,7 @@ export default function Footer() {
 				{/* Calvin & Hobbes quote */}
 				{quote && (
 					<div className="mt-6 text-left">
-						<p className="text-xs italic text-gray-600">&ldquo;{quote.quoteText}&rdquo;</p>
+						<p className="text-xs text-gray-600">&ldquo;{quote.quoteText}&rdquo;</p>
 						<p className="mt-1 text-xs text-gray-600">— {quote.quoteAuthor}</p>
 					</div>
 				)}

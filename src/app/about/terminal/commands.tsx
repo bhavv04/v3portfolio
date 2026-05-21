@@ -24,12 +24,13 @@ const MATRIX_PHRASES = [
 	"Intercepting automated scrapers via Thunderhead proxy filter layers..."
 ];
 
-// ── command definitions ───────────────────────────────────────────────────────
+// command definitions
 const commandHandlers = {
 	help: () =>
 		w(
 			`${line(`available commands:`)}` +
 				`${line(`${hl("about")}       ${dim("→")} who i am and what i do`)}` +
+				`${line(`${hl("ls")}          ${dim("→")} list directory contents`)}` +
 				`${line(`${hl("projects")}    ${dim("→")} navigate to projects write-ups`)}` +
 				`${line(`${hl("skills")}      ${dim("→")} languages, frameworks, tools`)}` +
 				`${line(`${hl("books")}       ${dim("→")} my favorite books and series`)}` +
@@ -47,6 +48,30 @@ const commandHandlers = {
 				`${line(`${hl("pwd")}         ${dim("→")} where you are`)}` +
 				`${line(`${hl("clear")}       ${dim("→")} wipe the terminal`)}`
 		),
+
+	// LS COMMAND
+	ls: () => {
+		// Mock directory entries reflecting your available portfolio routes/commands
+		const entries = [
+			{ name: "projects/", type: "dir" },
+			{ name: "education/", type: "dir" },
+			{ name: "research/", type: "dir" },
+			{ name: "skills.json", type: "file" },
+			{ name: "books.json", type: "file" },
+			{ name: "resume.pdf", type: "file" },
+			{ name: "contact.txt", type: "file" },
+			{ name: "hobbies.txt", type: "file" }
+		];
+
+		// Style directories with highlight (stone-100) and plain files with dim (stone-300)
+		const formattedEntries = entries.map((e) => (e.type === "dir" ? hl(e.name) : dim(e.name)));
+
+		return w(
+			`${line("total 8")}` +
+				`${line(formattedEntries.join(dim(" · ")))}` +
+				`${line(`\ntip: use these names directly as commands (e.g. type ${hl("projects")})`)}`
+		);
+	},
 
 	about: () => {
 		const { name, occupation, specialization, bio } = portfolioData.personal;
@@ -130,7 +155,7 @@ const commandHandlers = {
 	neofetch: () => {
 		const ramUsage = (Math.random() * (4.2 - 2.1) + 2.1).toFixed(1);
 		return w(
-			`<div class="flex gap-4 font-mono">
+			`<div class="flex gap-4">
 				<div class="text-emerald-700 font-bold select-none">
 					<div>  /\\_/\\  </div>
 					<div> ( o.o ) </div>

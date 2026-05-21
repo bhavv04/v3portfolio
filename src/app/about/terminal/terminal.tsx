@@ -4,8 +4,17 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { OutputLine } from "@/app/about/terminal/types";
 import { executeCommand } from "@/app/about/terminal/commands";
+import { X } from "lucide-react";
 
-const WELCOME = "Welcome to my site. I'm glad you're exploring my about section, let me share some things that aren't on the home page.";
+const WELCOME = `[OK] Initializing Portfolio Environment...
+[OK] Loading Technical Stack Manifest...
+[OK] Establishing Secure Session: bhav~default
+
+Welcome to my site! Glad you're digging into the about section. 
+I left the standard bio off the home page to keep things clean,
+this terminal is your direct pipeline into bhav.
+
+Type 'help' to list available system commands or click the buttons below for a quick demo.`;
 
 const Terminal: React.FC = () => {
 	const router = useRouter();
@@ -20,7 +29,7 @@ const Terminal: React.FC = () => {
 	const inputDivRef = useRef<HTMLDivElement>(null);
 
 	const typeWriter = useCallback(
-		(text: string, speed = 25) => {
+		(text: string, speed = 15) => {
 			if (welcomeText !== "") return;
 			setIsTyping(true);
 			let i = 0;
@@ -61,7 +70,7 @@ const Terminal: React.FC = () => {
 
 			const commandLine: OutputLine = {
 				id: Date.now().toString(),
-				content: `<span class="text-emerald-700">❯</span> <span class="text-stone-300">${cmd}</span>`,
+				content: `<span class="text-emerald-700">#</span> <span class="text-stone-300">${cmd}</span>`,
 				type: "command"
 			};
 
@@ -166,24 +175,38 @@ const Terminal: React.FC = () => {
 	);
 
 	return (
-		<div className="flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900" onClick={() => !isTyping && inputDivRef.current?.focus()}>
+		<div
+			className="flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 font-mono text-sm"
+			onClick={() => !isTyping && inputDivRef.current?.focus()}
+		>
 			{/* Title bar */}
-			<div className="flex items-center gap-2 bg-black px-5 py-4">
-				<span className="h-3 w-3 rounded-full bg-red-500" />
-				<span className="h-3 w-3 rounded-full bg-yellow-500" />
-				<span className="h-3 w-3 rounded-full bg-green-500" />
+			<div className="grid grid-cols-3 items-center bg-stone-950 px-4 py-3">
+				{/* Left side: Traffic light buttons */}
+				<div className="flex items-center gap-2">
+					<span className="h-3 w-3 rounded-full bg-red-500" />
+					<span className="h-3 w-3 rounded-full bg-yellow-500" />
+					<span className="h-3 w-3 rounded-full bg-green-500" />
+				</div>
+
+				{/* Center: Title */}
+				<span className="text-center text-stone-600">bhav~default</span>
+
+				{/* Right side: Close button */}
+				<span className="text-right text-stone-600">
+					<X className="inline-block h-4 w-4 cursor-pointer rounded hover:bg-stone-700/50" onClick={() => router.push("/about")} />
+				</span>
 			</div>
 
 			{/* Body Logs */}
 			<div ref={outputRef} className="flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
-				<p className="mb-6 leading-relaxed text-stone-400">
+				<p className="mb-6 whitespace-pre-wrap leading-relaxed text-stone-400">
 					{welcomeText}
 					{isTyping && <span className="inline-block h-4 w-3 bg-stone-700 align-text-bottom" />}
 				</p>
 
 				{!isTyping && (
 					<div className="fade-in-up mb-4 flex flex-wrap gap-2">
-						{["help", "about", "books", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
+						{["help", "about", "books", "hobbies", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
 							<button
 								key={cmd}
 								onClick={() => handleQuickCommand(cmd)}
