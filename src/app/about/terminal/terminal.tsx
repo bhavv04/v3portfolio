@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { OutputLine } from "@/app/about/terminal/types";
 import { executeCommand } from "@/app/about/terminal/commands";
 
 const WELCOME = "Welcome to my site. I'm glad you're exploring my about section, let me share some things that aren't on the home page.";
 
 const Terminal: React.FC = () => {
+	const router = useRouter();
 	const [input, setInput] = useState("");
 	const [output, setOutput] = useState<OutputLine[]>([]);
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -36,21 +38,49 @@ const Terminal: React.FC = () => {
 		[welcomeText]
 	);
 
-	const handleQuickCommand = useCallback(
-		(cmd: string) => {
-			if (isTyping) return;
+	const processResultAndAppend = useCallback(
+		(cmd: string, result: string) => {
+			if (result === "CLEAR_COMMAND") {
+				setOutput([]);
+				setCommandHistory([]);
+				setHistoryIndex(-1);
+				setInput("");
+				if (inputDivRef.current) inputDivRef.current.textContent = "";
+				return;
+			}
+
+			if (result.startsWith("REDIRECT_TO_")) {
+				const targetRoute = result.replace("REDIRECT_TO_", "");
+				if (targetRoute.endsWith("_blank")) {
+					window.open(targetRoute.replace("_blank", ""), "_blank");
+				} else {
+					router.push(targetRoute);
+				}
+				return;
+			}
+
 			const commandLine: OutputLine = {
 				id: Date.now().toString(),
-				content: `<span style="color:#097d39">❯</span> <span style="color:#d4cfc9">${cmd}</span>`,
+				content: `<span class="text-emerald-700">❯</span> <span class="text-stone-300">${cmd}</span>`,
 				type: "command"
 			};
-			const result = executeCommand(cmd);
+
 			const next: OutputLine[] = [...output, commandLine];
 			if (result) next.push({ id: (Date.now() + 1).toString(), content: result, type: "output" });
+
 			setOutput(next);
 			setCommandHistory((prev) => [cmd, ...prev.slice(0, 49)]);
 		},
-		[output, isTyping]
+		[output, router]
+	);
+
+	const handleQuickCommand = useCallback(
+		(cmd: string) => {
+			if (isTyping) return;
+			const result = executeCommand(cmd);
+			processResultAndAppend(cmd, result);
+		},
+		[isTyping, processResultAndAppend]
 	);
 
 	useEffect(() => {
@@ -71,52 +101,50 @@ const Terminal: React.FC = () => {
 			const cmd = input.trim();
 			if (!cmd || isTyping) return;
 
-			if (cmd.toLowerCase() === "clear") {
-				setOutput([]);
-				setCommandHistory([]);
-				setHistoryIndex(-1);
-				setInput("");
-				if (inputDivRef.current) inputDivRef.current.textContent = "";
-				return;
-			}
-
-			const commandLine: OutputLine = {
-				id: Date.now().toString(),
-				content: `<span style="color:#097d39">❯</span> <span style="color:#d4cfc9">${cmd}</span>`,
-				type: "command"
-			};
-
 			const result = executeCommand(cmd);
-			if (result === "CLEAR_COMMAND") {
-				setOutput([]);
-				setCommandHistory([]);
-				setHistoryIndex(-1);
-				setInput("");
-				if (inputDivRef.current) inputDivRef.current.textContent = "";
-				return;
-			}
+			processResultAndAppend(cmd, result);
 
-			const next: OutputLine[] = [...output, commandLine];
-			if (result) next.push({ id: (Date.now() + 1).toString(), content: result, type: "output" });
-
-			setOutput(next);
-			setCommandHistory((prev) => [cmd, ...prev.slice(0, 49)]);
 			setHistoryIndex(-1);
 			setInput("");
 			if (inputDivRef.current) inputDivRef.current.textContent = "";
 		},
-		[input, output, isTyping]
+		[input, isTyping, processResultAndAppend]
 	);
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
 			if (isTyping) return;
+
+			// Helper function to force caret to the end of the text block
+			const moveCaretToEnd = () => {
+				// RequestAnimationFrame ensures the DOM has updated with the new text first
+				requestAnimationFrame(() => {
+					const el = inputDivRef.current;
+					if (!el) return;
+
+					const range = document.createRange();
+					const sel = window.getSelection();
+
+					// Select all contents of the editable div and collapse it to the end
+					range.selectNodeContents(el);
+					range.collapse(false); // false means collapse to end
+
+					sel?.removeAllRanges();
+					sel?.addRange(range);
+				});
+			};
+
 			if (e.key === "ArrowUp") {
 				e.preventDefault();
 				const next = Math.min(historyIndex + 1, commandHistory.length - 1);
-				setHistoryIndex(next);
-				setInput(commandHistory[next] ?? "");
-				if (inputDivRef.current) inputDivRef.current.textContent = commandHistory[next] ?? "";
+				if (commandHistory[next] !== undefined) {
+					setHistoryIndex(next);
+					setInput(commandHistory[next]);
+					if (inputDivRef.current) {
+						inputDivRef.current.textContent = commandHistory[next];
+						moveCaretToEnd(); // Move cursor here
+					}
+				}
 			} else if (e.key === "ArrowDown") {
 				e.preventDefault();
 				if (historyIndex <= 0) {
@@ -127,7 +155,10 @@ const Terminal: React.FC = () => {
 					const next = historyIndex - 1;
 					setHistoryIndex(next);
 					setInput(commandHistory[next] ?? "");
-					if (inputDivRef.current) inputDivRef.current.textContent = commandHistory[next] ?? "";
+					if (inputDivRef.current) {
+						inputDivRef.current.textContent = commandHistory[next] ?? "";
+						moveCaretToEnd(); // Move cursor here too
+					}
 				}
 			}
 		},
@@ -135,36 +166,30 @@ const Terminal: React.FC = () => {
 	);
 
 	return (
-		<div
-			className="flex h-[70vh] flex-col text-sm"
-			style={{ background: "#1c1a18", borderRadius: "15px", overflow: "hidden" }}
-			onClick={() => !isTyping && inputDivRef.current?.focus()}
-		>
+		<div className="flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900" onClick={() => !isTyping && inputDivRef.current?.focus()}>
 			{/* Title bar */}
-			<div className="flex items-center gap-2 px-5 py-3" style={{ background: "#161412", borderBottom: "0.5px solid #2a2825" }}>
-				<span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-				<span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-				<span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+			<div className="flex items-center gap-2 bg-black px-5 py-4">
+				<span className="h-3 w-3 rounded-full bg-red-500" />
+				<span className="h-3 w-3 rounded-full bg-yellow-500" />
+				<span className="h-3 w-3 rounded-full bg-green-500" />
 			</div>
 
-			{/* Body */}
-			<div ref={outputRef} className="flex-1 overflow-y-auto p-6" style={{ color: "#7a7570", scrollbarWidth: "none" }}>
-				<p className="mb-6 leading-relaxed">
+			{/* Body Logs */}
+			<div ref={outputRef} className="flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
+				<p className="mb-6 leading-relaxed text-stone-400">
 					{welcomeText}
-					{isTyping && (
-						<span className="inline-block" style={{ width: "12px", height: "16px", background: "#4a4642", verticalAlign: "text-bottom" }} />
-					)}
+					{isTyping && <span className="inline-block h-4 w-3 bg-stone-700 align-text-bottom" />}
 				</p>
 
 				{!isTyping && (
 					<div className="fade-in-up mb-4 flex flex-wrap gap-2">
-						{["help", "about", "hobbies", "projects", "contact", "pwd", "status"].map((cmd) => (
+						{["help", "about", "books", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
 							<button
 								key={cmd}
 								onClick={() => handleQuickCommand(cmd)}
-								className="duration-800 relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-neutral-800 px-3 text-xs text-white transition-colors ease-in-out hover:bg-white hover:text-gray-900"
-								style={{ fontFamily: "inherit" }}
+								className="group relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border border-stone-800/80 bg-stone-950 px-3 text-stone-400 transition-all duration-300 hover:border-stone-700 hover:text-stone-200"
 							>
+								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300 group-hover:translate-x-0.5">{"//"}</span>
 								{cmd}
 							</button>
 						))}
@@ -175,62 +200,30 @@ const Terminal: React.FC = () => {
 					{output.map((line) => (
 						<div
 							key={line.id}
-							className="break-words leading-relaxed"
-							style={{ color: line.type === "error" ? "#a05050" : "#097d39" }}
+							className={`break-words leading-relaxed ${line.type === "error" ? "text-red-700" : "text-emerald-700"}`}
 							dangerouslySetInnerHTML={{ __html: line.content }}
 						/>
 					))}
 				</div>
+			</div>
 
-				<form onSubmit={handleSubmit} className="mt-4 flex items-center gap-2">
-					{!isTyping && (
-						<span className="fade-in-up shrink-0 select-none" style={{ color: "#097d39" }}>
-							❯
-						</span>
-					)}
+			{/* Interactive Footer Console Bar */}
+			<div className="border-t border-stone-800 bg-stone-950 px-5 py-3">
+				<form onSubmit={handleSubmit} className="flex items-center gap-3">
+					<span className="shrink-0 select-none text-stone-600">{isTyping ? "loading ..." : "❯"}</span>
 					<div className="flex flex-1 items-center">
 						<div
 							ref={inputDivRef}
 							contentEditable={!isTyping}
 							suppressContentEditableWarning
-							spellCheck={false}
-							inputMode="text"
 							onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
-							onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
-							onKeyDown={(e) => {
-								if (e.key === "Enter" && !e.shiftKey) {
-									e.preventDefault();
-									handleSubmit(e);
-								} else {
-									handleKeyDown(e);
-								}
-							}}
-							style={{
-								color: "#d4cfc9",
-								outline: "none",
-								whiteSpace: "pre-wrap",
-								wordBreak: "break-word",
-								minWidth: "2px",
-								caretColor: "transparent"
-							}}
+							onKeyDown={(e) => (e.key === "Enter" ? (e.preventDefault(), handleSubmit(e)) : handleKeyDown(e))}
+							className="w-full text-stone-300 caret-transparent outline-none after:inline-block after:h-[1.1em] after:w-2 after:translate-y-[0.15em] after:bg-stone-600"
 						/>
-						{!isTyping && (
-							<span
-								className="fade-in-up inline-block shrink-0 animate-pulse"
-								style={{ width: "8px", height: "16px", background: "#4a4642", verticalAlign: "text-bottom" }}
-							/>
-						)}
 					</div>
-					{/* Hidden submit button — tells mobile keyboard to show "go/return" instead of newline */}
+					<span className="hidden select-none text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>
 					<button type="submit" className="hidden" aria-hidden />
 				</form>
-			</div>
-
-			{/* Footer */}
-			<div className="px-5 py-2.5" style={{ background: "#161412", borderTop: "0.5px solid #2a2825" }}>
-				<span className="text-xs" style={{ color: "#3d3a36" }}>
-					{isTyping ? "loading..." : "↑↓ history · enter to run · clear to reset"}
-				</span>
 			</div>
 		</div>
 	);

@@ -6,34 +6,6 @@ export const portfolioData = {
 		bio: ""
 	},
 
-	projects: [
-		{
-			name: "Terraseed",
-			description: "Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate data."
-		},
-		{
-			name: "Dead Zones on a Clock",
-			description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse."
-		},
-		{
-			name: "Thunderhead",
-			description: "A lightweight reverse proxy that scores incoming HTTP requests to detect and mitigate bot traffic without third-party services."
-		},
-		{
-			name: "Solace",
-			description:
-				"Urban heat island analysis pipeline built on a decade of NASA satellite data, modeling tree canopy needed to cool Toronto neighbourhoods by 2°C."
-		},
-		{
-			name: "Lacunae",
-			description: "A U-Net model that reconstructs MRI images from undersampled k-space data, reducing scan time without sacrificing image quality."
-		},
-		{
-			name: "Collatz Conjecture Explorer",
-			description: "Interactive visualization of stopping-time landscapes for the Collatz Conjecture with original research angles."
-		}
-	],
-
 	skills: {
 		programmingLanguages: ["JavaScript", "TypeScript", "Python", "Java", "C++", "Go", "SQL"],
 		frameworks: ["React", "Next.js", "Flask", "Plotly Dash", "PyTorch", "scikit-learn", "xarray"],
@@ -47,13 +19,28 @@ export const portfolioData = {
 		portfolio: "bhavdeeparora.vercel.app"
 	},
 
-	education: {
-		degree: "Computer Science",
-		school: "Toronto Metropolitan University",
-		period: "2022 — 2026",
-		details: "Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems.",
-		certifications: ["AWS Certified Developer", "Google Cloud Professional", "MongoDB Certified Developer"]
-	},
+	hobbies: [
+		{ name: "Reading", detail: "compiling physical stacks of sci-fi & philosophy" },
+		{ name: "Trekking", detail: "off-grid route optimization & elevation testing" },
+		{ name: "Lifting", detail: "heavy physical load state stress testing" },
+		{ name: "Woodworking", detail: "subtractive manufacturing with real-world materials" },
+		{ name: "Gaming", detail: "simulating multi-agent reinforcement learning environments" },
+		{ name: "Cooking", detail: "experimental recipe development & flavor compound analysis" },
+		{ name: "Rugby", detail: "chasing an oval ball" }
+	],
 
-	hobbies: ["Reading", "Trekking", "Lifting", "Woodworking"]
+	books: [
+		// Sci-Fi, Fantasy & Speculative Epic Series
+		{ title: "The Stormlight Archive, especially words of radiance", author: "Brandon Sanderson", category: "fantasy / epic" },
+		{ title: "The Witcher Series", author: "Andrzej Sapkowski", category: "fantasy / epic" },
+
+		// Modern Sci-Fi Thrillers
+		{ title: "Recursion", author: "Blake Crouch", category: "sci-fi / thriller" },
+		{ title: "Dark Matter", author: "Blake Crouch", category: "sci-fi / thriller" },
+
+		// Literary Classics & Philosophical Fiction
+		{ title: "The Brothers Karamazov", author: "Fyodor Dostoevsky", category: "classics / philosophy" },
+		{ title: "War and Peace", author: "Leo Tolstoy", category: "classics / historical" },
+		{ title: "A Tale of Two Cities", author: "Charles Dickens", category: "classics / historical" }
+	]
 };
