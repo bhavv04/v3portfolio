@@ -91,8 +91,8 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 
 								{/* Prev / Next */}
 								<div className="flex gap-2">
-									<CarouselPrevious className="border border-white/10 bg-neutral-900/80 text-white hover:bg-white hover:text-black" />
-									<CarouselNext className="border border-white/10 bg-neutral-900/80 text-white hover:bg-white hover:text-black" />
+									<CarouselPrevious className="bg-neutral-800 text-white hover:bg-white hover:text-black" />
+									<CarouselNext className="bg-neutral-800 text-white hover:bg-white hover:text-black" />
 								</div>
 							</div>
 						)}
@@ -124,19 +124,19 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 					</ul>
 				)}
 
-				<div className="flex flex-wrap gap-3">
+				<div className="flex flex-wrap gap-1.5">
 					{links?.github && (
-						<Button asChild variant="default" className="rounded-full">
+						<Button asChild variant="default" className="">
 							<Link href={links.github} target="_blank" rel="noopener noreferrer">
-								<Github size={16} />
+								<Github size={18} />
 								Source
 							</Link>
 						</Button>
 					)}
 					{links?.live && (
-						<Button asChild variant="default" className="rounded-full">
+						<Button asChild variant="default" className="">
 							<Link href={links.live} target="_blank" rel="noopener noreferrer">
-								<ExternalLink size={16} />
+								<ExternalLink size={18} />
 								Live
 							</Link>
 						</Button>
