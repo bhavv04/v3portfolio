@@ -4,8 +4,8 @@ import { DesktopNavbar } from "@/components/navbar/DesktopNavbar";
 export function Navbar() {
 	return (
 		<>
-			<MobileNavbar className="sm:hidden" />
-			<DesktopNavbar className="hidden sm:flex" />
+			<MobileNavbar className="md:hidden" />
+			<DesktopNavbar className="hidden md:flex" />
 		</>
 	);
 }

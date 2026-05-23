@@ -16,7 +16,7 @@ export function HeroButtons() {
 				</Button>
 
 				<Button asChild variant="default" className="min-w-0 flex-shrink-0 px-4 py-2">
-					<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download my resume">
+					<a href="/Bhavdeep_s_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download my resume">
 						Resume
 					</a>
 				</Button>
