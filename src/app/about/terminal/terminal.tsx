@@ -232,21 +232,24 @@ const Terminal: React.FC = () => {
 
 			{/* Interactive Footer Console Bar */}
 			<div className="border-t border-stone-800 bg-stone-950 px-5 py-3">
-				<form onSubmit={handleSubmit} className="flex items-center gap-3">
+				<div className="flex items-center gap-3">
 					<span className="shrink-0 select-none text-stone-600">{isTyping ? "loading ..." : "❯"}</span>
-					<div className="flex flex-1 items-center">
+					<div className="relative flex flex-1 items-center">
+						{/* Placeholder — hidden once user has typed anything */}
+						{!input && !isTyping && <span className="pointer-events-none absolute inset-0 select-none text-stone-600">type a command</span>}
+
 						<div
 							ref={inputDivRef}
 							contentEditable={!isTyping}
 							suppressContentEditableWarning
 							onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
 							onKeyDown={(e) => (e.key === "Enter" ? (e.preventDefault(), handleSubmit(e)) : handleKeyDown(e))}
-							className="w-full text-stone-300 caret-transparent outline-none after:inline-block after:h-[1.1em] after:w-2 after:translate-y-[0.15em] after:bg-stone-600"
+							className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-stone-300 caret-stone-500 focus:outline-none focus:ring-0"
 						/>
 					</div>
 					<span className="hidden select-none text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>
-					<button type="submit" className="hidden" aria-hidden />
-				</form>
+					<button type="button" onClick={handleSubmit} className="hidden" aria-hidden />
+				</div>
 			</div>
 		</div>
 	);
