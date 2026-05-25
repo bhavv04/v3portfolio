@@ -11,7 +11,7 @@ export default function Footer() {
 	const [quote, setQuote] = useState<{ quoteText: string; quoteAuthor: string } | null>(null);
 
 	useEffect(() => {
-		fetch("https://calandhobbes-quoter-production.up.railway.app/api/quotes/random")
+		fetch("https://calandhobbes-quoter.vercel.app/api/quotes/random")
 			.then((res) => res.json())
 			.then((data) => setQuote(data))
 			.catch(console.error);
