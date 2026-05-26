@@ -4,7 +4,7 @@ import { GiWillowTree } from "react-icons/gi";
 
 export default function About() {
 	return (
-		<div className="mt-0 pb-16 md:-mt-14">
+		<div className="-mt-12 pb-16">
 			<div className="mx-auto max-w-2xl">
 				{/* Header */}
 				<div className="fade-in-up my-4 sm:my-4">
