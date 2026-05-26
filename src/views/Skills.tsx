@@ -17,6 +17,11 @@ import {
 	SiFirebase
 } from "react-icons/si";
 
+import { IoLogoVercel } from "react-icons/io5";
+import { FaGolang } from "react-icons/fa6";
+import { SiPytorch } from "react-icons/si";
+import { DiMongodb } from "react-icons/di";
+
 const skills = [
 	{ name: "React.js", icon: <FaReact className="text-2xl text-cyan-400" /> },
 	{
@@ -24,6 +29,7 @@ const skills = [
 		icon: <FaJsSquare className="text-2xl text-yellow-300" />,
 		badgeClass: "bg-yellow-300 text-black"
 	},
+	{ name: "MongoDB", icon: <DiMongodb className="text-2xl text-green-500" /> },
 	{ name: "Supabase", icon: <SiSupabase className="text-2xl text-green-400" /> },
 	{ name: "Figma", icon: <FaFigma className="text-2xl text-zinc-100" /> },
 	{ name: "Docker", icon: <FaDocker className="text-2xl text-blue-400" /> },
@@ -35,6 +41,9 @@ const skills = [
 		icon: <SiRedis className="text-2xl text-red-500" />,
 		badgeClass: "bg-zinc-800 text-red-400"
 	},
+	{ name: "PyTorch", icon: <SiPytorch className="text-2xl text-orange-400" /> },
+	{ name: "Go", icon: <FaGolang className="text-2xl text-blue-500" /> },
+	{ name: "Vercel", icon: <IoLogoVercel className="text-2xl text-white" /> },
 	{ name: "Linux", icon: <FaLinux className="text-2xl text-zinc-100" /> },
 	{ name: "Appwrite", icon: <SiAppwrite className="text-2xl text-pink-400" /> },
 	{ name: "Firebase", icon: <SiFirebase className="text-2xl text-yellow-400" /> },
@@ -63,7 +72,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row1" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -78,7 +87,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row2" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -96,7 +105,7 @@ export function Skills() {
 							.map((skill, idx) => (
 								<span
 									key={skill.name + "row3" + idx}
-									className={`flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+									className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
 								>
 									{skill.icon}
 									{skill.name}

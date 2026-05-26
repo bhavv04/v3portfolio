@@ -1,62 +1,92 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucide-react";
 
-interface DesktopNavbarProps {
-	className?: string;
-}
+const navItems = [
+	{ href: "/", label: "Home", icon: Home, useClientSideRouting: true },
+	{ href: "/about", label: "About", icon: User, useClientSideRouting: true },
+	{ href: "/timeline", label: "Experience & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
+	null,
+	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
+	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
+	null,
+	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
+] as const;
 
-export function DesktopNavbar({ className }: DesktopNavbarProps) {
+export function DesktopNavbar({ className }: { className?: string }) {
+	const pathname = usePathname();
+
 	return (
-		//ml-28 to align with the hero section
 		<nav
 			className={cn(
-				"before:to-white/5before:-z-10 sticky top-4 z-10 mx-auto flex w-fit items-center justify-center gap-8 rounded-full bg-[rgb(13,13,13,0)] px-6 py-4 backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-white/5 before:via-white/0 before:p-[1px] before:content-[''] lg:ml-36",
+				"fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-xl border border-white/10 bg-neutral-900 p-2 backdrop-blur-xl backdrop-saturate-150",
 				className
 			)}
 		>
-			<NavbarLink href="/" className="" useClientSideRouting>
-				Home
-			</NavbarLink>
-			<NavbarLink href="/about" className="" useClientSideRouting>
-				About
-			</NavbarLink>
-			<NavbarLink href="/#timeline" className="" useClientSideRouting>
-				Experience & Education
-			</NavbarLink>
-			<NavbarLink href="/projects" className="" useClientSideRouting>
-				Projects
-			</NavbarLink>
-			<NavbarLink href="/#research" className="" useClientSideRouting>
-				Research
-			</NavbarLink>
-			<NavbarLink href="/Bhavdeep_s_Resume.pdf" openInNewTab className="">
-				Resume
-			</NavbarLink>
+			{navItems.map((item, i) =>
+				item === null ? (
+					<div key={i} className="my-1 h-px w-6 bg-white/10" />
+				) : (
+					<NavbarIconButton
+						key={item.href}
+						{...item}
+						isActive={item.href === "/" ? pathname === "/" : pathname.startsWith(item.href.split("#")[0])}
+					/>
+				)
+			)}
 		</nav>
 	);
 }
 
-interface NavbarLinkProps {
+function NavbarIconButton({
+	href,
+	label,
+	icon: Icon,
+	isActive = false,
+	openInNewTab = false,
+	useClientSideRouting = false
+}: {
 	href: string;
+	label: string;
+	icon: React.ElementType;
+	isActive?: boolean;
 	openInNewTab?: boolean;
 	useClientSideRouting?: boolean;
-	className?: string;
-	children: React.ReactNode;
-}
-
-function NavbarLink({ href, openInNewTab = false, useClientSideRouting, className, children }: NavbarLinkProps) {
+}) {
 	const Comp = useClientSideRouting ? Link : "a";
 
 	return (
-		<Comp
-			href={href}
-			target={openInNewTab ? "_blank" : "_self"}
-			className={cn(
-				"relative before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2 before:bg-primary before:transition-[width] before:duration-200 before:content-[''] hover:before:w-full",
-				className
-			)}
-		>
-			{children}
-		</Comp>
+		<div className="group relative flex items-center">
+			<Comp
+				href={href}
+				target={openInNewTab ? "_blank" : "_self"}
+				aria-label={label}
+				className={cn(
+					"relative flex size-10 items-center justify-center rounded-xl transition-all duration-200",
+					"hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
+					"hover:-translate-y-0.5 active:translate-y-0 active:scale-95",
+					isActive ? "text-white" : "text-white/35"
+				)}
+			>
+				{/* left-edge accent bar */}
+				<span
+					className={cn(
+						"absolute -left-2 top-1/2 w-0.5 -translate-y-1/2 rounded-full bg-white transition-all duration-300",
+						isActive ? "h-5 opacity-100" : "h-0 opacity-0 group-hover:h-3 group-hover:opacity-40"
+					)}
+				/>
+
+				<Icon size={18} strokeWidth={isActive ? 2 : 1.75} />
+			</Comp>
+
+			{/* tooltip */}
+			<span className="pointer-events-none absolute right-[calc(100%+0.875rem)] top-1/2 -translate-y-1/2 translate-x-1 whitespace-nowrap rounded-lg border border-white/[0.08] bg-[rgba(13,13,13,0.9)] px-2.5 py-1 text-xs tracking-wide text-white/70 opacity-0 backdrop-blur-sm transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100">
+				{label}
+				{openInNewTab && " ↗"}
+			</span>
+		</div>
 	);
 }

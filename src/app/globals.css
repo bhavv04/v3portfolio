@@ -381,10 +381,10 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .animate-skills-carousel {
-	animation: skills-carousel 30s linear infinite;
+	animation: skills-carousel 60s linear infinite;
 }
 .animate-skills-carousel-reverse {
-	animation: skills-carousel-reverse 40s linear infinite;
+	animation: skills-carousel-reverse 60s linear infinite;
 }
 .animate-skills-carousel-fast {
 	animation: skills-carousel 18s linear infinite;

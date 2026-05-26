@@ -6,23 +6,15 @@ import Footer from "@/views/Footer";
 
 export default function Home() {
 	return (
-		<div className="">
+		<div className="pb-16 lg:pb-0">
 			<HeroSection />
-
 			<div className="-my-12" />
-
 			<Skills />
-
 			<div className="my-12" />
-
 			{/* <TimelineView /> */}
-
 			{/* <div className="my-24" /> */}
-
 			<ProjectsView />
-
 			<div className="my-24" />
-
 			<Footer />
 		</div>
 	);

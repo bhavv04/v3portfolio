@@ -1,124 +1,62 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucide-react";
 
-interface MobileNavbarProps {
-	className?: string;
-}
+const navItems = [
+	{ href: "/", label: "Home", icon: Home, useClientSideRouting: true },
+	{ href: "/about", label: "About", icon: User, useClientSideRouting: true },
+	{ href: "/timeline", label: "Experience & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
+	null,
+	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
+	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
+	null,
+	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
+] as const;
 
-export function MobileNavbar({ className }: MobileNavbarProps) {
-	const [isOpen, setIsOpen] = useState(false);
+export function MobileNavbar({ className }: { className?: string }) {
+	const pathname = usePathname();
 
 	return (
-		<div className={cn("sticky top-4 z-50", className)}>
-			<button
-				className={cn(
-					"relative mx-auto flex w-full flex-col items-center justify-center",
-					"border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl",
-					"py-3.5 text-lg font-medium text-white/90 shadow-none shadow-black/25",
-					"before:absolute before:inset-0 before:bg-gradient-to-r",
-					"before:from-white/5 before:via-white/0 before:to-white/5",
-					"before:-z-10 before:p-[1px] before:content-['']",
-					"transition-all duration-300 hover:text-white hover:shadow-none hover:shadow-slate-900",
-					{ "rounded-sm": !isOpen },
-					{ "rounded-sm rounded-b-none": isOpen }
-				)}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				<span className="relative z-10">Bhavdeep Arora</span>
+		<div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
+			<nav className={cn("flex items-center gap-1 rounded-xl border border-white/10 bg-neutral-900 p-2", className)}>
+				{navItems.map((item, i) =>
+					item === null ? (
+						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
+					) : (
+						(() => {
+							const { href, label, icon: Icon, ...rest } = item;
+							const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href.split("#")[0]);
+							const Comp = "useClientSideRouting" in rest && rest.useClientSideRouting ? Link : "a";
+							const openInNewTab = "openInNewTab" in rest;
 
-				{/* Animated chevron */}
-				<svg
-					className={cn("absolute right-4 h-4 w-4 transition-transform duration-300", { "rotate-180": isOpen })}
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-				</svg>
-			</button>
-
-			<nav
-				className={cn(
-					"absolute flex w-full flex-col items-center gap-1",
-					"rounded-b-sm border border-t-0 border-white/10 bg-[rgb(13,13,13,0)] backdrop-blur-xl",
-					"before:absolute before:inset-0 before:rounded-b-sm before:bg-gradient-to-r",
-					"before:from-white/5 before:via-white/0 before:to-white/5",
-					"before:-z-10 before:p-[1px] before:content-['']",
-					"duration-300 animate-in slide-in-from-top-2",
-					{ hidden: !isOpen }
+							return (
+								<Comp
+									key={href}
+									href={href}
+									target={openInNewTab ? "_blank" : "_self"}
+									aria-label={label}
+									className={cn(
+										"relative flex size-10 items-center justify-center rounded-xl transition-all duration-200",
+										"hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 active:scale-95",
+										isActive ? "text-white" : "text-white/35"
+									)}
+								>
+									<span
+										className={cn(
+											"absolute bottom-0 left-1/2 h-0.5 -translate-x-1/2 rounded-full bg-white transition-all duration-300",
+											isActive ? "w-4 opacity-100" : "w-0 opacity-0"
+										)}
+									/>
+									<Icon size={18} strokeWidth={isActive ? 2 : 1.75} />
+								</Comp>
+							);
+						})()
+					)
 				)}
-			>
-				<NavbarLink href="/" setIsOpen={setIsOpen} useClientSideRouting>
-					Home
-				</NavbarLink>
-				<NavbarLink href="/about" setIsOpen={setIsOpen} useClientSideRouting>
-					About
-				</NavbarLink>
-				<NavbarLink href="/#timeline" setIsOpen={setIsOpen} useClientSideRouting>
-					Experience/Education
-				</NavbarLink>
-				<NavbarLink href="/projects" setIsOpen={setIsOpen} useClientSideRouting>
-					Projects
-				</NavbarLink>
-				<NavbarLink href="/#research" setIsOpen={setIsOpen} useClientSideRouting>
-					Research
-				</NavbarLink>
-				<NavbarLink href="/Bhavdeep_s_Resume.pdf" setIsOpen={setIsOpen} openInNewTab>
-					Resume
-				</NavbarLink>
 			</nav>
 		</div>
-	);
-}
-
-interface NavbarLinkProps {
-	setIsOpen?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
-	href: string;
-	openInNewTab?: boolean;
-	useClientSideRouting?: boolean;
-	className?: string;
-	children: React.ReactNode;
-}
-
-function NavbarLink({ setIsOpen, href, openInNewTab = false, useClientSideRouting, className, children }: NavbarLinkProps) {
-	const Comp = useClientSideRouting ? Link : "a";
-
-	return (
-		<Comp
-			href={href}
-			target={openInNewTab ? "_blank" : "_self"}
-			className={cn(
-				"group relative w-full px-6 py-2.5 text-center text-sm font-medium text-white/80",
-				"rounded-full transition-all duration-300 ease-out",
-				"hover:bg-white/10 hover:text-white",
-				"active:scale-95 active:bg-white/20",
-				"focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-2 focus:ring-offset-transparent",
-				className
-			)}
-			onClick={() => setIsOpen && setIsOpen(false)}
-		>
-			{/* Content */}
-			<span className="relative z-10 flex items-center justify-center gap-2">
-				{children}
-				{openInNewTab && (
-					<svg
-						className="h-3 w-3 opacity-60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-						/>
-					</svg>
-				)}
-			</span>
-		</Comp>
 	);
 }

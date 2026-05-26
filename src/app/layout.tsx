@@ -24,15 +24,11 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 			<body className="relative font-satoshi">
 				<CatProvider>
 					<ScrollBackground />
-
 					<Oneko />
-
 					<ResponsiveContainer>
 						<main className="p-8">
 							<Navbar />
-
 							<div className="my-12 sm:my-24" />
-
 							{children}
 						</main>
 					</ResponsiveContainer>
