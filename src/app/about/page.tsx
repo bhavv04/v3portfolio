@@ -4,10 +4,10 @@ import { GiWillowTree } from "react-icons/gi";
 
 export default function About() {
 	return (
-		<div className="-mt-12 pb-16">
+		<div className="pb-16">
 			<div className="mx-auto max-w-2xl">
 				{/* Header */}
-				<div className="fade-in-up my-4 sm:my-4">
+				<div className="fade-in-up">
 					<SectionTitle
 						text={
 							<span className="flex items-center gap-2">
@@ -17,7 +17,7 @@ export default function About() {
 						}
 					/>
 
-					<p className="mt-3 italic leading-relaxed text-slate-400">
+					<p className="mb-4 mt-2 italic leading-relaxed text-slate-400">
 						I&apos;ve kept this section interactive, no repeated bio here. Type <span className="text-white/60">help</span> to get started.
 					</p>
 				</div>

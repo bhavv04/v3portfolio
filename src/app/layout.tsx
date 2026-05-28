@@ -28,7 +28,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 					<ResponsiveContainer>
 						<main className="p-8">
 							<Navbar />
-							<div className="my-12 sm:my-24" />
+							<div className="p-4" />
 							{children}
 						</main>
 					</ResponsiveContainer>

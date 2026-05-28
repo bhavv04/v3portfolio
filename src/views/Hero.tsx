@@ -8,7 +8,7 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export function HeroSection() {
 	return (
-		<section id="home" className="mx-auto -mt-6 max-w-[40rem] space-y-4 md:-mt-14">
+		<section id="home" className="mx-auto max-w-[40rem] space-y-4">
 			<div className="fade-in-up flex items-center gap-4" style={{ "--delay-index": 0 } as React.CSSProperties}>
 				<SectionTitle className="" text="Hi, I'm Bhavdeep Arora" />
 			</div>

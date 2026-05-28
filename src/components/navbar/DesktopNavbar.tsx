@@ -22,7 +22,7 @@ export function DesktopNavbar({ className }: { className?: string }) {
 	return (
 		<nav
 			className={cn(
-				"fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-xl border border-white/10 bg-neutral-900 p-2 backdrop-blur-xl backdrop-saturate-150",
+				"fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-2 rounded-xl border border-white/10 bg-stone-900 p-2",
 				className
 			)}
 		>
@@ -66,20 +66,12 @@ function NavbarIconButton({
 				aria-label={label}
 				className={cn(
 					"relative flex size-10 items-center justify-center rounded-xl transition-all duration-200",
-					"hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
-					"hover:-translate-y-0.5 active:translate-y-0 active:scale-95",
-					isActive ? "text-white" : "text-white/35"
+					"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
+					"",
+					isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
 				)}
 			>
-				{/* left-edge accent bar */}
-				<span
-					className={cn(
-						"absolute -left-2 top-1/2 w-0.5 -translate-y-1/2 rounded-full bg-white transition-all duration-300",
-						isActive ? "h-5 opacity-100" : "h-0 opacity-0 group-hover:h-3 group-hover:opacity-40"
-					)}
-				/>
-
-				<Icon size={18} strokeWidth={isActive ? 2 : 1.75} />
+				<Icon size={18} strokeWidth={isActive ? 2 : 2} />
 			</Comp>
 
 			{/* tooltip */}
