@@ -8,7 +8,7 @@ import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucid
 const navItems = [
 	{ href: "/", label: "Home", icon: Home, useClientSideRouting: true },
 	{ href: "/about", label: "About", icon: User, useClientSideRouting: true },
-	{ href: "/timeline", label: "Experience & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
+	{ href: "/timeline", label: "Experiences & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
 	null,
 	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
@@ -21,7 +21,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 
 	return (
 		<div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
-			<nav className={cn("flex items-center gap-1 rounded-full border border-white/10 bg-stone-900 p-2", className)}>
+			<nav className={cn("flex items-center gap-1 rounded-full bg-neutral-900 p-2", className)}>
 				{navItems.map((item, i) =>
 					item === null ? (
 						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
@@ -41,7 +41,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 									className={cn(
 										"relative flex size-10 items-center justify-center rounded-full transition-all duration-200 md:size-12",
 										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
-										isActive ? "bg-white text-neutral-900" : "text-white/35 hover:bg-white/10 hover:text-white"
+										isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
 									)}
 								>
 									<Icon size={18} strokeWidth={isActive ? 2 : 2} />

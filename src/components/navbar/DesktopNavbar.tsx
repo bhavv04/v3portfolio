@@ -8,7 +8,7 @@ import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucid
 const navItems = [
 	{ href: "/", label: "Home", icon: Home, useClientSideRouting: true },
 	{ href: "/about", label: "About", icon: User, useClientSideRouting: true },
-	{ href: "/timeline", label: "Experience & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
+	{ href: "/timeline", label: "Experiences & Education", icon: BriefcaseBusiness, useClientSideRouting: false },
 	null,
 	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
@@ -20,12 +20,7 @@ export function DesktopNavbar({ className }: { className?: string }) {
 	const pathname = usePathname();
 
 	return (
-		<nav
-			className={cn(
-				"fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-2 rounded-xl border border-white/10 bg-stone-900 p-2",
-				className
-			)}
-		>
+		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-xl bg-neutral-900 p-2", className)}>
 			{navItems.map((item, i) =>
 				item === null ? (
 					<div key={i} className="my-1 h-px w-6 bg-white/10" />

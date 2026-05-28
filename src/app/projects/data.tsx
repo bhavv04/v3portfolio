@@ -1,6 +1,6 @@
 export type ProjectStatus = "completed" | "active" | "archived";
 
-export type ProjectTag = "machine learning" | "data engineering" | "algorithms" | "web dev" | "research" | "systems" | "productivity";
+export type ProjectTag = "machine learning" | "data engineering" | "software engineering" | "systems programming" | "data visualization" | "computer vision";
 
 export interface Project {
 	id: string;
@@ -34,11 +34,11 @@ export const projects: Project[] = [
 			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
 		longDescription:
 			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Google Books API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
-		tags: ["web dev", "productivity"],
+		tags: ["software engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "Google Books API"],
 		status: "active",
 		year: 2026,
-		github: "https://github.com/bhavv04/verso", // Adjusted to match your usual username pattern from the file
+		github: "https://github.com/bhavv04/verso",
 		demo: "",
 		image: "",
 		featured: true,
@@ -59,7 +59,7 @@ export const projects: Project[] = [
 		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
 		longDescription:
 			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
-		tags: ["data engineering", "machine learning", "research"],
+		tags: ["machine learning", "data engineering", "data visualization"],
 		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
 		status: "completed",
 		year: 2025,
@@ -76,7 +76,7 @@ export const projects: Project[] = [
 		description: "Interactive visualization of stopping-time landscapes for the Collatz Conjecture, with original research angles on sequence behavior.",
 		longDescription:
 			"A research-driven tool that maps stopping times across number ranges, revealing structural patterns in the Collatz sequence. Built to support original mathematical research, featuring zoom, density plots, and export capabilities.",
-		tags: ["research", "web dev", "algorithms"],
+		tags: ["software engineering"],
 		tech: ["TypeScript", "React"],
 		status: "active",
 		year: 2026,
@@ -92,7 +92,7 @@ export const projects: Project[] = [
 		description: "A Python implementation of the MapReduce programming model from scratch, applied to large-scale document processing.",
 		longDescription:
 			"Built entirely without Hadoop or Spark, this engine implements the core MapReduce paradigm in Python — including shuffle, sort, and reduce phases — and benchmarks it against MongoDB aggregation pipelines on real datasets.",
-		tags: ["data engineering", "systems"],
+		tags: ["data engineering", "systems programming"],
 		tech: ["Python", "MongoDB"],
 		status: "active",
 		year: 2025,
@@ -108,7 +108,7 @@ export const projects: Project[] = [
 		description: "A Flask API serving random Calvin and Hobbes quotes as JSON, built for easy integration into projects that need a touch of whimsy.",
 		longDescription:
 			"A lightweight REST API built with Flask that returns random quotes from Bill Watterson's Calvin and Hobbes. Quotes are stored in a structured JSON file and served via a single endpoint. Designed for easy embedding into portfolios, bots, or any project that could use some philosophical wisdom from a six-year-old and his tiger.",
-		tags: ["web dev", "systems"],
+		tags: ["software engineering"],
 		tech: ["Python", "Flask"],
 		status: "completed",
 		year: 2024,
@@ -124,7 +124,7 @@ export const projects: Project[] = [
 		description: "A lightweight reverse proxy that scores incoming HTTP requests to detect and mitigate bot traffic without third-party services.",
 		longDescription:
 			"Thunderhead sits in front of your server and scores every request 0–100 using behavioral signals — robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs — just silent observation and graduated responses. All decisions log as structured JSON.",
-		tags: ["systems"],
+		tags: ["systems programming", "software engineering"],
 		tech: ["Go", "net/http", "Redis", "Docker"],
 		status: "active",
 		year: 2026,
@@ -142,7 +142,7 @@ export const projects: Project[] = [
 			"A U-Net model that reconstructs diagnostically useful MRI images from undersampled k-space data, reducing scan time without sacrificing image quality.",
 		longDescription:
 			"MRI machines collect data in k-space — the frequency domain representation of an image. Full sampling is slow and expensive. Lacunae takes fully sampled scans from the fastMRI dataset, artificially masks out portions of k-space to simulate accelerated acquisition, and trains a U-Net to reconstruct the complete image from the undersampled input. Reconstruction quality is evaluated against ground truth using SSIM and PSNR.",
-		tags: ["machine learning", "research"],
+		tags: ["machine learning", "computer vision"],
 		tech: ["Python", "PyTorch"],
 		status: "active",
 		year: 2026,
@@ -158,7 +158,7 @@ export const projects: Project[] = [
 		description: "Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate data and a composite scoring model.",
 		longDescription:
 			"Terraseed processes three decades of satellite and reanalysis climate data — temperature, precipitation, soil moisture, and frost risk — into a single planting score across the global grid. Features an interactive Plotly Dash dashboard where users can enter coordinates and get a month-by-month planting calendar with the optimal window highlighted automatically.",
-		tags: ["machine learning", "data engineering", "research"],
+		tags: ["machine learning", "data engineering", "data visualization"],
 		tech: ["Python", "Plotly Dash", "scikit-learn", "xarray"],
 		status: "active",
 		year: 2025,
@@ -185,7 +185,7 @@ export const projects: Project[] = [
 			"Urban heat island analysis pipeline built on a decade of NASA satellite data, modeling the tree canopy needed to cool Toronto neighbourhoods by 2°C.",
 		longDescription:
 			"Solace downloads a decade of NASA MODIS daily land surface temperature tiles, converts and reprojects them to Toronto's boundary, then computes mean summer LST across all 158 neighbourhoods via zonal statistics. An OLS regression extracts a cooling coefficient — degrees per 1% canopy increase — and the interactive Plotly Dash dashboard lets you simulate city-wide tree cover increases and their projected cooling effect per neighbourhood.",
-		tags: ["data engineering", "research"],
+		tags: ["data engineering", "data visualization"],
 		tech: ["Python", "Plotly Dash", "GDAL", "scikit-learn"],
 		status: "active",
 		year: 2026,
@@ -201,7 +201,7 @@ export const projects: Project[] = [
 		description: "A ground-up implementation of a Redis-compatible in-memory key-value store written in C.",
 		longDescription:
 			"Redic implements the core Redis wire protocol (RESP) and a subset of commands — GET, SET, DEL, EXPIRE, TTL, LPUSH, LPOP — in plain C. Built to understand how Redis actually works: event loops, hash table internals, memory layout, and socket I/O without libuv or any async framework. Connects with any standard Redis client.",
-		tags: ["systems", "research"],
+		tags: ["systems programming"],
 		tech: ["C", "POSIX sockets", "RESP protocol", "Make"],
 		status: "completed",
 		year: 2026,
@@ -218,7 +218,7 @@ export const projects: Project[] = [
 			"Models multi-layered environmental dependencies—dead zones, food webs, and atmospheric drift—to predict how local structural collapses cascade across global ecological boundaries.",
 		longDescription:
 			"Gaia maps interconnected environmental systems as a multi-layer directed graph to simulate and predict ecosystem collapse thresholds. By combining marine hypoxic timeline data, trophic food web dependencies, and atmospheric tracer vectors, the engine evaluates how a localized resource failure propagates across domain borders. It moves past single-variable climate monitoring to map the structural vulnerability of the biosphere's overlapping networks.",
-		tags: ["machine learning", "data engineering", "research"],
+		tags: ["machine learning", "data engineering"],
 		tech: ["Python", "NetworkX", "PyTorch Geometric", "xarray", "GeoPandas"],
 		status: "active",
 		year: 2026,
@@ -234,6 +234,49 @@ export const projects: Project[] = [
 				"PyTorch Geometric was chosen to handle the message-passing mechanics across non-Euclidean ecological structures, which standard graph libraries fail to scale. NetworkX handles initial graph construction, topological sorting, and baseline centrality metrics. xarray and GeoPandas manage the heavy spatial-temporal anchoring, ensuring that physical atmospheric drift coordinates align perfectly with localized biological frameworks. Python keeps this entire simulation tightly coupled with existing scientific computing ecosystems.",
 			lessonsLearned:
 				"The biggest mathematical challenge was tuning the dissipation constants—if the damping effect between layers is too high, cascades vanish; if it's too low, every minor drought triggers a global extinction event. Calibrating these thresholds against historical tipping points, like major oceanic anoxic events, proved that structural topology matters far more than baseline biomass volume. A fragile network structure scrambles an ecosystem much faster than low resource counts do."
+		}
+	},
+	{
+		id: "awkrs",
+		title: "awk.rs",
+		tagline: "awk, rewritten in Rust, without the archaeology",
+		description:
+			"A Rust implementation of the AWK text-processing language, rebuilding the core pattern-action model from scratch with modern memory safety guarantees.",
+		longDescription:
+			"awk.rs reimplements the AWK programming language in Rust — covering field splitting, pattern matching, built-in variables, arithmetic, string functions, and the full pattern-action execution loop. The goal was to understand how a line-oriented interpreter actually works at the parser and evaluator level, without the legacy C baggage of the original implementation. Passes the core AWK test suite and handles real-world log processing workloads.",
+		tags: ["systems programming"],
+		tech: ["Rust"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/awkrs",
+		demo: "",
+		image: "",
+		featured: false
+	},
+	{
+		id: "precursor",
+		title: "Precursor",
+		tagline: "If oil moves, does energy follow? quantifying the lag.",
+		description:
+			"Investigates whether commodity momentum statistically precedes sector equity momentum using Granger causality, VAR modeling, and a signal-based backtest.",
+		longDescription:
+			"Precursor tests the hypothesis that commodities — as upstream inputs to the businesses that consume them — exhibit momentum that leads related equity sectors by a measurable lag. The pipeline constructs rolling momentum signals across WTI, Brent, copper, natural gas, and gold, then runs pairwise Granger causality tests against their corresponding equity ETFs (XLE, XLB, GDX). Significant causal relationships are assembled into a weighted DAG to map spillover structure across the asset universe. A long/short backtest using the commodity signal at the optimal Granger lag evaluates whether the predictive precedence is actually exploitable, reported via annualised Sharpe, max drawdown, and hit rate.",
+		tags: ["machine learning", "data engineering"],
+		tech: ["Python", "pandas", "statsmodels", "networkx", "yfinance", "matplotlib", "seaborn"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/precursor",
+		demo: "",
+		image: "",
+		featured: true,
+		pageContent: {
+			hook: "Commodities are upstream inputs to the businesses that consume them. If oil starts trending, energy company revenues should follow — but with a lag. Precursor asks whether that lag is real, measurable, and tradeable.",
+			howItWorks:
+				"For each asset pair, rolling log-return momentum signals are computed across three lookback windows (5, 10, 20 days). Granger causality is tested at lag orders 1–5 using an F-test comparing restricted and unrestricted VAR models — the null being that the commodity series adds no predictive power beyond the equity's own history. Significant pairs (α = 0.05) are wired into a directed acyclic graph weighted by F-statistic, exposing which commodities are the strongest leading indicators and which equity sectors receive the most predictive signal. A long/short backtest then takes positions in each equity ETF based on the sign of the commodity momentum signal at the optimal lag, evaluating performance on a held-out 20% test set.",
+			techChoices:
+				"statsmodels handles the VAR estimation and Granger tests natively with well-documented F-test machinery. networkx builds the DAG and computes centrality metrics without overhead. yfinance pulls daily OHLCV going back to 2010 — roughly 3,500 trading days — giving enough history for stable VAR estimation and a meaningful out-of-sample split. matplotlib and seaborn handle publication-quality figure export for the final research notebook.",
+			lessonsLearned:
+				"The DAG structure was the most revealing output. The expectation was a clean commodity-to-equity hierarchy, but the graph exposed indirect chains — oil momentum flowing through copper into materials — that weren't part of the original hypothesis. Granger causality is also sensitive to the lag order selection; AIC minimisation consistently preferred shorter lags than intuition suggested, which tightened the backtest signals considerably."
 		}
 	}
 ];
