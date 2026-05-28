@@ -39,12 +39,12 @@ export function MobileNavbar({ className }: { className?: string }) {
 									target={openInNewTab ? "_blank" : "_self"}
 									aria-label={label}
 									className={cn(
-										"relative flex size-10 items-center justify-center rounded-full transition-all duration-200",
-										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 active:scale-95",
-										isActive ? "bg-white text-neutral-900" : "text-white/35 hover:bg-white/[0.06] hover:text-white"
+										"relative flex size-10 items-center justify-center rounded-full transition-all duration-200 md:size-12",
+										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
+										isActive ? "bg-white text-neutral-900" : "text-white/35 hover:bg-white/10 hover:text-white"
 									)}
 								>
-									<Icon size={18} strokeWidth={isActive ? 2 : 1.75} />
+									<Icon size={18} strokeWidth={isActive ? 2 : 2} />
 								</Comp>
 							);
 						})()

@@ -6,7 +6,7 @@ import Footer from "@/views/Footer";
 
 export default function Home() {
 	return (
-		<div className="pb-16 lg:pb-0">
+		<div className="pb-16 xl:pb-0">
 			<HeroSection />
 			<div className="-my-12" />
 			<Skills />
