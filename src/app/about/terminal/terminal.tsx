@@ -176,7 +176,8 @@ const Terminal: React.FC = () => {
 
 	return (
 		<div
-			className="flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 font-mono text-sm"
+			className="scale-in flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 font-mono text-sm"
+			style={{ "--delay-index": 2 } as React.CSSProperties}
 			onClick={() => !isTyping && inputDivRef.current?.focus()}
 		>
 			{/* Title bar */}
