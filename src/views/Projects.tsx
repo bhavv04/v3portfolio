@@ -8,10 +8,10 @@ import { IoBuild } from "react-icons/io5";
 
 export function ProjectsView() {
 	return (
-		<section id="projects" className="mx-auto">
+		<section id="projects" className="fade-in-up mx-auto">
 			<SectionTitle
 				text={
-					<span className="flex items-center gap-2 text-3xl">
+					<span className="flex items-center gap-2 text-3xl" style={{ "--delay-index": 8 } as React.CSSProperties}>
 						<IoBuild />
 						<span>Selected Works</span>
 					</span>

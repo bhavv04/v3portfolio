@@ -24,6 +24,9 @@ export default function TimelineView() {
 	return (
 		<main className="md:px min-h-screen px-4 pb-12 sm:px-8 md:pb-0 lg:px-32">
 			<div className="mx-auto max-w-4xl">
+				{/* ============================================================
+				    HEADER
+				============================================================ */}
 				<div className="mb-8">
 					<SectionTitle
 						text={
@@ -38,13 +41,19 @@ export default function TimelineView() {
 					</p>
 				</div>
 
+				{/* ============================================================
+				    TIMELINE
+				============================================================ */}
 				<div className="relative">
+					{/* Animated vertical line */}
 					<div ref={lineRef} className="absolute left-[5.5px] top-2 w-px bg-white opacity-30" style={{ height: 0 }} />
 
+					{/* End dot */}
 					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-white opacity-40" />
 
-					{education.map((ed) => (
-						<TimelineItem key={ed.school} title={ed.school} subtitle={ed.degree} meta={ed.period}>
+					{/* ── Education ── */}
+					{education.map((ed, i) => (
+						<TimelineItem key={ed.school} title={ed.school} subtitle={ed.degree} meta={ed.period} index={i}>
 							<p className="mt-1 text-sm opacity-50">{ed.concentration}</p>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{ed.courses.map((c) => (
@@ -56,12 +65,14 @@ export default function TimelineView() {
 						</TimelineItem>
 					))}
 
+					{/* ── Divider ── */}
 					<div className="relative py-6 pl-10">
-						<span className="text-xs opacity-60">work</span>
+						<span className="fade-in-up text-xs opacity-60 delay-200">work</span>
 					</div>
 
-					{experience.map((exp) => (
-						<TimelineItem key={`${exp.org}-${exp.period}`} title={exp.org} subtitle={exp.role} meta={exp.period}>
+					{/* ── Experience ── */}
+					{experience.map((exp, i) => (
+						<TimelineItem key={`${exp.org}-${exp.period}`} title={exp.org} subtitle={exp.role} meta={exp.period} index={education.length + i}>
 							<ul className="mt-3 space-y-2">
 								{exp.bullets.map((b, j) => (
 									<li key={j} className="text-sm opacity-80">
@@ -77,17 +88,20 @@ export default function TimelineView() {
 	);
 }
 
-/* ── Timeline Item ─────────────────────────────────────────── */
+/* ================================================================
+   TIMELINE ITEM
+================================================================ */
 
 type TimelineItemProps = {
 	title: string;
 	subtitle: string;
 	meta: string;
+	index: number;
 	children?: React.ReactNode;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-function TimelineItem({ title, subtitle, meta, children }: TimelineItemProps) {
+function TimelineItem({ title, subtitle, meta, index, children }: TimelineItemProps) {
 	const ref = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -107,9 +121,11 @@ function TimelineItem({ title, subtitle, meta, children }: TimelineItemProps) {
 	}, []);
 
 	return (
-		<div ref={ref} className="relative mb-8 pl-10">
+		<div ref={ref} className="fade-in-up relative mb-8 pl-10" style={{ "--delay-index": index } as React.CSSProperties}>
+			{/* Dot */}
 			<span className="absolute left-0 top-1 h-3 w-3 rounded-full bg-stone-500" />
 
+			{/* Card */}
 			<div className="rounded-lg border border-neutral-900 bg-neutral-900 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-stone-500">
 				<div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
 					<h2 className="text-sm font-semibold sm:text-base">{title}</h2>

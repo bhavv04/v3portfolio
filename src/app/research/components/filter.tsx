@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { caseStudies, ProjectStatus, ResearchTag } from "@/app/research/data";
+import ResearchCard from "@/app/research/components/researchCard";
 
 const ALL_TAGS: ResearchTag[] = [
 	"finance",
@@ -119,7 +120,11 @@ export default function ResearchFilter() {
 			{/* Cards */}
 			<div className="flex flex-col gap-4">
 				{filtered.length > 0 ? (
-					filtered.map((study, i) => <div key={study.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}></div>)
+					filtered.map((study, i) => (
+						<div key={study.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}>
+							<ResearchCard study={study} />
+						</div>
+					))
 				) : (
 					<p className="font-mono text-sm text-white">no projects match the selected filters.</p>
 				)}
