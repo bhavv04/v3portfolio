@@ -7,7 +7,7 @@ a little corner of the internet, hand crafted with next.js and too much chocolat
 ## getting started
 
 ```bash
-git clone https://github.com/yourusername/v3portfolio.git
+git clone https://github.com/bhavv04/v3portfolio.git
 cd v3portfolio
 yarn install
 yarn dev

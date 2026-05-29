@@ -53,23 +53,6 @@ export const projects: Project[] = [
 		}
 	},
 	{
-		id: "deadzone",
-		title: "Dead Zones on a Clock",
-		tagline: "Tracing oxygen collapse back to a cornfield",
-		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
-		longDescription:
-			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
-		tags: ["machine learning", "data engineering", "data visualization"],
-		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
-		status: "completed",
-		year: 2025,
-		github: "https://github.com/bhavv04/deadzone",
-		demo: "https://deadzone-b3eq.onrender.com/",
-		live: "https://deadzone-b3eq.onrender.com/",
-		image: "/images/projects/deadzone.png",
-		featured: true
-	},
-	{
 		id: "collatz-viz",
 		title: "Collatz Conjecture Explorer",
 		tagline: "Nobody has proved it. here's what it looks like",
@@ -100,6 +83,23 @@ export const projects: Project[] = [
 		demo: "",
 		image: "",
 		featured: false
+	},
+	{
+		id: "deadzone",
+		title: "Dead Zones on a Clock",
+		tagline: "Tracing oxygen collapse back to a cornfield",
+		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
+		longDescription:
+			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
+		tags: ["machine learning", "data engineering", "data visualization"],
+		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
+		status: "completed",
+		year: 2025,
+		github: "https://github.com/bhavv04/deadzone",
+		demo: "https://deadzone-b3eq.onrender.com/",
+		live: "https://deadzone-b3eq.onrender.com/",
+		image: "/images/projects/deadzone.png",
+		featured: true
 	},
 	{
 		id: "calvin-hobbes-api",
@@ -238,7 +238,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "awkrs",
-		title: "awk.rs",
+		title: "GNU AWK in rust",
 		tagline: "awk, rewritten in Rust, without the archaeology",
 		description:
 			"A Rust implementation of the AWK text-processing language, rebuilding the core pattern-action model from scratch with modern memory safety guarantees.",

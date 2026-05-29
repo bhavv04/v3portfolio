@@ -1,30 +1,13 @@
-import Terminal from "@/app/about/terminal/terminal";
-import { SectionTitle } from "@/components/typography/SectionTitle";
-import { GiWillowTree } from "react-icons/gi";
+import type { Metadata } from "next";
+import AboutView from "./aboutView";
+import { metadata as siteMetadata } from "@/app/metadata";
 
-export default function About() {
-	return (
-		<div className="pb-16">
-			<div className="mx-auto max-w-2xl">
-				{/* Header */}
-				<div className="fade-in-up">
-					<SectionTitle
-						text={
-							<span className="flex items-center gap-2">
-								<GiWillowTree />
-								<span>Whoami</span>
-							</span>
-						}
-					/>
+export const metadata: Metadata = {
+	...siteMetadata,
+	title: "About | Bhavdeep",
+	description: "Interactive about page featuring a terminal-style interface and personal introduction."
+};
 
-					<p className="mb-4 mt-2 italic leading-relaxed text-slate-400">
-						I&apos;ve kept this section interactive, no repeated bio here. Type <span className="text-white/60">help</span> to get started.
-					</p>
-				</div>
-
-				{/* Terminal */}
-				<Terminal />
-			</div>
-		</div>
-	);
+export default function Page() {
+	return <AboutView />;
 }
