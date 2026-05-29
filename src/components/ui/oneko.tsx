@@ -11,13 +11,16 @@ interface NekoProps {
 	speed?: number;
 }
 
-const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => {
+const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko-maia.gif", speed = 10 }) => {
 	const { showCat } = useCat();
 	const nekoRef = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(true);
+	const isDragging = useRef(false);
+	const dragOffset = useRef({ x: 0, y: 0 });
+	const prevDragX = useRef(0);
+	const prevDragY = useRef(0);
 
 	useEffect(() => {
-		// Check for reduced motion preference
 		const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		if (isReducedMotion) {
 			setIsVisible(false);
@@ -111,21 +114,12 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 		const idle = () => {
 			idleTime += 1;
 
-			// every ~ 20 seconds
 			if (idleTime > 10 && Math.floor(Math.random() * 200) === 0 && idleAnimation === null) {
 				const availableIdleAnimations = ["sleeping", "scratchSelf"];
-				if (nekoPosX < 32) {
-					availableIdleAnimations.push("scratchWallW");
-				}
-				if (nekoPosY < 32) {
-					availableIdleAnimations.push("scratchWallN");
-				}
-				if (nekoPosX > window.innerWidth - 32) {
-					availableIdleAnimations.push("scratchWallE");
-				}
-				if (nekoPosY > window.innerHeight - 32) {
-					availableIdleAnimations.push("scratchWallS");
-				}
+				if (nekoPosX < 32) availableIdleAnimations.push("scratchWallW");
+				if (nekoPosY < 32) availableIdleAnimations.push("scratchWallN");
+				if (nekoPosX > window.innerWidth - 32) availableIdleAnimations.push("scratchWallE");
+				if (nekoPosY > window.innerHeight - 32) availableIdleAnimations.push("scratchWallS");
 				idleAnimation = availableIdleAnimations[Math.floor(Math.random() * availableIdleAnimations.length)];
 			}
 
@@ -136,9 +130,7 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 						break;
 					}
 					setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-					if (idleAnimationFrame > 192) {
-						resetIdleAnimation();
-					}
+					if (idleAnimationFrame > 192) resetIdleAnimation();
 					break;
 				case "scratchWallN":
 				case "scratchWallS":
@@ -146,9 +138,7 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 				case "scratchWallW":
 				case "scratchSelf":
 					setSprite(idleAnimation, idleAnimationFrame);
-					if (idleAnimationFrame > 9) {
-						resetIdleAnimation();
-					}
+					if (idleAnimationFrame > 9) resetIdleAnimation();
 					break;
 				default:
 					setSprite("idle", 0);
@@ -159,6 +149,44 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 
 		const frame = () => {
 			if (!nekoRef.current) return;
+
+			if (isDragging.current) {
+				nekoPosX = mousePosX + dragOffset.current.x;
+				nekoPosY = mousePosY + dragOffset.current.y;
+				nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
+				nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
+				nekoRef.current.style.left = `${nekoPosX - 16}px`;
+				nekoRef.current.style.top = `${nekoPosY - 16}px`;
+
+				const dragDiffX = nekoPosX - prevDragX.current;
+				const dragDiffY = nekoPosY - prevDragY.current;
+				const dragDist = Math.sqrt(dragDiffX ** 2 + dragDiffY ** 2);
+
+				if (dragDist > 1) {
+					const reverseDirectionMap: Record<string, string> = {
+						N: "S",
+						S: "N",
+						E: "W",
+						W: "E",
+						NE: "SW",
+						NW: "SE",
+						SE: "NW",
+						SW: "NE"
+					};
+					let dir = "";
+					dir = dragDiffY < -0.5 ? "N" : "";
+					dir += dragDiffY > 0.5 ? "S" : "";
+					dir += dragDiffX > 0.5 ? "E" : "";
+					dir += dragDiffX < -0.5 ? "W" : "";
+					setSprite(reverseDirectionMap[dir] ?? "alert", frameCount);
+				} else {
+					setSprite("alert", 0);
+				}
+
+				prevDragX.current = nekoPosX;
+				prevDragY.current = nekoPosY;
+				return;
+			}
 
 			frameCount += 1;
 			const diffX = nekoPosX - mousePosX;
@@ -175,7 +203,6 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 
 			if (idleTime > 1) {
 				setSprite("alert", 0);
-				// count down after being alerted before moving
 				idleTime = Math.min(idleTime, 7);
 				idleTime -= 1;
 				return;
@@ -200,10 +227,7 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 
 		const onAnimationFrame = (timestamp: number) => {
 			if (!nekoRef.current) return;
-
-			if (!lastFrameTimestamp) {
-				lastFrameTimestamp = timestamp;
-			}
+			if (!lastFrameTimestamp) lastFrameTimestamp = timestamp;
 			if (timestamp - lastFrameTimestamp > 100) {
 				lastFrameTimestamp = timestamp;
 				frame();
@@ -216,26 +240,47 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 			mousePosY = event.clientY;
 		};
 
-		// Initialize position
+		const handleMouseDown = (event: MouseEvent) => {
+			if (!nekoRef.current) return;
+			const rect = nekoRef.current.getBoundingClientRect();
+			const catCenterX = rect.left + 16;
+			const catCenterY = rect.top + 16;
+			const clickDist = Math.sqrt((event.clientX - catCenterX) ** 2 + (event.clientY - catCenterY) ** 2);
+			if (clickDist > 24) return;
+
+			isDragging.current = true;
+			dragOffset.current = {
+				x: nekoPosX - event.clientX,
+				y: nekoPosY - event.clientY
+			};
+			nekoRef.current.style.cursor = "grabbing";
+		};
+
+		const handleMouseUp = () => {
+			if (!isDragging.current) return;
+			isDragging.current = false;
+			idleTime = 0;
+			if (nekoRef.current) nekoRef.current.style.cursor = "grab";
+		};
+
 		if (nekoRef.current) {
 			nekoRef.current.style.left = `${nekoPosX - 16}px`;
 			nekoRef.current.style.top = `${nekoPosY - 16}px`;
 		}
 
-		// Start animation and mouse tracking
 		document.addEventListener("mousemove", handleMouseMove);
+		document.addEventListener("mousedown", handleMouseDown);
+		document.addEventListener("mouseup", handleMouseUp);
 		let animationId = requestAnimationFrame(onAnimationFrame);
 
-		// Cleanup function
 		return () => {
 			document.removeEventListener("mousemove", handleMouseMove);
-			if (animationId) {
-				cancelAnimationFrame(animationId);
-			}
+			document.removeEventListener("mousedown", handleMouseDown);
+			document.removeEventListener("mouseup", handleMouseUp);
+			if (animationId) cancelAnimationFrame(animationId);
 		};
 	}, [speed]);
 
-	// Change the return condition to still render the div but with visibility:hidden
 	return (
 		<div
 			ref={nekoRef}
@@ -245,7 +290,8 @@ const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko.gif", speed = 10 }) => 
 				width: "32px",
 				height: "32px",
 				position: "fixed",
-				pointerEvents: "none",
+				pointerEvents: "auto",
+				cursor: "grab",
 				backgroundImage: `url(${catImage})`,
 				imageRendering: "pixelated",
 				zIndex: 2147483647,

@@ -427,19 +427,19 @@ body::-webkit-scrollbar-thumb:hover {
 
 .fade-in-up {
 	animation: fadeInUp 0.8s ease-out forwards;
-	animation-delay: calc(var(--delay-index, 0) * 0.2s);
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
 	opacity: 0;
 	transform: translateY(30px);
 }
 
 .fade-in {
 	animation: fadeIn 0.8s ease-out forwards;
-	animation-delay: calc(var(--delay-index, 0) * 0.2s);
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
 	opacity: 0;
 }
 
 .scale-in {
 	animation: scaleIn 0.8s ease-out forwards;
-	animation-delay: calc(var(--delay-index, 0) * 0.2s);
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
 	opacity: 0;
 }
