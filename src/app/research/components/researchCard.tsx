@@ -18,11 +18,11 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 				{/* Title + subtitle */}
 				<div className="mb-2">
 					<h3 className="text-base sm:text-lg">{study.title}</h3>
-					<p className="mt-0.5 text-sm">{study.subtitle}</p>
+					<p className="mt-1 text-sm opacity-60">{study.subtitle}</p>
 				</div>
 
 				{/* Abstract preview */}
-				<p className="mb-3 line-clamp-2 text-sm leading-relaxed">{study.abstract}</p>
+				<p className="mb-2 text-sm leading-relaxed">{study.tagline}</p>
 
 				{/* Tags */}
 				<div className="mb-4 flex flex-wrap gap-2">
@@ -107,7 +107,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 				<div className="flex flex-col gap-4 border-t px-4 py-5 sm:px-6">
 					<div>
 						<p className="mb-2 text-xs uppercase tracking-widest">Abstract</p>
-						<p className="text-sm leading-relaxed text-white/70">{study.abstract}</p>
+						<p className="mb-3 text-sm leading-relaxed">{study.abstract}</p>
 					</div>
 
 					{study.highlights && study.highlights.length > 0 && (

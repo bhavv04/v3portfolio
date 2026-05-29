@@ -15,6 +15,7 @@ export interface CaseStudy {
 	id: string;
 	title: string;
 	subtitle: string;
+	tagline: string; // add this
 	abstract: string;
 	status: ProjectStatus;
 	tags: ResearchTag[];
@@ -35,6 +36,7 @@ export const caseStudies: CaseStudy[] = [
 		id: "lacunae",
 		title: "Lacunae",
 		subtitle: "Accelerated MRI Reconstruction from Undersampled K-Space via U-Net",
+		tagline: "U-Net that reconstructs full MRI scans from 25% of the frequency data.",
 		abstract:
 			"MRI acquisition is slow because it requires dense sampling of k-space, the frequency-domain representation of the scan. Lacunae artificially undersamples k-space at 4x acceleration — retaining only 25% of frequency lines — and trains a U-Net to reconstruct diagnostically useful images from the incomplete data. A naive inverse FFT on undersampled k-space produces severe aliasing artifacts; the model learns to recover the missing structure. Trained on the fastMRI single-coil knee dataset with L1 loss and evaluated on SSIM and PSNR.",
 		status: "completed",
@@ -62,6 +64,7 @@ export const caseStudies: CaseStudy[] = [
 		id: "precursor",
 		title: "Precursor",
 		subtitle: "Cross-Asset Momentum Spillover from Commodities to Sector Equities via Granger Causality",
+		tagline: "Tests whether commodity price momentum predicts sector equity moves 1–5 days ahead.",
 		abstract:
 			"Commodities are upstream inputs to the businesses that consume them. This project investigates whether commodity momentum statistically precedes sector equity momentum, quantifies the lag structure across 1–5 trading days, and tests whether that predictive precedence is exploitable as a long/short trading signal. Granger causality tests, VAR estimation, and a DAG-based causal graph are applied across five commodity–equity pairs including WTI→XLE, Copper→XLB, and Gold→GDX.",
 		status: "in-progress",
@@ -89,6 +92,7 @@ export const caseStudies: CaseStudy[] = [
 		id: "deadzones",
 		title: "Deadzones",
 		subtitle: "Modeling the Seasonal Collapse and Recovery of Gulf Hypoxia from River Nutrient Loading",
+		tagline: "40-year model tracing Gulf of Mexico dead zones back to Midwest agricultural runoff.",
 		abstract:
 			"A 40-year computational oceanography study modeling the Gulf of Mexico hypoxic dead zone using NOAA, LUMCON, USGS, and World Ocean Atlas datasets. The project combines annual hypoxia measurements, Mississippi River nutrient flux, and sea surface temperature to predict dead zone size and identify anomalous years driven by flooding, hurricanes, and climate variability. Random Forest regression with Leave-One-Out cross validation reveals spring nitrogen loading as the dominant predictor of hypoxia extent, quantitatively tracing the causal chain from Midwest agricultural runoff to marine ecosystem collapse.",
 		status: "completed",
@@ -118,6 +122,7 @@ export const caseStudies: CaseStudy[] = [
 		id: "grokking",
 		title: "Grokking",
 		subtitle: "Reproducing Generalization Beyond Overfitting on Modular Arithmetic",
+		tagline: "Reproduces the phenomenon where a transformer memorizes first, then suddenly generalizes.",
 		abstract:
 			"A from-scratch reproduction of the grokking phenomenon from Power et al. (2022) — where a small transformer trained on modular addition memorizes the training set early, then long after overfitting, suddenly generalizes. The key ingredient is high weight decay, which pressures the model away from memorization and toward the underlying algorithm. Built as a single self-contained script with a custom training loop and publication-style loss/accuracy plots.",
 		status: "completed",
