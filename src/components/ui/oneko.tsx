@@ -11,7 +11,7 @@ interface NekoProps {
 	speed?: number;
 }
 
-const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko-maia.gif", speed = 10 }) => {
+const Oneko: React.FC<NekoProps> = ({ catImage = "/oneko-dog.gif", speed = 10 }) => {
 	const { showCat } = useCat();
 	const nekoRef = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(true);
