@@ -47,7 +47,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 						<CarouselContent>
 							{screenshots.map((screenshot, i) => (
 								<CarouselItem key={screenshot.name}>
-									<div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+									<div className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
 										<div className="relative aspect-[16/10] w-full overflow-hidden">
 											<Image
 												src={screenshot.desktop.src}
@@ -114,7 +114,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 				</div>
 
 				{project.type === "bullets" && project.bullets.length > 0 && (
-					<ul className="space-y-3 rounded-xl text-sm text-white sm:p-2">
+					<ul className="space-y-2 rounded-xl text-sm sm:p-2">
 						{project.bullets.map((bullet) => (
 							<li key={bullet} className="-mx-2 flex items-start gap-2">
 								<span className="mt-2 size-2 shrink-0 rounded-full bg-white" />

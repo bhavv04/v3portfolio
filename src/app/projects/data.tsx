@@ -13,7 +13,7 @@ export interface Project {
 	status: ProjectStatus;
 	year: number;
 	github: string;
-	demo: string;
+	demo?: string;
 	image?: string;
 	live?: string;
 	featured: boolean;
@@ -33,19 +33,20 @@ export const projects: Project[] = [
 		description:
 			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
 		longDescription:
-			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Google Books API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
-		tags: ["software engineering"],
-		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "Google Books API"],
+			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
+		tags: ["software engineering", "data engineering"],
+		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/verso",
 		demo: "",
-		image: "",
+		live: "https://verso-books.vercel.app/",
+		image: "/images/projects/verso.png",
 		featured: true,
 		pageContent: {
 			hook: "We stop reading because finding the next book feels like work. Verso turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
 			howItWorks:
-				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Google Books API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
+				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Hardcover API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
 			techChoices:
 				"Next.js 15 was chosen to exploit the speed and simplicity of Server Actions and optimized route handlers. Prisma 7 handles type-safe database schemas natively with Neon's serverless Postgres connection pooling. Framer Motion was the clear choice for the gesture system because its layout animations handle physical card stacks cleanly without losing smooth frame rates on mobile screens. Clerk allowed us to offload secure session architecture entirely, leaving the database focused solely on user interactions and shelves.",
 			lessonsLearned:
@@ -83,23 +84,6 @@ export const projects: Project[] = [
 		demo: "",
 		image: "",
 		featured: false
-	},
-	{
-		id: "deadzone",
-		title: "Dead Zones on a Clock",
-		tagline: "Tracing oxygen collapse back to a cornfield",
-		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
-		longDescription:
-			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
-		tags: ["machine learning", "data engineering", "data visualization"],
-		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
-		status: "completed",
-		year: 2025,
-		github: "https://github.com/bhavv04/deadzone",
-		demo: "https://deadzone-b3eq.onrender.com/",
-		live: "https://deadzone-b3eq.onrender.com/",
-		image: "/images/projects/deadzone.png",
-		featured: true
 	},
 	{
 		id: "calvin-hobbes-api",
@@ -152,6 +136,23 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
+		id: "deadzone",
+		title: "Dead Zones on a Clock",
+		tagline: "Tracing oxygen collapse back to a cornfield",
+		description: "Models 40 years of Gulf of Mexico hypoxic dead zone data, tracing the causal chain from Midwest agriculture to ocean oxygen collapse.",
+		longDescription:
+			"Combines annual NOAA cruise measurements, USGS river nutrient loading, and sea surface temperature into a Random Forest regression model predicting annual dead zone size. Spring nitrogen load accounts for 80% of model decisions. Identifies anomalous years driven by hurricanes and droughts, and visualizes the dead zone pulsing across four decades with animated charts.",
+		tags: ["machine learning", "data engineering", "data visualization"],
+		tech: ["Python", "scikit-learn", "xarray", "cartopy"],
+		status: "completed",
+		year: 2025,
+		github: "https://github.com/bhavv04/deadzone",
+		demo: "https://deadzone-b3eq.onrender.com/",
+		live: "https://deadzone-b3eq.onrender.com/",
+		image: "/images/projects/deadzone.png",
+		featured: true
+	},
+	{
 		id: "terraseed",
 		title: "Terraseed",
 		tagline: "30 years of climate data, one planting score",
@@ -176,23 +177,6 @@ export const projects: Project[] = [
 			lessonsLearned:
 				"The ERA5 reprojection was silently wrong for longer than I'd like to admit — the scores looked plausible for temperate regions but were off at high latitudes because the grid wasn't being handled correctly during downsampling. Plausible-looking output is the hardest bug to catch. The roadmap item for a 1990–2005 vs 2006–2020 score shift map started as a curiosity and turned into the most interesting thing in the project — climate signal is visible in the scores if you split the dataset in half."
 		}
-	},
-	{
-		id: "solace",
-		title: "Solace",
-		tagline: "Mapping where toronto burns, and what it takes to cool it",
-		description:
-			"Urban heat island analysis pipeline built on a decade of NASA satellite data, modeling the tree canopy needed to cool Toronto neighbourhoods by 2°C.",
-		longDescription:
-			"Solace downloads a decade of NASA MODIS daily land surface temperature tiles, converts and reprojects them to Toronto's boundary, then computes mean summer LST across all 158 neighbourhoods via zonal statistics. An OLS regression extracts a cooling coefficient — degrees per 1% canopy increase — and the interactive Plotly Dash dashboard lets you simulate city-wide tree cover increases and their projected cooling effect per neighbourhood.",
-		tags: ["data engineering", "data visualization"],
-		tech: ["Python", "Plotly Dash", "GDAL", "scikit-learn"],
-		status: "active",
-		year: 2026,
-		github: "https://github.com/bhavv04/solace",
-		demo: "",
-		image: "/images/projects/solace.png",
-		featured: true
 	},
 	{
 		id: "redis-c",

@@ -21,7 +21,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 					rel="stylesheet"
 				/>
 			</head>
-			<body className="relative font-satoshi">
+			<body className="relative font-satoshi 2xl:[zoom:1.1]">
 				<CatProvider>
 					<ScrollBackground />
 					<Oneko />
