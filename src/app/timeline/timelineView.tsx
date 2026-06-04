@@ -68,7 +68,7 @@ export default function TimelineView() {
 					{/* ── Divider ── */}
 					<div className="relative py-6 pl-10">
 						<span className="fade-in-up text-sm tracking-wider text-white/40" style={{ "--delay-index": 4 } as React.CSSProperties}>
-							work
+							{/* ── work ── */}
 						</span>
 					</div>
 
