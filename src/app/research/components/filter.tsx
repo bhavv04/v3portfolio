@@ -118,7 +118,7 @@ export default function ResearchFilter() {
 			</div>
 
 			{/* Cards */}
-			<div className="flex flex-col gap-4">
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 				{filtered.length > 0 ? (
 					filtered.map((study, i) => (
 						<div key={study.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}>

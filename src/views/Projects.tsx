@@ -31,7 +31,7 @@ export function ProjectsView() {
 
 					<div className="flex justify-end pt-2">
 						<Link href="/projects" className="text-md inline-flex items-center gap-2 text-white/40 transition-colors hover:text-white/80">
-							View all of my projects
+							View More
 							<ArrowRight size={16} />
 						</Link>
 					</div>

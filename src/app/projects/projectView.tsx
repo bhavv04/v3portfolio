@@ -18,7 +18,7 @@ export default function ProjectView() {
 	);
 
 	return (
-		<div className="pb-24 md:mx-8 lg:mx-0">
+		<div className="pb-24 md:mx-8 lg:-mx-8">
 			<div className="">
 				<div className="mb-4">
 					<SectionTitle

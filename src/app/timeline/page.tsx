@@ -4,7 +4,7 @@ import { metadata as siteMetadata } from "@/app/metadata";
 
 export const metadata: Metadata = {
 	...siteMetadata,
-	title: "Timeline | Bhavdeep",
+	title: "Bhav's Journey",
 	description: "Journey through education, work experience, and technical growth over time."
 };
 

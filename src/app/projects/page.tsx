@@ -4,7 +4,7 @@ import { metadata as siteMetadata } from "@/app/metadata";
 
 export const metadata: Metadata = {
 	...siteMetadata,
-	title: "Projects | Bhavdeep",
+	title: "Bhav's Projects",
 	description: "Software engineering, machine learning, and systems projects exploring AI, security, and data-driven systems."
 };
 

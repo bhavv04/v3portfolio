@@ -5,7 +5,7 @@ import { ProjectStatusBadge } from "./projectstatus";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
-		<div className="group/card flex flex-col overflow-hidden rounded-md border border-white/10 bg-neutral-900 transition-all duration-200 hover:-translate-y-1 hover:border-stone-500">
+		<div className="group/card flex flex-col overflow-hidden rounded-md border border-white/10 bg-neutral-900 transition-all duration-200 hover:border-stone-600">
 			{/* Image — bleeds to edges, no padding */}
 			{project.image && (
 				<div className="h-full w-full overflow-hidden">
@@ -38,7 +38,7 @@ export function ProjectCard({ project }: { project: Project }) {
 				<p className="mb-4 text-sm leading-relaxed text-stone-100/60">{project.description}</p>
 
 				{/* Tech Stack */}
-				<div className="mb-4 flex flex-wrap gap-2">
+				<div className="mb-4 flex flex-wrap gap-1">
 					{project.tech.map((t) => (
 						<span key={t} className="rounded-md bg-stone-300/10 px-2 py-1 text-xs">
 							{t}
@@ -47,12 +47,12 @@ export function ProjectCard({ project }: { project: Project }) {
 				</div>
 
 				{/* Links */}
-				<div className="mt-auto flex items-center gap-4 text-sm">
+				<div className="mt-auto flex items-center gap-2 text-sm">
 					<a
 						href={project.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="flex items-center gap-1.5 text-white transition-colors hover:text-white/50"
+						className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 					>
 						<Github size={13} /> source
 					</a>
@@ -61,7 +61,7 @@ export function ProjectCard({ project }: { project: Project }) {
 							href={project.demo}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-1.5 text-white transition-colors hover:text-white/50"
+							className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 						>
 							<ExternalLink size={13} /> demo
 						</a>
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: { project: Project }) {
 							href={project.live}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-1.5 text-white transition-colors hover:text-white/50"
+							className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 						>
 							<ExternalLink size={13} /> live
 						</a>

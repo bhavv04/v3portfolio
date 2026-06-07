@@ -213,7 +213,7 @@ const Terminal: React.FC = () => {
 								onClick={() => handleQuickCommand(cmd)}
 								className="group relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border border-stone-800/80 bg-stone-950 px-3 text-stone-400 transition-all duration-300 hover:border-stone-700 hover:text-stone-200"
 							>
-								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300 group-hover:translate-x-0.5">{"//"}</span>
+								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300">{"#"}</span>
 								{cmd}
 							</button>
 						))}
