@@ -124,7 +124,7 @@ function TimelineItem({ title, subtitle, meta, index, children }: TimelineItemPr
 			<span className="absolute left-0 top-1 h-3 w-3 rounded-full bg-stone-500" />
 
 			{/* Card */}
-			<div className="rounded-lg border border-neutral-900 bg-neutral-900 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-stone-500">
+			<div className="rounded-lg bg-neutral-900 p-4 transition-all duration-200 hover:scale-[1.02]">
 				<div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
 					<h2 className="text-sm font-semibold sm:text-base">{title}</h2>
 					<span className="text-xs opacity-40">{meta}</span>
