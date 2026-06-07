@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { caseStudies, ProjectStatus, ResearchTag } from "@/app/research/data";
+import { ProjectStatus, ResearchTag } from "@/app/research/model";
+import { caseStudies } from "@/app/research/data";
 import ResearchCard from "@/app/research/components/researchCard";
 
 const ALL_TAGS: ResearchTag[] = [

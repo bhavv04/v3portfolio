@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ProjectTag } from "@/app/projects/data";
+import { ProjectTag } from "@/app/projects/model";
 
 interface FilterProps {
 	tags: ProjectTag[];

@@ -24,9 +24,7 @@ export default function TimelineView() {
 	return (
 		<main className="md:px min-h-screen px-4 pb-12 sm:px-8 md:pb-0 lg:px-32">
 			<div className="mx-auto max-w-4xl">
-				{/* ============================================================
-				    HEADER
-				============================================================ */}
+				{/* Header */}
 				<div className="mb-8">
 					<SectionTitle
 						text={
@@ -41,9 +39,7 @@ export default function TimelineView() {
 					</p>
 				</div>
 
-				{/* ============================================================
-				    TIMELINE
-				============================================================ */}
+				{/*  Timeline  */}
 				<div className="relative">
 					{/* Animated vertical line */}
 					<div ref={lineRef} className="absolute left-[5.5px] top-2 w-px bg-white opacity-30" style={{ height: 0 }} />
@@ -51,7 +47,7 @@ export default function TimelineView() {
 					{/* End dot */}
 					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-white opacity-40" />
 
-					{/* ── Education ── */}
+					{/*  Education  */}
 					{education.map((ed, i) => (
 						<TimelineItem key={ed.school} title={ed.school} subtitle={ed.degree} meta={ed.period} index={i}>
 							<p className="mt-1 text-sm opacity-50">{ed.concentration}</p>
@@ -65,14 +61,14 @@ export default function TimelineView() {
 						</TimelineItem>
 					))}
 
-					{/* ── Divider ── */}
+					{/*  Divider  */}
 					<div className="relative py-6 pl-10">
 						<span className="fade-in-up text-sm tracking-wider text-white/40" style={{ "--delay-index": 4 } as React.CSSProperties}>
-							{/* ── work ── */}
+							{/*  work  */}
 						</span>
 					</div>
 
-					{/* ── Experience ── */}
+					{/*  Experience  */}
 					{experience.map((exp, i) => (
 						<TimelineItem key={`${exp.org}-${exp.period}`} title={exp.org} subtitle={exp.role} meta={exp.period} index={education.length + i}>
 							<ul className="mt-3 space-y-2">
@@ -90,9 +86,9 @@ export default function TimelineView() {
 	);
 }
 
-/* ================================================================
-   TIMELINE ITEM
-================================================================ */
+{
+	/* Timeline Item */
+}
 
 type TimelineItemProps = {
 	title: string;
