@@ -4,7 +4,7 @@ import { caseStudies } from "@/lib/research/data";
 import { CaseStudyCard } from "@/components/research/CaseStudyCard";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { Card, CardContent } from "@/components/ui/Card";
-import { PiMagnifyingGlass } from "react-icons/pi";
+import { LuChartNetwork } from "react-icons/lu";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -14,7 +14,7 @@ export function ResearchView() {
 			<SectionTitle
 				text={
 					<span className="flex items-center gap-2 text-3xl">
-						<PiMagnifyingGlass />
+						<LuChartNetwork />
 						<span>Case Studies</span>
 					</span>
 				}
