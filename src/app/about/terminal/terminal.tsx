@@ -70,7 +70,7 @@ const Terminal: React.FC = () => {
 
 			const commandLine: OutputLine = {
 				id: Date.now().toString(),
-				content: `<span class="text-emerald-700">#</span> <span class="text-stone-300">${cmd}</span>`,
+				content: `<span class="text-emerald-700">$</span> <span class="text-stone-300">${cmd}</span>`,
 				type: "command"
 			};
 
@@ -176,7 +176,7 @@ const Terminal: React.FC = () => {
 
 	return (
 		<div
-			className="scale-in flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 text-xs"
+			className="scale-in flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 text-sm"
 			style={{ "--delay-index": 2 } as React.CSSProperties}
 			onClick={() => !isTyping && inputDivRef.current?.focus()}
 		>
@@ -211,9 +211,9 @@ const Terminal: React.FC = () => {
 							<button
 								key={cmd}
 								onClick={() => handleQuickCommand(cmd)}
-								className="group relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border border-stone-800/80 bg-stone-950 px-3 text-stone-400 transition-all duration-300 hover:border-stone-700 hover:text-stone-200"
+								className="group relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-stone-950 px-3 text-stone-400 transition-all duration-300 hover:bg-stone-700"
 							>
-								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300">{"#"}</span>
+								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300">{"$"}</span>
 								{cmd}
 							</button>
 						))}
@@ -245,7 +245,7 @@ const Terminal: React.FC = () => {
 							suppressContentEditableWarning
 							onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
 							onKeyDown={(e) => (e.key === "Enter" ? (e.preventDefault(), handleSubmit(e)) : handleKeyDown(e))}
-							className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-stone-300 caret-stone-500 focus:outline-none focus:ring-0"
+							className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-base text-stone-300 caret-stone-500 focus:outline-none focus:ring-0" //text-base makes ios safari zooming less aggressive
 						/>
 					</div>
 					<span className="hidden select-none text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>

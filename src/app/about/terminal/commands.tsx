@@ -87,7 +87,7 @@ const commandHandlers = {
 	projects: () => "REDIRECT_TO_/projects",
 	education: () => "REDIRECT_TO_/#timeline",
 	research: () => "REDIRECT_TO_/#research",
-	resume: () => "REDIRECT_TO_/resume.pdf_blank",
+	resume: () => "REDIRECT_TO_/Bhavdeep_s_Resume.pdf_blank",
 
 	skills: () => {
 		const { programmingLanguages, frameworks, tools } = portfolioData.skills;
@@ -149,7 +149,7 @@ const commandHandlers = {
 
 	fortune: () => {
 		const randomIndex = Math.floor(Math.random() * FORTUNES.length);
-		return w(`${line(`🔮 ${hl("Ecological Architecture Proverb:")}`)} ${line(FORTUNES[randomIndex])}`);
+		return w(`${line(`${hl("Ecological Architecture Proverb:")}`)} ${line(FORTUNES[randomIndex])}`);
 	},
 
 	neofetch: () => {
