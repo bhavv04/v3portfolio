@@ -181,7 +181,7 @@ const Terminal: React.FC = () => {
 			onClick={() => !isTyping && inputDivRef.current?.focus()}
 		>
 			{/* Title bar */}
-			<div className="grid grid-cols-3 items-center bg-stone-950 px-4 py-3">
+			<div className="grid grid-cols-3 items-center bg-stone-950 px-4 py-2">
 				{/* Left side: Traffic light buttons */}
 				<div className="flex items-center gap-2">
 					<span className="h-3 w-3 rounded-full bg-red-500" />
@@ -232,12 +232,11 @@ const Terminal: React.FC = () => {
 			</div>
 
 			{/* Interactive Footer Console Bar */}
-			<div className="border-t border-stone-800 bg-stone-950 px-5 py-3">
-				<div className="flex items-center gap-3">
-					<span className="shrink-0 select-none text-stone-600">{isTyping ? "loading ..." : "❯"}</span>
+			<div className="border-t border-stone-800 bg-stone-950 px-4 py-2">
+				<div className="flex items-center gap-2">
 					<div className="relative flex flex-1 items-center">
 						{/* Placeholder — hidden once user has typed anything */}
-						{!input && !isTyping && <span className="pointer-events-none absolute inset-0 select-none text-stone-600">type a command</span>}
+						{!input && !isTyping && <span className="pointer-events-none absolute select-none text-stone-500">type a command ...</span>}
 
 						<div
 							ref={inputDivRef}
@@ -248,7 +247,7 @@ const Terminal: React.FC = () => {
 							className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-base text-stone-300 caret-stone-500 focus:outline-none focus:ring-0" //text-base makes ios safari zooming less aggressive
 						/>
 					</div>
-					<span className="hidden select-none text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>
+					<span className="hidden select-none text-stone-500 sm:inline">↑↓ history · enter to run · clear to reset</span>
 					<button type="button" onClick={handleSubmit} className="hidden" aria-hidden />
 				</div>
 			</div>

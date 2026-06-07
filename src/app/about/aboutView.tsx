@@ -4,7 +4,7 @@ import { GiWillowTree } from "react-icons/gi";
 
 export default function AboutView() {
 	return (
-		<div className="pb-16">
+		<div className="max-md:pb-16">
 			<div className="mx-auto max-w-2xl">
 				{/* Header */}
 				<div className="fade-in-up">
@@ -18,7 +18,7 @@ export default function AboutView() {
 					/>
 
 					<p className="mb-4 mt-2">
-						i&apos;ve kept this section interactive, no repeated bio here. Type <span className="italic text-white/60">help</span> to get started.
+						i&apos;ve kept this section interactive, no repeated bio here. Type <span className="text-white/70">help</span> to get started.
 					</p>
 				</div>
 
