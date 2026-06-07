@@ -10,7 +10,7 @@ export function CatToggleButton() {
 			onClick={toggleCat}
 			className="ms-center relative inline-flex justify-center rounded-md bg-zinc-800 px-2 py-0.5 text-sm transition-colors hover:bg-zinc-700"
 		>
-			{showCat ? "🐶 hide dog" : "🐶 show dog"}
+			{showCat ? "🙀 hide Cat" : "😺 show Cat"}
 		</button>
 	);
 }

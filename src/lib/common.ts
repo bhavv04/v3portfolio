@@ -32,5 +32,11 @@ export enum Technology {
 	NPM = "npm",
 	Yarn = "Yarn",
 	GraphQL = "GraphQL",
-	Kubernetes = "Kubernetes"
+	Kubernetes = "Kubernetes",
+	PyTorch = "PyTorch",
+	ScikitLearn = "ScikitLearn",
+	Pandas = "Pandas",
+	Jupyter = "Jupyter",
+	Matplotlib = "Matplotlib",
+	Statsmodels = "Statsmodels"
 }

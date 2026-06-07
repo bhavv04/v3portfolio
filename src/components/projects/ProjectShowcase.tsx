@@ -117,14 +117,14 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 					<ul className="space-y-2 rounded-xl text-sm">
 						{project.bullets.map((bullet) => (
 							<li key={bullet} className="flex items-start gap-2 text-sm">
-								<span className="shrink-0 text-white/60">{`>`}</span>
+								<span className="shrink-0 text-white/60">{`#`}</span>
 								<span>{bullet}</span>
 							</li>
 						))}
 					</ul>
 				)}
 
-				<div className="mx-3 flex flex-wrap gap-1.5">
+				<div className="flex flex-wrap gap-1.5">
 					{links?.github && (
 						<Button asChild variant="default" className="">
 							<Link href={links.github} target="_blank" rel="noopener noreferrer">

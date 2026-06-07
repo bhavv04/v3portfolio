@@ -36,7 +36,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 				{/* Methods */}
 				<div className="mb-4 flex flex-wrap gap-x-3 gap-y-1">
 					{study.methods.map((method) => (
-						<span key={method} className="text-sm before:mr-1 before:content-['✦']">
+						<span key={method} className="text-sm before:mr-1 before:text-white/40 before:content-['#']">
 							{method}
 						</span>
 					))}
@@ -115,7 +115,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 							<p className="mb-2 text-xs uppercase tracking-widest">Highlights</p>
 							<ul className="flex flex-col gap-1.5">
 								{study.highlights.map((h) => (
-									<li key={h} className="text-sm text-white/70 before:mr-2 before:text-white/30 before:content-['→']">
+									<li key={h} className="text-sm text-white/70 before:mr-2 before:text-white/30 before:content-['#']">
 										{h}
 									</li>
 								))}

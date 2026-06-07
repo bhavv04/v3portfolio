@@ -31,6 +31,7 @@ import {
 	SiLinux
 } from "react-icons/si";
 import { FaAws, FaFigma, FaJava, FaPython, FaRust } from "react-icons/fa6";
+import { SiPytorch, SiScikitlearn, SiPandas, SiJupyter } from "react-icons/si";
 
 interface StaticBadgeProps {
 	name: string;
@@ -159,8 +160,39 @@ interface TechnologyBadgeProps {
 	technology: Technology;
 }
 
+export function PyTorchBadge() {
+	return <StaticBadge name="PyTorch" icon={<SiPytorch />} className="bg-[#5c1a00]" />;
+}
+export function ScikitLearnBadge() {
+	return <StaticBadge name="scikit-learn" icon={<SiScikitlearn />} className="bg-[#1a3a5c]" />;
+}
+export function PandasBadge() {
+	return <StaticBadge name="pandas" icon={<SiPandas />} className="bg-[#13005a]" />;
+}
+export function JupyterBadge() {
+	return <StaticBadge name="Jupyter" icon={<SiJupyter />} className="bg-[#3d1a00]" />;
+}
+export function MatplotlibBadge() {
+	return <StaticBadge name="matplotlib" icon={null} className="bg-[#0a2540]" />;
+}
+export function StatsmodelsBadge() {
+	return <StaticBadge name="statsmodels" icon={null} className="bg-[#1a2a1a]" />;
+}
+
 export function TechnologyBadge({ technology }: TechnologyBadgeProps) {
 	switch (technology) {
+		case Technology.PyTorch:
+			return <PyTorchBadge />;
+		case Technology.ScikitLearn:
+			return <ScikitLearnBadge />;
+		case Technology.Pandas:
+			return <PandasBadge />;
+		case Technology.Jupyter:
+			return <JupyterBadge />;
+		case Technology.Matplotlib:
+			return <MatplotlibBadge />;
+		case Technology.Statsmodels:
+			return <StatsmodelsBadge />;
 		case Technology.React:
 			return <ReactBadge />;
 		case Technology.TypeScript:
@@ -229,5 +261,7 @@ export function TechnologyBadge({ technology }: TechnologyBadgeProps) {
 			return <GitBadge />;
 		case Technology.Linux:
 			return <LinuxBadge />;
+		default:
+			return null;
 	}
 }

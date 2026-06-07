@@ -1,6 +1,7 @@
 import { HeroSection } from "@/views/Hero";
 //import { TimelineView } from "@/views/Timeline";
 import { ProjectsView } from "@/views/Projects";
+import { ResearchView } from "@/views/Research";
 import { Skills } from "@/views/Skills";
 import Footer from "@/views/Footer";
 
@@ -14,6 +15,8 @@ export default function Home() {
 			{/* <TimelineView /> */}
 			{/* <div className="my-24" /> */}
 			<ProjectsView />
+			<div className="my-24" />
+			<ResearchView />
 			<div className="my-24" />
 			<Footer />
 		</div>
