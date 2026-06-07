@@ -1,58 +1,6 @@
-export type ProjectStatus = "completed" | "active" | "archived";
-
-export type ProjectTag = "machine learning" | "data engineering" | "software engineering" | "systems programming" | "data visualization" | "computer vision";
-
-export interface Project {
-	id: string;
-	title: string;
-	tagline: string;
-	description: string;
-	longDescription: string;
-	tags: ProjectTag[];
-	tech: string[];
-	status: ProjectStatus;
-	year: number;
-	github: string;
-	demo?: string;
-	image?: string;
-	live?: string;
-	featured: boolean;
-	pageContent?: {
-		hook: string;
-		howItWorks: string;
-		techChoices: string;
-		lessonsLearned: string;
-	};
-}
+import { Project } from "./model";
 
 export const projects: Project[] = [
-	{
-		id: "verso",
-		title: "Verso",
-		tagline: "Tinder for books. Swipe right to build your shelf",
-		description:
-			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
-		longDescription:
-			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
-		tags: ["software engineering", "data engineering"],
-		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
-		status: "active",
-		year: 2026,
-		github: "https://github.com/bhavv04/verso",
-		demo: "",
-		live: "https://verso-books.vercel.app/",
-		image: "/images/projects/verso.png",
-		featured: true,
-		pageContent: {
-			hook: "We stop reading because finding the next book feels like work. Verso turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
-			howItWorks:
-				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Hardcover API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
-			techChoices:
-				"Next.js 15 was chosen to exploit the speed and simplicity of Server Actions and optimized route handlers. Prisma 7 handles type-safe database schemas natively with Neon's serverless Postgres connection pooling. Framer Motion was the clear choice for the gesture system because its layout animations handle physical card stacks cleanly without losing smooth frame rates on mobile screens. Clerk allowed us to offload secure session architecture entirely, leaving the database focused solely on user interactions and shelves.",
-			lessonsLearned:
-				"State management across an infinite card stack gets chaotic quickly if you let the UI re-render the whole array on every gesture. Isolating the active card animations from the underlying data pipeline fixed early dropped frames. Managing duplicate prevention at the API level instead of doing filtering in client-side state reduced initial layout lag and made sure network payloads stayed light. The upcoming integration of the Claude API for AI-generated text blurbs will change how users interact with the summaries by making them hyper-personalized to their reading tastes."
-		}
-	},
 	{
 		id: "collatz-viz",
 		title: "Collatz Conjecture Explorer",
@@ -61,27 +9,26 @@ export const projects: Project[] = [
 		longDescription:
 			"A research-driven tool that maps stopping times across number ranges, revealing structural patterns in the Collatz sequence. Built to support original mathematical research, featuring zoom, density plots, and export capabilities.",
 		tags: ["software engineering"],
-		tech: ["TypeScript", "React"],
+		tech: ["Rust", "WebAssembly", "TypeScript", "Vite", "Canvas API", "Web Workers"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/collatz-explorer",
-		demo: "",
 		image: "",
 		featured: false
 	},
 	{
 		id: "mapreduce-engine",
-		title: "Custom MapReduce Engine",
-		tagline: "Hadoop is overkill. built it anyway, from scratch",
-		description: "A Python implementation of the MapReduce programming model from scratch, applied to large-scale document processing.",
+		title: "creduce",
+		tagline: "Hadoop is overkill. built it anyway, from scratch.",
+		description:
+			"A MapReduce engine built from scratch in C — no Hadoop, no JVM. Full map-shuffle-reduce pipeline with a pthreads worker pool, verified on 217k key-value pairs.",
 		longDescription:
-			"Built entirely without Hadoop or Spark, this engine implements the core MapReduce paradigm in Python — including shuffle, sort, and reduce phases — and benchmarks it against MongoDB aggregation pipelines on real datasets.",
-		tags: ["data engineering", "systems programming"],
-		tech: ["Python", "MongoDB"],
+			"Built after studying Hadoop in a Big Data course and wanting to understand what the framework actually does under the hood. Implements the full MapReduce pipeline in C — a function pointer job API mirroring the original Google design, dynamic KVList data structure with automatic reallocation, parallel map phase via a pthreads worker pool, and qsort-based shuffle phase. Verified on Project Gutenberg's Moby Dick: 21,936 lines, 217,523 key-value pairs, correct word frequencies across 1, 2, 4, and 8 threads. Benchmarked on a synthetic 100k line dataset to isolate threading performance from I/O overhead.",
+		tags: ["systems programming", "data engineering"],
+		tech: ["C", "pthreads", "Make", "GCC"],
 		status: "active",
-		year: 2025,
+		year: 2026,
 		github: "https://github.com/bhavv04/creduce",
-		demo: "",
 		image: "",
 		featured: false
 	},
@@ -97,7 +44,7 @@ export const projects: Project[] = [
 		status: "completed",
 		year: 2024,
 		github: "https://github.com/bhavv04/calandhobbes-quoter",
-		demo: "https://calandhobbes-quoter-production.up.railway.app/",
+		live: "https://calandhobbes-quoter-7gd9mxl0e-bhavdeeps-projects.vercel.app/api/quotes/random",
 		image: "/images/projects/calandhobbes.jpg",
 		featured: false
 	},
@@ -105,18 +52,44 @@ export const projects: Project[] = [
 		id: "thunderhead",
 		title: "Thunderhead",
 		tagline: "Silent observation. no captchas. no cloudflare.",
-		description: "A lightweight reverse proxy that scores incoming HTTP requests to detect and mitigate bot traffic without third-party services.",
+		description:
+			"A lightweight reverse proxy that passively scores the intent of every incoming HTTP request using behavioral signals — rate, crawl patterns, and header anomalies — to silently tarpit or block bot traffic without CAPTCHAs, JS challenges, or third-party services.",
 		longDescription:
-			"Thunderhead sits in front of your server and scores every request 0–100 using behavioral signals — robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs — just silent observation and graduated responses. All decisions log as structured JSON.",
+			"Thunderhead sits in front of your server and scores every request 0-100 using behavioral signals — robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs — just silent observation and graduated responses. All decisions log as structured JSON.",
 		tags: ["systems programming", "software engineering"],
-		tech: ["Go", "net/http", "Redis", "Docker"],
+		tech: ["Go", "net/http", "httputil.ReverseProxy", "Bubbletea", "Lipgloss", "Next.js", "Docker", "ngrok"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/thunderhead",
-		demo: "",
 		live: "https://getthunderhead.vercel.app/",
 		image: "/images/projects/thunderhead.png",
 		featured: true
+	},
+	{
+		id: "verso",
+		title: "Verso",
+		tagline: "Tinder for books. Swipe right to build your shelf",
+		description:
+			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
+		longDescription:
+			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
+		tags: ["software engineering", "data engineering"],
+		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/verso",
+		live: "https://verso-books.vercel.app/",
+		image: "/images/projects/verso.png",
+		featured: true,
+		pageContent: {
+			hook: "We stop reading because finding the next book feels like work. Verso turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
+			howItWorks:
+				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Hardcover API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
+			techChoices:
+				"Next.js 15 was chosen to exploit the speed and simplicity of Server Actions and optimized route handlers. Prisma 7 handles type-safe database schemas natively with Neon's serverless Postgres connection pooling. Framer Motion was the clear choice for the gesture system because its layout animations handle physical card stacks cleanly without losing smooth frame rates on mobile screens. Clerk allowed us to offload secure session architecture entirely, leaving the database focused solely on user interactions and shelves.",
+			lessonsLearned:
+				"State management across an infinite card stack gets chaotic quickly if you let the UI re-render the whole array on every gesture. Isolating the active card animations from the underlying data pipeline fixed early dropped frames. Managing duplicate prevention at the API level instead of doing filtering in client-side state reduced initial layout lag and made sure network payloads stayed light. The upcoming integration of the Claude API for AI-generated text blurbs will change how users interact with the summaries by making them hyper-personalized to their reading tastes."
+		}
 	},
 	{
 		id: "lacunae",
@@ -131,7 +104,6 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/lacunae",
-		demo: "",
 		image: "/images/projects/lacunae.jpeg",
 		featured: true
 	},
@@ -147,8 +119,7 @@ export const projects: Project[] = [
 		status: "completed",
 		year: 2025,
 		github: "https://github.com/bhavv04/deadzone",
-		demo: "https://deadzone-b3eq.onrender.com/",
-		live: "https://deadzone-b3eq.onrender.com/",
+		live: "https://bhavv04.github.io/deadzone/paper.html",
 		image: "/images/projects/deadzone.png",
 		featured: true
 	},
@@ -164,8 +135,7 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2025,
 		github: "https://github.com/bhavv04/terraseed",
-		demo: "",
-		live: "https://terraseed.onrender.com/",
+		live: "https://bhavv04.github.io/terraseed/",
 		image: "/images/projects/terraseed.png",
 		featured: true,
 		pageContent: {
@@ -190,7 +160,7 @@ export const projects: Project[] = [
 		status: "completed",
 		year: 2026,
 		github: "https://github.com/bhavv04/redis",
-		demo: "",
+		live: "",
 		image: "",
 		featured: false
 	},
@@ -207,7 +177,6 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/gaia",
-		demo: "",
 		image: "",
 		featured: true,
 		pageContent: {
@@ -233,7 +202,7 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/awkrs",
-		demo: "",
+		live: "",
 		image: "",
 		featured: false
 	},
@@ -250,7 +219,7 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/precursor",
-		demo: "",
+		live: "",
 		image: "",
 		featured: true,
 		pageContent: {

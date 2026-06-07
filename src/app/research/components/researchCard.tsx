@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CaseStudy } from "@/app/research/data";
+import { CaseStudy } from "@/app/research/model";
 import { FiGithub } from "react-icons/fi";
 import { FileText } from "lucide-react";
 
@@ -13,7 +13,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 	const [expanded, setExpanded] = useState(false);
 
 	return (
-		<div className="flex flex-col rounded-lg border border-white/10 bg-neutral-900 transition-all hover:border-stone-600">
+		<div className="flex flex-col rounded-lg bg-neutral-900 transition-all hover:scale-[1.02]">
 			<div className="flex flex-col gap-4 p-4">
 				{/* Title */}
 				<div className="flex flex-col">
@@ -25,7 +25,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex flex-wrap gap-1.5">
 						{study.tags.map((tag) => (
-							<span key={tag} className={`?? "border-white/10 text-white/40"} rounded border bg-white/5 px-2 py-0.5 text-xs`}>
+							<span key={tag} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/70">
 								{tag}
 							</span>
 						))}
@@ -41,6 +41,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 					))}
 				</div>
 
+				{/* Stack */}
 				<div className="flex flex-wrap gap-1.5">
 					{study.stack.map((s) => (
 						<span key={s} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/40">
@@ -49,7 +50,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 					))}
 				</div>
 
-				{/* Stack + expand */}
+				{/* Links + expand */}
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex shrink-0 items-center gap-2">
 						{study.links.repo && (
@@ -57,7 +58,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 								href={study.links.repo}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 							>
 								<FiGithub size={13} />
 								Source
@@ -68,7 +69,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 								href={study.links.paper}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 							>
 								<FileText size={13} />
 								Paper

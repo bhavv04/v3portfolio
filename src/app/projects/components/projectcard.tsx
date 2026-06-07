@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
-import { Project } from "@/app/projects/data";
+import { ExternalLink } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
+import { Project } from "@/app/projects/model";
 import { ProjectStatusBadge } from "./projectstatus";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
-		<div className="group/card flex flex-col overflow-hidden rounded-md border border-white/10 bg-neutral-900 transition-all duration-200 hover:border-stone-600">
-			{/* Image — bleeds to edges, no padding */}
+		<div className="group/card flex flex-col overflow-hidden rounded-md bg-neutral-900 transition-all duration-200 hover:scale-[1.02]">
+			{/* Image */}
 			{project.image && (
 				<div className="h-full w-full overflow-hidden">
 					<img
@@ -52,28 +53,18 @@ export function ProjectCard({ project }: { project: Project }) {
 						href={project.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 					>
-						<Github size={13} /> source
+						<FiGithub size={13} /> Source
 					</a>
-					{project.demo && (
-						<a
-							href={project.demo}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
-						>
-							<ExternalLink size={13} /> demo
-						</a>
-					)}
 					{project.live && (
 						<a
 							href={project.live}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-md border bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
 						>
-							<ExternalLink size={13} /> live
+							<ExternalLink size={13} /> Live
 						</a>
 					)}
 				</div>

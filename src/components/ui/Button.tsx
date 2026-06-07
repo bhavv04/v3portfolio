@@ -9,7 +9,12 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-black")
+				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-black"),
+				destructive: clsx("bg-red-600 text-white", "hover:bg-red-700 hover:text-white"),
+				outline: clsx("border border-white/20 bg-transparent text-white", "hover:bg-white hover:text-black"),
+				subtle: clsx("bg-white/10 text-white", "hover:bg-white/20 hover:text-white"),
+				ghost: clsx("bg-transparent text-white", "hover:bg-white/10 hover:text-white"),
+				link: clsx("bg-transparent text-white underline-offset-4 hover:underline")
 			},
 			size: {
 				default: "h-10 px-4 py-2",

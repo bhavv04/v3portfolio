@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { OutputLine } from "@/app/about/terminal/types";
+import { OutputLine } from "@/app/about/terminal/model";
 import { executeCommand } from "@/app/about/terminal/commands";
 import { X } from "lucide-react";
 

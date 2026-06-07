@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Github, ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
 import type { CaseStudy } from "@/lib/research/model";
 import { Button } from "@/components/ui/Button";
 import { TechnologyBadge } from "@/components/common/TechnologyBadges";
@@ -60,7 +61,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
 				{study.links.repo && (
 					<Button asChild variant="default">
 						<Link href={study.links.repo} target="_blank" rel="noopener noreferrer">
-							<Github size={16} />
+							<FiGithub size={16} />
 							Source
 						</Link>
 					</Button>
