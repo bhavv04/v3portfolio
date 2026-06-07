@@ -1,4 +1,4 @@
-import { ProjectStatus } from "@/app/projects/data";
+import { ProjectStatus } from "@/app/projects/model";
 
 const statusMap: Record<ProjectStatus, { label: string; style: string }> = {
 	completed: { label: "completed", style: "text-emerald-100" },

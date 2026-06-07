@@ -1,4 +1,4 @@
-import { Project } from "@/app/projects/data";
+import { Project } from "@/app/projects/model";
 import { ProjectCard } from "./projectcard";
 
 interface ProjectGridProps {

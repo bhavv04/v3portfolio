@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { projects, ProjectTag } from "./data";
+import { ProjectTag } from "./model";
+import { projects } from "./data";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { Filter } from "@/app/projects/components/filter";
 import { ProjectGrid } from "@/app/projects/components/projectgrid";
