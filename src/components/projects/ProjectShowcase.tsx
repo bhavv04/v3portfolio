@@ -26,7 +26,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 			<div className="w-full sm:mr-4 lg:w-[55%]">
 				<div className="-mx-4 sm:p-4">
 					{/* Header */}
-					<div className="mb-4 flex items-center justify-between px-1 text-xs text-white/45">
+					<div className="mb-4 flex items-center justify-between px-1 text-xs text-white/50">
 						<span>{name} screenshots</span>
 						{hasMultiple && (
 							<span>
