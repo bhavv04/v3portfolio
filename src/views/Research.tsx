@@ -29,9 +29,12 @@ export function ResearchView() {
 					</div>
 
 					<div className="flex justify-end pt-2">
-						<Link href="/research" className="text-md inline-flex items-center gap-2 text-white/40 transition-colors hover:text-white/80">
-							View More
-							<ArrowRight size={16} />
+						<Link
+							href="/research"
+							className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white"
+						>
+							Explore All Case Studies
+							<ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
 						</Link>
 					</div>
 				</CardContent>
