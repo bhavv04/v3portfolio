@@ -6,11 +6,7 @@ import { FileText } from "lucide-react";
 
 export default function ResearchCard({ study, expanded, onToggle }: ResearchCardProps) {
 	return (
-		<div
-			className={`flex flex-col rounded-lg bg-neutral-900 transition-all duration-300 ${
-				expanded ? "shadow-xl shadow-black/40 ring-1 ring-white/10" : "hover:scale-[1.02]"
-			}`}
-		>
+		<div className="flex flex-col rounded-lg bg-neutral-900 transition-all duration-300 hover:scale-[1.02]">
 			<div className="flex flex-col gap-4 p-4">
 				{/* Title */}
 				<div className="flex flex-col">
@@ -81,13 +77,9 @@ export default function ResearchCard({ study, expanded, onToggle }: ResearchCard
 			</div>
 
 			{/* Animated expandable section */}
-			<div
-				className={`ease-[cubic-bezier(0.22,1,0.36,1)] grid transition-all duration-500 ${
-					expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-				}`}
-			>
+			<div className={`ease-[cubic-bezier(0.22,1,0.36,1)] grid transition-all duration-500 ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
 				<div className="overflow-hidden">
-					<div className="flex flex-col gap-4 px-5 py-5 pt-0">
+					<div className="flex flex-col gap-4 px-5 py-4">
 						<div>
 							<p className="mb-2 text-xs text-white/30">Abstract</p>
 							<p className="text-sm leading-relaxed text-white/60">{study.abstract}</p>

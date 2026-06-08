@@ -35,4 +35,5 @@ export interface ResearchCardProps {
 	study: CaseStudy;
 	expanded: boolean;
 	onToggle: () => void;
+	isPanel?: boolean;
 }

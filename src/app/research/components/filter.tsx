@@ -132,7 +132,7 @@ export default function ResearchFilter() {
 					filtered.map((study, i) => (
 						<div
 							key={study.id}
-							className={`fade-in-up transition-all duration-500 ease-in-out ${expandedId === study.id ? "lg:col-span-2" : ""}`}
+							className={`fade-in-up transition-all duration-500 ease-in-out ${expandedId === study.id ? "lg:col-span-1" : ""}`}
 							style={{ "--delay-index": i } as React.CSSProperties}
 						>
 							<ResearchCard
