@@ -99,13 +99,13 @@ export default function Footer() {
 				<form ref={formRef} onSubmit={sendEmail} className="space-y-5">
 					<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 						<div className="space-y-1">
-							<label htmlFor="from_name" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
+							<label htmlFor="user_name" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
 								Name
 							</label>
 							<input
 								type="text"
-								id="from_name"
-								name="from_name"
+								id="user_name"
+								name="user_name"
 								required
 								disabled={isSending}
 								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-none disabled:opacity-50"
@@ -114,13 +114,13 @@ export default function Footer() {
 						</div>
 
 						<div className="space-y-1">
-							<label htmlFor="from_email" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
+							<label htmlFor="user_email" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
 								Email
 							</label>
 							<input
 								type="email"
-								id="from_email"
-								name="from_email"
+								id="user_email"
+								name="user_email"
 								required
 								disabled={isSending}
 								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-none disabled:opacity-50"
