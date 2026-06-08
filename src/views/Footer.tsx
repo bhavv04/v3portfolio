@@ -29,11 +29,25 @@ export default function Footer() {
 			})
 			.then(
 				() => {
-					toast.success("Message successfully sent!");
+					toast.success("Message sent!", {
+						icon: "✅",
+						style: {
+							borderRadius: "10px",
+							background: "#333",
+							color: "#fff"
+						}
+					});
 					formRef.current?.reset();
 				},
 				(error) => {
-					toast.error("Failed to send the message, please try again");
+					toast.error("Failed to send, try again.", {
+						icon: "❌",
+						style: {
+							borderRadius: "10px",
+							background: "#333",
+							color: "#fff"
+						}
+					});
 					console.error("EmailJS error:", error);
 				}
 			)
