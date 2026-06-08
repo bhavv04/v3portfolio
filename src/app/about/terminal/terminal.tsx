@@ -4,29 +4,51 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { OutputLine } from "@/app/about/terminal/model";
 import { executeCommand } from "@/app/about/terminal/commands";
-import { X } from "lucide-react";
+import { WELCOME_MESSAGE } from "@/app/about/terminal/data";
+import { X, ChevronUp } from "lucide-react";
 
-const WELCOME = `[OK] Initializing Portfolio Environment...
-[OK] Loading Technical Stack Manifest...
-[OK] Establishing Secure Session: bhav~default
+function useMediaQuery(query: string): boolean {
+	const [matches, setMatches] = useState(false);
+	useEffect(() => {
+		const mq = window.matchMedia(query);
+		setMatches(mq.matches);
+		const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+		mq.addEventListener("change", handler);
+		return () => mq.removeEventListener("change", handler);
+	}, [query]);
+	return matches;
+}
 
-Welcome to my site! Glad you're digging into the about section. 
-I left the standard bio off the home page to keep things clean,
-this terminal is your direct pipeline into bhav.
-
-Type 'help' to list available system commands or click the buttons below for a quick demo.`;
+function OutputBlock({ line }: { line: OutputLine }) {
+	const base = "terminal-line-enter break-words leading-relaxed flex items-start gap-2";
+	if (line.type === "command") return <div className={base} dangerouslySetInnerHTML={{ __html: line.content }} />;
+	if (line.type === "error")
+		return (
+			<div className={`${base} text-red-500`}>
+				<span className="select-none text-red-700">▸</span>
+				<span dangerouslySetInnerHTML={{ __html: line.content }} />
+			</div>
+		);
+	return (
+		<div className={`${base} text-emerald-700`}>
+			<span className="select-none text-stone-600">▸</span>
+			<span className="flex-1" dangerouslySetInnerHTML={{ __html: line.content }} />
+		</div>
+	);
+}
 
 const Terminal: React.FC = () => {
 	const router = useRouter();
+	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [input, setInput] = useState("");
 	const [output, setOutput] = useState<OutputLine[]>([]);
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
 	const [historyIndex, setHistoryIndex] = useState(-1);
 	const [isTyping, setIsTyping] = useState(false);
 	const [welcomeText, setWelcomeText] = useState("");
-
 	const outputRef = useRef<HTMLDivElement>(null);
 	const inputDivRef = useRef<HTMLDivElement>(null);
+	const mobileInputRef = useRef<HTMLInputElement>(null);
 
 	const typeWriter = useCallback(
 		(text: string, speed = 15) => {
@@ -38,9 +60,7 @@ const Terminal: React.FC = () => {
 					setWelcomeText(text.substring(0, i + 1));
 					i++;
 					setTimeout(tick, speed);
-				} else {
-					setIsTyping(false);
-				}
+				} else setIsTyping(false);
 			};
 			setTimeout(tick, 800);
 		},
@@ -57,26 +77,19 @@ const Terminal: React.FC = () => {
 				if (inputDivRef.current) inputDivRef.current.textContent = "";
 				return;
 			}
-
 			if (result.startsWith("REDIRECT_TO_")) {
-				const targetRoute = result.replace("REDIRECT_TO_", "");
-				if (targetRoute.endsWith("_blank")) {
-					window.open(targetRoute.replace("_blank", ""), "_blank");
-				} else {
-					router.push(targetRoute);
-				}
+				const route = result.replace("REDIRECT_TO_", "");
+				if (route.endsWith("_blank")) window.open(route.replace("_blank", ""), "_blank");
+				else router.push(route);
 				return;
 			}
-
-			const commandLine: OutputLine = {
+			const cmdLine: OutputLine = {
 				id: Date.now().toString(),
-				content: `<span class="text-emerald-700">$</span> <span class="text-stone-300">${cmd}</span>`,
+				content: `<span class="text-emerald-600">$</span> <span class="text-stone-300">${cmd}</span>`,
 				type: "command"
 			};
-
-			const next: OutputLine[] = [...output, commandLine];
+			const next = [...output, cmdLine];
 			if (result) next.push({ id: (Date.now() + 1).toString(), content: result, type: "output" });
-
 			setOutput(next);
 			setCommandHistory((prev) => [cmd, ...prev.slice(0, 49)]);
 		},
@@ -85,34 +98,27 @@ const Terminal: React.FC = () => {
 
 	const handleQuickCommand = useCallback(
 		(cmd: string) => {
-			if (isTyping) return;
-			const result = executeCommand(cmd);
-			processResultAndAppend(cmd, result);
+			if (!isTyping) processResultAndAppend(cmd, executeCommand(cmd));
 		},
 		[isTyping, processResultAndAppend]
 	);
 
 	useEffect(() => {
-		typeWriter(WELCOME);
-	}, [typeWriter]);
-
-	useEffect(() => {
 		if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
 	}, [output, welcomeText]);
-
 	useEffect(() => {
-		if (!isTyping) inputDivRef.current?.focus({ preventScroll: true });
-	}, [isTyping]);
+		if (!isTyping) (isMobile ? mobileInputRef : inputDivRef).current?.focus({ preventScroll: true });
+	}, [isTyping, isMobile]);
+	useEffect(() => {
+		typeWriter(WELCOME_MESSAGE);
+	}, [typeWriter]);
 
 	const handleSubmit = useCallback(
-		(e: React.KeyboardEvent | React.FormEvent) => {
-			e.preventDefault();
+		(e?: React.KeyboardEvent | React.FormEvent) => {
+			e?.preventDefault();
 			const cmd = input.trim();
 			if (!cmd || isTyping) return;
-
-			const result = executeCommand(cmd);
-			processResultAndAppend(cmd, result);
-
+			processResultAndAppend(cmd, executeCommand(cmd));
 			setHistoryIndex(-1);
 			setInput("");
 			if (inputDivRef.current) inputDivRef.current.textContent = "";
@@ -120,29 +126,21 @@ const Terminal: React.FC = () => {
 		[input, isTyping, processResultAndAppend]
 	);
 
+	const moveCaretToEnd = () =>
+		requestAnimationFrame(() => {
+			const el = inputDivRef.current;
+			if (!el) return;
+			const range = document.createRange();
+			const sel = window.getSelection();
+			range.selectNodeContents(el);
+			range.collapse(false);
+			sel?.removeAllRanges();
+			sel?.addRange(range);
+		});
+
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
 			if (isTyping) return;
-
-			// Helper function to force caret to the end of the text block
-			const moveCaretToEnd = () => {
-				// RequestAnimationFrame ensures the DOM has updated with the new text first
-				requestAnimationFrame(() => {
-					const el = inputDivRef.current;
-					if (!el) return;
-
-					const range = document.createRange();
-					const sel = window.getSelection();
-
-					// Select all contents of the editable div and collapse it to the end
-					range.selectNodeContents(el);
-					range.collapse(false); // false means collapse to end
-
-					sel?.removeAllRanges();
-					sel?.addRange(range);
-				});
-			};
-
 			if (e.key === "ArrowUp") {
 				e.preventDefault();
 				const next = Math.min(historyIndex + 1, commandHistory.length - 1);
@@ -151,7 +149,7 @@ const Terminal: React.FC = () => {
 					setInput(commandHistory[next]);
 					if (inputDivRef.current) {
 						inputDivRef.current.textContent = commandHistory[next];
-						moveCaretToEnd(); // Move cursor here
+						moveCaretToEnd();
 					}
 				}
 			} else if (e.key === "ArrowDown") {
@@ -166,7 +164,7 @@ const Terminal: React.FC = () => {
 					setInput(commandHistory[next] ?? "");
 					if (inputDivRef.current) {
 						inputDivRef.current.textContent = commandHistory[next] ?? "";
-						moveCaretToEnd(); // Move cursor here too
+						moveCaretToEnd();
 					}
 				}
 			}
@@ -174,81 +172,117 @@ const Terminal: React.FC = () => {
 		[commandHistory, historyIndex, isTyping]
 	);
 
+	const cycleMobileHistory = useCallback(() => {
+		const next = Math.min(historyIndex + 1, commandHistory.length - 1);
+		if (commandHistory[next] !== undefined) {
+			setHistoryIndex(next);
+			setInput(commandHistory[next]);
+		}
+	}, [commandHistory, historyIndex]);
+
 	return (
 		<div
-			className="scale-in flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 text-sm"
+			className="scale-in relative flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 text-sm shadow-lg shadow-black/40"
 			style={{ "--delay-index": 2 } as React.CSSProperties}
-			onClick={() => !isTyping && inputDivRef.current?.focus()}
+			onClick={() => !isTyping && (isMobile ? mobileInputRef : inputDivRef).current?.focus()}
 		>
+			<div className="terminal-scanlines" aria-hidden />
+
 			{/* Title bar */}
-			<div className="grid grid-cols-3 items-center bg-stone-950 px-4 py-2">
-				{/* Left side: Traffic light buttons */}
-				<div className="flex items-center gap-2">
-					<span className="h-3 w-3 rounded-full bg-red-500" />
-					<span className="h-3 w-3 rounded-full bg-yellow-500" />
-					<span className="h-3 w-3 rounded-full bg-green-500" />
+			<div className="relative z-10 grid grid-cols-3 items-center bg-stone-950 px-4 py-2">
+				<div className="terminal-dot-group flex items-center gap-2">
+					<span className="dot-red h-3 w-3 rounded-full bg-red-500 transition-shadow duration-200" />
+					<span className="dot-yellow h-3 w-3 rounded-full bg-yellow-500 transition-shadow duration-200" />
+					<span className="dot-green h-3 w-3 rounded-full bg-green-500 transition-shadow duration-200" />
 				</div>
-
-				{/* Center: Title */}
-				<span className="text-center text-stone-600">bhav~default</span>
-
-				{/* Right side: Close button */}
+				<span className="text-center text-xs text-stone-600">bhav~default</span>
 				<span className="text-right text-stone-600">
 					<X className="inline-block h-4 w-4 cursor-pointer rounded hover:bg-stone-700/50" onClick={() => router.push("/about")} />
 				</span>
 			</div>
 
-			{/* Body Logs */}
-			<div ref={outputRef} className="flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
+			{/* Body */}
+			<div ref={outputRef} className="relative z-10 flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
 				<p className="mb-6 whitespace-pre-wrap leading-relaxed text-stone-400">
 					{welcomeText}
-					{isTyping && <span className="inline-block h-4 w-3 bg-stone-700 align-text-bottom" />}
+					{isTyping && <span className="inline-block h-4 w-3 animate-pulse bg-stone-500 align-text-bottom" />}
 				</p>
-
 				{!isTyping && (
-					<div className="fade-in-up mb-4 flex flex-wrap gap-2">
+					<div className="fade-in-up mb-6 flex flex-wrap gap-2">
 						{["help", "about", "books", "hobbies", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
 							<button
 								key={cmd}
 								onClick={() => handleQuickCommand(cmd)}
-								className="group relative inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-stone-950 px-3 text-stone-400 transition-all duration-300 hover:bg-stone-700"
+								className="min-h-[44px] rounded-md bg-stone-950 px-4 py-2 text-stone-400 transition-all duration-200 hover:bg-white hover:text-black active:scale-95 sm:min-h-0"
 							>
-								<span className="mr-1 font-bold text-emerald-600 transition-transform duration-300">{"$"}</span>
 								{cmd}
 							</button>
 						))}
 					</div>
 				)}
-
-				<div className="fade-in-up space-y-2">
+				<div className="space-y-2">
 					{output.map((line) => (
-						<div
-							key={line.id}
-							className={`break-words leading-relaxed ${line.type === "error" ? "text-red-700" : "text-emerald-700"}`}
-							dangerouslySetInnerHTML={{ __html: line.content }}
-						/>
+						<OutputBlock key={line.id} line={line} />
 					))}
 				</div>
 			</div>
 
-			{/* Interactive Footer Console Bar */}
-			<div className="border-t border-stone-800 bg-stone-950 px-4 py-2">
+			{/* Footer */}
+			<div
+				className="relative z-10 border-t border-stone-800 bg-stone-950 px-4 py-2"
+				style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
+			>
 				<div className="flex items-center gap-2">
+					<span className="select-none text-emerald-600">$</span>
 					<div className="relative flex flex-1 items-center">
-						{/* Placeholder — hidden once user has typed anything */}
-						{!input && !isTyping && <span className="pointer-events-none absolute select-none text-stone-500">type a command ...</span>}
-
-						<div
-							ref={inputDivRef}
-							contentEditable={!isTyping}
-							suppressContentEditableWarning
-							onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
-							onKeyDown={(e) => (e.key === "Enter" ? (e.preventDefault(), handleSubmit(e)) : handleKeyDown(e))}
-							className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-base text-stone-300 caret-stone-500 focus:outline-none focus:ring-0" //text-base makes ios safari zooming less aggressive
-						/>
+						{!input && !isTyping && <span className="pointer-events-none absolute select-none text-stone-600">type a command...</span>}
+						{isMobile ? (
+							<input
+								ref={mobileInputRef}
+								type="text"
+								value={input}
+								disabled={isTyping}
+								onChange={(e) => setInput(e.target.value)}
+								onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
+								className="w-full border-none bg-transparent text-base text-stone-300 focus:outline-none focus:ring-0"
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
+							/>
+						) : (
+							<div
+								ref={inputDivRef}
+								contentEditable={!isTyping}
+								suppressContentEditableWarning
+								onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										e.preventDefault();
+										handleSubmit(e);
+									} else handleKeyDown(e);
+								}}
+								className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-base text-stone-300 focus:outline-none focus:ring-0"
+							/>
+						)}
 					</div>
-					<span className="hidden select-none text-stone-500 sm:inline">↑↓ history · enter to run · clear to reset</span>
-					<button type="button" onClick={handleSubmit} className="hidden" aria-hidden />
+					{isMobile ? (
+						<div className="flex items-center gap-1">
+							<button
+								onClick={cycleMobileHistory}
+								disabled={commandHistory.length === 0}
+								className="flex h-8 w-8 items-center justify-center rounded text-stone-500 hover:bg-stone-800 disabled:opacity-30"
+								aria-label="Previous command"
+							>
+								<ChevronUp className="h-4 w-4" />
+							</button>
+							<button onClick={() => handleSubmit()} className="rounded bg-stone-800 px-3 py-1 text-xs hover:bg-white hover:text-black">
+								run
+							</button>
+						</div>
+					) : (
+						<span className="hidden select-none text-xs text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>
+					)}
 				</div>
 			</div>
 		</div>

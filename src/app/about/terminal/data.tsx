@@ -1,3 +1,13 @@
+export const WELCOME_MESSAGE = `[OK] Initializing Portfolio Environment...
+[OK] Loading Technical Stack Manifest...
+[OK] Establishing Secure Session: bhav~default
+
+Welcome to my site! Glad you're digging into the about section. 
+I left the standard bio off the home page to keep things clean,
+this terminal is your direct pipeline into bhav.
+
+Type 'help' to list available system commands or click the buttons below for a quick demo.`;
+
 export const portfolioData = {
 	personal: {
 		name: "Bhavdeep Arora",
@@ -30,15 +40,10 @@ export const portfolioData = {
 	],
 
 	books: [
-		// Sci-Fi, Fantasy & Speculative Epic Series
 		{ title: "The Stormlight Archive series, especially Words Of Radiance", author: "Brandon Sanderson", category: "fantasy / epic" },
 		{ title: "The Witcher Series", author: "Andrzej Sapkowski", category: "fantasy / epic" },
 		{ title: "Piranesi", author: "Susanna Clarke", category: "fantasy / speculative" },
-
-		// Modern Sci-Fi Thrillers
 		{ title: "Recursion and Dark Matter", author: "Blake Crouch", category: "sci-fi / thriller" },
-
-		// Literary Classics & Philosophical Fiction
 		{ title: "The Brothers Karamazov", author: "Fyodor Dostoevsky", category: "classics / philosophy" },
 		{ title: "War and Peace", author: "Leo Tolstoy", category: "classics / historical" },
 		{ title: "A Tale of Two Cities", author: "Charles Dickens", category: "classics / historical" }

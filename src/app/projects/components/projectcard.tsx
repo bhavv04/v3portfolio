@@ -41,7 +41,7 @@ export function ProjectCard({ project }: { project: Project }) {
 				{/* Tech Stack */}
 				<div className="mb-4 flex flex-wrap gap-1">
 					{project.tech.map((t) => (
-						<span key={t} className="rounded-md bg-stone-300/10 px-2 py-1 text-xs">
+						<span key={t} className="rounded-md bg-stone-300/10 px-2 py-1 text-xs text-white/60">
 							{t}
 						</span>
 					))}
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
 						href={project.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
 					>
 						<FiGithub size={13} /> Source
 					</a>
@@ -62,7 +62,7 @@ export function ProjectCard({ project }: { project: Project }) {
 							href={project.live}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-all duration-300 hover:bg-white hover:text-black"
+							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
 						>
 							<ExternalLink size={13} /> Live
 						</a>

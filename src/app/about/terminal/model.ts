@@ -1,8 +1,10 @@
-export interface OutputLine {
+export type OutputLine = {
 	id: string;
-	content: string;
 	type: "command" | "output" | "error";
-}
+	content: string;
+};
+
+export type RichLine = { id: string; type: "command" | "output" | "error"; content: string };
 
 export interface PortfolioData {
 	personal: { name: string; occupation: string; specialization: string; bio: string };

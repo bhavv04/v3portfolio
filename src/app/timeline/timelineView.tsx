@@ -53,7 +53,7 @@ export default function TimelineView() {
 							<p className="mt-1 text-sm opacity-50">{ed.concentration}</p>
 							<div className="mt-3 flex flex-wrap gap-2">
 								{ed.courses.map((c) => (
-									<span key={c} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/70">
+									<span key={c} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/60">
 										{c}
 									</span>
 								))}
