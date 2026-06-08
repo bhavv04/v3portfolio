@@ -29,6 +29,7 @@ const statusLabel: Record<ProjectStatus, string> = {
 export default function ResearchFilter() {
 	const [selectedTags, setSelectedTags] = useState<Set<ResearchTag>>(new Set());
 	const [selectedStatuses, setSelectedStatuses] = useState<Set<ProjectStatus>>(new Set());
+	const [expandedId, setExpandedId] = useState<string | null>(null);
 
 	const toggleTag = (tag: ResearchTag) => {
 		const next = new Set(selectedTags);
@@ -59,6 +60,13 @@ export default function ResearchFilter() {
 		const statusMatch = selectedStatuses.size === 0 || selectedStatuses.has(s.status);
 		return tagMatch && statusMatch;
 	});
+
+	// If filter changes cause expanded card to disappear, collapse it
+	React.useEffect(() => {
+		if (expandedId && !filtered.find((s) => s.id === expandedId)) {
+			setExpandedId(null);
+		}
+	}, [filtered, expandedId]);
 
 	return (
 		<div>
@@ -122,8 +130,16 @@ export default function ResearchFilter() {
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 				{filtered.length > 0 ? (
 					filtered.map((study, i) => (
-						<div key={study.id} className="fade-in-up" style={{ "--delay-index": i } as React.CSSProperties}>
-							<ResearchCard study={study} />
+						<div
+							key={study.id}
+							className={`fade-in-up transition-all duration-500 ease-in-out ${expandedId === study.id ? "lg:col-span-2" : ""}`}
+							style={{ "--delay-index": i } as React.CSSProperties}
+						>
+							<ResearchCard
+								study={study}
+								expanded={expandedId === study.id}
+								onToggle={() => setExpandedId((prev) => (prev === study.id ? null : study.id))}
+							/>
 						</div>
 					))
 				) : (

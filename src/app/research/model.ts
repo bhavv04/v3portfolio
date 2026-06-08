@@ -30,3 +30,9 @@ export interface CaseStudy {
 	};
 	highlights?: string[];
 }
+
+export interface ResearchCardProps {
+	study: CaseStudy;
+	expanded: boolean;
+	onToggle: () => void;
+}
