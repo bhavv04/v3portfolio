@@ -49,7 +49,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
 				<ul className="space-y-1.5 text-sm">
 					{study.highlights.map((h) => (
 						<li key={h} className="flex items-start gap-2">
-							<span className="shrink-0 text-white/40">{`#`}</span>
+							<span className="shrink-0 text-white/40">{`> `}</span>
 							<span className="text-white/70">{h}</span>
 						</li>
 					))}

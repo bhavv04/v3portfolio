@@ -100,7 +100,7 @@ export default function ResearchCard({ study }: ResearchCardProps) {
 							<ul className="flex flex-col gap-1">
 								{study.highlights.map((h) => (
 									<li key={h} className="flex items-start gap-2 text-sm text-white/60">
-										<span className="mt-px shrink-0 text-white/20">{`#`}</span>
+										<span className="mt-px shrink-0 text-white/20">{`> `}</span>
 										<span>{h}</span>
 									</li>
 								))}

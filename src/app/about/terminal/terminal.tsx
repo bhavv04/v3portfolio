@@ -85,7 +85,7 @@ const Terminal: React.FC = () => {
 			}
 			const cmdLine: OutputLine = {
 				id: Date.now().toString(),
-				content: `<span class="text-emerald-600">$</span> <span class="text-stone-300">${cmd}</span>`,
+				content: `<span class="">$</span> <span class="text-stone-300">${cmd}</span>`,
 				type: "command"
 			};
 			const next = [...output, cmdLine];
@@ -182,14 +182,14 @@ const Terminal: React.FC = () => {
 
 	return (
 		<div
-			className="scale-in relative flex h-[70vh] flex-col overflow-hidden rounded-xl bg-stone-900 text-sm shadow-lg shadow-black/40"
+			className="scale-in relative flex h-[70vh] flex-col overflow-hidden rounded-2xl bg-stone-900 text-xs shadow-lg shadow-black/40"
 			style={{ "--delay-index": 2 } as React.CSSProperties}
 			onClick={() => !isTyping && (isMobile ? mobileInputRef : inputDivRef).current?.focus()}
 		>
 			<div className="terminal-scanlines" aria-hidden />
 
 			{/* Title bar */}
-			<div className="relative z-10 grid grid-cols-3 items-center bg-stone-950 px-4 py-2">
+			<div className="relative z-10 grid grid-cols-3 items-center bg-stone-950 px-4 py-3">
 				<div className="terminal-dot-group flex items-center gap-2">
 					<span className="dot-red h-3 w-3 rounded-full bg-red-500 transition-shadow duration-200" />
 					<span className="dot-yellow h-3 w-3 rounded-full bg-yellow-500 transition-shadow duration-200" />
@@ -205,15 +205,16 @@ const Terminal: React.FC = () => {
 			<div ref={outputRef} className="relative z-10 flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
 				<p className="mb-6 whitespace-pre-wrap leading-relaxed text-stone-400">
 					{welcomeText}
-					{isTyping && <span className="inline-block h-4 w-3 animate-pulse bg-stone-500 align-text-bottom" />}
+					{isTyping && <span className="inline-block h-4 w-3 bg-stone-600 align-text-bottom" />}
 				</p>
 				{!isTyping && (
 					<div className="fade-in-up mb-6 flex flex-wrap gap-2">
 						{["help", "about", "books", "hobbies", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
 							<button
 								key={cmd}
+								onMouseDown={(e) => e.preventDefault()}
 								onClick={() => handleQuickCommand(cmd)}
-								className="min-h-[44px] rounded-md bg-stone-950 px-4 py-2 text-stone-400 transition-all duration-200 hover:bg-white hover:text-black active:scale-95 sm:min-h-0"
+								className="min-h-[44px] rounded-md bg-white/5 px-4 py-2 text-stone-400 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-stone-100 active:scale-95 sm:min-h-0"
 							>
 								{cmd}
 							</button>
@@ -233,9 +234,13 @@ const Terminal: React.FC = () => {
 				style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
 			>
 				<div className="flex items-center gap-2">
-					<span className="select-none text-emerald-600">$</span>
+					<span className="select-none text-stone-600">{`> `}</span>
 					<div className="relative flex flex-1 items-center">
-						{!input && !isTyping && <span className="pointer-events-none absolute select-none text-stone-600">type a command...</span>}
+						{isTyping ? (
+							<span className="pointer-events-none absolute flex select-none items-center gap-1.5 text-stone-600">initializing...</span>
+						) : !input ? (
+							<span className="pointer-events-none absolute select-none text-stone-600">type a command...</span>
+						) : null}
 						{isMobile ? (
 							<input
 								ref={mobileInputRef}
@@ -244,7 +249,7 @@ const Terminal: React.FC = () => {
 								disabled={isTyping}
 								onChange={(e) => setInput(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
-								className="w-full border-none bg-transparent text-base text-stone-300 focus:outline-none focus:ring-0"
+								className="w-full border-none bg-transparent text-stone-300 focus:outline-none focus:ring-0"
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -262,7 +267,7 @@ const Terminal: React.FC = () => {
 										handleSubmit(e);
 									} else handleKeyDown(e);
 								}}
-								className="min-h-[1.25rem] w-full flex-1 border-none bg-transparent text-base text-stone-300 focus:outline-none focus:ring-0"
+								className="w-full flex-1 text-stone-300 focus:outline-none focus:ring-0"
 							/>
 						)}
 					</div>
@@ -281,7 +286,7 @@ const Terminal: React.FC = () => {
 							</button>
 						</div>
 					) : (
-						<span className="hidden select-none text-xs text-stone-600 sm:inline">↑↓ history · enter to run · clear to reset</span>
+						<span className="hidden select-none text-xs text-stone-600 sm:inline"> enter to run · clear to reset</span>
 					)}
 				</div>
 			</div>
