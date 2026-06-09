@@ -20,7 +20,7 @@ export function DesktopNavbar({ className }: { className?: string }) {
 	const pathname = usePathname();
 
 	return (
-		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-xl bg-neutral-900 p-2", className)}>
+		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-lg bg-stone-900 p-2", className)}>
 			{navItems.map((item, i) =>
 				item === null ? (
 					<div key={i} className="my-1 h-px w-6 bg-white/10" />

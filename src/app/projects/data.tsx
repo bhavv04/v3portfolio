@@ -66,6 +66,31 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
+		id: "funes",
+		title: "funes",
+		tagline: "Your machine's memory, queryable.",
+		description:
+			"A local CLI tool that indexes your files, notes, and terminal history into a vector database, allowing you to query your past work using natural language.",
+		longDescription:
+			"Inspired by Jorge Luis Borges' short story 'Funes the Memorious', funes is a privacy-first, local-only daemon that builds a semantic index of your development history. It monitors local directories and shell logs, processes data through a local embedding pipeline, and handles vector search completely offline using Ollama and SQLite. It eliminates the need for strict keyword matching, letting you locate obscure bug fixes or past configurations through vague, contextual queries.",
+		tags: ["systems programming", "machine learning"],
+		tech: ["Rust", "Ollama", "SQLite", "cargo", "Tokio"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/funes",
+		image: "",
+		featured: true,
+		pageContent: {
+			hook: "You fixed a weird Postgres deadlock bug 3 months ago. You have no idea which file or project it was in, but you know you solved it. funes remembers.",
+			howItWorks:
+				"The utility runs as a lightweight background daemon using Rust. It continuously scans targeted directories and shell history logs, breaking incoming data streams into text chunks. These chunks are pushed to a local Ollama instance running the nomic-embed-text model to generate vector embeddings. The resulting vectors, along with raw metadata, are persisted inside a local SQLite database. When a user runs a query, the search string is embedded in real time, and a cosine similarity search isolates the closest semantic matches. For complex inquiries, an optional LLM synthesis mode routes the top matches through llama3 to compile a direct, plain-English answer.",
+			techChoices:
+				"Rust was selected for the core CLI and daemon to guarantee a minimal memory footprint and high throughput during file watching and parsing. SQLite handles metadata and text chunks reliably without the overhead of spinning up a separate database server. Ollama acts as the inference engine, keeping the embedding generation and LLM synthesis entirely on-device, which ensures absolute data privacy with zero third-party API dependencies.",
+			lessonsLearned:
+				"Building a background file watcher highlighted how quickly unoptimized indexing can thrash CPU cycles, forcing a careful implementation of chunking limits and debounced write thresholds. A major architectural insight was realizing that raw shell logs are incredibly noisy; pre-filtering repetitive commands and failed syntax significantly cleaned up the embedding space and increased query accuracy. The upcoming roadmap focuses on finishing the native shell history hooks and optimizing the SQLite database layout for faster multi-threaded vector comparison."
+		}
+	},
+	{
 		id: "verso",
 		title: "Verso",
 		tagline: "Tinder for books. Swipe right to build your shelf",
@@ -163,6 +188,22 @@ export const projects: Project[] = [
 		live: "",
 		image: "",
 		featured: false
+	},
+	{
+		id: "ember",
+		title: "Ember",
+		tagline: "Not a calorie tracker. a deficit visualizer.",
+		description:
+			"A calorie deficit visualizer that makes the math of weight loss visceral and concrete — showing the full mountain, how far you've climbed, and when you'll reach the top.",
+		longDescription:
+			"Ember reframes weight loss around the only number that matters: your cumulative deficit. Set a goal weight, log daily calories, and watch your progress climb a visual mountain. Weekly weigh-ins automatically recalibrate your TDEE as your body changes. Activity equivalents translate your remaining deficit into real-world effort — walks, treadmill sessions, bike rides — and a timeline projection estimates your goal date based on current pace.",
+		tags: ["software engineering"],
+		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui", "Clerk", "Neon", "Prisma", "PostgreSQL"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/ember",
+		image: "",
+		featured: true
 	},
 	{
 		id: "gaia",

@@ -114,5 +114,33 @@ export const caseStudies: CaseStudy[] = [
 			"Weight decay = 1.0 is the critical hyperparameter — without it, the model never generalizes",
 			"Auto-detects the grokking epoch (val acc > 0.95) and marks it on the training curves"
 		]
+	},
+	{
+		id: "quantum-drug-binding",
+		title: "Quantum Drug Binding",
+		subtitle: "Predicting Small-Molecule Binding Affinity via Quantum Chemical Descriptors",
+		tagline: "Uses quantum mechanical molecular descriptors to predict how tightly a drug binds to its target.",
+		abstract:
+			"Classical docking scores approximate binding affinity using force-field geometry, but ignore the electronic structure of the molecule. This project computes quantum chemical descriptors — HOMO/LUMO energies, molecular electrostatic potential, and partial charge distributions — using DFT calculations, then trains a regression model to predict binding affinity against a target protein. Evaluated on a curated subset of the ChEMBL database with IC50 labels.",
+		status: "in-progress",
+		tags: ["artificial-intelligence", "medicine", "mathematics"],
+		year: 2026,
+		methods: [
+			"Density Functional Theory (DFT)",
+			"HOMO/LUMO Energy Extraction",
+			"Molecular Electrostatic Potential",
+			"Gradient Boosting Regression",
+			"Pearson Correlation Analysis",
+			"IC50 Label Processing"
+		],
+		stack: ["Python", "RDKit", "PySCF", "pandas", "scikit-learn", "matplotlib"],
+		links: {
+			repo: "https://github.com/bhavv04/quantum-drug-binding"
+		},
+		highlights: [
+			"Quantum descriptors computed via DFT rather than classical force-field approximations",
+			"HOMO-LUMO gap used as a proxy for molecular reactivity and binding selectivity",
+			"Trained and evaluated on ChEMBL IC50 data with cross-validated regression metrics"
+		]
 	}
 ];

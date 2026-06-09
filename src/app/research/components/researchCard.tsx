@@ -2,7 +2,7 @@
 
 import { ResearchCardProps } from "@/app/research/model";
 import { FiGithub } from "react-icons/fi";
-import { FileText } from "lucide-react";
+import { ChevronDown, FileText } from "lucide-react";
 
 export default function ResearchCard({ study, expanded, onToggle }: ResearchCardProps) {
 	return (
@@ -28,7 +28,7 @@ export default function ResearchCard({ study, expanded, onToggle }: ResearchCard
 				{/* Methods */}
 				<div className="flex flex-wrap gap-x-3 gap-y-1">
 					{study.methods.map((method) => (
-						<span key={method} className="text-xs text-white/40 before:mr-1.5 before:content-['#']">
+						<span key={method} className="text-xs text-white/40 before:mr-1.5 before:content-['>']">
 							{method}
 						</span>
 					))}
@@ -70,8 +70,14 @@ export default function ResearchCard({ study, expanded, onToggle }: ResearchCard
 						)}
 					</div>
 
-					<button onClick={onToggle} className="inline-flex shrink-0 items-center gap-1 text-sm text-white/40 transition-colors hover:text-white/80">
+					<button
+						onClick={onToggle}
+						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+					>
 						{expanded ? "see less" : "see more"}
+						<span className={`transition-transform duration-300 ${expanded ? "rotate-180" : "rotate-0"}`}>
+							<ChevronDown size={12} />
+						</span>
 					</button>
 				</div>
 			</div>

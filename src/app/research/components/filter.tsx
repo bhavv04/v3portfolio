@@ -127,7 +127,7 @@ export default function ResearchFilter() {
 			</div>
 
 			{/* Cards */}
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+			<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
 				{filtered.length > 0 ? (
 					filtered.map((study, i) => (
 						<div
@@ -143,7 +143,7 @@ export default function ResearchFilter() {
 						</div>
 					))
 				) : (
-					<p className="font-mono text-sm text-white">no projects match the selected filters.</p>
+					<p className="text-sm text-white">no projects match the selected filters.</p>
 				)}
 			</div>
 		</div>
