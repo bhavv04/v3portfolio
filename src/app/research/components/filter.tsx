@@ -110,7 +110,7 @@ export default function ResearchFilter() {
 				{hasFilters && (
 					<button
 						onClick={clearAll}
-						className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-white"
+						className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white hover:underline"
 					>
 						<span>Clear all</span>
 						<svg

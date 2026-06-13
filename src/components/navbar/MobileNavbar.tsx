@@ -21,7 +21,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 
 	return (
 		<div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
-			<nav className={cn("flex items-center gap-1.5 rounded-lg bg-stone-900 p-2", className)}>
+			<nav className={cn("flex items-center gap-1.5 rounded-2xl bg-stone-900 p-2", className)}>
 				{navItems.map((item, i) =>
 					item === null ? (
 						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
@@ -39,7 +39,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 									target={openInNewTab ? "_blank" : "_self"}
 									aria-label={label}
 									className={cn(
-										"relative flex size-10 items-center justify-center rounded-xl transition-all duration-200 md:size-12",
+										"relative flex size-10 items-center justify-center rounded-2xl transition-all duration-200 md:size-12",
 										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
 										isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
 									)}
