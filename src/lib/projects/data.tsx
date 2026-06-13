@@ -76,50 +76,50 @@ export const projects: Project[] = [
 		]
 	},
 	{
-		name: "Incipit",
+		name: "Verrere",
 		summary:
 			"A full stack web application that lets users discover books through an interactive, swipe-based interface, persist personal shelves, and filter preferences by genre.",
 		technologies: [Technology.NextJS, Technology.TypeScript, Technology.TailwindCSS, Technology.PostgreSQL, Technology.Prisma],
 		links: {
-			github: "https://github.com/bhavv04/incipit",
-			live: "https://incipitbooks.vercel.app/"
+			github: "https://github.com/bhavv04/verrere",
+			live: "https://verrere.vercel.app/"
 		},
 		screenshots: [
 			{
-				name: "Incipit Landing Page",
+				name: "verrere Landing Page",
 				mobile: {
-					src: "/images/incipit/incipit4.png",
+					src: "/images/verrere/verrere1.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/incipit/incipit4.png",
+					src: "/images/verrere/verrere1.png",
 					width: 800,
 					height: 640
 				}
 			},
 			{
-				name: "Incipit Swipe Interface",
+				name: "verrere Swipe Interface",
 				mobile: {
-					src: "/images/incipit/incipit1.png",
+					src: "/images/verrere/verrere2.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/incipit/incipit1.png",
+					src: "/images/verrere/verrere2.png",
 					width: 800,
 					height: 640
 				}
 			},
 			{
-				name: "Incipit Genre Selection",
+				name: "verrere Genre Selection",
 				mobile: {
-					src: "/images/incipit/incipit2.png",
+					src: "/images/verrere/verrere3.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/incipit/incipit2.png",
+					src: "/images/verrere/verrere3.png",
 					width: 800,
 					height: 640
 				}

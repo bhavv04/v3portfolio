@@ -142,7 +142,7 @@ const commandHandlers = {
 
 		return w(
 			`${line(`${dim("studying")}     ${gradString}`)}` +
-				`${line(`${dim("building")}     Incipit, Gaia, Solace, Lacunae`)}` +
+				`${line(`${dim("building")}     verrere, Gaia, Solace, Lacunae`)}` +
 				`${line(`${dim("open to")}      collaboration, research, full-time opportunities`)}`
 		);
 	},
@@ -196,7 +196,7 @@ const commandHandlers = {
 		return w(
 			`${line("my favorite books are:")}` +
 				bookLines +
-				`${line(`want to discover your next read? skip to ${hl("projects")} and check out ${hl("Incipit")}.`)}`
+				`${line(`want to discover your next read? skip to ${hl("projects")} and check out ${hl("verrere")}.`)}`
 		);
 	},
 
