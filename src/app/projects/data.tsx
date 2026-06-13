@@ -91,23 +91,23 @@ export const projects: Project[] = [
 		}
 	},
 	{
-		id: "verso",
-		title: "Verso",
+		id: "incipit",
+		title: "Incipit",
 		tagline: "Tinder for books. Swipe right to build your shelf",
 		description:
 			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
 		longDescription:
-			"Verso re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
+			"Incipit re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
 		tags: ["software engineering", "data engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
 		year: 2026,
-		github: "https://github.com/bhavv04/verso",
-		live: "https://verso-books.vercel.app/",
-		image: "/images/projects/verso.png",
+		github: "https://github.com/bhavv04/incipit",
+		live: "https://incipitbooks.vercel.app/",
+		image: "/images/projects/incipit.png",
 		featured: true,
 		pageContent: {
-			hook: "We stop reading because finding the next book feels like work. Verso turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
+			hook: "We stop reading because finding the next book feels like work. Incipit turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
 			howItWorks:
 				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Hardcover API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
 			techChoices:

@@ -76,50 +76,50 @@ export const projects: Project[] = [
 		]
 	},
 	{
-		name: "Verso",
+		name: "Incipit",
 		summary:
 			"A full stack web application that lets users discover books through an interactive, swipe-based interface, persist personal shelves, and filter preferences by genre.",
 		technologies: [Technology.NextJS, Technology.TypeScript, Technology.TailwindCSS, Technology.PostgreSQL, Technology.Prisma],
 		links: {
-			github: "https://github.com/bhavv04/verso",
-			live: "https://verso-books.vercel.app/" // Update this if your Vercel deployment URL is different
+			github: "https://github.com/bhavv04/incipit",
+			live: "https://incipitbooks.vercel.app/"
 		},
 		screenshots: [
 			{
-				name: "Verso Swipe Interface",
+				name: "Incipit Landing Page",
 				mobile: {
-					src: "/images/verso/verso1.png",
+					src: "/images/incipit/incipit4.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/verso/verso1.png",
+					src: "/images/incipit/incipit4.png",
 					width: 800,
 					height: 640
 				}
 			},
 			{
-				name: "Verso Genre Selection",
+				name: "Incipit Swipe Interface",
 				mobile: {
-					src: "/images/verso/verso2.png",
+					src: "/images/incipit/incipit1.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/verso/verso2.png",
+					src: "/images/incipit/incipit1.png",
 					width: 800,
 					height: 640
 				}
 			},
 			{
-				name: "Verso Personal Shelf",
+				name: "Incipit Genre Selection",
 				mobile: {
-					src: "/images/verso/verso3.png",
+					src: "/images/incipit/incipit2.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/verso/verso3.png",
+					src: "/images/incipit/incipit2.png",
 					width: 800,
 					height: 640
 				}
