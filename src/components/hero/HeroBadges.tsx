@@ -44,8 +44,8 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: East of Eden - John Steinbeck"
-				href="https://www.goodreads.com/book/show/4406.East_of_Eden"
+				text="Reading: The Odyssey - Homer"
+				href="https://www.goodreads.com/book/show/1381.The_Odyssey"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
 						<FaGoodreads />
