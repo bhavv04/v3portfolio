@@ -133,5 +133,76 @@ export const projects: Project[] = [
 			"Used Prisma and Neon PostgreSQL to save liked books and manage reading shelves instantaneously",
 			"Integrated Clerk to handle secure email and Google logins, syncing user shelves across devices seamlessly"
 		]
+	},
+	{
+		name: "Ember",
+		summary: "A calorie deficit visualizer that lets users set a weight loss goal, log their daily intake, and gamify their progress.",
+		technologies: [Technology.NextJS, Technology.TypeScript, Technology.TailwindCSS, Technology.PostgreSQL, Technology.Prisma],
+		links: {
+			github: "https://github.com/bhavv04/ember",
+			live: "https://myember.vercel.app/"
+		},
+		screenshots: [
+			{
+				name: "Ember Overview",
+				mobile: {
+					src: "/images/ember/ember1.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/ember/ember1.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Ember 2",
+				mobile: {
+					src: "/images/ember/ember2.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/ember/ember2.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Ember 3",
+				mobile: {
+					src: "/images/ember/ember4.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/ember/ember4.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Ember 4",
+				mobile: {
+					src: "/images/ember/ember3.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/ember/ember3.png",
+					width: 800,
+					height: 640
+				}
+			}
+		],
+		type: "bullets",
+		bullets: [
+			"Built a deficit visualization engine that dynamically burns down a calorie target as users log daily intake",
+			"Integrated Clerk for secure authentication with email and Google login, syncing progress across devices",
+			"Used Prisma 7 and Neon PostgreSQL to persist daily logs and weight loss goals with instant updates",
+			"Designed a clean, responsive UI with shadcn/ui and Tailwind CSS for fast, accessible interactions",
+			"Deployed on Vercel with Next.js 16 App Router for server-side rendering and optimized performance"
+		]
 	}
 ];

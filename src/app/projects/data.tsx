@@ -66,31 +66,6 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
-		id: "funes",
-		title: "funes",
-		tagline: "Your machine's memory, queryable.",
-		description:
-			"A local CLI tool that indexes your files, notes, and terminal history into a vector database, allowing you to query your past work using natural language.",
-		longDescription:
-			"Inspired by Jorge Luis Borges' short story 'Funes the Memorious', funes is a privacy-first, local-only daemon that builds a semantic index of your development history. It monitors local directories and shell logs, processes data through a local embedding pipeline, and handles vector search completely offline using Ollama and SQLite. It eliminates the need for strict keyword matching, letting you locate obscure bug fixes or past configurations through vague, contextual queries.",
-		tags: ["systems programming", "machine learning"],
-		tech: ["Rust", "Ollama", "SQLite", "cargo", "Tokio"],
-		status: "active",
-		year: 2026,
-		github: "https://github.com/bhavv04/funes",
-		image: "",
-		featured: true,
-		pageContent: {
-			hook: "You fixed a weird Postgres deadlock bug 3 months ago. You have no idea which file or project it was in, but you know you solved it. funes remembers.",
-			howItWorks:
-				"The utility runs as a lightweight background daemon using Rust. It continuously scans targeted directories and shell history logs, breaking incoming data streams into text chunks. These chunks are pushed to a local Ollama instance running the nomic-embed-text model to generate vector embeddings. The resulting vectors, along with raw metadata, are persisted inside a local SQLite database. When a user runs a query, the search string is embedded in real time, and a cosine similarity search isolates the closest semantic matches. For complex inquiries, an optional LLM synthesis mode routes the top matches through llama3 to compile a direct, plain-English answer.",
-			techChoices:
-				"Rust was selected for the core CLI and daemon to guarantee a minimal memory footprint and high throughput during file watching and parsing. SQLite handles metadata and text chunks reliably without the overhead of spinning up a separate database server. Ollama acts as the inference engine, keeping the embedding generation and LLM synthesis entirely on-device, which ensures absolute data privacy with zero third-party API dependencies.",
-			lessonsLearned:
-				"Building a background file watcher highlighted how quickly unoptimized indexing can thrash CPU cycles, forcing a careful implementation of chunking limits and debounced write thresholds. A major architectural insight was realizing that raw shell logs are incredibly noisy; pre-filtering repetitive commands and failed syntax significantly cleaned up the embedding space and increased query accuracy. The upcoming roadmap focuses on finishing the native shell history hooks and optimizing the SQLite database layout for faster multi-threaded vector comparison."
-		}
-	},
-	{
 		id: "verrere",
 		title: "verrere",
 		tagline: "Tinder for books. Swipe right to build your shelf",
@@ -133,6 +108,23 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
+		id: "ember",
+		title: "Ember",
+		tagline: "Not a calorie tracker. a deficit visualizer.",
+		description:
+			"A calorie deficit visualizer that makes the math of weight loss visceral and concrete — showing the full mountain, how far you've climbed, and when you'll reach the top.",
+		longDescription:
+			"Ember reframes weight loss around the only number that matters: your cumulative deficit. Set a goal weight, log daily calories, and watch your progress climb a visual mountain. Weekly weigh-ins automatically recalibrate your TDEE as your body changes. Activity equivalents translate your remaining deficit into real-world effort — walks, treadmill sessions, bike rides — and a timeline projection estimates your goal date based on current pace.",
+		tags: ["software engineering"],
+		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui", "Clerk", "Neon", "Prisma", "PostgreSQL"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/ember",
+		image: "/images/projects/ember.png",
+		live: "https://myember.vercel.app/",
+		featured: true
+	},
+	{
 		id: "deadzone",
 		title: "Dead Zones on a Clock",
 		tagline: "Tracing oxygen collapse back to a cornfield",
@@ -145,7 +137,7 @@ export const projects: Project[] = [
 		year: 2025,
 		github: "https://github.com/bhavv04/deadzone",
 		live: "https://bhavv04.github.io/deadzone/paper.html",
-		image: "/images/projects/deadzone.png",
+		image: "",
 		featured: true
 	},
 	{
@@ -161,7 +153,7 @@ export const projects: Project[] = [
 		year: 2025,
 		github: "https://github.com/bhavv04/terraseed",
 		live: "https://bhavv04.github.io/terraseed/",
-		image: "/images/projects/terraseed.png",
+		image: "",
 		featured: true,
 		pageContent: {
 			hook: "Every patch of land has a window each year where conditions align for vegetation to take hold. Terraseed finds that window — backed by three decades of satellite and reanalysis climate data.",
@@ -171,6 +163,32 @@ export const projects: Project[] = [
 				"xarray was the only real option for multidimensional NetCDF climate arrays — it understands the lat/lon/time dimensions natively. rioxarray handles the geospatial reprojection on top of that. scikit-learn for the scoring model because the composite function didn't need anything heavier. Plotly Dash over a React frontend because the dashboard needed to stay in Python — keeping the data pipeline and the UI in the same language meant no API layer to maintain.",
 			lessonsLearned:
 				"The ERA5 reprojection was silently wrong for longer than I'd like to admit — the scores looked plausible for temperate regions but were off at high latitudes because the grid wasn't being handled correctly during downsampling. Plausible-looking output is the hardest bug to catch. The roadmap item for a 1990–2005 vs 2006–2020 score shift map started as a curiosity and turned into the most interesting thing in the project — climate signal is visible in the scores if you split the dataset in half."
+		}
+	},
+	{
+		id: "funes",
+		title: "funes",
+		tagline: "Your machine's memory, queryable.",
+		description:
+			"A local CLI tool that indexes your files, notes, and terminal history into a vector database, allowing you to query your past work using natural language.",
+		longDescription:
+			"Inspired by Jorge Luis Borges' short story 'Funes the Memorious', funes is a privacy-first, local-only daemon that builds a semantic index of your development history. It monitors local directories and shell logs, processes data through a local embedding pipeline, and handles vector search completely offline using Ollama and SQLite. It eliminates the need for strict keyword matching, letting you locate obscure bug fixes or past configurations through vague, contextual queries.",
+		tags: ["systems programming", "machine learning"],
+		tech: ["Rust", "Ollama", "SQLite", "cargo", "Tokio"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/funes",
+		image: "/images/projects/funes.png",
+		live: "https://get-funes.vercel.app/",
+		featured: true,
+		pageContent: {
+			hook: "You fixed a weird Postgres deadlock bug 3 months ago. You have no idea which file or project it was in, but you know you solved it. funes remembers.",
+			howItWorks:
+				"The utility runs as a lightweight background daemon using Rust. It continuously scans targeted directories and shell history logs, breaking incoming data streams into text chunks. These chunks are pushed to a local Ollama instance running the nomic-embed-text model to generate vector embeddings. The resulting vectors, along with raw metadata, are persisted inside a local SQLite database. When a user runs a query, the search string is embedded in real time, and a cosine similarity search isolates the closest semantic matches. For complex inquiries, an optional LLM synthesis mode routes the top matches through llama3 to compile a direct, plain-English answer.",
+			techChoices:
+				"Rust was selected for the core CLI and daemon to guarantee a minimal memory footprint and high throughput during file watching and parsing. SQLite handles metadata and text chunks reliably without the overhead of spinning up a separate database server. Ollama acts as the inference engine, keeping the embedding generation and LLM synthesis entirely on-device, which ensures absolute data privacy with zero third-party API dependencies.",
+			lessonsLearned:
+				"Building a background file watcher highlighted how quickly unoptimized indexing can thrash CPU cycles, forcing a careful implementation of chunking limits and debounced write thresholds. A major architectural insight was realizing that raw shell logs are incredibly noisy; pre-filtering repetitive commands and failed syntax significantly cleaned up the embedding space and increased query accuracy. The upcoming roadmap focuses on finishing the native shell history hooks and optimizing the SQLite database layout for faster multi-threaded vector comparison."
 		}
 	},
 	{
@@ -188,22 +206,6 @@ export const projects: Project[] = [
 		live: "",
 		image: "",
 		featured: false
-	},
-	{
-		id: "ember",
-		title: "Ember",
-		tagline: "Not a calorie tracker. a deficit visualizer.",
-		description:
-			"A calorie deficit visualizer that makes the math of weight loss visceral and concrete — showing the full mountain, how far you've climbed, and when you'll reach the top.",
-		longDescription:
-			"Ember reframes weight loss around the only number that matters: your cumulative deficit. Set a goal weight, log daily calories, and watch your progress climb a visual mountain. Weekly weigh-ins automatically recalibrate your TDEE as your body changes. Activity equivalents translate your remaining deficit into real-world effort — walks, treadmill sessions, bike rides — and a timeline projection estimates your goal date based on current pace.",
-		tags: ["software engineering"],
-		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui", "Clerk", "Neon", "Prisma", "PostgreSQL"],
-		status: "active",
-		year: 2026,
-		github: "https://github.com/bhavv04/ember",
-		image: "",
-		featured: true
 	},
 	{
 		id: "gaia",
