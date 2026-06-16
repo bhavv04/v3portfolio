@@ -172,12 +172,12 @@ export const projects: Project[] = [
 			{
 				name: "Ember 3",
 				mobile: {
-					src: "/images/ember/ember4.png",
+					src: "/images/ember/ember3.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/ember/ember4.png",
+					src: "/images/ember/ember3.png",
 					width: 800,
 					height: 640
 				}
@@ -185,12 +185,12 @@ export const projects: Project[] = [
 			{
 				name: "Ember 4",
 				mobile: {
-					src: "/images/ember/ember3.png",
+					src: "/images/ember/ember5.png",
 					width: 800,
 					height: 640
 				},
 				desktop: {
-					src: "/images/ember/ember3.png",
+					src: "/images/ember/ember5.png",
 					width: 800,
 					height: 640
 				}

@@ -47,8 +47,8 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 						<CarouselContent>
 							{screenshots.map((screenshot, i) => (
 								<CarouselItem key={screenshot.name}>
-									<div className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
-										<div className="relative aspect-[17/10] w-full overflow-hidden">
+									<div className="overflow-hidden rounded-xl">
+										<div className="relative aspect-[16/10] w-full overflow-hidden">
 											<Image
 												src={screenshot.desktop.src}
 												alt={`${name} — ${screenshot.name}`}

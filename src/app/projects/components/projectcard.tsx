@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: Project }) {
 		<div className="group/card flex flex-col overflow-hidden rounded-md bg-neutral-900 transition-all duration-200 hover:scale-[1.02]">
 			{/* Image */}
 			{project.image && (
-				<div className="h-full w-full overflow-hidden">
+				<div className="overflow-hidden">
 					<img
 						src={project.image}
 						alt={project.title}
