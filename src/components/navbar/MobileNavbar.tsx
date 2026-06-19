@@ -59,7 +59,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 				visible ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0"
 			)}
 		>
-			<nav className={cn("flex items-center gap-2 rounded-lg bg-stone-900 p-2", className)}>
+			<nav className={cn("flex items-center gap-1.5 rounded-lg bg-stone-900 p-2", className)}>
 				{navItems.map((item, i) =>
 					item === null ? (
 						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
