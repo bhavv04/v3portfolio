@@ -14,7 +14,7 @@ export function HeroSection() {
 					<img src="/images/ProfilePic.jpeg" alt="Profile" className="h-12 w-12 rounded-full object-cover" />
 					<span className="absolute bottom-2 right-1 h-3 w-3">🧸</span>
 				</div>
-				<SectionTitle className="mt-3" text="Hi, I'm Bhavdeep Arora 🐻" />
+				<SectionTitle className="mt-3" text="Hi, I'm Bhavdeep Arora" />
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 2 } as React.CSSProperties}>

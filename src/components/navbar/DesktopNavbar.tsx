@@ -20,7 +20,7 @@ export function DesktopNavbar({ className }: { className?: string }) {
 	const pathname = usePathname();
 
 	return (
-		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-xl bg-neutral-900 p-2", className)}>
+		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1.5 rounded-lg bg-stone-900 px-2 py-2", className)}>
 			{navItems.map((item, i) =>
 				item === null ? (
 					<div key={i} className="my-1 h-px w-6 bg-white/20" />
@@ -60,7 +60,7 @@ function NavbarIconButton({
 				target={openInNewTab ? "_blank" : "_self"}
 				aria-label={label}
 				className={cn(
-					"relative flex size-10 items-center justify-center rounded-xl transition-all duration-200",
+					"relative flex size-10 items-center justify-center rounded-full transition-all duration-200",
 					"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
 					"",
 					isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
