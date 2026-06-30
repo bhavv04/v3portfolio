@@ -80,7 +80,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 									target={openInNewTab ? "_blank" : "_self"}
 									aria-label={label}
 									className={cn(
-										"relative flex size-10 items-center justify-center rounded-3xl transition-all duration-200 md:size-12",
+										"relative flex size-11 items-center justify-center rounded-3xl transition-all duration-200 md:size-12",
 										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
 										isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
 									)}
