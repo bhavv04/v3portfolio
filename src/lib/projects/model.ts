@@ -17,6 +17,7 @@ export interface ProjectDetails {
 	name: string;
 	summary: string;
 	technologies: Technology[];
+	logo?: Picture;
 	links?: {
 		github?: string;
 		live?: string;

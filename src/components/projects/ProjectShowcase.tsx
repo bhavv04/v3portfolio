@@ -17,7 +17,7 @@ interface ProjectShowcaseProps {
 
 export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseProps) {
 	const [activeIndex, setActiveIndex] = React.useState(0);
-	const { name, summary, technologies, links, screenshots } = project;
+	const { name, summary, technologies, links, screenshots, logo } = project;
 	const hasMultiple = screenshots.length > 1;
 
 	return (
@@ -103,7 +103,14 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 			{/* Info */}
 			<div className="flex w-full flex-col gap-4 lg:w-1/2 lg:pt-2">
 				<div className="space-y-2">
-					<h3 className="text-4xl">{name}</h3>
+					<div className="flex items-center gap-3">
+						{logo && (
+							<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
+								<Image src={logo.src} alt={`${name} logo`} width={logo.width} height={logo.height} className="h-full w-full object-contain" />
+							</div>
+						)}
+						<h3 className="text-4xl">{name}</h3>
+					</div>
 					<p className="max-w-xl text-sm text-white/70 sm:text-base">{summary}</p>
 				</div>
 

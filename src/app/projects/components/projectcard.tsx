@@ -3,36 +3,42 @@ import { ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import { Project } from "@/app/projects/model";
 import { ProjectStatusBadge } from "./projectstatus";
+import Image from "next/image";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
 		<div className="group/card flex flex-col overflow-hidden rounded-md bg-neutral-900 transition-all duration-200 hover:scale-[1.02]">
-			{/* Image */}
-			{project.image && (
-				<div className="overflow-hidden">
-					<img
-						src={project.image}
-						alt={project.title}
-						className="mb-2 h-full w-full object-cover opacity-80 transition-opacity duration-200 group-hover/card:opacity-100"
-					/>
-				</div>
-			)}
-
 			<div className="p-4">
-				{/* Header */}
-				<div className="flex flex-col">
-					{/*<Link href={`/projects/${project.id}`}> */}
-					<Link href={project.github} target="_blank" rel="noopener reference">
-						<h3 className="text-lg">{project.title}</h3>
-					</Link>
+				{/* Header row: logo + title/tagline side by side */}
+				<div className="mb-3 flex items-start gap-3">
+					{project.image ? (
+						<div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-md transition-colors duration-200">
+							<Image
+								src={project.image}
+								alt={`${project.title} logo`}
+								fill
+								className="object-contain opacity-80 transition-opacity duration-200 group-hover/card:opacity-100"
+							/>
+						</div>
+					) : (
+						<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-white/5 ring-1 ring-white/10">
+							<span className="font-mono text-sm text-white/30">{project.title.charAt(0)}</span>
+						</div>
+					)}
 
-					{/* Tagline */}
-					<p className="mb-2 text-xs italic text-stone-100/40">{project.tagline}</p>
-
-					<div className="mb-3 flex items-center gap-2">
-						<ProjectStatusBadge status={project.status} />
-						{project.featured && <span className="rounded-full bg-violet-500/10 px-2 text-xs text-violet-300">featured</span>}
+					<div className="min-w-0 flex-1">
+						{/*<Link href={`/projects/${project.id}`}> */}
+						<Link href={project.github} target="_blank" rel="noopener noreferrer">
+							<h3 className="truncate text-lg">{project.title}</h3>
+						</Link>
+						<p className="text-xs italic text-stone-100/40">{project.tagline}</p>
 					</div>
+				</div>
+
+				{/* Status row */}
+				<div className="mb-3 flex items-center gap-2">
+					<ProjectStatusBadge status={project.status} />
+					{project.featured && <span className="rounded-full bg-violet-500/10 px-2 text-xs text-violet-300">featured</span>}
 				</div>
 
 				{/* Description */}

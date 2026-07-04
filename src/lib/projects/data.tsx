@@ -6,6 +6,11 @@ export const projects: Project[] = [
 		name: "Thunderhead",
 		summary:
 			"A lightweight reverse proxy that scores the intent of incoming HTTP requests to detect and mitigate bot traffic — without relying on Cloudflare or third-party services.",
+		logo: {
+			src: "/images/projects/thunderhead.png",
+			width: 128,
+			height: 128
+		},
 		technologies: [Technology.Go, Technology.NextJS, Technology.TypeScript, Technology.Redis, Technology.Javascript, Technology.Nginx],
 		links: {
 			github: "https://github.com/bhavv04/thunderhead",
@@ -79,6 +84,11 @@ export const projects: Project[] = [
 		name: "Verrere",
 		summary:
 			"A full stack web application that lets users discover books through an interactive, swipe-based interface, persist personal shelves, and filter preferences by genre.",
+		logo: {
+			src: "/images/projects/verrere.png",
+			width: 128,
+			height: 128
+		},
 		technologies: [Technology.NextJS, Technology.TypeScript, Technology.TailwindCSS, Technology.PostgreSQL, Technology.Prisma],
 		links: {
 			github: "https://github.com/bhavv04/verrere",
@@ -137,6 +147,11 @@ export const projects: Project[] = [
 	{
 		name: "Ember",
 		summary: "A calorie deficit visualizer that lets users set a weight loss goal, log their daily intake, and gamify their progress.",
+		logo: {
+			src: "/images/projects/ember.png",
+			width: 128,
+			height: 128
+		},
 		technologies: [Technology.NextJS, Technology.TypeScript, Technology.TailwindCSS, Technology.PostgreSQL, Technology.Prisma],
 		links: {
 			github: "https://github.com/bhavv04/ember",
