@@ -44,7 +44,7 @@ export function HeroBadges() {
 				className="bg-[#137736] hover:bg-[#1c9245]"
 			/>
 			<HeroBadge
-				text="Reading: Don Quixote"
+				text="Reading: Don Quixote - Miguel de Cervantes"
 				href="https://www.goodreads.com/en/book/show/3836.Don_Quixote"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
