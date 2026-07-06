@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucide-react";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, Coffee } from "lucide-react";
 
 const navItems = [
 	{ href: "/", label: "Home", icon: Home, useClientSideRouting: true },
@@ -12,6 +12,7 @@ const navItems = [
 	null,
 	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
+	{ href: "/blog", label: "Blog", icon: PencilLine, useClientSideRouting: true },
 	null,
 	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
 ] as const;

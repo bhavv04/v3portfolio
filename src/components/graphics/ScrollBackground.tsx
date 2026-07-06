@@ -26,7 +26,7 @@ export function ScrollBackground() {
                             rgba(13, 13, 13, 0.4) 80%,
                             #0d0d0d 100%
                         ),
-                        url('/bg.jpg')
+                        url('/images/bg.jpg')
                     `,
 					backgroundSize: "cover",
 					backgroundPosition: "center",

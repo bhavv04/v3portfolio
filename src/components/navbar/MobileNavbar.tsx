@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, User, BriefcaseBusiness, Wrench, Microscope, Coffee } from "lucide-react";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, Coffee } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -13,6 +13,7 @@ const navItems = [
 	null,
 	{ href: "/projects", label: "Projects", icon: Wrench, useClientSideRouting: true },
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
+	{ href: "/blog", label: "Blog", icon: PencilLine, useClientSideRouting: true },
 	null,
 	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
 ] as const;
@@ -59,7 +60,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 				visible ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0"
 			)}
 		>
-			<nav className={cn("flex items-center gap-1.5 rounded-full bg-stone-900 p-2", className)}>
+			<nav className={cn("flex items-center gap-1 rounded-full bg-stone-900 p-2", className)}>
 				{navItems.map((item, i) =>
 					item === null ? (
 						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
