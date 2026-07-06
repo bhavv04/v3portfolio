@@ -5,7 +5,7 @@ export const projects: Project[] = [
 	{
 		name: "Thunderhead",
 		summary:
-			"A lightweight reverse proxy that scores the intent of incoming HTTP requests to detect and mitigate bot traffic — without relying on Cloudflare or third-party services.",
+			"A lightweight reverse proxy that scores the intent of incoming HTTP requests to detect and mitigate bot traffic - without relying on Cloudflare or third-party services.",
 		logo: {
 			src: "/images/projects/thunderhead.png",
 			width: 128,

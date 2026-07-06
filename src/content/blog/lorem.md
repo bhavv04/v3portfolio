@@ -27,7 +27,7 @@ Some text after the image to check spacing.
 
 Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.
 
-> "Any sufficiently long placeholder text is indistinguishable from a real opinion." — Someone, probably
+> "Any sufficiently long placeholder text is indistinguishable from a real opinion." - Someone, probably
 
 Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem.
 
@@ -50,4 +50,4 @@ Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cr
 
 Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero, sed dignissim lacinia nunc.
 
-That's it — if you made it this far reading actual Latin filler text, you deserve a cookie.
+That's it - if you made it this far reading actual Latin filler text, you deserve a cookie.

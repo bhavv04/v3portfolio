@@ -7,7 +7,7 @@ export const caseStudies: CaseStudy[] = [
 		subtitle: "Accelerated MRI Reconstruction from Undersampled K-Space via U-Net",
 		tagline: "U-Net that reconstructs full MRI scans from 25% of the frequency data.",
 		abstract:
-			"MRI acquisition is slow because it requires dense sampling of k-space, the frequency-domain representation of the scan. Lacunae artificially undersamples k-space at 4x acceleration — retaining only 25% of frequency lines — and trains a U-Net to reconstruct diagnostically useful images from the incomplete data. A naive inverse FFT on undersampled k-space produces severe aliasing artifacts; the model learns to recover the missing structure. Trained on the fastMRI single-coil knee dataset with L1 loss and evaluated on SSIM and PSNR.",
+			"MRI acquisition is slow because it requires dense sampling of k-space, the frequency-domain representation of the scan. Lacunae artificially undersamples k-space at 4x acceleration - retaining only 25% of frequency lines - and trains a U-Net to reconstruct diagnostically useful images from the incomplete data. A naive inverse FFT on undersampled k-space produces severe aliasing artifacts; the model learns to recover the missing structure. Trained on the fastMRI single-coil knee dataset with L1 loss and evaluated on SSIM and PSNR.",
 		status: "completed",
 		tags: ["artificial-intelligence", "medicine", "mathematics"],
 		year: 2025,
@@ -24,7 +24,7 @@ export const caseStudies: CaseStudy[] = [
 			repo: "https://github.com/bhavv04/lacunae"
 		},
 		highlights: [
-			"Center 8% of k-space columns always retained — low frequencies carry the bulk of image energy",
+			"Center 8% of k-space columns always retained - low frequencies carry the bulk of image energy",
 			"~7.7M parameter U-Net with four encoder/decoder stages and transposed convolution upsampling",
 			"Benchmarked on NYU fastMRI single-coil knee dataset (Zbontar et al., 2018)"
 		]
@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
 		subtitle: "Reproducing Generalization Beyond Overfitting on Modular Arithmetic",
 		tagline: "Reproduces the phenomenon where a transformer memorizes first, then suddenly generalizes.",
 		abstract:
-			"A from-scratch reproduction of the grokking phenomenon from Power et al. (2022) — where a small transformer trained on modular addition memorizes the training set early, then long after overfitting, suddenly generalizes. The key ingredient is high weight decay, which pressures the model away from memorization and toward the underlying algorithm. Built as a single self-contained script with a custom training loop and publication-style loss/accuracy plots.",
+			"A from-scratch reproduction of the grokking phenomenon from Power et al. (2022) - where a small transformer trained on modular addition memorizes the training set early, then long after overfitting, suddenly generalizes. The key ingredient is high weight decay, which pressures the model away from memorization and toward the underlying algorithm. Built as a single self-contained script with a custom training loop and publication-style loss/accuracy plots.",
 		status: "completed",
 		tags: ["artificial-intelligence", "mathematics"],
 		year: 2025,
@@ -111,7 +111,7 @@ export const caseStudies: CaseStudy[] = [
 		},
 		highlights: [
 			"Reproduces grokking on (a + b) mod 97 with only 30% of data used for training",
-			"Weight decay = 1.0 is the critical hyperparameter — without it, the model never generalizes",
+			"Weight decay = 1.0 is the critical hyperparameter - without it, the model never generalizes",
 			"Auto-detects the grokking epoch (val acc > 0.95) and marks it on the training curves"
 		]
 	},
@@ -121,7 +121,7 @@ export const caseStudies: CaseStudy[] = [
 		subtitle: "Predicting Small-Molecule Binding Affinity via Quantum Chemical Descriptors",
 		tagline: "Uses quantum mechanical molecular descriptors to predict how tightly a drug binds to its target.",
 		abstract:
-			"Classical docking scores approximate binding affinity using force-field geometry, but ignore the electronic structure of the molecule. This project computes quantum chemical descriptors — HOMO/LUMO energies, molecular electrostatic potential, and partial charge distributions — using DFT calculations, then trains a regression model to predict binding affinity against a target protein. Evaluated on a curated subset of the ChEMBL database with IC50 labels.",
+			"Classical docking scores approximate binding affinity using force-field geometry, but ignore the electronic structure of the molecule. This project computes quantum chemical descriptors - HOMO/LUMO energies, molecular electrostatic potential, and partial charge distributions - using DFT calculations, then trains a regression model to predict binding affinity against a target protein. Evaluated on a curated subset of the ChEMBL database with IC50 labels.",
 		status: "in-progress",
 		tags: ["artificial-intelligence", "medicine", "mathematics"],
 		year: 2026,

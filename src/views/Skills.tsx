@@ -64,7 +64,7 @@ export function Skills() {
 	const carouselSkills = [...skills, ...skills];
 
 	return (
-		<section id="skills" className="mx-auto max-w-[40rem] py-12">
+		<section id="skills" className="mx-auto max-w-160 py-12">
 			<div className="slide-in-up mt-8 space-y-4">
 				{/* Row 1 */}
 				<div className="skills-carousel-outer fade-in-up" style={{ "--delay-index": 8 } as React.CSSProperties}>
@@ -72,7 +72,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row1" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-xs ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -87,7 +87,7 @@ export function Skills() {
 						{carouselSkills.map((skill, idx) => (
 							<span
 								key={skill.name + "row2" + idx}
-								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+								className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-xs ${skill.badgeClass ? skill.badgeClass : ""} `}
 							>
 								{skill.icon}
 								{skill.name}
@@ -105,7 +105,7 @@ export function Skills() {
 							.map((skill, idx) => (
 								<span
 									key={skill.name + "row3" + idx}
-									className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-sm ${skill.badgeClass ? skill.badgeClass : ""} `}
+									className={`flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-800/80 px-4 py-3 text-base text-zinc-100 shadow-xs ${skill.badgeClass ? skill.badgeClass : ""} `}
 								>
 									{skill.icon}
 									{skill.name}

@@ -48,10 +48,10 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 							{screenshots.map((screenshot, i) => (
 								<CarouselItem key={screenshot.name}>
 									<div className="overflow-hidden rounded-xl">
-										<div className="relative aspect-[16/10] w-full overflow-hidden">
+										<div className="relative aspect-16/10 w-full overflow-hidden">
 											<Image
 												src={screenshot.desktop.src}
-												alt={`${name} — ${screenshot.name}`}
+												alt={`${name} - ${screenshot.name}`}
 												width={screenshot.desktop.width}
 												height={screenshot.desktop.height}
 												className="hidden h-full w-full object-cover sm:block"
@@ -59,7 +59,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 											/>
 											<Image
 												src={screenshot.mobile.src}
-												alt={`${name} — ${screenshot.name}`}
+												alt={`${name} - ${screenshot.name}`}
 												width={screenshot.mobile.width}
 												height={screenshot.mobile.height}
 												className="h-full w-full object-cover sm:hidden"

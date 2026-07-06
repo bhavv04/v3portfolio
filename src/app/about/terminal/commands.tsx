@@ -112,7 +112,7 @@ const commandHandlers = {
 	whoami: () => {
 		const agent = typeof window !== "undefined" ? window.navigator.userAgent.split(" ")[0] : "SecureClient";
 		return w(
-			`${line(`you're ${hl("visitor")} parsing data via ${hl(agent)} — welcome.`)}` +
+			`${line(`you're ${hl("visitor")} parsing data via ${hl(agent)} - welcome.`)}` +
 				`${line(dim(new Date().toLocaleString()))}` +
 				`${line(`type ${hl("about")} to learn who's on the other side.`)}`
 		);
@@ -125,7 +125,7 @@ const commandHandlers = {
 
 	hobbies: () => {
 		const { hobbies } = portfolioData;
-		if (!hobbies || !hobbies.length) return w(line("haven't filled this in yet — check back soon."));
+		if (!hobbies || !hobbies.length) return w(line("haven't filled this in yet - check back soon."));
 
 		const hobbyLines = hobbies.map((h) => line(` • ${hl(h.name)} ${dim("→")} ${h.detail}`)).join("");
 

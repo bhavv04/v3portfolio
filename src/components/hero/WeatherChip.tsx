@@ -52,9 +52,9 @@ export function WeatherChip({ className }: { className?: string }) {
 	}, []);
 
 	return (
-		<div className={cn("flex flex-col gap-[1px]", className)}>
-			<span className="text-[10px] uppercase tracking-[0.06em] text-stone-400">weather</span>
-			<span className="text-[13px] font-medium text-stone-100">{weather ? `${weather.temp}°C` : "—"}</span>
+		<div className={cn("flex flex-col gap-px", className)}>
+			<span className="text-[10px] tracking-[0.06em] text-stone-400 uppercase">weather</span>
+			<span className="text-[13px] font-medium text-stone-100">{weather ? `${weather.temp}°C` : "-"}</span>
 		</div>
 	);
 }

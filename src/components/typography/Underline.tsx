@@ -6,8 +6,8 @@ export function HoverUnderline({ children, className }: { children: React.ReactN
 	return (
 		<span
 			className={cn(
-				"bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-bottom bg-no-repeat",
-				"transition-[background-size] duration-300 group-hover:bg-[length:100%_1px]",
+				"bg-linear-to-r from-white to-white bg-size-[0%_1px] bg-bottom bg-no-repeat",
+				"transition-[background-size] duration-300 group-hover:bg-size-[100%_1px]",
 				className
 			)}
 		>

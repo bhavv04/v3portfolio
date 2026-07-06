@@ -8,11 +8,11 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 
 export function HeroSection() {
 	return (
-		<section id="home" className="mx-auto max-w-[40rem] space-y-4">
+		<section id="home" className="mx-auto max-w-160 space-y-4">
 			<div className="fade-in-up flex items-center gap-3" style={{ "--delay-index": 0 } as React.CSSProperties}>
 				<div className="relative h-12 w-12 shrink-0">
 					<img src="/images/ProfilePic.jpeg" alt="Profile" className="h-12 w-12 rounded-full object-cover" />
-					<span className="absolute bottom-2 right-1 h-3 w-3">🧸</span>
+					<span className="absolute right-1 bottom-2 h-3 w-3">🧸</span>
 				</div>
 				<SectionTitle className="mt-3" text="Hi, I'm Bhavdeep Arora" />
 			</div>

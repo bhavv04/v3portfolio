@@ -99,7 +99,7 @@ export default function Footer() {
 				<form ref={formRef} onSubmit={sendEmail} className="space-y-5">
 					<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 						<div className="space-y-1">
-							<label htmlFor="user_name" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
+							<label htmlFor="user_name" className="block text-xs font-medium tracking-widest text-gray-500 uppercase">
 								Name
 							</label>
 							<input
@@ -108,13 +108,13 @@ export default function Footer() {
 								name="user_name"
 								required
 								disabled={isSending}
-								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-none disabled:opacity-50"
+								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-hidden disabled:opacity-50"
 								placeholder="your name"
 							/>
 						</div>
 
 						<div className="space-y-1">
-							<label htmlFor="user_email" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
+							<label htmlFor="user_email" className="block text-xs font-medium tracking-widest text-gray-500 uppercase">
 								Email
 							</label>
 							<input
@@ -123,14 +123,14 @@ export default function Footer() {
 								name="user_email"
 								required
 								disabled={isSending}
-								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-none disabled:opacity-50"
+								className="w-full border-b border-gray-700 bg-transparent px-0 py-2 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-hidden disabled:opacity-50"
 								placeholder="your email"
 							/>
 						</div>
 					</div>
 
 					<div className="space-y-1">
-						<label htmlFor="message" className="block text-xs font-medium uppercase tracking-widest text-gray-500">
+						<label htmlFor="message" className="block text-xs font-medium tracking-widest text-gray-500 uppercase">
 							Message
 						</label>
 						<textarea
@@ -139,7 +139,7 @@ export default function Footer() {
 							required
 							rows={4}
 							disabled={isSending}
-							className="w-full resize-none border-b border-gray-700 bg-transparent px-0 py-0 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-none disabled:opacity-50"
+							className="w-full resize-none border-b border-gray-700 bg-transparent px-0 py-0 text-white placeholder-gray-600 transition-colors focus:border-white focus:outline-hidden disabled:opacity-50"
 							placeholder="what's on your mind?"
 						/>
 					</div>
@@ -147,7 +147,7 @@ export default function Footer() {
 					<button
 						type="submit"
 						disabled={isSending}
-						className="duration-800 relative inline-flex h-10 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-neutral-800 px-4 py-2 text-sm text-white transition-colors ease-in-out hover:bg-white hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-neutral-800 disabled:hover:text-white"
+						className="relative inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-md bg-neutral-800 px-4 py-2 text-sm whitespace-nowrap text-white transition-colors duration-800 ease-in-out hover:bg-white hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-neutral-800 disabled:hover:text-white"
 					>
 						<span className="relative z-10">{isSending ? "Sending..." : "Send Message"}</span>
 					</button>
@@ -159,7 +159,7 @@ export default function Footer() {
 				{quote && (
 					<div className="mt-6 text-left">
 						<p className="text-xs text-gray-600">&ldquo;{quote.quoteText}&rdquo;</p>
-						<p className="mt-1 text-xs text-gray-600">— {quote.quoteAuthor}</p>
+						<p className="mt-1 text-xs text-gray-600">- {quote.quoteAuthor}</p>
 					</div>
 				)}
 			</div>

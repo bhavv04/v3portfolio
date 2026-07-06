@@ -21,7 +21,7 @@ export function DesktopNavbar({ className }: { className?: string }) {
 	const pathname = usePathname();
 
 	return (
-		<nav className={cn("fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1.5 rounded-xl bg-stone-900 px-2 py-2", className)}>
+		<nav className={cn("fixed top-1/2 right-4 z-50 flex -translate-y-1/2 flex-col items-center gap-1.5 rounded-xl bg-stone-900 px-2 py-2", className)}>
 			{navItems.map((item, i) =>
 				item === null ? (
 					<div key={i} className="my-1 h-px w-6 bg-white/20" />
@@ -69,7 +69,7 @@ function NavbarIconButton({
 			</Comp>
 
 			{/* tooltip */}
-			<span className="pointer-events-none absolute right-[calc(100%+0.875rem)] top-1/2 -translate-y-1/2 translate-x-1 whitespace-nowrap rounded-xl bg-stone-900 px-2.5 py-1 text-xs tracking-wide text-white/70 opacity-0 backdrop-blur-sm transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100">
+			<span className="pointer-events-none absolute top-1/2 right-[calc(100%+0.875rem)] translate-x-1 -translate-y-1/2 rounded-xl bg-stone-900 px-2.5 py-1 text-xs tracking-wide whitespace-nowrap text-white/70 opacity-0 backdrop-blur-xs transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100">
 				{label}
 				{openInNewTab && " ↗"}
 			</span>

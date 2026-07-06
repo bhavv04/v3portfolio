@@ -20,18 +20,18 @@ function useMediaQuery(query: string): boolean {
 }
 
 function OutputBlock({ line }: { line: OutputLine }) {
-	const base = "terminal-line-enter break-words leading-relaxed flex items-start gap-2";
+	const base = "terminal-line-enter wrap-break-word leading-relaxed flex items-start gap-2";
 	if (line.type === "command") return <div className={base} dangerouslySetInnerHTML={{ __html: line.content }} />;
 	if (line.type === "error")
 		return (
 			<div className={`${base} text-red-500`}>
-				<span className="select-none text-red-700">▸</span>
+				<span className="text-red-700 select-none">▸</span>
 				<span dangerouslySetInnerHTML={{ __html: line.content }} />
 			</div>
 		);
 	return (
 		<div className={`${base} text-emerald-700`}>
-			<span className="select-none text-stone-600">▸</span>
+			<span className="text-stone-600 select-none">▸</span>
 			<span className="flex-1" dangerouslySetInnerHTML={{ __html: line.content }} />
 		</div>
 	);
@@ -202,8 +202,8 @@ const Terminal: React.FC = () => {
 			</div>
 
 			{/* Body */}
-			<div ref={outputRef} className="relative z-10 flex-1 overflow-y-auto p-6 text-stone-500 [scrollbar-width:none]">
-				<p className="mb-6 whitespace-pre-wrap leading-relaxed text-stone-400">
+			<div ref={outputRef} className="relative z-10 flex-1 scrollbar-none overflow-y-auto p-6 text-stone-500">
+				<p className="mb-6 leading-relaxed whitespace-pre-wrap text-stone-400">
 					{welcomeText}
 					{isTyping && <span className="inline-block h-4 w-3 bg-stone-600 align-text-bottom" />}
 				</p>
@@ -214,7 +214,7 @@ const Terminal: React.FC = () => {
 								key={cmd}
 								onMouseDown={(e) => e.preventDefault()}
 								onClick={() => handleQuickCommand(cmd)}
-								className="min-h-[44px] rounded-md bg-white/5 px-4 py-2 text-stone-400 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-stone-100 active:scale-95 sm:min-h-0"
+								className="min-h-[44px] rounded-md bg-white/5 px-4 py-2 text-stone-400 backdrop-blur-xs transition-all duration-200 hover:bg-white/10 hover:text-stone-100 active:scale-95 sm:min-h-0"
 							>
 								{cmd}
 							</button>
@@ -234,12 +234,12 @@ const Terminal: React.FC = () => {
 				style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
 			>
 				<div className="flex items-center gap-2">
-					<span className="select-none text-stone-600">{`> `}</span>
+					<span className="text-stone-600 select-none">{`> `}</span>
 					<div className="relative flex flex-1 items-center">
 						{isTyping ? (
-							<span className="pointer-events-none absolute flex select-none items-center gap-1.5 text-stone-600">initializing...</span>
+							<span className="pointer-events-none absolute flex items-center gap-1.5 text-stone-600 select-none">initializing...</span>
 						) : !input ? (
-							<span className="pointer-events-none absolute select-none text-stone-600">type a command...</span>
+							<span className="pointer-events-none absolute text-stone-600 select-none">type a command...</span>
 						) : null}
 						{isMobile ? (
 							<input
@@ -249,7 +249,7 @@ const Terminal: React.FC = () => {
 								disabled={isTyping}
 								onChange={(e) => setInput(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
-								className="w-full border-none bg-transparent text-stone-300 focus:outline-none focus:ring-0"
+								className="w-full border-none bg-transparent text-stone-300 focus:ring-0 focus:outline-hidden"
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -267,7 +267,7 @@ const Terminal: React.FC = () => {
 										handleSubmit(e);
 									} else handleKeyDown(e);
 								}}
-								className="w-full flex-1 text-stone-300 focus:outline-none focus:ring-0"
+								className="w-full flex-1 text-stone-300 focus:ring-0 focus:outline-hidden"
 							/>
 						)}
 					</div>
@@ -286,7 +286,7 @@ const Terminal: React.FC = () => {
 							</button>
 						</div>
 					) : (
-						<span className="hidden select-none text-xs text-stone-600 sm:inline"> enter to run · clear to reset</span>
+						<span className="hidden text-xs text-stone-600 select-none sm:inline"> enter to run · clear to reset</span>
 					)}
 				</div>
 			</div>

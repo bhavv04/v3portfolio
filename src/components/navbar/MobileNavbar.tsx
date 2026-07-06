@@ -82,7 +82,7 @@ export function MobileNavbar({ className }: { className?: string }) {
 									aria-label={label}
 									className={cn(
 										"relative flex size-10 items-center justify-center rounded-3xl transition-all duration-200 md:size-12",
-										"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
+										"focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:outline-hidden",
 										isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
 									)}
 								>
