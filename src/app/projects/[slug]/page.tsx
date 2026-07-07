@@ -28,18 +28,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 				)}
 				<div>
 					<h1 className="text-3xl font-bold text-white">{project.title}</h1>
-					<p className="text-sm text-stone-100/40 italic">{project.tagline}</p>
+					<p className="text-sm text-stone-100/70 italic">{project.tagline}</p>
 				</div>
 			</header>
 
 			<div className="mb-4 flex items-center gap-2">
 				<ProjectStatusBadge status={project.status} />
-				{project.featured && <span className="rounded-full bg-violet-500/10 px-2 text-xs text-violet-300">featured</span>}
+				{project.featured && <span className="rounded-full bg-violet-500/20 px-2 text-xs text-violet-300">featured</span>}
 			</div>
 
 			<div className="mb-6 flex flex-wrap gap-1">
 				{project.tech.map((t) => (
-					<span key={t} className="rounded-md bg-stone-300/10 px-2 py-1 text-xs text-white/60">
+					<span key={t} className="rounded-md bg-stone-900 px-2 py-1 text-xs text-white/60">
 						{t}
 					</span>
 				))}
