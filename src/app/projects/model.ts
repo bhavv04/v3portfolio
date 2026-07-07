@@ -4,6 +4,7 @@ export type ProjectTag = "machine learning" | "data engineering" | "software eng
 
 export interface Project {
 	id: string;
+	rank: number;
 	slug: string;
 	title: string;
 	tagline: string;

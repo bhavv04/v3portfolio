@@ -3,7 +3,7 @@ title: "verrere"
 tagline: "Tinder for books — swipe through titles, build your shelf, discover what to read next"
 slug: "verrere"
 github: "https://github.com/bhavv04/verrere"
-live: ""
+live: "https://verrere.vercel.app/"
 status: "active"
 featured: true
 tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "Clerk"]

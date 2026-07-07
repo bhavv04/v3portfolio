@@ -6,11 +6,7 @@ interface ProjectGridProps {
 }
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
-	const ordered = [...projects].sort((a, b) => {
-		const aHasImage = a.image && a.image.length > 0 ? 1 : 0;
-		const bHasImage = b.image && b.image.length > 0 ? 1 : 0;
-		return bHasImage - aHasImage;
-	});
+	const ordered = [...projects].sort((a, b) => a.rank - b.rank);
 
 	if (projects.length === 0) {
 		return <p className="mt-16 text-center text-sm">no projects match this filter</p>;

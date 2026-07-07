@@ -3,6 +3,7 @@ import { Project } from "./model";
 export const projects: Project[] = [
 	{
 		id: "collatz-viz",
+		rank: 9,
 		slug: "collatz-viz",
 		title: "Collatz Conjecture Explorer",
 		tagline: "Nobody has proved it. here's what it looks like",
@@ -17,7 +18,26 @@ export const projects: Project[] = [
 		hasCaseStudy: false
 	},
 	{
+		id: "groat",
+		rank: 1,
+		slug: "groat",
+		title: "groat",
+		tagline: "Every token counts.",
+		description:
+			"A self-hosted LLM proxy that reduces API costs through semantic response caching and intelligent model routing, exposing a drop-in OpenAI-compatible endpoint with no application code changes.",
+		tags: ["systems programming", "machine learning"],
+		tech: ["Rust", "Tokio", "OpenAI-compatible APIs", "Vector databases", "Embeddings", "LLMs"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/groat",
+		live: "",
+		image: "/images/projects/groat.png",
+		featured: true,
+		hasCaseStudy: false
+	},
+	{
 		id: "mapreduce-engine",
+		rank: 10,
 		slug: "mapreduce-engine",
 		title: "creduce",
 		tagline: "Hadoop is overkill. built it anyway, from scratch.",
@@ -34,6 +54,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "calvin-hobbes-api",
+		rank: 8,
 		slug: "calvin-hobbes-api",
 		title: "Calvin & Hobbes Quote API",
 		tagline: "Philosophy from a six-year-old, on demand",
@@ -50,6 +71,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "thunderhead",
+		rank: 2,
 		slug: "thunderhead",
 		title: "Thunderhead",
 		tagline: "Silent observation. no captchas. no cloudflare.",
@@ -67,6 +89,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "verrere",
+		rank: 4,
 		slug: "verrere",
 		title: "verrere",
 		tagline: "Tinder for books. Swipe right to build your shelf",
@@ -84,6 +107,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "funes",
+		rank: 3,
 		slug: "funes",
 		title: "funes",
 		tagline: "Your machine's memory, queryable.",
@@ -97,10 +121,11 @@ export const projects: Project[] = [
 		image: "/images/projects/funes.png",
 		live: "https://get-funes.vercel.app/",
 		featured: true,
-		hasCaseStudy: false
+		hasCaseStudy: true
 	},
 	{
 		id: "ember",
+		rank: 5,
 		slug: "ember",
 		title: "Ember",
 		tagline: "Not a calorie tracker. a deficit visualizer.",
@@ -118,6 +143,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "terraseed",
+		rank: 7,
 		slug: "terraseed",
 		title: "Terraseed",
 		tagline: "30 years of climate data, one planting score",
@@ -135,6 +161,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "redis-c",
+		rank: 11,
 		slug: "redis-c",
 		title: "Custom Redis",
 		tagline: "Redis, from scratch, in C.",
@@ -151,6 +178,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "gaia",
+		rank: 6,
 		slug: "gaia",
 		title: "Gaia",
 		tagline: "Cross-domain cascade failure prediction in ecological systems",
@@ -167,6 +195,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "awkrs",
+		rank: 12,
 		slug: "awkrs",
 		title: "GNU AWK in rust",
 		tagline: "awk, rewritten in Rust, without the archaeology",
