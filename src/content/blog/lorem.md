@@ -1,6 +1,6 @@
 ---
 title: "On the Art of Saying Nothing at Length"
-date: "2026-07-06"
+date: "2026-07-05"
 excerpt: "A sprawling, meandering test post filled with placeholder text to make sure the blog layout doesn't fall apart under pressure."
 ---
 
@@ -19,7 +19,7 @@ Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdi
 
 ## Testing Images
 
-![Sample photo](/images/blog/lorem.jpg)
+![Sample photo](/images/content/blog/lorem.jpg)
 
 Some text after the image to check spacing.
 

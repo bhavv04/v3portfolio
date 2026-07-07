@@ -1,6 +1,6 @@
 # v3portfolio 
 
-![portfolio](portfolio.png)
+![portfolio](./public/images/readme.png)
 
 a little corner of the internet, hand crafted with next.js and too much chocolate.
 
@@ -30,7 +30,3 @@ then visit `http://localhost:3000` and see what's there ✿
 **License** - MIT, do whatever, see [LICENSE](LICENSE)
 
 **Background photo** by [JUNHØ](https://unsplash.com/@junhochak?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/green-pine-tree-leaves-in-close-up-photography-K55AXFodyH4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 
-
-<div align="center">
-  <img src="https://raynecloudy.nekoweb.org/media/bar-cat.gif" alt="Oneko running">
-</div>

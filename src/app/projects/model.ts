@@ -4,10 +4,10 @@ export type ProjectTag = "machine learning" | "data engineering" | "software eng
 
 export interface Project {
 	id: string;
+	slug: string;
 	title: string;
 	tagline: string;
 	description: string;
-	longDescription: string;
 	tags: ProjectTag[];
 	tech: string[];
 	status: ProjectStatus;
@@ -16,10 +16,5 @@ export interface Project {
 	image?: string;
 	live?: string;
 	featured: boolean;
-	pageContent?: {
-		hook: string;
-		howItWorks: string;
-		techChoices: string;
-		lessonsLearned: string;
-	};
+	hasCaseStudy: boolean;
 }

@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
 						<Link href={project.github} target="_blank" rel="noopener noreferrer">
 							<h3 className="truncate text-lg">{project.title}</h3>
 						</Link>
-						<p className="text-xs italic text-stone-100/40">{project.tagline}</p>
+						<p className="text-xs text-stone-100/40 italic">{project.tagline}</p>
 					</div>
 				</div>
 
@@ -54,24 +54,35 @@ export function ProjectCard({ project }: { project: Project }) {
 				</div>
 
 				{/* Links */}
-				<div className="mt-auto flex items-center gap-2 text-sm">
-					<a
-						href={project.github}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-					>
-						<FiGithub size={13} /> Source
-					</a>
-					{project.live && (
+				<div className="mt-auto flex items-center justify-between text-sm">
+					<div className="flex items-center gap-2">
 						<a
-							href={project.live}
+							href={project.github}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
 						>
-							<ExternalLink size={13} /> Live
+							<FiGithub size={13} /> Source
 						</a>
+						{project.live && (
+							<a
+								href={project.live}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+							>
+								<ExternalLink size={13} /> Live
+							</a>
+						)}
+					</div>
+
+					{project.hasCaseStudy && (
+						<Link
+							href={`/projects/${project.slug}`}
+							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+						>
+							See more
+						</Link>
 					)}
 				</div>
 			</div>

@@ -1,22 +1,14 @@
 export type ProjectStatus = "completed" | "in-progress" | "submitted" | "preprint";
 
 export type ResearchTag =
-	| "finance"
-	| "medicine"
-	| "mathematics"
-	| "climate"
-	| "geospatial"
-	| "physics"
-	| "neuroscience"
-	| "economics"
-	| "artificial-intelligence";
+	"finance" | "medicine" | "mathematics" | "climate" | "geospatial" | "physics" | "neuroscience" | "economics" | "artificial-intelligence";
 
 export interface CaseStudy {
 	id: string;
+	slug: string; // NEW
 	title: string;
 	subtitle: string;
-	tagline: string; // add this
-	abstract: string;
+	tagline: string;
 	status: ProjectStatus;
 	tags: ResearchTag[];
 	year: number;
@@ -28,7 +20,7 @@ export interface CaseStudy {
 		paper?: string;
 		writeup?: string;
 	};
-	highlights?: string[];
+	hasCaseStudy: boolean;
 }
 
 export interface ResearchCardProps {

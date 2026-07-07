@@ -3,42 +3,41 @@ import { Project } from "./model";
 export const projects: Project[] = [
 	{
 		id: "collatz-viz",
+		slug: "collatz-viz",
 		title: "Collatz Conjecture Explorer",
 		tagline: "Nobody has proved it. here's what it looks like",
 		description: "Interactive visualization of stopping-time landscapes for the Collatz Conjecture, with original research angles on sequence behavior.",
-		longDescription:
-			"A research-driven tool that maps stopping times across number ranges, revealing structural patterns in the Collatz sequence. Built to support original mathematical research, featuring zoom, density plots, and export capabilities.",
 		tags: ["software engineering"],
 		tech: ["Rust", "WebAssembly", "TypeScript", "Vite", "Canvas API", "Web Workers"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/collatz-explorer",
 		image: "/images/projects/collatz.png",
-		featured: false
+		featured: false,
+		hasCaseStudy: false
 	},
 	{
 		id: "mapreduce-engine",
+		slug: "mapreduce-engine",
 		title: "creduce",
 		tagline: "Hadoop is overkill. built it anyway, from scratch.",
 		description:
 			"A MapReduce engine built from scratch in C - no Hadoop, no JVM. Full map-shuffle-reduce pipeline with a pthreads worker pool, verified on 217k key-value pairs.",
-		longDescription:
-			"Built after studying Hadoop in a Big Data course and wanting to understand what the framework actually does under the hood. Implements the full MapReduce pipeline in C - a function pointer job API mirroring the original Google design, dynamic KVList data structure with automatic reallocation, parallel map phase via a pthreads worker pool, and qsort-based shuffle phase. Verified on Project Gutenberg's Moby Dick: 21,936 lines, 217,523 key-value pairs, correct word frequencies across 1, 2, 4, and 8 threads. Benchmarked on a synthetic 100k line dataset to isolate threading performance from I/O overhead.",
 		tags: ["systems programming", "data engineering"],
 		tech: ["C", "pthreads", "Make", "GCC"],
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/creduce",
 		image: "/images/projects/creduce.png",
-		featured: false
+		featured: false,
+		hasCaseStudy: false
 	},
 	{
 		id: "calvin-hobbes-api",
+		slug: "calvin-hobbes-api",
 		title: "Calvin & Hobbes Quote API",
 		tagline: "Philosophy from a six-year-old, on demand",
 		description: "A Flask API serving random Calvin and Hobbes quotes as JSON, built for easy integration into projects that need a touch of whimsy.",
-		longDescription:
-			"A lightweight REST API built with Flask that returns random quotes from Bill Watterson's Calvin and Hobbes. Quotes are stored in a structured JSON file and served via a single endpoint. Designed for easy embedding into portfolios, bots, or any project that could use some philosophical wisdom from a six-year-old and his tiger.",
 		tags: ["software engineering"],
 		tech: ["Python", "Flask"],
 		status: "completed",
@@ -46,16 +45,16 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/calandhobbes-quoter",
 		live: "https://calandhobbes-quoter-7gd9mxl0e-bhavdeeps-projects.vercel.app/api/quotes/random",
 		image: "/images/projects/calandhobbes.png",
-		featured: false
+		featured: false,
+		hasCaseStudy: false
 	},
 	{
 		id: "thunderhead",
+		slug: "thunderhead",
 		title: "Thunderhead",
 		tagline: "Silent observation. no captchas. no cloudflare.",
 		description:
 			"A lightweight reverse proxy that passively scores the intent of every incoming HTTP request using behavioral signals, rate, crawl patterns, and header anomalies, to silently tarpit or block bot traffic without CAPTCHAs, JS challenges, or third-party services.",
-		longDescription:
-			"Thunderhead sits in front of your server and scores every request 0-100 using behavioral signals - robots.txt violations, sequential path crawling, request rate, and suspicious headers. Below 40 it passes through; above 40 it tarpits with a configurable delay; above 75 it returns 403. No JS challenges, no CAPTCHAs - just silent observation and graduated responses. All decisions log as structured JSON.",
 		tags: ["systems programming", "software engineering"],
 		tech: ["Go", "net/http", "httputil.ReverseProxy", "Bubbletea", "Lipgloss", "Next.js", "Docker", "ngrok"],
 		status: "active",
@@ -63,16 +62,16 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/thunderhead",
 		live: "https://getthunderhead.vercel.app/",
 		image: "/images/projects/thunderhead.png",
-		featured: true
+		featured: true,
+		hasCaseStudy: true
 	},
 	{
 		id: "verrere",
+		slug: "verrere",
 		title: "verrere",
 		tagline: "Tinder for books. Swipe right to build your shelf",
 		description:
 			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
-		longDescription:
-			"verrere re-imagines book discovery by replacing overwhelming lists with an elegant, gesture-driven interface. Built with Next.js 15 and Framer Motion, users select preferred genres during onboarding and browse an animated stack of cards fed by the Hardcover API. Right swipes instantly commit books to a personal shelf managed via Prisma and a serverless Neon PostgreSQL database, while built-in duplicate prevention guarantees a fresh feed every session.",
 		tags: ["software engineering", "data engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
@@ -81,24 +80,15 @@ export const projects: Project[] = [
 		live: "https://verrere.vercel.app/",
 		image: "/images/projects/verrere.png",
 		featured: true,
-		pageContent: {
-			hook: "We stop reading because finding the next book feels like work. verrere turns discovery into a fluid, animated experience where your next favorite read is just a swipe away.",
-			howItWorks:
-				"The application logic branches into three major layers. First, Clerk securely manages user identity and maps authentication tokens to internal data profiles. Upon onboarding, genre preferences are captured and saved to a Neon PostgreSQL instance. The core discovery feed runs through a specialized internal proxy route that queries the Hardcover API, cross-references the user's historical swipe log to isolate unseen material, and delivers a clean payload. Framer Motion tracks gesture velocity and coordinates on screen to power the physical card drag interaction, rendering reactive visual indicators for likes and passes in real time.",
-			techChoices:
-				"Next.js 15 was chosen to exploit the speed and simplicity of Server Actions and optimized route handlers. Prisma 7 handles type-safe database schemas natively with Neon's serverless Postgres connection pooling. Framer Motion was the clear choice for the gesture system because its layout animations handle physical card stacks cleanly without losing smooth frame rates on mobile screens. Clerk allowed us to offload secure session architecture entirely, leaving the database focused solely on user interactions and shelves.",
-			lessonsLearned:
-				"State management across an infinite card stack gets chaotic quickly if you let the UI re-render the whole array on every gesture. Isolating the active card animations from the underlying data pipeline fixed early dropped frames. Managing duplicate prevention at the API level instead of doing filtering in client-side state reduced initial layout lag and made sure network payloads stayed light. The upcoming integration of the Claude API for AI-generated text blurbs will change how users interact with the summaries by making them hyper-personalized to their reading tastes."
-		}
+		hasCaseStudy: false
 	},
 	{
 		id: "funes",
+		slug: "funes",
 		title: "funes",
 		tagline: "Your machine's memory, queryable.",
 		description:
 			"A privacy-first, local-only daemon CLI tool that that builds a semantic index of your development history and indexes your files, notes, and terminal history into a vector database, allowing you to query your past work using natural language.",
-		longDescription:
-			"Inspired by Jorge Luis Borges' short story 'Funes the Memorious', funes is a privacy-first, local-only daemon that builds a semantic index of your development history. It monitors local directories and shell logs, processes data through a local embedding pipeline, and handles vector search completely offline using Ollama and SQLite. It eliminates the need for strict keyword matching, letting you locate obscure bug fixes or past configurations through vague, contextual queries.",
 		tags: ["systems programming", "machine learning", "data engineering", "software engineering"],
 		tech: ["Rust", "Ollama", "SQLite", "cargo", "Tokio", "Clap", "Vector databases", "LLMs"],
 		status: "active",
@@ -107,24 +97,15 @@ export const projects: Project[] = [
 		image: "/images/projects/funes.png",
 		live: "https://get-funes.vercel.app/",
 		featured: true,
-		pageContent: {
-			hook: "You fixed a weird Postgres deadlock bug 3 months ago. You have no idea which file or project it was in, but you know you solved it. funes remembers.",
-			howItWorks:
-				"The utility runs as a lightweight background daemon using Rust. It continuously scans targeted directories and shell history logs, breaking incoming data streams into text chunks. These chunks are pushed to a local Ollama instance running the nomic-embed-text model to generate vector embeddings. The resulting vectors, along with raw metadata, are persisted inside a local SQLite database. When a user runs a query, the search string is embedded in real time, and a cosine similarity search isolates the closest semantic matches. For complex inquiries, an optional LLM synthesis mode routes the top matches through llama3 to compile a direct, plain-English answer.",
-			techChoices:
-				"Rust was selected for the core CLI and daemon to guarantee a minimal memory footprint and high throughput during file watching and parsing. SQLite handles metadata and text chunks reliably without the overhead of spinning up a separate database server. Ollama acts as the inference engine, keeping the embedding generation and LLM synthesis entirely on-device, which ensures absolute data privacy with zero third-party API dependencies.",
-			lessonsLearned:
-				"Building a background file watcher highlighted how quickly unoptimized indexing can thrash CPU cycles, forcing a careful implementation of chunking limits and debounced write thresholds. A major architectural insight was realizing that raw shell logs are incredibly noisy; pre-filtering repetitive commands and failed syntax significantly cleaned up the embedding space and increased query accuracy. The upcoming roadmap focuses on finishing the native shell history hooks and optimizing the SQLite database layout for faster multi-threaded vector comparison."
-		}
+		hasCaseStudy: false
 	},
 	{
 		id: "ember",
+		slug: "ember",
 		title: "Ember",
 		tagline: "Not a calorie tracker. a deficit visualizer.",
 		description:
 			"A calorie deficit visualizer that makes the math of weight loss visceral and concrete - showing the full mountain, how far you've climbed, and when you'll reach the top.",
-		longDescription:
-			"Ember reframes weight loss around the only number that matters: your cumulative deficit. Set a goal weight, log daily calories, and watch your progress climb a visual mountain. Weekly weigh-ins automatically recalibrate your TDEE as your body changes. Activity equivalents translate your remaining deficit into real-world effort - walks, treadmill sessions, bike rides - and a timeline projection estimates your goal date based on current pace.",
 		tags: ["software engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
@@ -132,15 +113,16 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/ember",
 		image: "/images/projects/ember.png",
 		live: "https://myember.vercel.app/",
-		featured: true
+		featured: true,
+		hasCaseStudy: false
 	},
 	{
 		id: "terraseed",
+		slug: "terraseed",
 		title: "Terraseed",
 		tagline: "30 years of climate data, one planting score",
-		description: "Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate data and a composite scoring model.",
-		longDescription:
-			"Terraseed processes three decades of satellite and reanalysis climate data - temperature, precipitation, soil moisture, and frost risk - into a single planting score across the global grid. Features an interactive Plotly Dash dashboard where users can enter coordinates and get a month-by-month planting calendar with the optimal window highlighted automatically.",
+		description:
+			"Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate reanalysis data. A composite scoring model weighs historical temperature stability, precipitation, and frost risk to surface the best planting dates for a given crop and location.",
 		tags: ["machine learning", "data engineering", "data visualization"],
 		tech: ["Python", "Plotly Dash", "scikit-learn", "xarray"],
 		status: "active",
@@ -149,23 +131,14 @@ export const projects: Project[] = [
 		live: "https://bhavv04.github.io/terraseed/",
 		image: "/images/projects/terraseed.png",
 		featured: true,
-		pageContent: {
-			hook: "Every patch of land has a window each year where conditions align for vegetation to take hold. Terraseed finds that window - backed by three decades of satellite and reanalysis climate data.",
-			howItWorks:
-				"The pipeline runs in four stages. First, ERA5 temperature and precipitation data is pulled from the Copernicus CDS, and SMAP soil moisture from NASA Earthdata - 30 years of monthly NetCDF files. xarray handles these natively; loading that volume of gridded climate data into pandas would be the wrong tool entirely. The data is downsampled and cleaned into a feature table, then a weighted composite scoring function runs across the full global grid - temperature and rainfall at 30% each, soil moisture and frost risk at 20% each. The Plotly Dash dashboard sits on top, letting you enter any coordinates and see a month-by-month planting calendar with the optimal window highlighted.",
-			techChoices:
-				"xarray was the only real option for multidimensional NetCDF climate arrays - it understands the lat/lon/time dimensions natively. rioxarray handles the geospatial reprojection on top of that. scikit-learn for the scoring model because the composite function didn't need anything heavier. Plotly Dash over a React frontend because the dashboard needed to stay in Python - keeping the data pipeline and the UI in the same language meant no API layer to maintain.",
-			lessonsLearned:
-				"The ERA5 reprojection was silently wrong for longer than I'd like to admit - the scores looked plausible for temperate regions but were off at high latitudes because the grid wasn't being handled correctly during downsampling. Plausible-looking output is the hardest bug to catch. The roadmap item for a 1990–2005 vs 2006–2020 score shift map started as a curiosity and turned into the most interesting thing in the project - climate signal is visible in the scores if you split the dataset in half."
-		}
+		hasCaseStudy: false
 	},
 	{
 		id: "redis-c",
+		slug: "redis-c",
 		title: "Custom Redis",
 		tagline: "Redis, from scratch, in C.",
 		description: "A ground-up implementation of a Redis-compatible in-memory key-value store written in C.",
-		longDescription:
-			"Redic implements the core Redis wire protocol (RESP) and a subset of commands - GET, SET, DEL, EXPIRE, TTL, LPUSH, LPOP - in plain C. Built to understand how Redis actually works: event loops, hash table internals, memory layout, and socket I/O without libuv or any async framework. Connects with any standard Redis client.",
 		tags: ["systems programming"],
 		tech: ["C", "POSIX sockets", "RESP protocol", "Make"],
 		status: "completed",
@@ -173,16 +146,16 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/redis",
 		live: "",
 		image: "/images/projects/redis.png",
-		featured: false
+		featured: false,
+		hasCaseStudy: false
 	},
 	{
 		id: "gaia",
+		slug: "gaia",
 		title: "Gaia",
 		tagline: "Cross-domain cascade failure prediction in ecological systems",
 		description:
 			"Models multi-layered environmental dependencies-dead zones, food webs, and atmospheric drift-to predict how local structural collapses cascade across global ecological boundaries.",
-		longDescription:
-			"Gaia maps interconnected environmental systems as a multi-layer directed graph to simulate and predict ecosystem collapse thresholds. By combining marine hypoxic timeline data, trophic food web dependencies, and atmospheric tracer vectors, the engine evaluates how a localized resource failure propagates across domain borders. It moves past single-variable climate monitoring to map the structural vulnerability of the biosphere's overlapping networks.",
 		tags: ["machine learning", "data engineering"],
 		tech: ["Python", "NetworkX", "PyTorch Geometric", "xarray", "GeoPandas"],
 		status: "active",
@@ -190,24 +163,15 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/gaia",
 		image: "/images/projects/gaia.png",
 		featured: true,
-		pageContent: {
-			hook: "Ecosystems don't collapse in isolation. When a marine dead zone chokes out a fishery, the ripple runs through coastal food webs and alters latent nutrient cycles. Gaia models the invisible strings between domains to predict what falls next.",
-			howItWorks:
-				"The core modeling pipeline ingests heterogeneous data streams into a unified Graph Neural Network (GNN). Marine hypoxia grids are parsed via xarray, regional trophic webs are built from taxomonic interaction databases, and planetary boundary layer winds are treated as advection vectors using atmospheric drift datasets. Gaia projects these as distinct layers in a multiplex network. Node state transitions are calculated using stochastic differential equations, where local resource exhaustion triggers edge-weight degradation across neighboring systems, surfacing hidden choke points where a minor regional anomaly causes systemic cross-domain collapse.",
-			techChoices:
-				"PyTorch Geometric was chosen to handle the message-passing mechanics across non-Euclidean ecological structures, which standard graph libraries fail to scale. NetworkX handles initial graph construction, topological sorting, and baseline centrality metrics. xarray and GeoPandas manage the heavy spatial-temporal anchoring, ensuring that physical atmospheric drift coordinates align perfectly with localized biological frameworks. Python keeps this entire simulation tightly coupled with existing scientific computing ecosystems.",
-			lessonsLearned:
-				"The biggest mathematical challenge was tuning the dissipation constants-if the damping effect between layers is too high, cascades vanish; if it's too low, every minor drought triggers a global extinction event. Calibrating these thresholds against historical tipping points, like major oceanic anoxic events, proved that structural topology matters far more than baseline biomass volume. A fragile network structure scrambles an ecosystem much faster than low resource counts do."
-		}
+		hasCaseStudy: false
 	},
 	{
 		id: "awkrs",
+		slug: "awkrs",
 		title: "GNU AWK in rust",
 		tagline: "awk, rewritten in Rust, without the archaeology",
 		description:
 			"A Rust implementation of the AWK text-processing language, rebuilding the core pattern-action model from scratch with modern memory safety guarantees.",
-		longDescription:
-			"awk.rs reimplements the AWK programming language in Rust - covering field splitting, pattern matching, built-in variables, arithmetic, string functions, and the full pattern-action execution loop. The goal was to understand how a line-oriented interpreter actually works at the parser and evaluator level, without the legacy C baggage of the original implementation. Passes the core AWK test suite and handles real-world log processing workloads.",
 		tags: ["systems programming"],
 		tech: ["Rust"],
 		status: "active",
@@ -215,6 +179,7 @@ export const projects: Project[] = [
 		github: "https://github.com/bhavv04/awkrs",
 		live: "",
 		image: "/images/projects/awkrs.png",
-		featured: false
+		featured: false,
+		hasCaseStudy: false
 	}
 ];

@@ -3,11 +3,10 @@ import { CaseStudy } from "./model";
 export const caseStudies: CaseStudy[] = [
 	{
 		id: "lacunae",
+		slug: "lacunae",
 		title: "Lacunae",
 		subtitle: "Accelerated MRI Reconstruction from Undersampled K-Space via U-Net",
 		tagline: "U-Net that reconstructs full MRI scans from 25% of the frequency data.",
-		abstract:
-			"MRI acquisition is slow because it requires dense sampling of k-space, the frequency-domain representation of the scan. Lacunae artificially undersamples k-space at 4x acceleration - retaining only 25% of frequency lines - and trains a U-Net to reconstruct diagnostically useful images from the incomplete data. A naive inverse FFT on undersampled k-space produces severe aliasing artifacts; the model learns to recover the missing structure. Trained on the fastMRI single-coil knee dataset with L1 loss and evaluated on SSIM and PSNR.",
 		status: "completed",
 		tags: ["artificial-intelligence", "medicine", "mathematics"],
 		year: 2025,
@@ -23,19 +22,14 @@ export const caseStudies: CaseStudy[] = [
 		links: {
 			repo: "https://github.com/bhavv04/lacunae"
 		},
-		highlights: [
-			"Center 8% of k-space columns always retained - low frequencies carry the bulk of image energy",
-			"~7.7M parameter U-Net with four encoder/decoder stages and transposed convolution upsampling",
-			"Benchmarked on NYU fastMRI single-coil knee dataset (Zbontar et al., 2018)"
-		]
+		hasCaseStudy: true
 	},
 	{
 		id: "precursor",
+		slug: "precursor",
 		title: "Precursor",
 		subtitle: "Cross-Asset Momentum Spillover from Commodities to Sector Equities via Granger Causality",
 		tagline: "Tests whether commodity price momentum predicts sector equity moves 1–5 days ahead.",
-		abstract:
-			"Commodities are upstream inputs to the businesses that consume them. This project investigates whether commodity momentum statistically precedes sector equity momentum, quantifies the lag structure across 1–5 trading days, and tests whether that predictive precedence is exploitable as a long/short trading signal. Granger causality tests, VAR estimation, and a DAG-based causal graph are applied across five commodity–equity pairs including WTI→XLE, Copper→XLB, and Gold→GDX.",
 		status: "in-progress",
 		tags: ["finance", "economics", "mathematics"],
 		year: 2025,
@@ -52,19 +46,14 @@ export const caseStudies: CaseStudy[] = [
 			repo: "https://github.com/bhavv04/precursor",
 			paper: ""
 		},
-		highlights: [
-			"Tests momentum spillover at lags k ∈ {1,2,3,4,5} trading days across 3,500+ daily observations",
-			"DAG construction maps in/out-degree centrality to identify leading commodity indicators",
-			"Backtest evaluates annualised Sharpe, max drawdown, and hit rate on an 80/20 train/test split"
-		]
+		hasCaseStudy: false
 	},
 	{
 		id: "deadzones",
+		slug: "deadzones",
 		title: "Deadzones",
 		subtitle: "Modeling the Seasonal Collapse and Recovery of Gulf Hypoxia from River Nutrient Loading",
 		tagline: "40-year model tracing Gulf of Mexico dead zones back to Midwest agricultural runoff.",
-		abstract:
-			"A 40-year computational oceanography study modeling the Gulf of Mexico hypoxic dead zone using NOAA, LUMCON, USGS, and World Ocean Atlas datasets. The project combines annual hypoxia measurements, Mississippi River nutrient flux, and sea surface temperature to predict dead zone size and identify anomalous years driven by flooding, hurricanes, and climate variability. Random Forest regression with Leave-One-Out cross validation reveals spring nitrogen loading as the dominant predictor of hypoxia extent, quantitatively tracing the causal chain from Midwest agricultural runoff to marine ecosystem collapse.",
 		status: "completed",
 		tags: ["climate", "geospatial", "mathematics"],
 		year: 2025,
@@ -82,19 +71,14 @@ export const caseStudies: CaseStudy[] = [
 		links: {
 			repo: "https://github.com/bhavv04/deadzone"
 		},
-		highlights: [
-			"Built a 40-year Gulf hypoxia time series (1985–2024) integrating NOAA, LUMCON, USGS, and World Ocean Atlas datasets",
-			"Spring nitrogen load was the dominant predictor of dead zone size (r = 0.788), accounting for 80.4% of model importance",
-			"Random Forest model achieved R² = 0.52 with Leave-One-Out CV and identified anomalous years linked to hurricanes and extreme flooding"
-		]
+		hasCaseStudy: false
 	},
 	{
 		id: "grokking",
+		slug: "grokking",
 		title: "Grokking",
 		subtitle: "Reproducing Generalization Beyond Overfitting on Modular Arithmetic",
 		tagline: "Reproduces the phenomenon where a transformer memorizes first, then suddenly generalizes.",
-		abstract:
-			"A from-scratch reproduction of the grokking phenomenon from Power et al. (2022) - where a small transformer trained on modular addition memorizes the training set early, then long after overfitting, suddenly generalizes. The key ingredient is high weight decay, which pressures the model away from memorization and toward the underlying algorithm. Built as a single self-contained script with a custom training loop and publication-style loss/accuracy plots.",
 		status: "completed",
 		tags: ["artificial-intelligence", "mathematics"],
 		year: 2025,
@@ -109,19 +93,14 @@ export const caseStudies: CaseStudy[] = [
 		links: {
 			repo: "https://gist.github.com/bhavv04/6389c05c23e9093a91c5cf63466ece7c"
 		},
-		highlights: [
-			"Reproduces grokking on (a + b) mod 97 with only 30% of data used for training",
-			"Weight decay = 1.0 is the critical hyperparameter - without it, the model never generalizes",
-			"Auto-detects the grokking epoch (val acc > 0.95) and marks it on the training curves"
-		]
+		hasCaseStudy: false
 	},
 	{
 		id: "quantum-drug-binding",
+		slug: "quantum-drug-binding",
 		title: "Quantum Drug Binding",
 		subtitle: "Predicting Small-Molecule Binding Affinity via Quantum Chemical Descriptors",
 		tagline: "Uses quantum mechanical molecular descriptors to predict how tightly a drug binds to its target.",
-		abstract:
-			"Classical docking scores approximate binding affinity using force-field geometry, but ignore the electronic structure of the molecule. This project computes quantum chemical descriptors - HOMO/LUMO energies, molecular electrostatic potential, and partial charge distributions - using DFT calculations, then trains a regression model to predict binding affinity against a target protein. Evaluated on a curated subset of the ChEMBL database with IC50 labels.",
 		status: "in-progress",
 		tags: ["artificial-intelligence", "medicine", "mathematics"],
 		year: 2026,
@@ -137,10 +116,6 @@ export const caseStudies: CaseStudy[] = [
 		links: {
 			repo: "https://github.com/bhavv04/quantum-drug-binding"
 		},
-		highlights: [
-			"Quantum descriptors computed via DFT rather than classical force-field approximations",
-			"HOMO-LUMO gap used as a proxy for molecular reactivity and binding selectivity",
-			"Trained and evaluated on ChEMBL IC50 data with cross-validated regression metrics"
-		]
+		hasCaseStudy: false
 	}
 ];
