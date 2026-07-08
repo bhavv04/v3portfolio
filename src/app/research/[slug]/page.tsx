@@ -35,7 +35,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 
 			<div className="fade-in-up mb-6 flex flex-wrap gap-1.5" style={{ "--delay-index": 2 } as React.CSSProperties}>
 				{study.tags.map((tag) => (
-					<span key={tag} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/60">
+					<span key={tag} className="rounded-md bg-stone-900 px-2 py-0.5 text-xs text-white/60">
 						{tag}
 					</span>
 				))}
