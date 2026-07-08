@@ -31,7 +31,7 @@ export const projects: Project[] = [
 		year: 2026,
 		github: "https://github.com/bhavv04/groat",
 		live: "",
-		image: "/images/projects/groat.png",
+		image: "/images/projects/groat3.png",
 		featured: true,
 		hasCaseStudy: false
 	},
@@ -178,7 +178,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "gaia",
-		rank: 6,
+		rank: 7,
 		slug: "gaia",
 		title: "Gaia",
 		tagline: "Cross-domain cascade failure prediction in ecological systems",
@@ -209,6 +209,24 @@ export const projects: Project[] = [
 		live: "",
 		image: "/images/projects/awkrs.png",
 		featured: false,
+		hasCaseStudy: false
+	},
+	{
+		id: "solace",
+		rank: 6,
+		slug: "solace",
+		title: "solace",
+		tagline: "Predicting wildfire spread, not just visualizing it.",
+		description:
+			"A wildfire spread simulator implementing the Canadian Forest Fire Behaviour Prediction (FBP) System to model boreal forest fire growth from real weather, terrain, and fuel data, validated against the 2016 Fort McMurray wildfire.",
+		tags: ["systems programming", "data visualization", "data engineering", "computer vision"],
+		tech: ["Rust", "Python", "GeoPandas", "Rasterio", "xarray", "ERA5", "Canadian FBP System", "Fire Weather Index (FWI)", "GIS"],
+		status: "active",
+		year: 2026,
+		github: "https://github.com/bhavv04/solace",
+		live: "",
+		image: "/images/projects/solace.png",
+		featured: true,
 		hasCaseStudy: false
 	}
 ];
