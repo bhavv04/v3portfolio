@@ -15,12 +15,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
 	return (
 		<article className="mx-auto max-w-4xl pb-16">
-			<Link href="/projects" className="mb-5 inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white">
+			<Link
+				href="/projects"
+				className="fade-in-up mb-5 inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white"
+				style={{ "--delay-index": 0 } as React.CSSProperties}
+			>
 				<ArrowLeft size={16} />
 				Back to Projects
 			</Link>
 
-			<header className="mb-4 flex items-start gap-3">
+			<header className="fade-in-up mb-4 flex items-start gap-3" style={{ "--delay-index": 1 } as React.CSSProperties}>
 				{project.image && (
 					<div className="relative h-12 w-12 shrink-0">
 						<Image src={project.image} alt={`${project.title} logo`} fill className="object-contain" />
@@ -32,12 +36,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 				</div>
 			</header>
 
-			<div className="mb-4 flex items-center gap-2">
+			<div className="fade-in-up mb-4 flex items-center gap-2" style={{ "--delay-index": 2 } as React.CSSProperties}>
 				<ProjectStatusBadge status={project.status} />
 				{project.featured && <span className="rounded-full bg-violet-500/20 px-2 text-xs text-violet-300">featured</span>}
 			</div>
 
-			<div className="mb-6 flex flex-wrap gap-1">
+			<div className="fade-in-up mb-6 flex flex-wrap gap-1" style={{ "--delay-index": 3 } as React.CSSProperties}>
 				{project.tech.map((t) => (
 					<span key={t} className="rounded-md bg-stone-900 px-2 py-1 text-xs text-white/60">
 						{t}
@@ -46,11 +50,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 			</div>
 
 			<div
-				className="prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2"
+				className="fade-in-up prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2"
+				style={{ "--delay-index": 4 } as React.CSSProperties}
 				dangerouslySetInnerHTML={{ __html: project.contentHtml }}
 			/>
 
-			<div className="flex gap-3">
+			<div className="fade-in-up flex gap-3" style={{ "--delay-index": 5 } as React.CSSProperties}>
 				<a
 					href={project.github}
 					target="_blank"

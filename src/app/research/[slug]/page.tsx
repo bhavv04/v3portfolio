@@ -19,17 +19,21 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 
 	return (
 		<article className="mx-auto max-w-4xl pb-16">
-			<Link href="/research" className="mb-5 inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white">
+			<Link
+				href="/research"
+				className="fade-in-up mb-5 inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white"
+				style={{ "--delay-index": 0 } as React.CSSProperties}
+			>
 				<ArrowLeft size={16} />
 				Back to Research
 			</Link>
 
-			<header className="mb-4">
+			<header className="fade-in-up mb-4" style={{ "--delay-index": 1 } as React.CSSProperties}>
 				<h1 className="text-3xl font-bold text-white">{study.title}</h1>
 				<p className="mt-1 text-sm text-white/50">{study.subtitle}</p>
 			</header>
 
-			<div className="mb-6 flex flex-wrap gap-1.5">
+			<div className="fade-in-up mb-6 flex flex-wrap gap-1.5" style={{ "--delay-index": 2 } as React.CSSProperties}>
 				{study.tags.map((tag) => (
 					<span key={tag} className="rounded-md bg-stone-300/10 px-2 py-0.5 text-xs text-white/60">
 						{tag}
@@ -38,11 +42,15 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</div>
 
 			{/* Abstract (from markdown body) */}
-			<div className="prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+			<div
+				className="fade-in-up prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2"
+				style={{ "--delay-index": 3 } as React.CSSProperties}
+				dangerouslySetInnerHTML={{ __html: contentHtml }}
+			/>
 
 			{/* Highlights (from markdown frontmatter) */}
 			{highlights.length > 0 && (
-				<div className="mb-8">
+				<div className="fade-in-up mb-8" style={{ "--delay-index": 4 } as React.CSSProperties}>
 					<p className="mb-2 text-xs text-white/30">Highlights</p>
 					<ul className="flex flex-col gap-1">
 						{highlights.map((h) => (
@@ -56,7 +64,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			)}
 
 			{/* Methods */}
-			<div className="mb-8">
+			<div className="fade-in-up mb-8" style={{ "--delay-index": 5 } as React.CSSProperties}>
 				<p className="mb-2 text-xs text-white/30">Methods</p>
 				<div className="flex flex-wrap gap-x-3 gap-y-1">
 					{study.methods.map((method) => (
@@ -68,7 +76,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</div>
 
 			{/* Stack */}
-			<div className="mb-8">
+			<div className="fade-in-up mb-8" style={{ "--delay-index": 6 } as React.CSSProperties}>
 				<p className="mb-2 text-xs text-white/30">Stack</p>
 				<div className="flex flex-wrap gap-1.5">
 					{study.stack.map((s) => (
@@ -80,7 +88,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</div>
 
 			{/* Links */}
-			<div className="flex items-center gap-2">
+			<div className="fade-in-up flex items-center gap-2" style={{ "--delay-index": 7 } as React.CSSProperties}>
 				{study.links.repo && (
 					<a
 						href={study.links.repo}
