@@ -29,7 +29,7 @@ export default function ResearchCard({ study }: { study: CaseStudy }) {
 				{/* Methods */}
 				<div className="flex flex-wrap gap-x-3 gap-y-1">
 					{study.methods.map((method) => (
-						<span key={method} className="text-xs text-white/40 before:mr-1.5 before:content-['☘']">
+						<span key={method} className="text-xs text-white/40 before:mr-1.5 before:content-['❀']">
 							{method}
 						</span>
 					))}

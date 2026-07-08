@@ -125,7 +125,7 @@ export function ProjectShowcase({ project, direction = "row" }: ProjectShowcaseP
 					<ul className="space-y-2 rounded-xl text-sm">
 						{project.bullets.map((bullet) => (
 							<li key={bullet} className="flex items-start gap-2 text-sm">
-								<span className="shrink-0 text-white/70">{` ☘ `}</span>
+								<span className="shrink-0 text-white/70">{` ❀ `}</span>
 								<span>{bullet}</span>
 							</li>
 						))}
