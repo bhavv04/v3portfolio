@@ -78,7 +78,7 @@ export default function ResearchFilter() {
 						<button
 							key={status}
 							onClick={() => toggleStatus(status)}
-							className={`fade-in-up relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-800 ease-in-out ${
+							className={`fade-in-up relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
 								active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
 							}`}
 							style={{ "--delay-index": i } as React.CSSProperties}
@@ -97,7 +97,7 @@ export default function ResearchFilter() {
 						<button
 							key={tag}
 							onClick={() => toggleTag(tag)}
-							className={`fade-in relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-800 ease-in-out ${
+							className={`fade-in relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
 								active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
 							}`}
 							style={{ "--delay-index": i } as React.CSSProperties}
@@ -110,7 +110,7 @@ export default function ResearchFilter() {
 				{hasFilters && (
 					<button
 						onClick={clearAll}
-						className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white hover:underline"
+						className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white"
 					>
 						<span>Clear all</span>
 						<svg

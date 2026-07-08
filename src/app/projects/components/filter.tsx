@@ -25,7 +25,7 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 					<button
 						key={tag}
 						onClick={() => toggle(tag)}
-						className={`duration-800 relative inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm transition-colors ease-in-out fade-in ${
+						className={`fade-in relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
 							active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
 						}`}
 						style={{ "--delay-index": i } as React.CSSProperties}
@@ -37,7 +37,7 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 			{selected.size > 0 && (
 				<button
 					onClick={() => onChange(new Set())}
-					className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white hover:underline"
+					className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white"
 				>
 					<span>Clear all</span>
 					<svg
