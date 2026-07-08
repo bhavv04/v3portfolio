@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 
 export default function ResearchCard({ study }: { study: CaseStudy }) {
 	return (
-		<div className="flex flex-col rounded-xl bg-neutral-900 transition-all duration-300 hover:scale-[1.02]">
-			<div className="flex flex-col gap-4 p-4">
+		<div className="flex flex-col rounded-xl bg-neutral-900 transition-all duration-300 hover:scale-[1.01]">
+			<div className="flex flex-col gap-4 p-5">
 				{/* Title */}
 				<div className="flex flex-col">
 					<h3 className="text-lg">{study.title}</h3>
@@ -45,29 +45,19 @@ export default function ResearchCard({ study }: { study: CaseStudy }) {
 				</div>
 
 				{/* Links + see more */}
-				<div className="flex items-center justify-between gap-3">
-					<div className="flex shrink-0 items-center gap-2">
+				<div className="-mx-2 -my-1 flex items-center justify-between">
+					<div className="flex">
 						{study.links.repo && (
-							<Button asChild variant="default" size="sm" className="">
-								<Link
-									href={study.links.repo}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-								>
+							<Button asChild variant="primary" size="sm" className="">
+								<Link href={study.links.repo} target="_blank" rel="noopener noreferrer">
 									<FiGithub size={13} />
-									Source
+									Github
 								</Link>
 							</Button>
 						)}
 						{study.links.paper && (
-							<Button asChild variant="default" size="sm" className="">
-								<Link
-									href={study.links.paper}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-								>
+							<Button asChild variant="primary" size="sm" className="">
+								<Link href={study.links.paper} target="_blank" rel="noopener noreferrer">
 									<FileText size={13} />
 									Paper
 								</Link>
@@ -76,13 +66,8 @@ export default function ResearchCard({ study }: { study: CaseStudy }) {
 					</div>
 
 					{study.hasCaseStudy && (
-						<Button asChild variant="default" size="sm" className="">
-							<Link
-								href={`/research/${study.slug}`}
-								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-							>
-								See more
-							</Link>
+						<Button asChild variant="primary" size="sm" className="">
+							<Link href={`/research/${study.slug}`}>See more ⤳</Link>
 						</Button>
 					)}
 				</div>

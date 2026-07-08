@@ -49,7 +49,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 					<ul className="flex flex-col gap-1">
 						{highlights.map((h) => (
 							<li key={h} className="flex items-start gap-2 text-sm text-white">
-								<span className="mt-px shrink-0">{`> `}</span>
+								<span className="mt-px shrink-0">{`☘ `}</span>
 								<span>{h}</span>
 							</li>
 						))}
