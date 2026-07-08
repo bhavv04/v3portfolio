@@ -2,11 +2,12 @@ import Link from "next/link";
 import { CaseStudy } from "@/app/research/model";
 import { FiGithub } from "react-icons/fi";
 import { FileText } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export default function ResearchCard({ study }: { study: CaseStudy }) {
 	return (
 		<div className="flex flex-col rounded-xl bg-neutral-900 transition-all duration-300 hover:scale-[1.02]">
-			<div className="flex flex-col gap-4 p-5">
+			<div className="flex flex-col gap-4 p-4">
 				{/* Title */}
 				<div className="flex flex-col">
 					<h3 className="text-lg">{study.title}</h3>
@@ -47,36 +48,42 @@ export default function ResearchCard({ study }: { study: CaseStudy }) {
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex shrink-0 items-center gap-2">
 						{study.links.repo && (
-							<a
-								href={study.links.repo}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-							>
-								<FiGithub size={13} />
-								Source
-							</a>
+							<Button asChild variant="default" size="sm" className="">
+								<Link
+									href={study.links.repo}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+								>
+									<FiGithub size={13} />
+									Source
+								</Link>
+							</Button>
 						)}
 						{study.links.paper && (
-							<a
-								href={study.links.paper}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-							>
-								<FileText size={13} />
-								Paper
-							</a>
+							<Button asChild variant="default" size="sm" className="">
+								<Link
+									href={study.links.paper}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+								>
+									<FileText size={13} />
+									Paper
+								</Link>
+							</Button>
 						)}
 					</div>
 
 					{study.hasCaseStudy && (
-						<Link
-							href={`/research/${study.slug}`}
-							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-						>
-							See more
-						</Link>
+						<Button asChild variant="default" size="sm" className="">
+							<Link
+								href={`/research/${study.slug}`}
+								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+							>
+								See more
+							</Link>
+						</Button>
 					)}
 				</div>
 			</div>

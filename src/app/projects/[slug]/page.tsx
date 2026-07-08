@@ -4,6 +4,7 @@ import { FiGithub } from "react-icons/fi";
 import { getProjectBySlug, getAllSlugs } from "@/lib/projects/posts";
 import { ProjectStatusBadge } from "@/app/projects/components/projectstatus";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 
 export async function generateStaticParams() {
 	return getAllSlugs().map((slug) => ({ slug }));
@@ -43,36 +44,31 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
 			<div className="fade-in-up mb-6 flex flex-wrap gap-1" style={{ "--delay-index": 3 } as React.CSSProperties}>
 				{project.tech.map((t) => (
-					<span key={t} className="rounded-md bg-stone-900 px-2 py-1 text-xs text-white/60">
+					<span key={t} className="rounded-md bg-stone-900 px-2 py-1 text-xs text-white/70">
 						{t}
 					</span>
 				))}
 			</div>
 
 			<div
-				className="fade-in-up prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2"
+				className="fade-in-up prose mb-8 max-w-none text-white prose-invert prose-headings:mt-6 prose-headings:mb-2"
 				style={{ "--delay-index": 4 } as React.CSSProperties}
 				dangerouslySetInnerHTML={{ __html: project.contentHtml }}
 			/>
 
-			<div className="fade-in-up flex gap-3" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<a
-					href={project.github}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-				>
-					<FiGithub size={13} /> Source
-				</a>
+			<div className="fade-in-up flex gap-1.5" style={{ "--delay-index": 5 } as React.CSSProperties}>
+				<Button asChild variant="default" className="">
+					<Link href={project.github} target="_blank" rel="noopener noreferrer">
+						<FiGithub size={18} />
+						Source
+					</Link>
+				</Button>
 				{project.live && (
-					<a
-						href={project.live}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-					>
-						<ExternalLink size={13} /> Live
-					</a>
+					<Button asChild variant="default" className="">
+						<Link href={project.live} target="_blank" rel="noopener noreferrer">
+							<ExternalLink size={13} /> Live
+						</Link>
+					</Button>
 				)}
 			</div>
 		</article>

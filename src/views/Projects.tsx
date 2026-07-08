@@ -31,7 +31,7 @@ export function ProjectsView() {
 
 					<div className="flex justify-end pt-2">
 						<Link
-							href="/research"
+							href="/projects"
 							className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white"
 						>
 							View More Works

@@ -4,6 +4,7 @@ import { ArrowLeft, FileText } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import { caseStudies } from "@/app/research/data";
 import { getAllSlugs, getResearchContentBySlug } from "@/lib/research/posts";
+import { Button } from "@/components/ui/Button";
 
 export async function generateStaticParams() {
 	return getAllSlugs().map((slug) => ({ slug }));
@@ -21,7 +22,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 		<article className="mx-auto max-w-4xl pb-16">
 			<Link
 				href="/research"
-				className="fade-in-up mb-5 inline-flex items-center gap-1.5 text-sm text-white/60 transition-colors hover:text-white"
+				className="fade-in-up mb-5 inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-white"
 				style={{ "--delay-index": 0 } as React.CSSProperties}
 			>
 				<ArrowLeft size={16} />
@@ -29,33 +30,26 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</Link>
 
 			<header className="fade-in-up mb-4" style={{ "--delay-index": 1 } as React.CSSProperties}>
-				<h1 className="text-3xl font-bold text-white">{study.title}</h1>
-				<p className="mt-1 text-sm text-white/50">{study.subtitle}</p>
+				<h1 className="text-3xl text-white">{study.title}</h1>
+				<p className="mt-1 text-sm text-white/70">{study.subtitle}</p>
 			</header>
 
 			<div className="fade-in-up mb-6 flex flex-wrap gap-1.5" style={{ "--delay-index": 2 } as React.CSSProperties}>
 				{study.tags.map((tag) => (
-					<span key={tag} className="rounded-md bg-stone-900 px-2 py-0.5 text-xs text-white/60">
+					<span key={tag} className="rounded-md bg-stone-900 px-2 py-1 text-xs text-white/70">
 						{tag}
 					</span>
 				))}
 			</div>
 
-			{/* Abstract (from markdown body) */}
-			<div
-				className="fade-in-up prose mb-8 max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-2"
-				style={{ "--delay-index": 3 } as React.CSSProperties}
-				dangerouslySetInnerHTML={{ __html: contentHtml }}
-			/>
-
 			{/* Highlights (from markdown frontmatter) */}
 			{highlights.length > 0 && (
 				<div className="fade-in-up mb-8" style={{ "--delay-index": 4 } as React.CSSProperties}>
-					<p className="mb-2 text-xs text-white/30">Highlights</p>
+					<p className="text-md mb-2 text-white">Highlights</p>
 					<ul className="flex flex-col gap-1">
 						{highlights.map((h) => (
-							<li key={h} className="flex items-start gap-2 text-sm text-white/60">
-								<span className="mt-px shrink-0 text-white/20">{`> `}</span>
+							<li key={h} className="flex items-start gap-2 text-sm text-white">
+								<span className="mt-px shrink-0">{`> `}</span>
 								<span>{h}</span>
 							</li>
 						))}
@@ -63,17 +57,12 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 				</div>
 			)}
 
-			{/* Methods */}
-			<div className="fade-in-up mb-8" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p className="mb-2 text-xs text-white/30">Methods</p>
-				<div className="flex flex-wrap gap-x-3 gap-y-1">
-					{study.methods.map((method) => (
-						<span key={method} className="text-xs text-white/40 before:mr-1.5 before:content-['>']">
-							{method}
-						</span>
-					))}
-				</div>
-			</div>
+			{/* Abstract (from markdown body) */}
+			<div
+				className="fade-in-up prose mb-8 max-w-none text-white prose-invert prose-headings:mt-6 prose-headings:mb-2"
+				style={{ "--delay-index": 3 } as React.CSSProperties}
+				dangerouslySetInnerHTML={{ __html: contentHtml }}
+			/>
 
 			{/* Stack */}
 			<div className="fade-in-up mb-8" style={{ "--delay-index": 6 } as React.CSSProperties}>
@@ -88,28 +77,27 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</div>
 
 			{/* Links */}
-			<div className="fade-in-up flex items-center gap-2" style={{ "--delay-index": 7 } as React.CSSProperties}>
+			<div className="fade-in-up flex items-center gap-1.5" style={{ "--delay-index": 7 } as React.CSSProperties}>
 				{study.links.repo && (
-					<a
-						href={study.links.repo}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-					>
-						<FiGithub size={13} />
-						Source
-					</a>
+					<Button asChild variant="default" className="">
+						<Link href={study.links.repo} target="_blank" rel="noopener noreferrer">
+							<FiGithub size={18} />
+							Source
+						</Link>
+					</Button>
 				)}
 				{study.links.paper && (
-					<a
-						href={study.links.paper}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-					>
-						<FileText size={13} />
-						Paper
-					</a>
+					<Button asChild variant="default" className="">
+						<Link
+							href={study.links.paper}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
+						>
+							<FileText size={13} />
+							Paper
+						</Link>
+					</Button>
 				)}
 			</div>
 		</article>

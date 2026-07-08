@@ -42,10 +42,10 @@ export default function TimelineView() {
 				{/*  Timeline  */}
 				<div className="relative">
 					{/* Animated vertical line */}
-					<div ref={lineRef} className="absolute left-[5.5px] top-2 w-px bg-white opacity-30" style={{ height: 0 }} />
+					<div ref={lineRef} className="absolute top-2 left-[5.5px] w-px bg-white" style={{ height: 0 }} />
 
 					{/* End dot */}
-					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-white opacity-40" />
+					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-white" />
 
 					{/*  Education  */}
 					{education.map((ed, i) => (
@@ -119,12 +119,15 @@ function TimelineItem({ title, subtitle, meta, index, children }: TimelineItemPr
 	}, []);
 
 	return (
-		<div ref={ref} className="fade-in-up relative mb-8 pl-10" style={{ "--delay-index": index } as React.CSSProperties}>
+		<div ref={ref} className="relative mb-8 pl-10">
 			{/* Dot */}
-			<span className="absolute left-0 top-1 h-3 w-3 rounded-full bg-stone-500" />
+			<span className="absolute top-2 left-0 h-3 w-3 rounded-full bg-white" />
 
 			{/* Card */}
-			<div className="rounded-lg bg-neutral-900 p-4 transition-all duration-200 hover:scale-[1.02]">
+			<div
+				className="fade-in-up rounded-lg bg-neutral-900 p-4 transition-all duration-200 hover:scale-[1.02]"
+				style={{ "--delay-index": index } as React.CSSProperties}
+			>
 				<div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
 					<h2 className="text-sm font-semibold sm:text-base">{title}</h2>
 					<span className="text-xs opacity-40">{meta}</span>

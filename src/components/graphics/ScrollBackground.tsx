@@ -23,7 +23,7 @@ export function ScrollBackground() {
                             to bottom,
                             transparent 0%,
                             transparent 60%,
-                            rgba(13, 13, 13, 0.4) 80%,
+                            rgba(13, 13, 13, 0.4) 90%,
                             #0d0d0d 100%
                         ),
                         url('/images/bg.jpg')

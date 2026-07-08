@@ -4,6 +4,7 @@ import { FiGithub } from "react-icons/fi";
 import { Project } from "@/app/projects/model";
 import { ProjectStatusBadge } from "./projectstatus";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
@@ -56,33 +57,24 @@ export function ProjectCard({ project }: { project: Project }) {
 				{/* Links */}
 				<div className="mt-auto flex items-center justify-between text-sm">
 					<div className="flex items-center gap-2">
-						<a
-							href={project.github}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-						>
-							<FiGithub size={13} /> Source
-						</a>
+						<Button asChild variant="default" size="sm" className="">
+							<Link href={project.github} target="_blank" rel="noopener noreferrer">
+								<FiGithub size={13} /> Source
+							</Link>
+						</Button>
 						{project.live && (
-							<a
-								href={project.live}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-							>
-								<ExternalLink size={13} /> Live
-							</a>
+							<Button asChild variant="default" size="sm" className="">
+								<Link href={project.live} target="_blank" rel="noopener noreferrer">
+									<ExternalLink size={13} /> Live
+								</Link>
+							</Button>
 						)}
 					</div>
 
 					{project.hasCaseStudy && (
-						<Link
-							href={`/projects/${project.slug}`}
-							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-						>
-							See more
-						</Link>
+						<Button asChild variant="default" size="sm" className="">
+							<Link href={`/projects/${project.slug}`}>See more</Link>
+						</Button>
 					)}
 				</div>
 			</div>

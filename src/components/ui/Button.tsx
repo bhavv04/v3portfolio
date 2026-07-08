@@ -5,21 +5,16 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
-	clsx("relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm", "transition-colors duration-800 ease-in-out "),
+	clsx("relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm", "transition-colors duration-200 ease-in-out "),
 	{
 		variants: {
 			variant: {
-				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-black"),
-				destructive: clsx("bg-red-600 text-white", "hover:bg-red-700 hover:text-white"),
-				outline: clsx("border border-white/20 bg-transparent text-white", "hover:bg-white hover:text-black"),
-				subtle: clsx("bg-white/10 text-white", "hover:bg-white/20 hover:text-white"),
-				ghost: clsx("bg-transparent text-white", "hover:bg-white/10 hover:text-white"),
-				link: clsx("bg-transparent text-white underline-offset-4 hover:underline")
+				default: clsx("bg-neutral-800 text-white", "hover:bg-white hover:text-black")
 			},
 			size: {
 				default: "h-10 px-4 py-2",
-				sm: "h-8 rounded px-3 text-xs",
-				lg: "h-12 rounded-lg px-8 text-base",
+				sm: "h-8 px-3 text-xs",
+				lg: "h-9 px-3 text-sm",
 				icon: "h-10 w-10",
 				"icon-sm": "h-8 w-8"
 			}
