@@ -5,8 +5,8 @@ import { FileText } from "lucide-react";
 
 export default function ResearchCard({ study }: { study: CaseStudy }) {
 	return (
-		<div className="flex flex-col rounded-lg bg-neutral-900 transition-all duration-300 hover:scale-[1.02]">
-			<div className="flex flex-col gap-4 p-4">
+		<div className="flex flex-col rounded-xl bg-neutral-900 transition-all duration-300 hover:scale-[1.02]">
+			<div className="flex flex-col gap-4 p-5">
 				{/* Title */}
 				<div className="flex flex-col">
 					<h3 className="text-lg">{study.title}</h3>

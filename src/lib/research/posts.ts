@@ -1,9 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
-import html from "remark-html";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeKatex from "rehype-katex";
+import rehypeStringify from "rehype-stringify";
 import { caseStudies } from "@/app/research/data";
 
 const researchDirectory = path.join(process.cwd(), "src/content/research");
@@ -17,7 +21,14 @@ export async function getResearchContentBySlug(slug: string) {
 	const fileContents = fs.readFileSync(fullPath, "utf8");
 	const { data, content } = matter(fileContents);
 
-	const processed = await remark().use(remarkGfm).use(html).process(content);
+	const processed = await unified()
+		.use(remarkParse)
+		.use(remarkGfm)
+		.use(remarkMath)
+		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(rehypeKatex)
+		.use(rehypeStringify, { allowDangerousHtml: true })
+		.process(content);
 
 	return {
 		contentHtml: processed.toString(),

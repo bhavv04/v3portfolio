@@ -1,5 +1,6 @@
 "use client";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/views/Navbar";

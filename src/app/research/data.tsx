@@ -46,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
 			repo: "https://github.com/bhavv04/precursor",
 			paper: ""
 		},
-		hasCaseStudy: false
+		hasCaseStudy: true
 	},
 	{
 		id: "deadzones",

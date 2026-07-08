@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export function ProjectCard({ project }: { project: Project }) {
 	return (
-		<div className="group/card flex flex-col overflow-hidden rounded-md bg-neutral-900 transition-all duration-200 hover:scale-[1.02]">
+		<div className="group/card flex flex-col overflow-hidden rounded-xl bg-neutral-900 transition-all duration-200 hover:scale-[1.02]">
 			<div className="p-4">
 				{/* Header row: logo + title/tagline side by side */}
 				<div className="mb-3 flex items-start gap-3">
