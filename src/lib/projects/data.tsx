@@ -122,7 +122,7 @@ export const projects: Project[] = [
 				}
 			},
 			{
-				name: "verrere Genre Selection",
+				name: "verrere Shelf",
 				mobile: {
 					src: "/images/verrere/verrere3.png",
 					width: 800,
@@ -130,6 +130,19 @@ export const projects: Project[] = [
 				},
 				desktop: {
 					src: "/images/verrere/verrere3.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "verrere Genre Selection",
+				mobile: {
+					src: "/images/verrere/verrere4.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/verrere/verrere4.png",
 					width: 800,
 					height: 640
 				}
