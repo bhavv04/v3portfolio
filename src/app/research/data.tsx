@@ -44,7 +44,7 @@ export const caseStudies: CaseStudy[] = [
 		stack: ["Python", "statsmodels", "networkx", "yfinance", "pandas", "matplotlib"],
 		links: {
 			repo: "https://github.com/bhavv04/precursor",
-			paper: ""
+			paper: "https://bhavv04.github.io/precursor/precursor_paper.pdf"
 		},
 		hasCaseStudy: true
 	},
@@ -69,8 +69,7 @@ export const caseStudies: CaseStudy[] = [
 		],
 		stack: ["Python", "xarray", "pandas", "scikit-learn", "matplotlib", "cartopy", "NumPy", "Jupyter", "NetCDF4"],
 		links: {
-			repo: "https://github.com/bhavv04/deadzone",
-			paper: "https://bhavv04.github.io/precursor/precursor_paper.pdf"
+			repo: "https://github.com/bhavv04/deadzone"
 		},
 		hasCaseStudy: false
 	},
