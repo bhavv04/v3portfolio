@@ -31,7 +31,7 @@ export const projects: Project[] = [
 		year: 2026,
 		github: "https://github.com/bhavv04/groat",
 		live: "",
-		image: "/images/projects/groat3.png",
+		image: "/images/projects/groat.png",
 		featured: true,
 		hasCaseStudy: false
 	},
