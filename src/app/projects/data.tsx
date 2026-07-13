@@ -30,7 +30,7 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2026,
 		github: "https://github.com/bhavv04/groat",
-		live: "",
+		live: "https://getgroat.vercel.app/",
 		image: "/images/projects/groat.png",
 		featured: true,
 		hasCaseStudy: false
