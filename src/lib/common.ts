@@ -38,5 +38,11 @@ export enum Technology {
 	Pandas = "Pandas",
 	Jupyter = "Jupyter",
 	Matplotlib = "Matplotlib",
-	Statsmodels = "Statsmodels"
+	Statsmodels = "Statsmodels",
+	Axum = "Axum",
+	Tokio = "Tokio",
+	SQLx = "SQLx",
+	LanceDB = "LanceDB",
+	Candle = "Candle",
+	Ollama = "Ollama"
 }

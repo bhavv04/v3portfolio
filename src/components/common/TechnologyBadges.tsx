@@ -28,10 +28,12 @@ import {
 	SiGraphql,
 	SiKubernetes,
 	SiGit,
+	SiOllama,
 	SiLinux
 } from "react-icons/si";
 import { FaAws, FaFigma, FaJava, FaPython, FaRust } from "react-icons/fa6";
 import { SiPytorch, SiScikitlearn, SiPandas, SiJupyter } from "react-icons/si";
+import { Waypoints, Database, Flame } from "lucide-react";
 
 interface StaticBadgeProps {
 	name: string;
@@ -179,6 +181,23 @@ export function StatsmodelsBadge() {
 	return <StaticBadge name="statsmodels" icon={null} className="bg-[#1a2a1a]" />;
 }
 
+export function AxumBadge() {
+	return <StaticBadge name={Technology.Axum} icon={<Waypoints size={14} />} className="bg-[#1a1a2e]" />;
+}
+export function SQLxBadge() {
+	return <StaticBadge name={Technology.SQLx} icon={<Database size={14} />} className="bg-[#0a3d2e]" />;
+}
+export function LanceDBBadge() {
+	return <StaticBadge name={Technology.LanceDB} icon={<Database size={14} />} className="bg-[#3d2a0a]" />;
+}
+export function CandleBadge() {
+	return <StaticBadge name={Technology.Candle} icon={<Flame size={14} />} className="bg-[#4a0a1a]" />;
+}
+
+export function OllamaBadge() {
+	return <StaticBadge name={Technology.Ollama} icon={<SiOllama />} className="bg-[#0a0a0a]" />;
+}
+
 export function TechnologyBadge({ technology }: TechnologyBadgeProps) {
 	switch (technology) {
 		case Technology.PyTorch:
@@ -261,6 +280,16 @@ export function TechnologyBadge({ technology }: TechnologyBadgeProps) {
 			return <GitBadge />;
 		case Technology.Linux:
 			return <LinuxBadge />;
+		case Technology.Axum:
+			return <AxumBadge />;
+		case Technology.SQLx:
+			return <SQLxBadge />;
+		case Technology.LanceDB:
+			return <LanceDBBadge />;
+		case Technology.Candle:
+			return <CandleBadge />;
+		case Technology.Ollama:
+			return <OllamaBadge />;
 		default:
 			return null;
 	}
