@@ -58,9 +58,10 @@ export const projects: Project[] = [
 		slug: "calvin-hobbes-api",
 		title: "Calvin & Hobbes Quote API",
 		tagline: "Philosophy from a six-year-old, on demand",
-		description: "A Flask API serving random Calvin and Hobbes quotes as JSON, built for easy integration into projects that need a touch of whimsy.",
+		description:
+			"A lightweight Flask service that exposes a collection of Calvin and Hobbes quotes through a simple JSON API. Built for developers looking to integrate a little humor, nostalgia, and personality into their applications. Implemented in your application with a single HTTP request, no authentication required.",
 		tags: ["software engineering"],
-		tech: ["Python", "Flask"],
+		tech: ["Python", "Flask", "Vercel", "Git", "Rest API"],
 		status: "completed",
 		year: 2024,
 		github: "https://github.com/bhavv04/calandhobbes-quoter",
@@ -94,7 +95,7 @@ export const projects: Project[] = [
 		title: "verrere",
 		tagline: "Tinder for books. Swipe right to build your shelf",
 		description:
-			"A full-stack web app that lets you discover books through a swipe-based interface, tracking preferences by genre and preventing duplicate cards.",
+			"A full-stack book discovery platform built around a swipe-based interface. Browse personalized recommendations, build your reading list, and let the app learn your genre preferences while ensuring every recommendation is unique.",
 		tags: ["software engineering", "data engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
@@ -125,12 +126,12 @@ export const projects: Project[] = [
 	},
 	{
 		id: "ember",
-		rank: 5,
+		rank: 6,
 		slug: "ember",
 		title: "Ember",
 		tagline: "Not a calorie tracker. a deficit visualizer.",
 		description:
-			"A calorie deficit visualizer that makes the math of weight loss visceral and concrete - showing the full mountain, how far you've climbed, and when you'll reach the top.",
+			"A weight-loss planning tool that visualizes the math behind calorie deficits instead of simply logging meals. It adapts to your changing weight, estimates your daily energy expenditure, projects your goal date, and shows exactly how much activity or calorie reduction is needed to reach your target.",
 		tags: ["software engineering"],
 		tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui", "Clerk", "Neon", "Prisma", "PostgreSQL"],
 		status: "active",
@@ -213,7 +214,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "solace",
-		rank: 6,
+		rank: 5,
 		slug: "solace",
 		title: "solace",
 		tagline: "Predicting wildfire spread, not just visualizing it.",
