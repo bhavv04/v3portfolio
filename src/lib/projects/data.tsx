@@ -272,7 +272,7 @@ export const projects: Project[] = [
 				}
 			},
 			{
-				name: "Funes Documentation",
+				name: "Funes Documentation Introduction",
 				mobile: {
 					src: "/images/funes/funes2.png",
 					width: 800,
@@ -280,6 +280,32 @@ export const projects: Project[] = [
 				},
 				desktop: {
 					src: "/images/funes/funes2.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Funes Documentation Installation",
+				mobile: {
+					src: "/images/funes/funes3.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/funes/funes3.png",
+					width: 800,
+					height: 640
+				}
+			},
+			{
+				name: "Funes Documentation Configuration",
+				mobile: {
+					src: "/images/funes/funes4.png",
+					width: 800,
+					height: 640
+				},
+				desktop: {
+					src: "/images/funes/funes4.png",
 					width: 800,
 					height: 640
 				}
