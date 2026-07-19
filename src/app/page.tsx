@@ -1,5 +1,4 @@
 import { HeroSection } from "@/views/Hero";
-//import { TimelineView } from "@/views/Timeline";
 import { ProjectsView } from "@/views/Projects";
 import { ResearchView } from "@/views/Research";
 import { Skills } from "@/views/Skills";
@@ -12,8 +11,6 @@ export default function Home() {
 			<div className="-my-12" />
 			<Skills />
 			<div className="my-12" />
-			{/* <TimelineView /> */}
-			{/* <div className="my-24" /> */}
 			<ProjectsView />
 			<div className="my-24" />
 			<ResearchView />

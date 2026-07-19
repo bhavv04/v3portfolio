@@ -2,7 +2,7 @@
 import { IconContext } from "react-icons";
 import { Button } from "@/components/ui/Button";
 import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
-import { TbBrandLeetcode } from "react-icons/tb";
+import { SiWakatime } from "react-icons/si";
 
 export function HeroButtons() {
 	return (
@@ -44,8 +44,13 @@ export function HeroButtons() {
 					</Button>
 
 					<Button size="icon" asChild variant="default" className="">
-						<a href="https://leetcode.com/u/bhavv04/" target="_blank" rel="noopener noreferrer" aria-label="My LeetCode profile">
-							<TbBrandLeetcode />
+						<a
+							href="https://wakatime.com/@a5c744a5-dec2-4eac-bf42-d7ea37b8279e/"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="My Wakatime profile"
+						>
+							<SiWakatime />
 						</a>
 					</Button>
 				</div>
