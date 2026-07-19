@@ -45,7 +45,7 @@ export function HeroButtons() {
 
 					<Button size="icon" asChild variant="default" className="">
 						<a
-							href="https://wakatime.com/@a5c744a5-dec2-4eac-bf42-d7ea37b8279e/"
+							href="https://wakatime.com/@a5c744a5-dec2-4eac-bf42-d7ea37b8279e"
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label="My Wakatime profile"
