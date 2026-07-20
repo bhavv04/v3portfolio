@@ -42,10 +42,10 @@ export default function TimelineView() {
 				{/*  Timeline  */}
 				<div className="relative">
 					{/* Animated vertical line */}
-					<div ref={lineRef} className="absolute top-2 left-[5.5px] w-px bg-white" style={{ height: 0 }} />
+					<div ref={lineRef} className="absolute top-2 left-[5.5px] w-px bg-olive-400" style={{ height: 0 }} />
 
 					{/* End dot */}
-					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-white" />
+					<span className="absolute bottom-0 left-[2px] h-2 w-2 rounded-xl bg-olive-500" />
 
 					{/*  Education  */}
 					{education.map((ed, i) => (
@@ -121,7 +121,7 @@ function TimelineItem({ title, subtitle, meta, index, children }: TimelineItemPr
 	return (
 		<div ref={ref} className="relative mb-8 pl-10">
 			{/* Dot */}
-			<span className="absolute top-2 left-0 h-3 w-3 rounded-full bg-white" />
+			<span className="absolute top-2 left-0 h-3 w-3 rounded-full bg-olive-500" />
 
 			{/* Card */}
 			<div
