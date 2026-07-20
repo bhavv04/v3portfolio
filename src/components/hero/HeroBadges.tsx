@@ -5,18 +5,18 @@ import { cn } from "@/lib/utils";
 import { IconContext } from "react-icons";
 import { LuArrowUpRight } from "react-icons/lu";
 import { FaSpotify, FaSteam, FaGoodreads } from "react-icons/fa6";
-import { GiGrimReaper } from "react-icons/gi";
+import { GiGoat } from "react-icons/gi";
 import { HiBookOpen } from "react-icons/hi2";
 
 export function HeroBadges() {
 	return (
 		<div className="flex max-w-full flex-row flex-wrap gap-2">
 			<HeroBadge
-				text="Working On: Thunderhead"
-				href="https://get-thunderhead.vercel.app"
+				text="Working On: Groat"
+				href="https://getgroat.vercel.app"
 				icon={
 					<IconContext.Provider value={{ size: "1rem" }}>
-						<GiGrimReaper />
+						<GiGoat />
 					</IconContext.Provider>
 				}
 				className="bg-[#5a493d] hover:bg-[#6b5b4e]"
