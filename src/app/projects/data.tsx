@@ -149,7 +149,7 @@ export const projects: Project[] = [
 		title: "Terraseed",
 		tagline: "30 years of climate data, one planting score",
 		description:
-			"Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate reanalysis data. A composite scoring model weighs historical temperature stability, precipitation, and frost risk to surface the best planting dates for a given crop and location.",
+			"Predicts optimal planting windows for any location on Earth using 30 years of ERA5 climate reanalysis data. A composite scoring model weighs historical temperature stability, precipitation, and frost risk to surface the best planting dates for a given crop and location alongside crop analytics for best growth.",
 		tags: ["machine learning", "data engineering", "data visualization"],
 		tech: ["Python", "Plotly Dash", "scikit-learn", "xarray"],
 		status: "active",
