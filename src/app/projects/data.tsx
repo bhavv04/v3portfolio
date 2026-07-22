@@ -1,4 +1,4 @@
-import { Project } from "./model";
+import { Project } from "@/app/projects/model";
 
 export const projects: Project[] = [
 	{
@@ -33,7 +33,7 @@ export const projects: Project[] = [
 		live: "https://getgroat.vercel.app/",
 		image: "/images/projects/groat.png",
 		featured: true,
-		hasCaseStudy: false
+		hasCaseStudy: true
 	},
 	{
 		id: "mapreduce-engine",
