@@ -24,7 +24,7 @@ export const projects: Project[] = [
 		title: "groat",
 		tagline: "Every token counts.",
 		description:
-			"A self-hosted LLM proxy that reduces API costs through semantic response caching and intelligent model routing, exposing a drop-in OpenAI-compatible endpoint with no application code changes.",
+			"A self-hosted LLM proxy that reduces API costs through semantic response caching and intelligent model routing, providing a drop-in OpenAI-compatible endpoint that requires no changes to existing applications.",
 		tags: ["systems programming", "machine learning"],
 		tech: ["Rust", "Tokio", "OpenAI-compatible APIs", "Vector databases", "Embeddings", "LLMs"],
 		status: "active",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
 		title: "Thunderhead",
 		tagline: "Silent observation. no captchas. no cloudflare.",
 		description:
-			"A lightweight reverse proxy that passively scores the intent of every incoming HTTP request using behavioral signals, rate, crawl patterns, and header anomalies, to silently tarpit or block bot traffic without CAPTCHAs, JS challenges, or third-party services.",
+			"A lightweight reverse proxy that passively scores the intent of every incoming HTTP request using behavioral signals, rate, crawl patterns, and header anomalies, to silently tarpit or block bot traffic.",
 		tags: ["systems programming", "software engineering"],
 		tech: ["Go", "net/http", "httputil.ReverseProxy", "Bubbletea", "Lipgloss", "Next.js", "Docker", "ngrok"],
 		status: "active",
