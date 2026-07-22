@@ -4,7 +4,6 @@ import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
 import { CatToggleButton } from "@/components/hero/CatToggle";
 import { SectionTitle } from "@/components/typography/SectionTitle";
-//import Image from "next/image";
 
 export function HeroSection() {
 	return (
