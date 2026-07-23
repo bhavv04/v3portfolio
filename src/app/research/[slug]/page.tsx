@@ -44,7 +44,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 
 			{/* Highlights (from markdown frontmatter) */}
 			{highlights.length > 0 && (
-				<div className="fade-in-up mb-8" style={{ "--delay-index": 4 } as React.CSSProperties}>
+				<div className="fade-in-up mb-8" style={{ "--delay-index": 3 } as React.CSSProperties}>
 					<p className="text-md mb-2 text-white">Highlights</p>
 					<ul className="flex flex-col gap-1">
 						{highlights.map((h) => (
@@ -60,12 +60,12 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			{/* Abstract (from markdown body) */}
 			<div
 				className="fade-in-up prose mb-8 max-w-none text-white prose-invert prose-headings:mt-6 prose-headings:mb-2"
-				style={{ "--delay-index": 3 } as React.CSSProperties}
+				style={{ "--delay-index": 4 } as React.CSSProperties}
 				dangerouslySetInnerHTML={{ __html: contentHtml }}
 			/>
 
 			{/* Stack */}
-			<div className="fade-in-up mb-8" style={{ "--delay-index": 6 } as React.CSSProperties}>
+			<div className="fade-in-up mb-8" style={{ "--delay-index": 5 } as React.CSSProperties}>
 				<p className="mb-2 text-xs text-white/30">Stack</p>
 				<div className="flex flex-wrap gap-1.5">
 					{study.stack.map((s) => (
@@ -77,7 +77,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 			</div>
 
 			{/* Links */}
-			<div className="fade-in-up flex items-center gap-1.5" style={{ "--delay-index": 7 } as React.CSSProperties}>
+			<div className="fade-in-up flex items-center gap-1.5" style={{ "--delay-index": 6 } as React.CSSProperties}>
 				{study.links.repo && (
 					<Button asChild variant="default" className="">
 						<Link href={study.links.repo} target="_blank" rel="noopener noreferrer">
