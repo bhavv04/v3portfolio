@@ -44,6 +44,7 @@ export const caseStudies: CaseStudy[] = [
 		stack: ["Python", "statsmodels", "networkx", "yfinance", "pandas", "matplotlib"],
 		links: {
 			repo: "https://github.com/bhavv04/precursor",
+			SSRN: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7151398",
 			paper: "https://bhavv04.github.io/precursor/precursor_paper.pdf"
 		},
 		hasCaseStudy: true

@@ -51,7 +51,8 @@ export const caseStudies: CaseStudy[] = [
 		stack: ["Python", "statsmodels", "networkx", "yfinance", "pandas", "matplotlib", "Jupyter"],
 		links: {
 			repo: "https://github.com/bhavv04/precursor",
-			paper: "https://bhavv04.github.io/precursor/precursor_paper.pdf"
+			paper: "https://bhavv04.github.io/precursor/precursor_paper.pdf",
+			SSRN: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7151398"
 		},
 		highlights: [
 			"Tests momentum spillover at lags k ∈ {1,2,3,4,5} trading days across 3,500+ daily observations",

@@ -18,7 +18,7 @@ export interface CaseStudy {
 		repo?: string;
 		demo?: string;
 		paper?: string;
-		writeup?: string;
+		SSRN?: string;
 	};
 	hasCaseStudy: boolean;
 }

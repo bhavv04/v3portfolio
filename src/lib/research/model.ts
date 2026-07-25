@@ -2,15 +2,7 @@
 export type ProjectStatus = "completed" | "in-progress" | "submitted" | "preprint";
 
 export type ResearchTag =
-	| "finance"
-	| "medicine"
-	| "mathematics"
-	| "climate"
-	| "geospatial"
-	| "physics"
-	| "neuroscience"
-	| "economics"
-	| "artificial-intelligence";
+	"finance" | "medicine" | "mathematics" | "climate" | "geospatial" | "physics" | "neuroscience" | "economics" | "artificial-intelligence";
 
 export interface CaseStudy {
 	id: string;
@@ -27,7 +19,7 @@ export interface CaseStudy {
 		repo?: string;
 		demo?: string;
 		paper?: string;
-		writeup?: string;
+		SSRN?: string;
 	};
 	highlights?: string[];
 }

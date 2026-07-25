@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ExternalLink, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
+import { SiSsrn } from "react-icons/si";
 import type { CaseStudy } from "@/lib/research/model";
 import { Button } from "@/components/ui/Button";
 import { TechnologyBadge } from "@/components/common/TechnologyBadges";
 import { Technology } from "@/lib/common";
 
-// Maps the plain string stack entries in data.ts to Technology enum values
 const STACK_TO_TECHNOLOGY: Partial<Record<string, Technology>> = {
 	Python: Technology.Python,
 	PyTorch: Technology.PyTorch,
@@ -16,7 +16,6 @@ const STACK_TO_TECHNOLOGY: Partial<Record<string, Technology>> = {
 	pandas: Technology.Pandas,
 	Jupyter: Technology.Jupyter,
 	TypeScript: Technology.TypeScript
-	// extend as needed
 };
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -66,19 +65,19 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
 						</Link>
 					</Button>
 				)}
+				{study.links.SSRN && (
+					<Button asChild variant="default">
+						<Link href={study.links.SSRN} target="_blank" rel="noopener noreferrer">
+							<SiSsrn size={16} />
+							SSRN
+						</Link>
+					</Button>
+				)}
 				{study.links.paper && (
 					<Button asChild variant="default">
 						<Link href={study.links.paper} target="_blank" rel="noopener noreferrer">
 							<FileText size={16} />
 							Paper
-						</Link>
-					</Button>
-				)}
-				{study.links.demo && (
-					<Button asChild variant="default">
-						<Link href={study.links.demo} target="_blank" rel="noopener noreferrer">
-							<ExternalLink size={16} />
-							Demo
 						</Link>
 					</Button>
 				)}

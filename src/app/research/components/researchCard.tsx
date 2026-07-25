@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CaseStudy } from "@/app/research/model";
 import { FiGithub } from "react-icons/fi";
+import { SiSsrn } from "react-icons/si";
 import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -52,6 +53,14 @@ export default function ResearchCard({ study }: { study: CaseStudy }) {
 								<Link href={study.links.repo} target="_blank" rel="noopener noreferrer">
 									<FiGithub size={13} />
 									Github
+								</Link>
+							</Button>
+						)}
+						{study.links.SSRN && (
+							<Button asChild variant="primary" size="sm" className="">
+								<Link href={study.links.SSRN} target="_blank" rel="noopener noreferrer">
+									<SiSsrn size={13} />
+									SSRN
 								</Link>
 							</Button>
 						)}
