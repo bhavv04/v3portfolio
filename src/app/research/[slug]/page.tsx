@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, FileText } from "lucide-react";
+import { SiSsrn } from "react-icons/si";
 import { FiGithub } from "react-icons/fi";
 import { caseStudies } from "@/app/research/data";
 import { getAllSlugs, getResearchContentBySlug } from "@/lib/research/posts";
@@ -86,14 +87,17 @@ export default async function ResearchPage({ params }: { params: Promise<{ slug:
 						</Link>
 					</Button>
 				)}
+				{study.links.SSRN && (
+					<Button asChild variant="default" className="">
+						<Link href={study.links.SSRN} target="_blank" rel="noopener noreferrer">
+							<SiSsrn size={13} />
+							SSRN
+						</Link>
+					</Button>
+				)}
 				{study.links.paper && (
 					<Button asChild variant="default" className="">
-						<Link
-							href={study.links.paper}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-white transition-all duration-300 hover:bg-white hover:text-black"
-						>
+						<Link href={study.links.paper} target="_blank" rel="noopener noreferrer">
 							<FileText size={13} />
 							Paper
 						</Link>
