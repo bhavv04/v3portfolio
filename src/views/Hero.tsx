@@ -5,7 +5,7 @@ import { HeroIcons } from "@/components/hero/HeroIcons";
 import { CatToggleButton } from "@/components/hero/CatToggle";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 
-export function HeroSection() {
+export default function HeroSection() {
 	return (
 		<section id="home" className="mx-auto max-w-160 space-y-4">
 			<div className="fade-in-up flex items-center gap-3" style={{ "--delay-index": 0 } as React.CSSProperties}>

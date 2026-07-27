@@ -6,9 +6,9 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 import { Card, CardContent } from "@/components/ui/Card";
 import { LuChartNetwork } from "react-icons/lu";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-export function ResearchView() {
+export default function ResearchView() {
 	return (
 		<section id="research" className="mx-auto">
 			<SectionTitle
@@ -33,8 +33,8 @@ export function ResearchView() {
 							href="/research"
 							className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white"
 						>
-							Explore All Case Studies
-							<ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+							Explore all Case Studies
+							<ArrowUpRight size={14} className="transition-transform duration-200 group-hover:rotate-45" />
 						</Link>
 					</div>
 				</CardContent>

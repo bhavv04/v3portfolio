@@ -60,7 +60,7 @@ const skills = [
 	{ name: "Git", icon: <FaGitAlt className="text-2xl text-orange-400" /> }
 ];
 
-export function Skills() {
+export default function Skills() {
 	const carouselSkills = [...skills, ...skills];
 
 	return (

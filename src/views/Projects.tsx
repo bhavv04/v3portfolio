@@ -6,9 +6,9 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
 import { IoBuild } from "react-icons/io5";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-export function ProjectsView() {
+export default function ProjectsView() {
 	return (
 		<section id="projects" className="mx-auto">
 			<SectionTitle
@@ -34,8 +34,8 @@ export function ProjectsView() {
 							href="/projects"
 							className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white"
 						>
-							View More Works
-							<ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+							View my Workshop
+							<ArrowUpRight size={14} className="transition-transform duration-200 group-hover:rotate-45" />
 						</Link>
 					</div>
 				</CardContent>
