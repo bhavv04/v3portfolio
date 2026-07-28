@@ -6,7 +6,7 @@ import { GiPolarBear } from "react-icons/gi";
 export default function BlogPage() {
 	const posts = getSortedPostsMeta();
 	return (
-		<div>
+		<div className="pb-24">
 			<div className="fade-in-up">
 				<SectionTitle
 					text={
@@ -17,7 +17,7 @@ export default function BlogPage() {
 					}
 				/>
 
-				<p className="mb-4 mt-2">an idiot&apos;s field notes</p>
+				<p className="mt-2 mb-4">an idiot&apos;s field notes</p>
 			</div>
 
 			{/* Cards */}

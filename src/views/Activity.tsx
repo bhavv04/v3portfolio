@@ -20,7 +20,7 @@ export default async function Activity() {
 					</span>
 				}
 			/>
-			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
 				<GithubActivityCard commits={commits} />
 				<BlogActivityCard posts={posts} />
 			</div>

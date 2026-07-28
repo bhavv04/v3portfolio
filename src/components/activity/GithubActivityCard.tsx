@@ -9,7 +9,7 @@ interface GithubActivityCardProps {
 
 export default function GithubActivityCard({ commits }: GithubActivityCardProps) {
 	return (
-		<div className="flex h-full flex-col gap-4 rounded-xl bg-transparent p-2">
+		<div className="flex h-full flex-col gap-4 rounded-xl bg-transparent p-3">
 			<h3 className="flex items-center gap-1.5 text-sm text-white/70">
 				<FiActivity size={16} />
 				Recent commits

@@ -30,12 +30,9 @@ export default function ProjectsView() {
 					))}
 
 					<div className="flex justify-end pt-2">
-						<Link
-							href="/projects"
-							className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white"
-						>
+						<Link href="/projects" className="group inline-flex items-center gap-1 text-sm text-white/50 transition-colors hover:text-white">
 							View my Workshop
-							<ArrowUpRight size={14} className="transition-transform duration-200 group-hover:rotate-45" />
+							<ArrowUpRight size={16} className="transition-transform duration-200 group-hover:rotate-45" />
 						</Link>
 					</div>
 				</CardContent>

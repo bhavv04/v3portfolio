@@ -10,15 +10,15 @@ interface BlogActivityCardProps {
 
 export default function BlogActivityCard({ posts }: BlogActivityCardProps) {
 	return (
-		<div className="flex h-full flex-col gap-4 rounded-xl bg-transparent p-2">
+		<div className="flex h-full flex-col gap-4 rounded-xl bg-transparent p-3">
 			<div className="flex items-center justify-between">
 				<h3 className="flex items-center gap-1.5 text-sm text-white/70">
 					<FaFilePen size={16} />
 					Latest Posts
 				</h3>
-				<Link href="/blog" className="group inline-flex items-center gap-1 text-sm font-medium text-white/50 transition-colors hover:text-white">
+				<Link href="/blog" className="group inline-flex items-center gap-1 text-sm text-white/50 transition-colors hover:text-white">
 					Read all Posts
-					<ArrowUpRight size={14} className="transition-transform duration-200 group-hover:rotate-45" />
+					<ArrowUpRight size={16} className="transition-transform duration-200 group-hover:rotate-45" />
 				</Link>
 			</div>
 			<ul className="flex flex-col gap-3">
