@@ -35,7 +35,39 @@ My plan is to explore whether this same quantum kernel approach can be applied -
 
 The comparison I keep coming back to: the classical kernel is a simple similarity measure between feature vectors - a dot product, or something like an RBF kernel based on distance. The quantum kernel instead runs each input through a parameterized rotation circuit and measures the squared overlap between the resulting quantum states. Same inputs, structurally similar idea, very different computation underneath.
 
-[ Image to be made soon ]
+This is roughly what the encoding circuit looks like in code — I haven't run this yet, it's just me translating the math into something concrete enough to reason about:
+
+```python
+import pennylane as qml
+from pennylane import numpy as np
+
+n_qubits = 4
+dev = qml.device("default.qubit", wires=n_qubits)
+
+def feature_map(x):
+    """U(x) = product of RZ(x_i) RY(x_i) rotations, one pair per qubit."""
+    for i in range(n_qubits):
+        qml.RY(x[i], wires=i)
+        qml.RZ(x[i], wires=i)
+    # entangle adjacent qubits so the mapping isn't just independent rotations
+    for i in range(n_qubits - 1):
+        qml.CNOT(wires=[i, i + 1])
+
+@qml.qnode(dev)
+def kernel_circuit(x1, x2):
+    """k(x, x') = |<0| U(x)^dagger U(x') |0>|^2"""
+    feature_map(x1)
+    qml.adjoint(feature_map)(x2)
+    return qml.probs(wires=range(n_qubits))
+
+def quantum_kernel(x1, x2):
+    # probability of measuring all-zeros = the squared overlap
+    return kernel_circuit(x1, x2)[0]
+```
+
+Still very much theory-to-code translation at this point — next step is actually running it against a couple of real DAVIS dataset entries and seeing if the numbers make any sense at all.
+
+[ classical vs quntum kernel math diagram add it here once youree done]
 
 *Same input, two different kernels. The quantum version operates in a much higher-dimensional Hilbert space, which is where its extra expressive power supposedly comes from - and also exactly why I need to actually understand the circuits before I trust any results I get out of them.*
 
@@ -51,3 +83,5 @@ The obvious starting point is quantum computing fundamentals themselves - qubits
 From there, quantum kernels specifically are the part I'm least sure about. I get the general pitch - map data into a space where a simple method can find structure it couldn't find before - but I don't yet have real intuition for *why* the quantum version of that mapping is meaningfully better than a classical nonlinear kernel, only that QKDTI's results claim it is. That gap is probably the thing I most want to close.
 
 Which leads pretty directly into actually working through the QKDTI methodology in depth, instead of skimming the abstract - specifically how they landed on the RY/RZ rotation circuit, and why the Nystrom approximation (just 50 landmark samples standing in for the full kernel matrix) doesn't wreck the accuracy.
+
+And running underneath all of that, I don't want to lose the actual biology. What does a binding affinity number mean in practice? Why does a small shift in it matter so much for Alzheimer's-specific targets? And, maybe the real question: how would I even know if a "better" kernel is genuinely better for the problem I care about, versus just better at fitting benchmark noise on DAVIS and KIBA?

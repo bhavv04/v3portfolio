@@ -19,7 +19,7 @@ Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdi
 
 ## Testing Images
 
-![Sample photo](/images/content/blog/lorem.jpg)
+![Sample photo](/images/content/blog/lorem/lorem.jpg)
 
 Some text after the image to check spacing.
 

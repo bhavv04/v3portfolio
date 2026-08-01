@@ -42,16 +42,16 @@ Two things feel worth sketching by hand rather than just explaining in prose - t
 
 The first is a direction vector between "simple" and "complex" clusters in embedding space, as an alternative to training or hand-writing a classifier for request complexity. Find the centroid of a "simple" cluster and a "complex" cluster, take the vector between them, and project an incoming request's embedding onto that axis. Something like a 0.73 score maps to "route to the powerful tier." What I like about this is it's not a new trick - it's the exact same operation the semantic cache is already doing. 
 
-![Emdding complexity diagram](/images/content/blog/groat-embedding-complexity.svg)
+![Emdding complexity diagram](/images/content/blog/groat/groat-embedding-complexity.svg)
 
 
 Cosine similarity is a dot product. I'm already comparing vectors to ask "is this request the same as one I've seen." Using a dot product against a direction vector instead asks "is this request more like the simple cluster or the complex one" - same math, pointed at a different question. I haven't validated that a linear direction genuinely separates simple/complex requests in practice, though - that's an assumption I'm making because it worked for the caching case, not something I've tested.
 
-![Cosine similarity diagram](/images/content/blog/groat-cosine-similarity.svg)
+![Cosine similarity diagram](/images/content/blog/groat/groat-cosine-similarity.svg)
 
 The second is the conversation graph itself - nodes as requests, edges as parent-child relationships, living in SQLite with depth, branching factor, and accumulated context tokens as queryable properties. This is the piece I think is genuinely new; I haven't seen another proxy modeling conversations this way instead of as a flat stream of independent calls. I want to draw this one out as an actual graph before I decide what the routing function looks like, because I suspect the right function isn't obvious from the description alone.
 
-![Tier diagram](/images/content/blog/groat-conversation-graph.svg)
+![Tier diagram](/images/content/blog/groat/groat-conversation-graph.svg)
 
 ## where I actually am
 
