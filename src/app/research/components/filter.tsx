@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import React, { useState } from "react";
 import { ProjectStatus, ResearchTag } from "@/app/research/model";
 import { caseStudies } from "@/app/research/data";
@@ -127,21 +128,57 @@ export default function ResearchFilter() {
 			</div>
 
 			{/* Cards */}
-			<div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-				{filtered.length > 0 ? (
-					filtered.map((study, i) => (
-						<div
-							key={study.id}
-							className={`fade-in-up transition-all duration-500 ease-in-out ${expandedId === study.id ? "lg:col-span-1" : ""}`}
-							style={{ "--delay-index": i } as React.CSSProperties}
-						>
-							<ResearchCard study={study} />
-						</div>
-					))
-				) : (
-					<p className="text-sm text-white">no projects match the selected filters.</p>
-				)}
-			</div>
+			<motion.div
+				layout
+				className="grid grid-cols-1 gap-3 lg:grid-cols-2"
+				transition={{
+					layout: {
+						duration: 0.35,
+						ease: [0.22, 1, 0.36, 1]
+					}
+				}}
+			>
+				<AnimatePresence mode="popLayout">
+					{filtered.length > 0 ? (
+						filtered.map((study) => (
+							<motion.div
+								key={study.id}
+								layout
+								initial={{
+									opacity: 0,
+									y: 20,
+									scale: 0.96
+								}}
+								animate={{
+									opacity: 1,
+									y: 0,
+									scale: 1
+								}}
+								exit={{
+									opacity: 0,
+									y: -20,
+									scale: 0.96
+								}}
+								transition={{
+									duration: 0.3,
+									ease: [0.22, 1, 0.36, 1],
+									layout: {
+										type: "spring",
+										stiffness: 350,
+										damping: 30
+									}
+								}}
+							>
+								<ResearchCard study={study} />
+							</motion.div>
+						))
+					) : (
+						<motion.p key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-sm text-white">
+							no projects match the selected filters.
+						</motion.p>
+					)}
+				</AnimatePresence>
+			</motion.div>
 		</div>
 	);
 }
