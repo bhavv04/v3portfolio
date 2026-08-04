@@ -19,9 +19,9 @@ That got me wondering: could quantum computing offer a meaningfully different le
 
 ### The foundation I'm building on
 
-Rather than starting from a blank page, I'm building on top of **QKDTI (Quantum Kernel Drug-Target Interaction)**, a framework published in *Scientific Reports* in 2025. The core idea is to transform biochemical features into a quantum Hilbert space using a parameterized circuit, compute a "quantum kernel" from the overlap between the resulting quantum states, and feed that into a support vector regression model to predict binding affinity. The researchers tested it on well-established datasets (DAVIS, KIBA, and BindingDB) and reported that the quantum kernel handled the non-linear relationships in binding data more effectively than the classical baselines they compared against.
+Rather than starting from a blank page, I'm building on top of **QKDTI (Quantum Kernel Drug-Target Interaction)**, a framework published in *Scientific Reports* in 2025. The core idea: transform biochemical features into a quantum Hilbert space using a parameterized circuit, compute a "quantum kernel" from the overlap between the resulting quantum states, then feed that into a support vector regression model to predict binding affinity. The researchers tested it on well-established datasets (DAVIS, KIBA, and BindingDB) and reported that the quantum kernel handled the non-linear relationships in binding data more effectively than the classical baselines they compared against.
 
-What I don't yet have a good feel for is *why* - is it the entanglement between qubits doing real work, or is some of that gain just a fixed-dataset artifact? That's part of what pulled me toward this project instead of just reading the paper and moving on.
+What I don't yet have a good feel for is *why*. Is the entanglement between qubits doing real work, or is some of that gain just an artifact of the benchmark datasets? That's part of what pulled me toward this project instead of just reading the paper and moving on.
 
 ![QKDTI prediction pipeline](/images/content/blog/quantum/qkdti-pipeline.svg)
 *The classical approach hits a wall on non-linear binding patterns. QKDTI instead maps molecular pairs into a quantum feature space before computing the kernel that feeds the regression model.*
@@ -33,9 +33,14 @@ My plan is to explore whether this same quantum kernel approach can be applied -
 
 ### The math I'm working through
 
-The comparison I keep coming back to: the classical kernel is a simple similarity measure between feature vectors - a dot product, or something like an RBF kernel based on distance. The quantum kernel instead runs each input through a parameterized rotation circuit and measures the squared overlap between the resulting quantum states. Same inputs, structurally similar idea, very different computation underneath.
+The core comparison, in plain terms:
 
-This is roughly what the encoding circuit looks like in code — I haven't run this yet, it's just me translating the math into something concrete enough to reason about:
+- **Classical kernel** - a simple similarity measure between feature vectors. A dot product, or something like an RBF kernel based on distance.
+- **Quantum kernel** - each input runs through a parameterized rotation circuit, and the kernel is the *squared overlap* between the two resulting quantum states.
+
+Same inputs, structurally similar idea, very different computation underneath.
+
+Concretely: the circuit below rotates each qubit based on the input values, entangles neighboring qubits so the mapping isn't just a set of independent rotations, then measures how much the two resulting states overlap. I haven't run this yet - it's me translating the math into something concrete enough to reason about:
 
 ```python
 import pennylane as qml
@@ -45,43 +50,35 @@ n_qubits = 4
 dev = qml.device("default.qubit", wires=n_qubits)
 
 def feature_map(x):
-    """U(x) = product of RZ(x_i) RY(x_i) rotations, one pair per qubit."""
+    """Encode x by rotating each qubit, then entangle neighbors."""
     for i in range(n_qubits):
         qml.RY(x[i], wires=i)
         qml.RZ(x[i], wires=i)
-    # entangle adjacent qubits so the mapping isn't just independent rotations
     for i in range(n_qubits - 1):
         qml.CNOT(wires=[i, i + 1])
 
 @qml.qnode(dev)
 def kernel_circuit(x1, x2):
-    """k(x, x') = |<0| U(x)^dagger U(x') |0>|^2"""
+    """Kernel = probability of measuring all-zeros after undoing x2's rotation."""
     feature_map(x1)
     qml.adjoint(feature_map)(x2)
     return qml.probs(wires=range(n_qubits))
 
 def quantum_kernel(x1, x2):
-    # probability of measuring all-zeros = the squared overlap
     return kernel_circuit(x1, x2)[0]
 ```
 
-Still very much theory-to-code translation at this point — next step is actually running it against a couple of real DAVIS dataset entries and seeing if the numbers make any sense at all.
-
-[ classical vs quntum kernel math diagram add it here once youree done]
-
-*Same input, two different kernels. The quantum version operates in a much higher-dimensional Hilbert space, which is where its extra expressive power supposedly comes from - and also exactly why I need to actually understand the circuits before I trust any results I get out of them.*
+Next step: actually running it against a couple of real DAVIS dataset entries and seeing if the numbers make any sense at all.
 
 ### Where I actually am right now
 
-Honestly? Barely started. The GitHub repo exists, the README states the goal, and that's about it. Before I touch any code, I want to actually understand the core concepts properly instead of copy-pasting quantum ML code I don't fully grasp.
-
-The obvious starting point is quantum computing fundamentals themselves - qubits, superposition, entanglement, enough circuit-level intuition to know what's actually happening when a rotation gate fires. The Bloch sphere is the first thing that made it click even a little for me: a classical bit is a light switch, a qubit is more like a compass needle that can point anywhere until you actually look at it.
+The Bloch sphere is the first thing that made it click even a little: a classical bit is a light switch. A qubit is more like a compass needle that can point anywhere until you actually look at it.
 
 ![Classical bit versus qubit](/images/content/blog/quantum/qubit-vs-classical.svg)
 *A classical bit is pinned to 0 or 1. A qubit is a point on the Bloch sphere - it can sit in a superposition of both, and only "collapses" to a definite value when measured.*
 
-From there, quantum kernels specifically are the part I'm least sure about. I get the general pitch - map data into a space where a simple method can find structure it couldn't find before - but I don't yet have real intuition for *why* the quantum version of that mapping is meaningfully better than a classical nonlinear kernel, only that QKDTI's results claim it is. That gap is probably the thing I most want to close.
+From there, quantum kernels specifically are the part I'm least sure about. I get the general pitch - map data into a space where a simple method can find structure it couldn't find before - but I don't yet have real intuition for why the quantum version of that mapping is meaningfully better than a classical nonlinear kernel. I only know that QKDTI's results claim it is. Closing that gap is probably what I want most out of this project.
 
-Which leads pretty directly into actually working through the QKDTI methodology in depth, instead of skimming the abstract - specifically how they landed on the RY/RZ rotation circuit, and why the Nystrom approximation (just 50 landmark samples standing in for the full kernel matrix) doesn't wreck the accuracy.
+Which leads pretty directly into working through the QKDTI methodology in depth, instead of skimming the abstract - specifically how they landed on the RY/RZ rotation circuit, and why the Nystrom approximation (just 50 landmark samples standing in for the full kernel matrix) doesn't wreck the accuracy.
 
-And running underneath all of that, I don't want to lose the actual biology. What does a binding affinity number mean in practice? Why does a small shift in it matter so much for Alzheimer's-specific targets? And, maybe the real question: how would I even know if a "better" kernel is genuinely better for the problem I care about, versus just better at fitting benchmark noise on DAVIS and KIBA?
+And running underneath all of that, I don't want to lose the actual biology. What does a binding affinity number mean in practice? Why does a small shift in it matter so much for Alzheimer's-specific targets? And maybe the real question: how would I even know if a "better" kernel is genuinely better for the problem I care about, versus just better at fitting benchmark noise on DAVIS and KIBA?
