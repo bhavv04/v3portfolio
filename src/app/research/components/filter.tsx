@@ -133,14 +133,14 @@ export default function ResearchFilter() {
 				className="grid grid-cols-1 gap-3 lg:grid-cols-2"
 				transition={{
 					layout: {
-						duration: 0.35,
+						duration: 0.9,
 						ease: [0.22, 1, 0.36, 1]
 					}
 				}}
 			>
 				<AnimatePresence mode="popLayout">
 					{filtered.length > 0 ? (
-						filtered.map((study) => (
+						filtered.map((study, index) => (
 							<motion.div
 								key={study.id}
 								layout
@@ -152,20 +152,30 @@ export default function ResearchFilter() {
 								animate={{
 									opacity: 1,
 									y: 0,
-									scale: 1
+									scale: 1,
+									transition: {
+										duration: 0.5,
+										delay: index * 0.2,
+										ease: [0.22, 1, 0.36, 1],
+										layout: {
+											type: "spring",
+											stiffness: 350,
+											damping: 30
+										}
+									}
 								}}
 								exit={{
 									opacity: 0,
 									y: -20,
-									scale: 0.96
-								}}
-								transition={{
-									duration: 0.3,
-									ease: [0.22, 1, 0.36, 1],
-									layout: {
-										type: "spring",
-										stiffness: 350,
-										damping: 30
+									scale: 0.96,
+									transition: {
+										duration: 0.5,
+										ease: [0.22, 1, 0.36, 1],
+										layout: {
+											type: "spring",
+											stiffness: 350,
+											damping: 30
+										}
 									}
 								}}
 							>

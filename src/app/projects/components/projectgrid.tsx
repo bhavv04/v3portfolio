@@ -42,7 +42,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
 							scale: 0.95
 						}}
 						transition={{
-							duration: 0.3,
+							duration: 0.5,
 							ease: [0.22, 1, 0.36, 1]
 						}}
 					>
