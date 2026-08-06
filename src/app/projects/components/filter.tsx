@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState } from "react";
 import { ProjectTag } from "@/app/projects/model";
 
 interface FilterProps {
@@ -11,6 +10,8 @@ interface FilterProps {
 }
 
 export function Filter({ tags, selected, onChange }: FilterProps) {
+	const [clearExiting, setClearExiting] = useState(false);
+
 	const toggle = (tag: ProjectTag) => {
 		const next = new Set(selected);
 		if (next.has(tag)) next.delete(tag);
@@ -18,52 +19,38 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 		onChange(next);
 	};
 
+	const handleClear = () => {
+		setClearExiting(true);
+	};
+
 	return (
-		<motion.div layout className="mb-4 flex flex-wrap gap-2">
-			<AnimatePresence mode="popLayout">
-				{tags.map((tag, i) => {
-					const active = selected.has(tag);
-					return (
-						<motion.button
-							key={tag}
-							layout
-							initial={{ opacity: 0, y: 20, scale: 0.95 }}
-							animate={{
-								opacity: 1,
-								y: 0,
-								scale: 1,
-								transition: {
-									duration: 0.95,
-									delay: i * 0.05,
-									ease: [0.22, 1, 0.36, 1]
-								}
-							}}
-							exit={{
-								opacity: 0,
-								y: -20,
-								scale: 0.95,
-								transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
-							}}
-							onClick={() => toggle(tag)}
-							className={`relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
-								active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
-							}`}
-						>
-							{tag}
-						</motion.button>
-					);
-				})}
-			</AnimatePresence>
+		<div className="mb-4 flex flex-wrap gap-2">
+			{tags.map((tag, i) => {
+				const active = selected.has(tag);
+				return (
+					<button
+						key={tag}
+						onClick={() => toggle(tag)}
+						className={`fade-in-up-fast relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
+							active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
+						}`}
+						style={{ "--delay-index": i } as React.CSSProperties}
+					>
+						{tag}
+					</button>
+				);
+			})}
 
 			{selected.size > 0 && (
-				<motion.button
-					layout
-					initial={{ opacity: 0, y: 20, scale: 0.95 }}
-					animate={{ opacity: 1, y: 0, scale: 1 }}
-					exit={{ opacity: 0, y: -20, scale: 0.95 }}
-					transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-					onClick={() => onChange(new Set())}
-					className="group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white"
+				<button
+					onClick={() => {
+						handleClear();
+						onChange(new Set());
+					}}
+					onAnimationEnd={() => setClearExiting(false)}
+					className={`group relative inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white/80 transition-all duration-300 ease-in-out hover:text-white ${
+						clearExiting ? "scale-out" : "scale-in"
+					}`}
 				>
 					<span>Clear all</span>
 					<svg
@@ -75,8 +62,8 @@ export function Filter({ tags, selected, onChange }: FilterProps) {
 					>
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
 					</svg>
-				</motion.button>
+				</button>
 			)}
-		</motion.div>
+		</div>
 	);
 }

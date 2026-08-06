@@ -1,10 +1,10 @@
+// research/components/filter.tsx
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProjectStatus, ResearchTag } from "@/app/research/model";
 import { caseStudies } from "@/app/research/data";
-import ResearchCard from "@/app/research/components/researchCard";
+import { ResearchGrid } from "./researchgrid";
 
 const ALL_TAGS: ResearchTag[] = [
 	"finance",
@@ -63,7 +63,7 @@ export default function ResearchFilter() {
 	});
 
 	// If filter changes cause expanded card to disappear, collapse it
-	React.useEffect(() => {
+	useEffect(() => {
 		if (expandedId && !filtered.find((s) => s.id === expandedId)) {
 			setExpandedId(null);
 		}
@@ -79,7 +79,7 @@ export default function ResearchFilter() {
 						<button
 							key={status}
 							onClick={() => toggleStatus(status)}
-							className={`fade-in-up relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
+							className={`fade-in-up-fast relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
 								active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
 							}`}
 							style={{ "--delay-index": i } as React.CSSProperties}
@@ -98,7 +98,7 @@ export default function ResearchFilter() {
 						<button
 							key={tag}
 							onClick={() => toggleTag(tag)}
-							className={`fade-in relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
+							className={`fade-in-up-fast relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300 ease-in-out ${
 								active ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-white hover:text-black"
 							}`}
 							style={{ "--delay-index": i } as React.CSSProperties}
@@ -128,67 +128,7 @@ export default function ResearchFilter() {
 			</div>
 
 			{/* Cards */}
-			<motion.div
-				layout
-				className="grid grid-cols-1 gap-3 lg:grid-cols-2"
-				transition={{
-					layout: {
-						duration: 0.9,
-						ease: [0.22, 1, 0.36, 1]
-					}
-				}}
-			>
-				<AnimatePresence mode="popLayout">
-					{filtered.length > 0 ? (
-						filtered.map((study, index) => (
-							<motion.div
-								key={study.id}
-								layout
-								initial={{
-									opacity: 0,
-									y: 20,
-									scale: 0.96
-								}}
-								animate={{
-									opacity: 1,
-									y: 0,
-									scale: 1,
-									transition: {
-										duration: 0.5,
-										delay: index * 0.2,
-										ease: [0.22, 1, 0.36, 1],
-										layout: {
-											type: "spring",
-											stiffness: 350,
-											damping: 30
-										}
-									}
-								}}
-								exit={{
-									opacity: 0,
-									y: -20,
-									scale: 0.96,
-									transition: {
-										duration: 0.5,
-										ease: [0.22, 1, 0.36, 1],
-										layout: {
-											type: "spring",
-											stiffness: 350,
-											damping: 30
-										}
-									}
-								}}
-							>
-								<ResearchCard study={study} />
-							</motion.div>
-						))
-					) : (
-						<motion.p key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-sm text-white">
-							no projects match the selected filters.
-						</motion.p>
-					)}
-				</AnimatePresence>
-			</motion.div>
+			<ResearchGrid studies={filtered} />
 		</div>
 	);
 }

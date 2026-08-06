@@ -251,10 +251,6 @@ resize-horizontal {
 
 @font-face {
 	font-family: "Satoshi";
-	src:
-		url("/public/fonts/Satoshi-Variable.woff2") format("woff2"),
-		url("/public/fonts/Satoshi-Variable.woff") format("woff"),
-		url("/public/fonts/Satoshi-Variable.ttf") format("truetype");
 	font-weight: 300 900;
 	font-display: swap;
 	font-style: normal;
@@ -517,8 +513,26 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
+@keyframes fadeOutDown {
+	from {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.95) translateY(-8px);
+	}
+}
+
 .fade-in-up {
 	animation: fadeInUp 0.8s ease-out forwards;
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+.fade-in-up-fast {
+	animation: fadeInUp 0.4s ease-out forwards;
 	animation-delay: calc(var(--delay-index, 0) * 0.1s);
 	opacity: 0;
 	transform: translateY(30px);
@@ -536,10 +550,20 @@ body::-webkit-scrollbar-thumb:hover {
 	opacity: 0;
 }
 
+.scale-in-fast {
+	animation: scaleIn 0.2s ease-out forwards;
+	animation-delay: calc(var(--delay-index, 0) * 0.1s);
+	opacity: 0;
+}
+
 img.emoji {
 	height: 1em;
 	width: 1em;
 	margin: 0 0.05em 0 0.1em;
 	vertical-align: -0.1em;
 	display: inline;
+}
+
+.scale-out {
+	animation: fadeOutDown 0.3s ease-in forwards;
 }
