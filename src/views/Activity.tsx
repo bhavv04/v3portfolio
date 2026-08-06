@@ -3,15 +3,15 @@ import BlogActivityCard from "@/components/activity/BlogActivityCard";
 import GithubActivityCard from "@/components/activity/GithubActivityCard";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { getSortedPostsMeta } from "@/lib/blog/posts";
-import { getLatestCommits } from "@/lib/activity/activity";
+import { getLatestCommits, getLanguages } from "@/lib/activity/activity";
 import { PiPersonSimpleHikeBold } from "react-icons/pi";
 
 export default async function Activity() {
 	const posts = getSortedPostsMeta().slice(0, 4);
-	const commits = await getLatestCommits();
+	const [commits, languages] = await Promise.all([getLatestCommits(), getLanguages()]);
 
 	return (
-		<section className="bg-transparent pb-12">
+		<section className="bg-transparent">
 			<SectionTitle
 				text={
 					<span className="flex items-center gap-2 text-3xl">
@@ -21,7 +21,7 @@ export default async function Activity() {
 				}
 			/>
 			<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-				<GithubActivityCard commits={commits} />
+				<GithubActivityCard commits={commits} languages={languages} />
 				<BlogActivityCard posts={posts} />
 			</div>
 		</section>

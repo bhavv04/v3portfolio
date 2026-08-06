@@ -3,11 +3,38 @@ import Link from "next/link";
 import type { Commit } from "@/lib/activity/activity";
 import { FiActivity } from "react-icons/fi";
 
-interface GithubActivityCardProps {
-	commits: Commit[];
+interface LanguageStat {
+	name: string;
+	percent: number; // 0-100
+	color: string;
 }
 
-export default function GithubActivityCard({ commits }: GithubActivityCardProps) {
+interface GithubActivityCardProps {
+	commits: Commit[];
+	languages?: LanguageStat[];
+}
+
+function LanguageBar({ languages }: { languages: LanguageStat[] }) {
+	if (languages.length === 0) return null;
+
+	return (
+		<div className="flex h-1.5 w-full gap-px overflow-visible rounded-full">
+			{languages.map((lang) => (
+				<div
+					key={lang.name}
+					className="group/seg relative h-full min-w-[3px] first:rounded-l-full last:rounded-r-full"
+					style={{ width: `${lang.percent}%`, backgroundColor: lang.color }}
+				>
+					<span className="pointer-events-none absolute -top-7 left-1/2 z-10 -translate-x-1/2 rounded-md bg-black/90 px-2 py-1 text-[10px] whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover/seg:opacity-100">
+						{lang.name} · {lang.percent}%
+					</span>
+				</div>
+			))}
+		</div>
+	);
+}
+
+export default function GithubActivityCard({ commits, languages = [] }: GithubActivityCardProps) {
 	return (
 		<div className="flex h-full flex-col gap-4 rounded-xl bg-transparent p-3">
 			<h3 className="flex items-center gap-1.5 text-sm text-white/70">
@@ -36,6 +63,8 @@ export default function GithubActivityCard({ commits }: GithubActivityCardProps)
 					);
 				})}
 			</ul>
+
+			<LanguageBar languages={languages} />
 		</div>
 	);
 }

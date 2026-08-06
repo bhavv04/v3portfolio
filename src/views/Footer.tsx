@@ -4,6 +4,7 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { GiCoffeeMug } from "react-icons/gi";
+import Signature from "@/components/common/Signature";
 
 export default function Footer() {
 	const formRef = useRef<HTMLFormElement>(null);
@@ -151,13 +152,13 @@ export default function Footer() {
 					>
 						<span className="relative z-10">{isSending ? "Sending..." : "Send Message"}</span>
 					</button>
-				</form>
 
-				<div className="text-right text-sm text-zinc-500">&copy; {new Date().getFullYear()} Bhavdeep Arora.</div>
+					<Signature />
+				</form>
 
 				{/* Calvin & Hobbes quote */}
 				{quote && (
-					<div className="mt-6 text-left">
+					<div className="text-left">
 						<p className="text-xs text-gray-600">&ldquo;{quote.quoteText}&rdquo;</p>
 						<p className="mt-1 text-xs text-gray-600">- {quote.quoteAuthor}</p>
 					</div>

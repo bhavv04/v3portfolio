@@ -15,7 +15,31 @@ interface Commit {
 	url: string;
 }
 
-const EXCLUDED_REPOS = ["bhavdeeparora.dev"]; // add any others to skip
+interface LanguageStat {
+	name: string;
+	percent: number;
+	color: string;
+}
+
+const EXCLUDED_REPOS = ["v3portfolio"]; // add any others to skip
+
+// GitHub's linguist colors — add more as your repos use new languages
+const LANGUAGE_COLORS: Record<string, string> = {
+	TypeScript: "#3178c6",
+	JavaScript: "#f1e05a",
+	Rust: "#dea584",
+	Python: "#3572A5",
+	HTML: "#e34c26",
+	CSS: "#563d7c",
+	Shell: "#89e051",
+	Dockerfile: "#384d54",
+	TeX: "#3D6117",
+	Go: "#00ADD8"
+};
+
+const FALLBACK_COLOR = "#ff0000"; // for languages not in the map above
+
+const IGNORED_LANGUAGES = ["Jupyter Notebook"];
 
 async function getRecentRepos(): Promise<GithubRepo[]> {
 	const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=pushed&per_page=10`, {
@@ -54,5 +78,45 @@ async function getLatestCommits(): Promise<Commit[]> {
 	return results.filter((c): c is Commit => c !== null).slice(0, 4);
 }
 
-export { getLatestCommits };
-export type { Commit };
+async function getLanguages(): Promise<LanguageStat[]> {
+	const repos = await getRecentRepos();
+
+	const languagePromises = repos.map(async (repo) => {
+		const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repo.name}/languages`, {
+			next: { revalidate: 3600 }
+		});
+
+		if (!res.ok) return null;
+
+		return (await res.json()) as Record<string, number>;
+	});
+
+	const results = await Promise.all(languagePromises);
+
+	// sum bytes per language across all repos
+	const totals: Record<string, number> = {};
+	for (const langBytes of results) {
+		if (!langBytes) continue;
+		for (const [lang, bytes] of Object.entries(langBytes)) {
+			totals[lang] = (totals[lang] ?? 0) + bytes;
+		}
+	}
+
+	// filter BEFORE computing the total, so percentages recalculate against
+	// only the languages you're actually keeping
+	const filteredEntries = Object.entries(totals).filter(([name]) => !IGNORED_LANGUAGES.includes(name));
+
+	const totalBytes = filteredEntries.reduce((sum, [, bytes]) => sum + bytes, 0);
+	if (totalBytes === 0) return [];
+
+	return filteredEntries
+		.map(([name, bytes]) => ({
+			name,
+			percent: Math.round((bytes / totalBytes) * 1000) / 10, // one decimal
+			color: LANGUAGE_COLORS[name] ?? FALLBACK_COLOR
+		}))
+		.sort((a, b) => b.percent - a.percent);
+}
+
+export { getLatestCommits, getLanguages };
+export type { Commit, LanguageStat };
