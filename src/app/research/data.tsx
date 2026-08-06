@@ -71,6 +71,7 @@ export const caseStudies: CaseStudy[] = [
 		stack: ["Python", "xarray", "pandas", "scikit-learn", "matplotlib", "cartopy", "NumPy", "Jupyter", "NetCDF4"],
 		links: {
 			repo: "https://github.com/bhavv04/deadzone",
+			SSRN: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7186418",
 			paper: "https://bhavv04.github.io/deadzone/deadzone_paper.pdf"
 		},
 		hasCaseStudy: false
