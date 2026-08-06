@@ -152,9 +152,9 @@ export default function Footer() {
 					>
 						<span className="relative z-10">{isSending ? "Sending..." : "Send Message"}</span>
 					</button>
-
-					<Signature />
 				</form>
+
+				<Signature />
 
 				{/* Calvin & Hobbes quote */}
 				{quote && (

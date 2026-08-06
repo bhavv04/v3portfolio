@@ -7,7 +7,7 @@ import { getLatestCommits, getLanguages } from "@/lib/activity/activity";
 import { PiPersonSimpleHikeBold } from "react-icons/pi";
 
 export default async function Activity() {
-	const posts = getSortedPostsMeta().slice(0, 4);
+	const posts = getSortedPostsMeta().slice(0, 5);
 	const [commits, languages] = await Promise.all([getLatestCommits(), getLanguages()]);
 
 	return (
