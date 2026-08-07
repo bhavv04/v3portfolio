@@ -7,8 +7,7 @@ import { getLatestCommits, getLanguages } from "@/lib/activity/activity";
 import { PiPersonSimpleHikeBold } from "react-icons/pi";
 import TracksActivityCard from "@/components/activity/TracksActivityCard";
 import favoriteTracks from "@/lib/activity/tracks.json";
-import RecentReadsCard from "@/components/activity/RecentReadsCard";
-import { recentReads } from "@/lib/activity/reads";
+import PettableCat from "@/components/activity/PettableCat";
 
 export default async function Activity() {
 	const posts = getSortedPostsMeta().slice(0, 5);
@@ -32,15 +31,12 @@ export default async function Activity() {
 			</div>
 
 			{/* Second row: Tracks (bigger) + Sprite + Recent Reads */}
-			<div className="mx-auto mt-2 grid grid-cols-1 items-center gap-4 md:grid-cols-7">
+			<div className="mx-auto mt-2 grid grid-cols-1 items-start gap-4 md:grid-cols-7">
 				<div className="md:col-span-4">
 					<TracksActivityCard tracks={favoriteTracks} />
 				</div>
-				<div className="hidden items-center justify-center md:col-span-1 md:flex">
-					<img src="/images/stardew_sprite.png" alt="Stardew Valley character" className="h-auto w-full rounded-full object-contain" />
-				</div>
-				<div className="md:col-span-2">
-					<RecentReadsCard reads={recentReads} />
+				<div className="col-span-3 items-center justify-center">
+					<PettableCat />
 				</div>
 			</div>
 		</section>
