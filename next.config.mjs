@@ -5,7 +5,6 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import("next").NextConfig} */
 const config = {
-	output: "export",
 	pageExtensions: ["ts", "tsx", "md", "mdx"],
 	reactStrictMode: true,
 	images: {

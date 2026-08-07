@@ -4,8 +4,11 @@ import { HeroButtons } from "@/components/hero/HeroButtons";
 import { HeroIcons } from "@/components/hero/HeroIcons";
 import { CatToggleButton } from "@/components/hero/CatToggle";
 import { SectionTitle } from "@/components/typography/SectionTitle";
+import { useLiveAge } from "@/components/hero/useLiveAge";
 
 export default function HeroSection() {
+	const age = useLiveAge();
+
 	return (
 		<section id="home" className="mx-auto max-w-160 space-y-4">
 			<div className="fade-in-up flex items-center gap-3" style={{ "--delay-index": 0 } as React.CSSProperties}>
@@ -22,8 +25,8 @@ export default function HeroSection() {
 
 			<div className="fade-in-up" style={{ "--delay-index": 3 } as React.CSSProperties}>
 				<p>
-					I&apos;m a systems focused software engineer based in Toronto. I&apos;ve been programming for over six years, always chasing whatever
-					problem catches my interest.
+					I&apos;m a <span className="text-amber-400 tabular-nums">{age}</span> y/o systems focused software engineer based in Toronto. I&apos;ve been
+					programming for over six years, always chasing whatever problem catches my interest.
 				</p>
 			</div>
 
