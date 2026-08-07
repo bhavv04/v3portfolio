@@ -155,7 +155,6 @@ export const projects: Project[] = [
 		status: "active",
 		year: 2025,
 		github: "https://github.com/bhavv04/terraseed",
-		live: "https://bhavv04.github.io/terraseed/",
 		image: "/images/projects/terraseed.png",
 		featured: true,
 		hasCaseStudy: false
@@ -206,7 +205,7 @@ export const projects: Project[] = [
 		tech: ["Rust"],
 		status: "active",
 		year: 2026,
-		github: "https://github.com/bhavv04/awkrs",
+		github: "https://github.com/bhavv04/awk-rs",
 		live: "",
 		image: "/images/projects/awkrs.png",
 		featured: false,
