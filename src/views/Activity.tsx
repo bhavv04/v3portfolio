@@ -32,16 +32,12 @@ export default async function Activity() {
 			</div>
 
 			{/* Second row: Tracks (bigger) + Sprite + Recent Reads */}
-			<div className="mx-auto mt-8 grid grid-cols-1 items-center gap-4 md:grid-cols-6">
+			<div className="mx-auto mt-2 grid grid-cols-1 items-center gap-4 md:grid-cols-6">
 				<div className="md:col-span-3">
 					<TracksActivityCard tracks={favoriteTracks} />
 				</div>
 				<div className="hidden items-center justify-center md:col-span-1 md:flex">
-					<img
-						src="/images/stardew_sprite.png"
-						alt="Stardew Valley character"
-						className="h-auto w-full max-w-[120px] rounded-full bg-zinc-900/5 object-contain"
-					/>
+					<img src="/images/stardew_sprite.png" alt="Stardew Valley character" className="h-auto w-full rounded-full object-contain" />
 				</div>
 				<div className="md:col-span-2">
 					<RecentReadsCard reads={recentReads} />
