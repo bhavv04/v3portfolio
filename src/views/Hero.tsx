@@ -5,6 +5,7 @@ import { HeroIcons } from "@/components/hero/HeroIcons";
 import { CatToggleButton } from "@/components/hero/CatToggle";
 import { SectionTitle } from "@/components/typography/SectionTitle";
 import { useLiveAge } from "@/components/hero/useLiveAge";
+import { BookHoverText } from "@/components/hero/BookHoverText";
 
 export default function HeroSection() {
 	const age = useLiveAge();
@@ -25,8 +26,12 @@ export default function HeroSection() {
 
 			<div className="fade-in-up" style={{ "--delay-index": 3 } as React.CSSProperties}>
 				<p>
-					I&apos;m a <span className="text-amber-400 tabular-nums">{age}</span> y/o systems focused software engineer based in Toronto. I&apos;ve been
-					programming for over six years, always chasing whatever problem catches my interest.
+					I&apos;m a{" "}
+					<span className="font-semibold text-stone-400 tabular-nums" suppressHydrationWarning>
+						{age} y/o
+					</span>{" "}
+					systems focused software engineer based in Toronto. I&apos;ve been programming for over six years, always chasing whatever problem catches
+					my interest.
 				</p>
 			</div>
 
@@ -38,7 +43,10 @@ export default function HeroSection() {
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}>
-				<p>Outside of programming, I love learning new things, reading books, and exploring outside! Here&apos;s what I&apos;m currently up to:</p>
+				<p>
+					Outside of programming, I love learning new things, reading <BookHoverText />, and exploring outside! Here&apos;s what I&apos;m currently up
+					to:
+				</p>
 			</div>
 
 			<div className="fade-in-up" style={{ "--delay-index": 5 } as React.CSSProperties}></div>

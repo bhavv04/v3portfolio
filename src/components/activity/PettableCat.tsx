@@ -193,7 +193,7 @@ export default function PettableCat() {
 			<h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-white/60">say hi</h3>
 
 			{/* Log */}
-			<div className="relative flex-1 overflow-hidden pr-24 sm:pr-32">
+			<div className="relative flex-1 overflow-hidden pr-24 sm:pr-30">
 				<ul className="flex max-h-40 flex-col gap-1.5 overflow-hidden text-xs">
 					{!visibleLog.length && <li className="text-white/40 italic">no one&apos;s said hi yet</li>}
 					{visibleLog.map((e, i) => (

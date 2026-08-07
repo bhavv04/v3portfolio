@@ -227,7 +227,8 @@ const Terminal: React.FC = () => {
 								value={input}
 								onChange={(e) => setInput(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
-								className="w-full border-none bg-transparent text-stone-300 focus:ring-0 focus:outline-hidden"
+								className="w-full border-none bg-transparent text-base text-stone-300 focus:ring-0 focus:outline-hidden sm:text-xs"
+								style={{ fontSize: "16px" }}
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -246,6 +247,7 @@ const Terminal: React.FC = () => {
 									} else handleKeyDown(e);
 								}}
 								className="w-full flex-1 text-stone-300 focus:ring-0 focus:outline-hidden"
+								style={{ fontSize: "16px" }}
 							/>
 						)}
 					</div>
@@ -256,6 +258,7 @@ const Terminal: React.FC = () => {
 								disabled={commandHistory.length === 0}
 								className="flex h-8 w-8 items-center justify-center rounded text-stone-500 hover:bg-stone-800 disabled:opacity-30"
 								aria-label="Previous command"
+								style={{ fontSize: "16px" }}
 							>
 								<ChevronUp className="h-4 w-4" />
 							</button>
