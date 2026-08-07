@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { RotateCcw } from "lucide-react";
 
 // Path data extracted from the "Alex Brush" typeface (SIL Open Font License).
 // Unlike font outline paths (which have an outer contour + inner counter,
@@ -31,13 +30,12 @@ const DELAYS = [0.0, 0.16, 0.32, 0.48, 0.64, 0.8, 0.96, 1.12, 1.28, 1.44, 1.6, 1
 const GLYPH_DURATION = 0.45;
 const UNDERLINE_DELAY = 2.52;
 const UNDERLINE_DURATION = 0.6;
-const BUTTON_DELAY = 3.27;
 
 export default function Signature() {
-	const [key, setKey] = useState(0);
+	const [key] = useState(0);
 
 	return (
-		<div className="flex flex-col items-end">
+		<div className="flex flex-col items-center">
 			<motion.svg key={key} width="672.1" height="153.5" viewBox="0 0 672.1 153.5" className="h-24 w-full max-w-xs text-zinc-400">
 				<g stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="6" fill="none">
 					{PATHS.map((d, i) => (
@@ -65,16 +63,6 @@ export default function Signature() {
 					/>
 				</g>
 			</motion.svg>
-			<motion.button
-				onClick={() => setKey((k) => k + 1)}
-				aria-label="Replay signature animation"
-				className="text-stone-400 transition-colors hover:text-stone-600"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: BUTTON_DELAY }}
-			>
-				<RotateCcw size={16} />
-			</motion.button>
 		</div>
 	);
 }

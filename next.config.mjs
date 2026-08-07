@@ -1,6 +1,7 @@
 import createMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
-import rehypeStarryNight from "rehype-starry-night";
+import rehypePrettyCode from "rehype-pretty-code";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -28,8 +29,12 @@ const config = {
 const withMDX = createMDX({
 	options: {
 		remarkPlugins: [remarkGfm],
-		rehypePlugins: [rehypeStarryNight]
+		rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]]
 	}
 });
 
-export default withMDX(config);
+const withBundleAnalyzer = bundleAnalyzer({
+	enabled: process.env.ANALYZE === "true"
+});
+
+export default withBundleAnalyzer(withMDX(config));

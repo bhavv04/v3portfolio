@@ -4,7 +4,6 @@ import { SectionTitle } from "@/components/typography/SectionTitle";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { GiCoffeeMug } from "react-icons/gi";
-import Signature from "@/components/common/Signature";
 
 export default function Footer() {
 	const formRef = useRef<HTMLFormElement>(null);
@@ -154,7 +153,7 @@ export default function Footer() {
 					</button>
 				</form>
 
-				<Signature />
+				<div className="text-right text-sm text-zinc-500">&copy; {new Date().getFullYear()} Bhavdeep Arora.</div>
 
 				{/* Calvin & Hobbes quote */}
 				{quote && (

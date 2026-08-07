@@ -5,7 +5,7 @@ import { FaBookReader } from "react-icons/fa";
 
 export default function RecentReadsCard({ reads }: { reads: Read[] }) {
 	return (
-		<div className="rounded-2xl bg-stone-900 p-4 backdrop-blur-sm">
+		<div className="rounded-2xl p-4">
 			<h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-white/60">
 				<FaBookReader className="text-base" />
 				Recent Reads
@@ -13,7 +13,7 @@ export default function RecentReadsCard({ reads }: { reads: Read[] }) {
 			<ul className="flex flex-col gap-2">
 				{reads.map((read) => {
 					const content = (
-						<div className="flex items-center gap-3">
+						<div className="flex items-center gap-2">
 							<div className="relative h-14 w-10 overflow-hidden rounded-xs">
 								<Image src={read.cover} alt={read.title} fill className="object-cover" />
 							</div>

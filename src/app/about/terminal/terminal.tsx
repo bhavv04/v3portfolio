@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { OutputLine } from "@/app/about/terminal/model";
 import { executeCommand } from "@/app/about/terminal/commands";
-import { WELCOME_MESSAGE } from "@/app/about/terminal/data";
 import { X, ChevronUp } from "lucide-react";
+import Signature from "@/components/common/Signature";
 
 function useMediaQuery(query: string): boolean {
 	const [matches, setMatches] = useState(false);
@@ -44,28 +44,10 @@ const Terminal: React.FC = () => {
 	const [output, setOutput] = useState<OutputLine[]>([]);
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
 	const [historyIndex, setHistoryIndex] = useState(-1);
-	const [isTyping, setIsTyping] = useState(false);
-	const [welcomeText, setWelcomeText] = useState("");
+	const [showButtons, setShowButtons] = useState(false);
 	const outputRef = useRef<HTMLDivElement>(null);
 	const inputDivRef = useRef<HTMLDivElement>(null);
 	const mobileInputRef = useRef<HTMLInputElement>(null);
-
-	const typeWriter = useCallback(
-		(text: string, speed = 15) => {
-			if (welcomeText !== "") return;
-			setIsTyping(true);
-			let i = 0;
-			const tick = () => {
-				if (i < text.length) {
-					setWelcomeText(text.substring(0, i + 1));
-					i++;
-					setTimeout(tick, speed);
-				} else setIsTyping(false);
-			};
-			setTimeout(tick, 800);
-		},
-		[welcomeText]
-	);
 
 	const processResultAndAppend = useCallback(
 		(cmd: string, result: string) => {
@@ -98,32 +80,35 @@ const Terminal: React.FC = () => {
 
 	const handleQuickCommand = useCallback(
 		(cmd: string) => {
-			if (!isTyping) processResultAndAppend(cmd, executeCommand(cmd));
+			processResultAndAppend(cmd, executeCommand(cmd));
 		},
-		[isTyping, processResultAndAppend]
+		[processResultAndAppend]
 	);
 
 	useEffect(() => {
 		if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
-	}, [output, welcomeText]);
+	}, [output]);
+
 	useEffect(() => {
-		if (!isTyping) (isMobile ? mobileInputRef : inputDivRef).current?.focus({ preventScroll: true });
-	}, [isTyping, isMobile]);
+		(isMobile ? mobileInputRef : inputDivRef).current?.focus({ preventScroll: true });
+	}, [isMobile]);
+
 	useEffect(() => {
-		typeWriter(WELCOME_MESSAGE);
-	}, [typeWriter]);
+		const t = setTimeout(() => setShowButtons(true), 3000);
+		return () => clearTimeout(t);
+	}, []);
 
 	const handleSubmit = useCallback(
 		(e?: React.KeyboardEvent | React.FormEvent) => {
 			e?.preventDefault();
 			const cmd = input.trim();
-			if (!cmd || isTyping) return;
+			if (!cmd) return;
 			processResultAndAppend(cmd, executeCommand(cmd));
 			setHistoryIndex(-1);
 			setInput("");
 			if (inputDivRef.current) inputDivRef.current.textContent = "";
 		},
-		[input, isTyping, processResultAndAppend]
+		[input, processResultAndAppend]
 	);
 
 	const moveCaretToEnd = () =>
@@ -140,7 +125,6 @@ const Terminal: React.FC = () => {
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
-			if (isTyping) return;
 			if (e.key === "ArrowUp") {
 				e.preventDefault();
 				const next = Math.min(historyIndex + 1, commandHistory.length - 1);
@@ -169,7 +153,7 @@ const Terminal: React.FC = () => {
 				}
 			}
 		},
-		[commandHistory, historyIndex, isTyping]
+		[commandHistory, historyIndex]
 	);
 
 	const cycleMobileHistory = useCallback(() => {
@@ -184,7 +168,7 @@ const Terminal: React.FC = () => {
 		<div
 			className="scale-in relative flex h-[70vh] flex-col overflow-hidden rounded-2xl bg-stone-900 text-xs shadow-lg shadow-black/40"
 			style={{ "--delay-index": 2 } as React.CSSProperties}
-			onClick={() => !isTyping && (isMobile ? mobileInputRef : inputDivRef).current?.focus()}
+			onClick={() => (isMobile ? mobileInputRef : inputDivRef).current?.focus()}
 		>
 			<div className="terminal-scanlines" aria-hidden />
 
@@ -203,12 +187,11 @@ const Terminal: React.FC = () => {
 
 			{/* Body */}
 			<div ref={outputRef} className="relative z-10 flex-1 scrollbar-none overflow-y-auto p-6 text-stone-500">
-				<p className="mb-6 leading-relaxed whitespace-pre-wrap text-stone-400">
-					{welcomeText}
-					{isTyping && <span className="inline-block h-4 w-3 bg-stone-600 align-text-bottom" />}
-				</p>
-				{!isTyping && (
-					<div className="fade-in-up mb-6 flex flex-wrap gap-2">
+				<div className="mb-4">
+					<Signature />
+				</div>
+				{showButtons && (
+					<div className="fade-in-up mb-6 flex flex-wrap justify-center gap-2">
 						{["help", "about", "books", "hobbies", "status", "neofetch", "sudo", "matrix"].map((cmd) => (
 							<button
 								key={cmd}
@@ -236,17 +219,12 @@ const Terminal: React.FC = () => {
 				<div className="flex items-center gap-2">
 					<span className="text-stone-600 select-none">{`> `}</span>
 					<div className="relative flex flex-1 items-center">
-						{isTyping ? (
-							<span className="pointer-events-none absolute flex items-center gap-1.5 text-stone-600 select-none">initializing...</span>
-						) : !input ? (
-							<span className="pointer-events-none absolute text-stone-600 select-none">type a command...</span>
-						) : null}
+						{!input && <span className="pointer-events-none absolute text-stone-600 select-none">type a command...</span>}
 						{isMobile ? (
 							<input
 								ref={mobileInputRef}
 								type="text"
 								value={input}
-								disabled={isTyping}
 								onChange={(e) => setInput(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
 								className="w-full border-none bg-transparent text-stone-300 focus:ring-0 focus:outline-hidden"
@@ -258,7 +236,7 @@ const Terminal: React.FC = () => {
 						) : (
 							<div
 								ref={inputDivRef}
-								contentEditable={!isTyping}
+								contentEditable
 								suppressContentEditableWarning
 								onInput={(e) => setInput(e.currentTarget.textContent ?? "")}
 								onKeyDown={(e) => {
