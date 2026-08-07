@@ -8,11 +8,21 @@ const config = {
 	pageExtensions: ["ts", "tsx", "md", "mdx"],
 	reactStrictMode: true,
 	images: {
-		unoptimized: true
+		unoptimized: true,
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "*.mzstatic.com"
+			},
+			{
+				protocol: "https",
+				hostname: "covers.openlibrary.org"
+			}
+		]
 	},
 	eslint: {
-		ignoreDuringBuilds: true,
-	},
+		ignoreDuringBuilds: true
+	}
 };
 
 const withMDX = createMDX({

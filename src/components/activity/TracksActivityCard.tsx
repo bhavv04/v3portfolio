@@ -1,0 +1,95 @@
+"use client";
+
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { PiPlayFill, PiPauseFill } from "react-icons/pi";
+import EqualizerBars from "@/components/activity/EqualizerBars";
+import { GoIssueTracks } from "react-icons/go";
+
+interface Track {
+	id: string;
+	title: string;
+	artist: string;
+	cover: string;
+	previewUrl: string;
+	startAt?: number;
+	bgFrom: string;
+	bgTo: string;
+}
+
+const SNIPPET_SECONDS = 15;
+
+export default function TracksActivityCard({ tracks }: { tracks: Track[] }) {
+	const [playingId, setPlayingId] = useState<string | null>(null);
+	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const stopTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const stopPlayback = () => {
+		audioRef.current?.pause();
+		if (audioRef.current) audioRef.current.currentTime = 0;
+		if (stopTimeout.current) clearTimeout(stopTimeout.current);
+		setPlayingId(null);
+	};
+
+	const togglePlay = (track: Track) => {
+		if (playingId === track.id) {
+			stopPlayback();
+			return;
+		}
+
+		if (audioRef.current) audioRef.current.pause();
+		if (stopTimeout.current) clearTimeout(stopTimeout.current);
+
+		const audio = new Audio(track.previewUrl);
+		audioRef.current = audio;
+
+		audio.addEventListener("loadedmetadata", () => {
+			audio.currentTime = track.startAt ?? 0;
+			audio.play();
+		});
+
+		setPlayingId(track.id);
+		stopTimeout.current = setTimeout(stopPlayback, SNIPPET_SECONDS * 1000);
+		audio.onended = stopPlayback;
+	};
+
+	return (
+		<div className="rounded-2xl bg-zinc-900 p-4 backdrop-blur-xl">
+			<h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-white/60">
+				<GoIssueTracks className="text-base" />
+				Recent Tracks
+			</h3>
+			<ul className="grid gap-1 sm:grid-cols-2">
+				{tracks.map((track) => {
+					const isPlaying = playingId === track.id;
+					return (
+						<li key={track.id}>
+							<button
+								onClick={() => togglePlay(track)}
+								className="group flex w-full items-center gap-3 rounded-lg p-2 text-left transition hover:bg-white/10"
+							>
+								<div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md">
+									<Image src={track.cover} alt={track.title} fill className="object-cover" />
+									<div
+										className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity ${
+											isPlaying ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+										}`}
+									>
+										{isPlaying && <EqualizerBars />}
+									</div>
+								</div>
+								<div className="min-w-0 flex-1">
+									<p className="truncate text-sm font-medium text-white">{track.title}</p>
+									<p className="truncate text-xs text-white/50">{track.artist}</p>
+								</div>
+								<span className="shrink-0 text-white/70 transition-colors group-hover:text-white">
+									{isPlaying ? <PiPauseFill size={18} /> : <PiPlayFill size={18} />}
+								</span>
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
+}

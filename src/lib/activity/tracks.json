@@ -1,0 +1,62 @@
+[
+	{
+		"id": "900672691",
+		"title": "Work Song",
+		"artist": "Hozier",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5e/1b/f1/5e1bf1de-e5f1-e73e-0752-e7882b4f2d57/886444718820.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fd/86/e5/fd86e592-223e-b29c-fb87-1d66333b2867/mzaf_6324882069873533008.plus.aac.p.m4a",
+		"startAt": 10,
+		"bgFrom": "#4b3c32",
+		"bgTo": "#cd8440"
+	},
+	{
+		"id": "276348360",
+		"title": "Mykonos",
+		"artist": "Fleet Foxes",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/cd/a1/07/cda10780-d1b2-eb11-b8d1-fc5d72cda6b0/098787078169.png/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/42/32/f0/4232f0b2-97d3-d48d-dc7c-eafff1741773/mzaf_7446301019965688805.plus.aac.p.m4a",
+		"startAt": 10,
+		"bgFrom": "#3e6653",
+		"bgTo": "#46a6c9"
+	},
+	{
+		"id": "1448967239",
+		"title": "Movement",
+		"artist": "Hozier",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fc/73/03/fc73032d-d67d-ade3-8b9a-6f403fd9491b/886447495391.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/55/22/d3/5522d363-f40a-e7c7-3d3e-e4070cb0296e/mzaf_10415873169476934519.plus.aac.p.m4a",
+		"startAt": 10,
+		"bgFrom": "#344e56",
+		"bgTo": "#3c7d76"
+	},
+	{
+		"id": "1796003366",
+		"title": "Poison",
+		"artist": "David Kushner",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/7b/c0/ff7bc0be-a682-22f7-fcae-e0d1f918f66f/196922996658_Cover.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/46/a5/d4/46a5d4e2-7230-2b1b-d534-7858a674b681/mzaf_6189616892321709110.plus.aac.p.m4a",
+		"startAt": 15,
+		"bgFrom": "#515050",
+		"bgTo": "#f71c07"
+	},
+	{
+		"id": "1753327791",
+		"title": "Southern Star",
+		"artist": "Gregory Alan Isakov",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/15/ed/83/15ed83dc-8e46-09b2-fb12-764a65a281a3/18573.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/e4/5e/97e45e51-95eb-8705-6c3d-d1b847dd13fa/mzaf_11282500147728848691.plus.aac.p.m4a",
+		"startAt": 10,
+		"bgFrom": "#46472f",
+		"bgTo": "#d4b52a"
+	},
+	{
+		"id": "1796003365",
+		"title": "No High",
+		"artist": "David Kushner",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/7b/c0/ff7bc0be-a682-22f7-fcae-e0d1f918f66f/196922996658_Cover.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e2/6a/68/e26a68d9-7ce2-811e-40d2-41b0cf12a2d4/mzaf_6397270574135385625.plus.aac.p.m4a",
+		"startAt": 10,
+		"bgFrom": "#515050",
+		"bgTo": "#f71c07"
+	}
+]
