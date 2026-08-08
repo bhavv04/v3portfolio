@@ -32,7 +32,7 @@ export function BookHoverText() {
 		>
 			books
 			<span
-				className={`pointer-events-none absolute bottom-full left-1/2 z-50 mb-5 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/20 bg-stone-950/40 bg-gradient-to-b from-white/10 to-white/0 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out ${
+				className={`pointer-events-none absolute bottom-full left-1/2 z-50 mb-5 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/70 bg-stone-950 bg-gradient-to-b from-white/10 to-white/0 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out ${
 					isHovering ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"
 				}`}
 			>
@@ -50,7 +50,6 @@ export function BookHoverText() {
 						}}
 					/>
 				))}
-				<span className="absolute top-full left-1/2 -translate-x-1/2 border-10 border-transparent border-t-white/40" />
 			</span>
 		</span>
 	);
