@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, FileText } from "lucide-react";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, Coffee } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -16,7 +16,7 @@ const navItems = [
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
 	{ href: "/blog", label: "Blog", icon: PencilLine, useClientSideRouting: true },
 	null,
-	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: FileText, openInNewTab: true }
+	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
 ] as const;
 
 function isActivePath(pathname: string, href: string) {
