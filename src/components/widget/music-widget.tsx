@@ -214,7 +214,7 @@ export function MusicWidget() {
 												step={0.01}
 												value={volume}
 												onChange={(e) => setVolume(Number(e.target.value))}
-												className="h-1 w-14 cursor-pointer appearance-none rounded-full bg-white/10 accent-white/70"
+												className="h-1 w-16 cursor-pointer touch-none appearance-none rounded-full bg-white/10 accent-white/70 [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:duration-150 [&::-moz-range-thumb]:hover:scale-125 [&::-moz-range-thumb]:active:scale-125 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-150 [&::-webkit-slider-thumb]:hover:scale-125 [&::-webkit-slider-thumb]:active:scale-125"
 											/>
 										</div>
 									</div>

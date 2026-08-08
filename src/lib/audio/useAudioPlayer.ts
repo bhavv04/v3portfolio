@@ -13,8 +13,17 @@ interface Track {
 	bgTo: string;
 }
 
+// Safari/iOS still expose AudioContext under the vendor-prefixed name
+interface WindowWithWebkitAudio extends Window {
+	webkitAudioContext?: typeof AudioContext;
+}
+
 export function useAudioPlayer(tracks: Track[]) {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const audioCtxRef = useRef<AudioContext | null>(null);
+	const gainNodeRef = useRef<GainNode | null>(null);
+	const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
+
 	const [trackIndex, setTrackIndex] = useState(0);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [position, setPosition] = useState(0);
@@ -33,9 +42,10 @@ export function useAudioPlayer(tracks: Track[]) {
 		setIsPlaying(true);
 	}, [tracks.length]);
 
-	// init the Audio element once on mount
+	// init the Audio element + Web Audio graph once on mount
 	useEffect(() => {
 		const audio = new Audio();
+		audio.crossOrigin = "anonymous"; // needed if previewUrl is cross-origin
 		audioRef.current = audio;
 
 		const onTimeUpdate = () => setPosition(audio.currentTime);
@@ -57,13 +67,38 @@ export function useAudioPlayer(tracks: Track[]) {
 			audio.removeEventListener("ended", onEnded);
 			audio.removeEventListener("pause", onPause);
 			audio.removeEventListener("play", onPlay);
+			audioCtxRef.current?.close();
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// keep audio element's volume in sync
+	// lazily build the Web Audio graph on first play (must be inside a user gesture on iOS)
+	const ensureAudioGraph = useCallback(() => {
+		if (!audioRef.current || audioCtxRef.current) return;
+
+		const AudioContextClass = window.AudioContext || (window as WindowWithWebkitAudio).webkitAudioContext;
+		const ctx = new AudioContextClass();
+		const source = ctx.createMediaElementSource(audioRef.current);
+		const gain = ctx.createGain();
+
+		source.connect(gain);
+		gain.connect(ctx.destination);
+		gain.gain.value = volume;
+
+		audioCtxRef.current = ctx;
+		sourceNodeRef.current = source;
+		gainNodeRef.current = gain;
+	}, [volume]);
+
+	// keep gain node in sync with volume state (this now actually works on iOS)
 	useEffect(() => {
-		if (audioRef.current) audioRef.current.volume = volume;
+		if (gainNodeRef.current) {
+			gainNodeRef.current.gain.value = volume;
+		}
+		// fallback for browsers where Web Audio graph isn't set up yet
+		if (audioRef.current && !gainNodeRef.current) {
+			audioRef.current.volume = volume;
+		}
 	}, [volume]);
 
 	// load + play new track when trackIndex changes
@@ -75,14 +110,14 @@ export function useAudioPlayer(tracks: Track[]) {
 		setPosition(0);
 
 		if (isPlaying) audio.play().catch(() => setIsPlaying(false));
-		// only re-run when the track actually changes, not on every
-		// isPlaying/currentTrack reference change (avoids restart loops)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [trackIndex]);
 
 	const play = useCallback(() => {
+		ensureAudioGraph(); // must happen inside the user gesture that calls play()
+		audioCtxRef.current?.resume();
 		audioRef.current?.play();
-	}, []);
+	}, [ensureAudioGraph]);
 
 	const pause = useCallback(() => {
 		audioRef.current?.pause();

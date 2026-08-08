@@ -9,15 +9,6 @@
 		"bgTo": "#35e8ea"
 	},
 	{
-		"id": "1467259459",
-		"title": "Main Title",
-		"artist": "Andrew Prahlow",
-		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/87/af/e2/87afe22c-d532-53b5-a9f6-43abf37363ce/859732734925_cover.jpg/400x400bb.jpg",
-		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d1/75/3a/d1753a29-675a-aed7-9893-80f717efb5d6/mzaf_14376792840561569515.plus.aac.p.m4a",
-		"bgFrom": "#604936",
-		"bgTo": "#35e8ea"
-	},
-	{
 		"id": "1467259299",
 		"title": "Timber Hearth",
 		"artist": "Andrew Prahlow",
@@ -203,6 +194,15 @@
 		"artist": "Andrew Prahlow",
 		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/87/af/e2/87afe22c-d532-53b5-a9f6-43abf37363ce/859732734925_cover.jpg/400x400bb.jpg",
 		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f0/e9/56/f0e95654-3932-8518-c6b5-157f0b161a69/mzaf_5717316399220287326.plus.aac.p.m4a",
+		"bgFrom": "#604936",
+		"bgTo": "#35e8ea"
+	},
+	{
+		"id": "1467259459",
+		"title": "Main Title",
+		"artist": "Andrew Prahlow",
+		"cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/87/af/e2/87afe22c-d532-53b5-a9f6-43abf37363ce/859732734925_cover.jpg/400x400bb.jpg",
+		"previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d1/75/3a/d1753a29-675a-aed7-9893-80f717efb5d6/mzaf_14376792840561569515.plus.aac.p.m4a",
 		"bgFrom": "#604936",
 		"bgTo": "#35e8ea"
 	},
