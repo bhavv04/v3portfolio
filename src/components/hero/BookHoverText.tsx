@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const FAVORITE_BOOKS = [
 	{
@@ -22,32 +22,41 @@ const FAVORITE_BOOKS = [
 ];
 
 export function BookHoverText() {
-	const [isHovering, setIsHovering] = useState(false);
+	const [open, setOpen] = useState(false);
+	const ref = useRef<HTMLSpanElement>(null);
+
+	useEffect(() => {
+		if (!open) return;
+		const close = (e: PointerEvent) => {
+			if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+		};
+		document.addEventListener("pointerdown", close);
+		return () => document.removeEventListener("pointerdown", close);
+	}, [open]);
 
 	return (
 		<span
-			className="relative inline-block cursor-default underline decoration-white/30 decoration-2 underline-offset-4 transition-colors duration-300 hover:decoration-white/70"
-			onMouseEnter={() => setIsHovering(true)}
-			onMouseLeave={() => setIsHovering(false)}
+			ref={ref}
+			className="group relative inline-block cursor-pointer underline decoration-white/30 decoration-2 underline-offset-4 transition-colors duration-300 hover:decoration-white/70"
+			onClick={(e) => {
+				e.stopPropagation();
+				setOpen((o) => !o);
+			}}
 		>
 			books
 			<span
-				className={`pointer-events-none absolute bottom-full left-1/2 z-50 mb-5 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/70 bg-stone-950 bg-gradient-to-b from-white/10 to-white/0 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out ${
-					isHovering ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"
+				className={`absolute bottom-full left-1/2 z-50 mb-5 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/70 bg-stone-950 bg-gradient-to-b from-white/10 to-white/0 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100 ${
+					open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
 				}`}
 			>
-				{FAVORITE_BOOKS.map((book, i) => (
+				{FAVORITE_BOOKS.map((book) => (
 					<img
 						key={book.title}
 						src={book.cover}
 						alt={book.title}
 						title={book.title}
-						className="h-30 w-20 shrink-0 rounded-md object-cover shadow-md transition-all duration-300 ease-out"
-						style={{
-							transitionDelay: isHovering ? `${i * 40}ms` : "0ms",
-							transform: isHovering ? "translateY(0)" : "translateY(8px)",
-							opacity: isHovering ? 1 : 0
-						}}
+						loading="lazy"
+						className="h-24 w-16 shrink-0 rounded-md object-cover shadow-md md:h-32 md:w-20"
 					/>
 				))}
 			</span>
