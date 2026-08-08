@@ -4,6 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 
 export type SearchItemType = "post" | "project" | "research" | "page";
+export type ProjectStatus = "live" | "building";
 
 export interface SearchItem {
 	id: string;
@@ -12,6 +13,7 @@ export interface SearchItem {
 	url: string;
 	type: SearchItemType;
 	icon?: string;
+	status?: ProjectStatus;
 }
 
 const CONTENT_MAP: { dir: string; urlPrefix: string; type: SearchItemType; allowedSlugs?: string[] }[] = [
@@ -26,9 +28,14 @@ const CONTENT_MAP: { dir: string; urlPrefix: string; type: SearchItemType; allow
 		urlPrefix: "/research",
 		type: "research",
 		allowedSlugs: ["precursor", "lacunae"]
-	},
-	{ dir: "src/content/blog", urlPrefix: "/blog", type: "post" } // no allowlist = show all
+	}
 ];
+
+const PROJECT_STATUS: Record<string, ProjectStatus> = {
+	thunderhead: "live",
+	funes: "live",
+	groat: "building"
+};
 
 function readMarkdownDir({ dir, urlPrefix, type, allowedSlugs }: (typeof CONTENT_MAP)[number]): SearchItem[] {
 	const fullDir = path.join(process.cwd(), dir);
@@ -51,7 +58,8 @@ function readMarkdownDir({ dir, urlPrefix, type, allowedSlugs }: (typeof CONTENT
 				title: data.title ?? slug,
 				description: data.description ?? "",
 				url: `${urlPrefix}/${slug}`,
-				type
+				type,
+				...(type === "project" && { status: PROJECT_STATUS[slug] ?? "live" })
 			};
 		});
 }
@@ -59,7 +67,8 @@ function readMarkdownDir({ dir, urlPrefix, type, allowedSlugs }: (typeof CONTENT
 const staticPages: SearchItem[] = [
 	{ id: "home", title: "Home", description: "", url: "/", type: "page", icon: "home" },
 	{ id: "projects-page", title: "Projects", description: "", url: "/projects", type: "page", icon: "projects" },
-	{ id: "research-page", title: "Research", description: "", url: "/research", type: "page", icon: "research" }
+	{ id: "research-page", title: "Research", description: "", url: "/research", type: "page", icon: "research" },
+	{ id: "blog-page", title: "Notes", description: "", url: "/blog", type: "page", icon: "blog" }
 ];
 
 export function getSearchIndex(): SearchItem[] {

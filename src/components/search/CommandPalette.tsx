@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
 	Home,
 	User,
-	Wrench,
+	FolderRoot,
 	Microscope,
 	PencilLine,
 	Mail,
@@ -29,10 +29,10 @@ interface PaletteCommand {
 	group: string;
 	icon: React.ElementType;
 	hint?: string;
+	status?: SearchItem["status"];
 	perform: () => void;
 	keepOpen?: boolean;
 }
-
 const GROUP_ORDER = ["Pages", "Projects", "Research", "Blog", "Actions", "Connect"];
 
 const TYPE_TO_GROUP: Record<SearchItem["type"], string> = {
@@ -44,7 +44,7 @@ const TYPE_TO_GROUP: Record<SearchItem["type"], string> = {
 
 const TYPE_ICON: Record<SearchItem["type"], React.ElementType> = {
 	page: Home,
-	project: Wrench,
+	project: FolderRoot,
 	research: Microscope,
 	post: PencilLine
 };
@@ -52,7 +52,7 @@ const TYPE_ICON: Record<SearchItem["type"], React.ElementType> = {
 const PAGE_ICON: Record<string, React.ElementType> = {
 	home: Home,
 	about: User,
-	projects: Wrench,
+	projects: FolderRoot,
 	research: Microscope,
 	blog: PencilLine
 };
@@ -119,6 +119,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 				description: item.description,
 				group: TYPE_TO_GROUP[item.type],
 				icon: Icon,
+				status: item.status,
 				perform: () => go(item.url)
 			};
 		});
@@ -307,14 +308,19 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 													onMouseMove={() => setSelected(idx)}
 													onClick={() => runCommand(cmd)}
 													className={`flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
-														isSelected ? "bg-emerald-400/10 text-white" : "text-white/80"
+														isSelected ? "bg-gray-400/10 text-white" : "text-white/80"
 													}`}
 												>
-													<cmd.icon size={15} className={`shrink-0 ${isSelected ? "text-emerald-400" : "text-white/40"}`} />
+													<cmd.icon size={15} className={`shrink-0 ${isSelected ? "text-emerald-700" : "text-white/40"}`} />
 													<div className="min-w-0 flex-1">
 														<p className="truncate font-medium">{cmd.label}</p>
 														{cmd.description && <p className="truncate text-xs text-white/40">{cmd.description}</p>}
 													</div>
+													{cmd.status && (
+														<span className="shrink-0 rounded-md border border-white/15 px-2 py-0.5 text-2xs font-medium text-white/50">
+															{cmd.status === "live" ? "Live" : "Building"}
+														</span>
+													)}
 													{cmd.hint && <span className="shrink-0 rounded px-1.5 py-0.5 text-xs text-white/40">{cmd.hint}</span>}
 													{isSelected && <CornerDownLeft size={13} className="shrink-0 text-white/30" />}
 												</button>
@@ -332,7 +338,6 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 								<span className="flex items-center gap-1">
 									<CornerDownLeft size={12} /> select
 								</span>
-								<span className="ml-auto">bhavdeeparora.dev</span>
 							</div>
 						</motion.div>
 					</motion.div>
