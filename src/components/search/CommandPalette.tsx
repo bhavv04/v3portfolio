@@ -256,7 +256,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
-						className="fixed inset-0 z-[100] flex items-start justify-center bg-black/60 pt-[15vh] backdrop-blur-sm"
+						className="fixed inset-0 z-[100] flex items-start justify-center bg-black/60 pt-[12vh] backdrop-blur-sm"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -270,7 +270,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 							transition={{ type: "spring", stiffness: 460, damping: 34 }}
 							onMouseDown={(e) => e.stopPropagation()}
 							onKeyDown={onListKeyDown}
-							className="flex max-h-[70vh] w-full max-w-sm flex-col overflow-hidden rounded-2xl bg-stone-900/80 shadow-2xl shadow-black/50 backdrop-blur-2xl backdrop-saturate-150 sm:max-w-lg"
+							className="flex max-h-[60vh] w-full max-w-sm flex-col overflow-hidden rounded-2xl bg-stone-900/80 shadow-2xl shadow-black/50 backdrop-blur-2xl backdrop-saturate-150 sm:max-w-lg"
 						>
 							<div className="flex items-center gap-2 px-4">
 								<Search size={16} className="shrink-0 text-white/40" />
