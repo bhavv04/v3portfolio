@@ -120,101 +120,104 @@ export function MusicWidget() {
 							transition={shellSpring}
 							style={{ transformOrigin: "top right" }}
 							onClick={() => setIsExpanded(false)}
-							className="absolute top-0 right-0 w-52 cursor-pointer overflow-hidden rounded-2xl border border-white/15 bg-stone-950/60 p-3 shadow-2xl shadow-black/50 backdrop-blur-2xl backdrop-saturate-150 lg:right-auto lg:left-0"
+							className="absolute top-0 right-0 w-80 cursor-pointer overflow-hidden rounded-2xl border border-white/15 bg-stone-950/60 p-3 shadow-2xl shadow-black/50 backdrop-blur-2xl backdrop-saturate-150 lg:right-auto lg:left-0"
 						>
 							<motion.div
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 								transition={{ ...contentFade, delay: shouldReduceMotion ? 0 : 0.08 }}
+								className="flex items-start gap-3"
 							>
 								<img
 									src={currentTrack.cover}
 									alt={currentTrack.title}
-									className="mx-auto h-32 w-32 rounded-lg object-cover shadow-lg ring-1 ring-white/10"
+									className="h-24 w-24 shrink-0 rounded-lg object-cover shadow-lg ring-1 ring-white/10"
 								/>
 
-								<div className="mt-3 text-center">
-									<p className="truncate text-xs font-semibold text-white">{currentTrack.title}</p>
-									<p className="truncate text-xs text-white/50">{currentTrack.artist}</p>
-								</div>
+								<div className="min-w-0 flex-1">
+									<div className="min-w-0">
+										<p className="truncate text-xs font-semibold text-white">{currentTrack.title}</p>
+										<p className="truncate text-xs text-white/50">{currentTrack.artist}</p>
+									</div>
 
-								<div
-									ref={progressRef}
-									onClick={(e) => e.stopPropagation()}
-									onPointerDown={handlePointerDown}
-									onPointerMove={handlePointerMove}
-									onPointerUp={handlePointerUp}
-									className="group/bar relative mt-3 flex h-3 cursor-pointer touch-none items-center"
-								>
-									<div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
+									<div
+										ref={progressRef}
+										onClick={(e) => e.stopPropagation()}
+										onPointerDown={handlePointerDown}
+										onPointerMove={handlePointerMove}
+										onPointerUp={handlePointerUp}
+										className="group/bar relative mt-2 flex h-3 cursor-pointer touch-none items-center"
+									>
+										<div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
+											<div
+												className="h-full rounded-full bg-white/85"
+												style={{ width: `${progressPct}%`, transition: isDragging ? "none" : "width 0.15s ease-out" }}
+											/>
+										</div>
 										<div
-											className="h-full rounded-full bg-white/85"
-											style={{ width: `${progressPct}%`, transition: isDragging ? "none" : "width 0.15s ease-out" }}
+											className={`absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white shadow transition-opacity ${
+												isDragging ? "opacity-100" : "opacity-0 group-hover/bar:opacity-100"
+											}`}
+											style={{ left: `calc(${progressPct}% - 4px)` }}
 										/>
 									</div>
-									<div
-										className={`absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white shadow transition-opacity ${
-											isDragging ? "opacity-100" : "opacity-0 group-hover/bar:opacity-100"
-										}`}
-										style={{ left: `calc(${progressPct}% - 4px)` }}
-									/>
-								</div>
-								<div className="-mt-0.5 flex justify-between text-[9px] text-white/35 tabular-nums">
-									<span>{formatTime(position)}</span>
-									<span>-{formatTime(Math.max(duration - position, 0))}</span>
-								</div>
+									<div className="-mt-0.5 flex justify-between text-[9px] text-white/35 tabular-nums">
+										<span>{formatTime(position)}</span>
+										<span>-{formatTime(Math.max(duration - position, 0))}</span>
+									</div>
 
-								<div className="mt-2 flex items-center justify-center gap-5">
-									<button
-										onClick={(e) => {
-											e.stopPropagation();
-											previousTrack();
-										}}
-										className="text-white/70 transition-colors hover:scale-120 hover:text-white active:scale-95"
-										aria-label="Previous track"
-									>
-										<SkipBack size={16} fill="currentColor" />
-									</button>
-									<button
-										onClick={(e) => {
-											e.stopPropagation();
-											togglePlay();
-										}}
-										className="text-white transition-transform hover:scale-120 active:scale-95"
-										aria-label={isPlaying ? "Pause" : "Play"}
-									>
-										{isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" />}
-									</button>
-									<button
-										onClick={(e) => {
-											e.stopPropagation();
-											nextTrack();
-										}}
-										className="text-white/70 transition-colors hover:scale-120 hover:text-white active:scale-95"
-										aria-label="Next track"
-									>
-										<SkipForward size={16} fill="currentColor" />
-									</button>
-								</div>
+									<div className="mt-2 flex items-center gap-4">
+										<button
+											onClick={(e) => {
+												e.stopPropagation();
+												previousTrack();
+											}}
+											className="text-white/70 transition-colors hover:scale-120 hover:text-white active:scale-95"
+											aria-label="Previous track"
+										>
+											<SkipBack size={15} fill="currentColor" />
+										</button>
+										<button
+											onClick={(e) => {
+												e.stopPropagation();
+												togglePlay();
+											}}
+											className="text-white transition-transform hover:scale-120 active:scale-95"
+											aria-label={isPlaying ? "Pause" : "Play"}
+										>
+											{isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" />}
+										</button>
+										<button
+											onClick={(e) => {
+												e.stopPropagation();
+												nextTrack();
+											}}
+											className="text-white/70 transition-colors hover:scale-120 hover:text-white active:scale-95"
+											aria-label="Next track"
+										>
+											<SkipForward size={15} fill="currentColor" />
+										</button>
 
-								<div className="mt-4 flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-									<button
-										onClick={() => setVolume(volume > 0 ? 0 : 0.5)}
-										className="text-white/40 transition-colors hover:text-white"
-										aria-label={volume === 0 ? "Unmute" : "Mute"}
-									>
-										{volume === 0 ? <VolumeX size={11} /> : <Volume2 size={11} />}
-									</button>
-									<input
-										type="range"
-										min={0}
-										max={1}
-										step={0.01}
-										value={volume}
-										onChange={(e) => setVolume(Number(e.target.value))}
-										className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-white/10 accent-white/70"
-									/>
+										<div className="ml-auto flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+											<button
+												onClick={() => setVolume(volume > 0 ? 0 : 0.5)}
+												className="text-white/40 transition-colors hover:text-white"
+												aria-label={volume === 0 ? "Unmute" : "Mute"}
+											>
+												{volume === 0 ? <VolumeX size={11} /> : <Volume2 size={11} />}
+											</button>
+											<input
+												type="range"
+												min={0}
+												max={1}
+												step={0.01}
+												value={volume}
+												onChange={(e) => setVolume(Number(e.target.value))}
+												className="h-1 w-14 cursor-pointer appearance-none rounded-full bg-white/10 accent-white/70"
+											/>
+										</div>
+									</div>
 								</div>
 							</motion.div>
 						</motion.div>
