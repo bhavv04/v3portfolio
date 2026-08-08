@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, Coffee } from "lucide-react";
+import { Home, User, BriefcaseBusiness, Wrench, Microscope, PencilLine, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -15,8 +16,13 @@ const navItems = [
 	{ href: "/research", label: "Research", icon: Microscope, useClientSideRouting: true },
 	{ href: "/blog", label: "Blog", icon: PencilLine, useClientSideRouting: true },
 	null,
-	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: Coffee, openInNewTab: true }
+	{ href: "/Bhavdeep_s_Resume.pdf", label: "Resume", icon: FileText, openInNewTab: true }
 ] as const;
+
+function isActivePath(pathname: string, href: string) {
+	if (href === "/") return pathname === "/";
+	return pathname.startsWith(href.split("#")[0]);
+}
 
 export function MobileNavbar({ className }: { className?: string }) {
 	const pathname = usePathname();
@@ -63,36 +69,54 @@ export function MobileNavbar({ className }: { className?: string }) {
 			<nav className={cn("flex items-center gap-1 rounded-lg bg-stone-900 p-1.5", className)}>
 				{navItems.map((item, i) =>
 					item === null ? (
-						<div key={i} className="mx-1 h-6 w-px bg-white/10" />
+						<div key={i} className="mx-1 h-6 w-px bg-white/10" aria-hidden="true" />
 					) : (
-						(() => {
-							const { href, label, icon: Icon, ...rest } = item;
-
-							const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href.split("#")[0]);
-
-							const Comp = "useClientSideRouting" in rest && rest.useClientSideRouting ? Link : "a";
-
-							const openInNewTab = "openInNewTab" in rest;
-
-							return (
-								<Comp
-									key={href}
-									href={href}
-									target={openInNewTab ? "_blank" : "_self"}
-									aria-label={label}
-									className={cn(
-										"relative flex size-9 items-center justify-center rounded-lg transition-all duration-200",
-										"focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:outline-hidden",
-										isActive ? "bg-white text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
-									)}
-								>
-									<Icon size={18} strokeWidth={2} />
-								</Comp>
-							);
-						})()
+						<NavbarIconButton key={item.href} {...item} isActive={isActivePath(pathname, item.href)} />
 					)
 				)}
 			</nav>
 		</div>
+	);
+}
+
+function NavbarIconButton({
+	href,
+	label,
+	icon: Icon,
+	isActive = false,
+	openInNewTab = false,
+	useClientSideRouting = false
+}: {
+	href: string;
+	label: string;
+	icon: React.ElementType;
+	isActive?: boolean;
+	openInNewTab?: boolean;
+	useClientSideRouting?: boolean;
+}) {
+	const Comp = useClientSideRouting ? Link : "a";
+
+	return (
+		<Comp
+			href={href}
+			target={openInNewTab ? "_blank" : "_self"}
+			rel={openInNewTab ? "noopener noreferrer" : undefined}
+			aria-label={label}
+			aria-current={isActive ? "page" : undefined}
+			className={cn(
+				"relative flex size-9 items-center justify-center rounded-lg transition-colors duration-200",
+				"focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900 focus-visible:outline-none",
+				isActive ? "text-black" : "text-white/35 hover:bg-white/10 hover:text-white"
+			)}
+		>
+			{isActive && (
+				<motion.span
+					layoutId="mobile-navbar-active-pill"
+					className="absolute inset-0 rounded-lg bg-white"
+					transition={{ type: "spring", stiffness: 400, damping: 32 }}
+				/>
+			)}
+			<Icon size={18} strokeWidth={2} className="relative z-10" />
+		</Comp>
 	);
 }
