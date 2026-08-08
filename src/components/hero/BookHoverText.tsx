@@ -22,30 +22,45 @@ const FAVORITE_BOOKS = [
 ];
 
 export function BookHoverText() {
-	const [open, setOpen] = useState(false);
+	const [hovered, setHovered] = useState(false);
+	const [pinned, setPinned] = useState(false);
 	const ref = useRef<HTMLSpanElement>(null);
+	const canHover = useRef(false);
 
 	useEffect(() => {
-		if (!open) return;
+		canHover.current = window.matchMedia("(hover: hover)").matches;
+	}, []);
+
+	const open = hovered || pinned;
+
+	useEffect(() => {
+		if (!pinned) return;
 		const close = (e: PointerEvent) => {
-			if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+			if (ref.current && !ref.current.contains(e.target as Node)) setPinned(false);
 		};
 		document.addEventListener("pointerdown", close);
 		return () => document.removeEventListener("pointerdown", close);
-	}, [open]);
+	}, [pinned]);
 
 	return (
 		<span
 			ref={ref}
 			className="group relative inline-block cursor-pointer underline decoration-white/50 underline-offset-3 transition-colors duration-300 hover:decoration-white"
+			onMouseEnter={() => setHovered(true)}
+			onMouseLeave={() => {
+				setHovered(false);
+				// On real hover devices, leaving should always close it,
+				// even if it was pinned open by a click.
+				if (canHover.current) setPinned(false);
+			}}
 			onClick={(e) => {
 				e.stopPropagation();
-				setOpen((o) => !o);
+				setPinned((p) => !p);
 			}}
 		>
 			books
 			<span
-				className={`absolute bottom-full left-1/2 z-50 w-64 origin-bottom -translate-x-1/2 overflow-hidden rounded-xl transition-all duration-200 ease-out ${
+				className={`absolute bottom-full left-1/2 z-50 w-72 origin-bottom -translate-x-1/2 overflow-hidden rounded-xl border border-white transition-all duration-200 ease-out ${
 					open ? "pointer-events-auto translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-1 scale-90 opacity-0"
 				}`}
 			>
