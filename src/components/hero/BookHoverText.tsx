@@ -26,13 +26,13 @@ export function BookHoverText() {
 
 	return (
 		<span
-			className="relative inline-block cursor-default underline underline-offset-3"
+			className="relative inline-block cursor-default underline decoration-white/30 decoration-2 underline-offset-4 transition-colors duration-300 hover:decoration-white/70"
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
 		>
 			books
 			<span
-				className={`pointer-events-none absolute bottom-full left-1/2 z-50 mb-4 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/40 bg-stone-950/70 p-2 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-out ${
+				className={`pointer-events-none absolute bottom-full left-1/2 z-50 mb-5 flex -translate-x-1/2 gap-2 rounded-2xl border border-white/20 bg-stone-950/40 bg-gradient-to-b from-white/10 to-white/0 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out ${
 					isHovering ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"
 				}`}
 			>
@@ -50,7 +50,7 @@ export function BookHoverText() {
 						}}
 					/>
 				))}
-				<span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white" />
+				<span className="absolute top-full left-1/2 -translate-x-1/2 border-10 border-transparent border-t-white/40" />
 			</span>
 		</span>
 	);

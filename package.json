@@ -32,6 +32,7 @@
 		"lucide-react": "^0.511.0",
 		"next": "^14.2.35",
 		"react": "^18",
+		"react-activity-calendar": "^3.2.1",
 		"react-dom": "^18",
 		"react-hot-toast": "^2.6.0",
 		"react-icons": "^5.5.0",

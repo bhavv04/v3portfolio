@@ -1,19 +1,25 @@
 "use client";
 import "./globals.css";
 import "katex/dist/katex.min.css";
-
+import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/views/Navbar";
 import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
 import Oneko from "@/components/ui/oneko";
 import { ScrollBackground } from "@/components/graphics/ScrollBackground";
 import { CatProvider } from "@/context/CatContext";
+import { MusicWidget } from "@/components/widget/music-widget";
+import { enforceSingleAudioPlayback } from "@/lib/audio/mediaExclusivity";
 
 interface RootLayoutProps {
 	children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+	useEffect(() => {
+		enforceSingleAudioPlayback();
+	}, []);
+
 	return (
 		<html lang="en">
 			<head>
@@ -33,6 +39,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 							{children}
 						</main>
 					</ResponsiveContainer>
+					<MusicWidget />
 					<Analytics />
 				</CatProvider>
 			</body>
