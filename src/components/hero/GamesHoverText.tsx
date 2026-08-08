@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const FAVORITE_GAMES = [
 	{
@@ -24,7 +24,9 @@ const FAVORITE_GAMES = [
 export function GameHoverText() {
 	const [hovered, setHovered] = useState(false);
 	const [pinned, setPinned] = useState(false);
+	const [offset, setOffset] = useState(0);
 	const ref = useRef<HTMLSpanElement>(null);
+	const popoverRef = useRef<HTMLSpanElement>(null);
 	const canHover = useRef(false);
 
 	useEffect(() => {
@@ -42,6 +44,20 @@ export function GameHoverText() {
 		return () => document.removeEventListener("pointerdown", close);
 	}, [pinned]);
 
+	// Clamp the popover so it never crosses the viewport edge, which is what
+	// was pushing the page's scroll width out on mobile.
+	useLayoutEffect(() => {
+		if (!open || !ref.current || !popoverRef.current) return;
+		const margin = 12;
+		const triggerRect = ref.current.getBoundingClientRect();
+		const popoverWidth = popoverRef.current.offsetWidth;
+		const centerX = triggerRect.left + triggerRect.width / 2;
+		const idealLeft = centerX - popoverWidth / 2;
+		const maxLeft = window.innerWidth - popoverWidth - margin;
+		const clampedLeft = Math.min(Math.max(idealLeft, margin), maxLeft);
+		setOffset(clampedLeft - idealLeft);
+	}, [open]);
+
 	return (
 		<span
 			ref={ref}
@@ -58,7 +74,9 @@ export function GameHoverText() {
 		>
 			games
 			<span
-				className={`absolute bottom-full left-1/2 z-50 w-72 origin-bottom -translate-x-1/2 overflow-hidden rounded-xl border border-white transition-all duration-200 ease-out ${
+				ref={popoverRef}
+				style={{ ["--tw-translate-x" as string]: `calc(-50% + ${offset}px)` }}
+				className={`absolute bottom-full left-1/2 z-50 w-64 origin-bottom overflow-hidden rounded-xl border border-white transition-all duration-200 ease-out md:w-72 ${
 					open ? "pointer-events-auto translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-1 scale-90 opacity-0"
 				}`}
 			>
