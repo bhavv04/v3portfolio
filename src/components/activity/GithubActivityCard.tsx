@@ -25,7 +25,7 @@ function LanguageBar({ languages }: { languages: LanguageStat[] }) {
 					className="group/seg relative h-full min-w-[2px] first:rounded-l-full last:rounded-r-full"
 					style={{ width: `${lang.percent}%`, backgroundColor: lang.color }}
 				>
-					<span className="pointer-events-none absolute -top-7 left-1/2 z-10 -translate-x-1/2 rounded-md bg-black/90 px-2 py-1 text-[10px] whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover/seg:opacity-100">
+					<span className="pointer-events-none absolute -top-7 left-1/2 z-10 -translate-x-1/2 rounded-md bg-black/90 px-2 py-1 text-2xs whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover/seg:opacity-100">
 						{lang.name} · {lang.percent}%
 					</span>
 				</div>

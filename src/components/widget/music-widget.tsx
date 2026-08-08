@@ -73,7 +73,7 @@ export function MusicWidget() {
 	const progressPct = duration > 0 ? (position / duration) * 100 : 0;
 
 	return (
-		<div ref={containerRef} className="fixed top-6 right-4 z-50 lg:left-4">
+		<div ref={containerRef} className="fixed top-6 right-4 z-50 lg:right-auto lg:left-4">
 			<div className="relative h-11 w-44">
 				<AnimatePresence initial={false} mode="popLayout">
 					{!isExpanded ? (
@@ -97,8 +97,8 @@ export function MusicWidget() {
 							>
 								<img src={currentTrack.cover} alt={currentTrack.title} className="h-8 w-8 shrink-0 rounded-md object-cover shadow-sm" />
 								<div className="min-w-0 flex-1">
-									<p className="truncate text-[11px] font-semibold text-white">{currentTrack.title}</p>
-									<p className="truncate text-[10px] text-white/50">{currentTrack.artist}</p>
+									<p className="truncate text-xs font-semibold text-white">{currentTrack.title}</p>
+									<p className="truncate text-2xs text-white/50">{currentTrack.artist}</p>
 								</div>
 								{isPlaying ? (
 									<Pause size={14} fill="currentColor" className="shrink-0 text-white/70" />
@@ -162,7 +162,7 @@ export function MusicWidget() {
 											style={{ left: `calc(${progressPct}% - 4px)` }}
 										/>
 									</div>
-									<div className="-mt-0.5 flex justify-between text-[9px] text-white/35 tabular-nums">
+									<div className="-mt-0.5 flex justify-between text-2xs text-white/35 tabular-nums">
 										<span>{formatTime(position)}</span>
 										<span>-{formatTime(Math.max(duration - position, 0))}</span>
 									</div>

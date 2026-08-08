@@ -212,11 +212,11 @@ export default function PettableCat() {
 				className="group absolute right-2 bottom-2 flex cursor-pointer flex-col items-center justify-end select-none"
 				title={overpetted ? "okay, that's enough" : isDizzy ? "keep going or let it recover" : "pet the cat"}
 			>
-				<span className="text-[9px] text-white/40 opacity-0 transition-opacity group-hover:opacity-100">
+				<span className="text-2xs text-white/40 opacity-0 transition-opacity group-hover:opacity-100">
 					{overpetted ? "overpetted!" : isDizzy ? "dizzy..." : !awake ? "shh, sleeping" : petting ? purr : "click to pet"}
 				</span>
 
-				<div className="h-3 text-[10px] leading-none text-white/50">{TOPMARK[mood]}</div>
+				<div className="h-3 text-2xs leading-none text-white/50">{TOPMARK[mood]}</div>
 
 				<pre
 					key={shakeSeed}

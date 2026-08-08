@@ -142,6 +142,17 @@ export function useAudioPlayer(tracks: Track[]) {
 		}
 	}, []);
 
+	useEffect(() => {
+		const handleToggle = () => togglePlay();
+		document.addEventListener("music:toggle", handleToggle);
+		return () => document.removeEventListener("music:toggle", handleToggle);
+	}, [togglePlay]);
+
+	// alongside your other useEffects in useAudioPlayer.ts
+	useEffect(() => {
+		document.dispatchEvent(new CustomEvent("music:state", { detail: isPlaying }));
+	}, [isPlaying]);
+
 	return {
 		currentTrack,
 		isPlaying,

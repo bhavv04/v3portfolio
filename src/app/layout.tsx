@@ -1,24 +1,14 @@
-"use client";
 import "./globals.css";
 import "katex/dist/katex.min.css";
-import { useEffect } from "react";
-import { Analytics } from "@vercel/analytics/next";
-import { Navbar } from "@/views/Navbar";
-import { ResponsiveContainer } from "@/components/layout/ResponsiveContainer";
-import Oneko from "@/components/ui/oneko";
-import { ScrollBackground } from "@/components/graphics/ScrollBackground";
-import { CatProvider } from "@/context/CatContext";
-import { MusicWidget } from "@/components/widget/music-widget";
-import { enforceSingleAudioPlayback } from "@/lib/audio/mediaExclusivity";
+import { getSearchIndex } from "@/lib/search/getSearchIndex";
+import { RootLayoutClient } from "@/components/layout/RootLayoutClient";
 
 interface RootLayoutProps {
 	children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
-	useEffect(() => {
-		enforceSingleAudioPlayback();
-	}, []);
+	const searchIndex = getSearchIndex();
 
 	return (
 		<html lang="en">
@@ -29,19 +19,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 				/>
 			</head>
 			<body className="relative font-sans 2xl:zoom-[1.1]">
-				<CatProvider>
-					<ScrollBackground />
-					<Oneko />
-					<ResponsiveContainer>
-						<main className="p-8">
-							<Navbar />
-							<div className="p-4" />
-							{children}
-						</main>
-					</ResponsiveContainer>
-					<MusicWidget />
-					<Analytics />
-				</CatProvider>
+				<RootLayoutClient searchIndex={searchIndex}>{children}</RootLayoutClient>
 			</body>
 		</html>
 	);
